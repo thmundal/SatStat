@@ -8,6 +8,7 @@ namespace SatStat
 {
     static class Program
     {
+        private static SerialReader sr;
         private static DataProvider<double[]> dataStream;
         /// <summary>
         /// The main entry point for the application.
@@ -20,9 +21,36 @@ namespace SatStat
 
             SatStatMainForm app = new SatStatMainForm();
             dataStream = new DataProvider<double[]>(app);
-            SimulateDataStream();
+            //SimulateDataStream();
+
+            sr = new SerialReader();
+            double counter = 0;
+            sr.Run();
+            sr.OnDataReceived((string input) =>
+            {
+                input = input.Replace(Environment.NewLine, "");
+                Console.WriteLine("temperature is " + input);
+
+                double temp = 0;
+                try
+                {
+                    temp = double.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
+                } catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                double[] payload = { counter++, temp};
+                
+                dataStream.SetPayload(payload);
+                dataStream.DeliverPayload();
+            });
 
             Application.Run(app);
+        }
+
+        public static void StopReader()
+        {
+            sr.Stop();
         }
 
         [STAThread]

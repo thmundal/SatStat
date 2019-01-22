@@ -150,8 +150,7 @@ namespace SatStat
 
             foreach(char c in c_inputArr) {
                 int intval = (int)c;
-
-                //if(int.TryParse(c.ToString(), out int _n))
+                
                 if((c >= 48 && c <= 57) || (c == 45 || c == 46))
                 {
                     output += c;
@@ -204,7 +203,12 @@ namespace SatStat
                 xMaxVal = payload[0] + 1;
             }
             lastVal = payload[1];
-            Console.WriteLine("Received playload: " + payload[1]);
+            //Console.WriteLine("Received playload: " + payload[1]);
+        }
+
+        private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.StopReader();
         }
     }
 }

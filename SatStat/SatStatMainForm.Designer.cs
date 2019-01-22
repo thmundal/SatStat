@@ -121,6 +121,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SatStatMainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SatStatMainForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
