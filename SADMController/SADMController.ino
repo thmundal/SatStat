@@ -4,24 +4,25 @@
 #include "sensor_controller.h"
 #include "Stepper.h"
 #include "dht.h"
-#include "TimedAction.h"
 
 const int stepsPerRev = 32;
 
 // IN1 - IN4 på pin 8 - 11
 Stepper myStepper(stepsPerRev, 8, 10, 9, 11);
 
-int steps;
-float factor = 3.25;
+int steps = 0;
+bool dir = false;
+const float factor = 3.25;
+const int step_limit = (int)(1024 * factor);
 
 uint8_t* serialBuffer;
 
 int sensorPin = 7;
 dht DHT;
+int check;
 
-TimedAction tempCheck = TimedAction(500, CheckTemperature);
-TimedAction panels = TimedAction(1000, MovePanels);
-
+unsigned long start_time = millis();
+const int duration = 1000;
 
 void setup() {
 	// initialize the serial port:
@@ -29,29 +30,38 @@ void setup() {
 	myStepper.setSpeed(700);
 }
 
-void CheckTemperature() {
-	int check = DHT.read11(sensorPin);
-	Serial.println(DHT.temperature);
-}
-
-void MovePanels() {
-	steps = (int)(1024 * factor);
-	myStepper.step(steps);
-	myStepper.step(-steps);
-	delay(500);
-	myStepper.step(-steps);
-	myStepper.step(steps);
-	delay(500);
-}
-
 void loop() {
+  if (steps < step_limit)
+  {
+    steps++;
+  }
+  else
+  {
+    dir = !dir;
+    steps = 0;
+  }
+  
+  if (!dir)
+  {
+    myStepper.step(1); 
+  }
+  else
+  {
+    myStepper.step(-1);
+  }
+  
+  if (!(millis() - start_time < duration))
+  {    
+    check = DHT.read11(sensorPin);
+    Serial.println(DHT.temperature);
+    start_time = millis();
+  }  
+  
 	//if (Serial.readBytesUntil('\n', serialBuffer, 8) > 0) {
 	//	Serial.println(*serialBuffer);
 	//}
 	//else {
 	//	Serial.println("No serial input received");
 	//}
-
-	tempCheck.check();
-	panels.check();
+  
 }
