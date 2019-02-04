@@ -2,21 +2,22 @@
 #include "input_handler.h"
 #include "output_handler.h"
 #include "sensor_controller.h"
+#include "Stepper.h"
 
-#include <Stepper.h>
+const int stepsPerRev = 32;
 
-const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
-// for your motor
+// IN1 - IN4 på pin 8 - 11
+Stepper myStepper(stepsPerRev, 8, 10, 9, 11);
 
-// initialize the stepper library on pins 8 through 11:
-Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);
+int steps;
+float factor = 3.25;
+
 uint8_t* serialBuffer;
 
 void setup() {
-	// set the speed at 60 rpm:
-	//myStepper.setSpeed(60);
 	// initialize the serial port:
 	Serial.begin(9600);
+	myStepper.setSpeed(700);
 }
 
 void loop() {
@@ -26,15 +27,12 @@ void loop() {
 	else {
 		Serial.println("No serial input received");
 	}
-
-
-	// step one revolution  in one direction:
-	//Serial.println("clockwise");
-	//myStepper.step(stepsPerRevolution);
-	//delay(500);
-
-	//// step one revolution in the other direction:
-	//Serial.println("counterclockwise");
-	//myStepper.step(-stepsPerRevolution);
-	//delay(500);
+	
+	steps = (int)(1024*factor);
+	myStepper.step(steps);
+	myStepper.step(-steps);
+	delay(500);
+	myStepper.step(-steps);
+	myStepper.step(steps);
+	delay(500);
 }
