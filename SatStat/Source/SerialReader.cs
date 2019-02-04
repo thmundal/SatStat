@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace SatStat
 {
-    class SerialReader
+    class SerialHandler
     {
         private SerialPort sp = new SerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
         private string input = "";
@@ -18,7 +18,7 @@ namespace SatStat
 
         private bool running;
 
-        public SerialReader()
+        public SerialHandler()
         {
             readThread = new Thread(Read);
         }
@@ -59,6 +59,11 @@ namespace SatStat
                 dataReceivedCallback.Invoke(input);
             }
 
+        }
+
+        public void Write(string data)
+        {
+            sp.WriteLine(data);
         }
 
         public void Stop()

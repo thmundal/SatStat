@@ -8,7 +8,7 @@ namespace SatStat
 {
     static class Program
     {
-        private static SerialReader sr;
+        private static SerialHandler sr;
         private static DataProvider<double[]> dataStream;
         public static AppSettings settings;
         /// <summary>
@@ -28,7 +28,7 @@ namespace SatStat
             dataStream = new DataProvider<double[]>(app);
             //SimulateDataStream();
 
-            sr = new SerialReader();
+            sr = new SerialHandler();
             double counter = 0;
             sr.OnDataReceived((string input) =>
             {
@@ -60,6 +60,11 @@ namespace SatStat
         public static void StartReader()
         {
             sr.Run();
+        }
+
+        public static void WriteSerialData(string data)
+        {
+            sr.Write(data);
         }
 
         [STAThread]

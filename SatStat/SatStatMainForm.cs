@@ -203,7 +203,7 @@ namespace SatStat
                 xMaxVal = payload[0] + 1;
             }
             lastVal = payload[1];
-            //Console.WriteLine("Received playload: " + payload[1]);
+            Console.WriteLine("Received playload: " + payload[1]);
         }
 
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -215,6 +215,11 @@ namespace SatStat
         {
             ComSettingsForm comSettings = new ComSettingsForm();
             comSettings.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.WriteSerialData("test data");
         }
     }
 }
