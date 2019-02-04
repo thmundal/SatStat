@@ -20,9 +20,9 @@ namespace SatStat
 
         public SerialReader()
         {
-             readThread = new Thread(Read);
+            readThread = new Thread(Read);
         }
-
+        
         public void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             input = sp.ReadLine();
@@ -30,16 +30,25 @@ namespace SatStat
         }
         public void Run()
         {
-            Console.WriteLine("Starting serial reader");
+            string port = Program.settings.selectedComPort;
+            if (port != null)
+            {
+                if(sp.PortName != port)
+                {
+                    sp.PortName = port;
+                }
 
-            //Set the datareceived event handler
-            //sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
-            //Open the serial port
-            sp.Open();
-            //Read from the console, to stop it from closing.
+                Console.WriteLine("Starting serial reader");
 
-            running = true;
-            readThread.Start();
+                //Set the datareceived event handler
+                //sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+                //Open the serial port
+            
+                sp.Open();
+
+                running = true;
+                readThread.Start();
+            }
         }
 
         public void Read()

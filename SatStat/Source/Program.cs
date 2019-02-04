@@ -10,12 +10,17 @@ namespace SatStat
     {
         private static SerialReader sr;
         private static DataProvider<double[]> dataStream;
+        public static AppSettings settings;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            settings = new AppSettings {
+                selectedComPort = null
+            };
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -25,7 +30,6 @@ namespace SatStat
 
             sr = new SerialReader();
             double counter = 0;
-            sr.Run();
             sr.OnDataReceived((string input) =>
             {
                 input = input.Replace(Environment.NewLine, "");
@@ -51,6 +55,11 @@ namespace SatStat
         public static void StopReader()
         {
             sr.Stop();
+        }
+
+        public static void StartReader()
+        {
+            sr.Run();
         }
 
         [STAThread]
