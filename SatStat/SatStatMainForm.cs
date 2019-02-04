@@ -219,7 +219,12 @@ namespace SatStat
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.WriteSerialData("test data");
+            Program.WriteSerialData("auto_start");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.WriteSerialData("auto_stop");
         }
     }
 }

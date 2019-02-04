@@ -24,44 +24,71 @@ int check;
 unsigned long start_time = millis();
 const int duration = 1000;
 
+bool auto_rotate = false;
+
 void setup() {
 	// initialize the serial port:
 	Serial.begin(115200);
 	myStepper.setSpeed(700);
 }
 
+void AutoRotatePanels() {
+	if (steps < step_limit)
+	{
+		steps++;
+	}
+	else
+	{
+		dir = !dir;
+		steps = 0;
+	}
+
+	if (!dir)
+	{
+		myStepper.step(1);
+	}
+	else
+	{
+		myStepper.step(-1);
+	}
+}
+
+void ReadSerialInput() {
+	if (Serial.available() > 0) {
+		String input = Serial.readStringUntil('\n');
+		if (input) {
+			//Serial.println(*serialBuffer);
+
+			if (input == "auto_start") {
+				auto_rotate = true;
+			}
+			else if (input == "auto_stop") {
+				auto_rotate = false;
+			}
+		}
+		else {
+			//Serial.println("No serial input received");
+		}
+	}
+}
+
+void CheckAndSendTemperature() {
+	check = DHT.read11(sensorPin);
+	Serial.println(DHT.temperature);
+}
+
 void loop() {
-  if (steps < step_limit)
-  {
-    steps++;
-  }
-  else
-  {
-    dir = !dir;
-    steps = 0;
-  }
+	if (auto_rotate) {
+		AutoRotatePanels();
+	}
   
-  if (!dir)
-  {
-    myStepper.step(1); 
-  }
-  else
-  {
-    myStepper.step(-1);
-  }
+	if (!(millis() - start_time < duration))
+	{    
+		CheckAndSendTemperature();
+		ReadSerialInput();
+
+		start_time = millis();
+	}  
   
-  if (!(millis() - start_time < duration))
-  {    
-    check = DHT.read11(sensorPin);
-    Serial.println(DHT.temperature);
-    start_time = millis();
-  }  
-  
-	//if (Serial.readBytesUntil('\n', serialBuffer, 8) > 0) {
-	//	Serial.println(*serialBuffer);
-	//}
-	//else {
-	//	Serial.println("No serial input received");
-	//}
   
 }

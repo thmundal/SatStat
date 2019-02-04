@@ -80,7 +80,7 @@
     <Compile Include="Source\DataReceiver.cs" />
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\SerialReader.cs" />
+    <Compile Include="Source\SerialHandler.cs" />
     <EmbeddedResource Include="ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
