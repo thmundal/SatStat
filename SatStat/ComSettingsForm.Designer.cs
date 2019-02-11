@@ -39,7 +39,7 @@
             this.comSourcesListUI.FormattingEnabled = true;
             this.comSourcesListUI.Location = new System.Drawing.Point(3, 3);
             this.comSourcesListUI.Name = "comSourcesListUI";
-            this.comSourcesListUI.Size = new System.Drawing.Size(123, 95);
+            this.comSourcesListUI.Size = new System.Drawing.Size(235, 95);
             this.comSourcesListUI.TabIndex = 0;
             // 
             // button1
@@ -58,7 +58,7 @@
             this.panel1.Controls.Add(this.comSourcesListUI);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(154, 137);
+            this.panel1.Size = new System.Drawing.Size(241, 137);
             this.panel1.TabIndex = 2;
             // 
             // ComSettingsForm

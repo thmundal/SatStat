@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace SatStat
 {
     static class Program
     {
-        private static SerialHandler sr;
-        private static DataProvider<double[]> dataStream;
+        public static SerialHandler serial;
+        private static DataStream dataStream;
         public static AppSettings settings;
         /// <summary>
         /// The main entry point for the application.
@@ -17,6 +18,10 @@ namespace SatStat
         [STAThread]
         static void Main()
         {
+            //string str = "{\"temperature\": 68.5601386560873}";
+            //Dictionary<string, string> test = JsonConvert.DeserializeObject<Dictionary<string, string>>(str);
+
+
             settings = new AppSettings {
                 selectedComPort = null
             };
@@ -25,53 +30,66 @@ namespace SatStat
             Application.SetCompatibleTextRenderingDefault(false);
 
             SatStatMainForm app = new SatStatMainForm();
-            dataStream = new DataProvider<double[]>(app);
-            //SimulateDataStream();
+            dataStream = new DataStream();
+            dataStream.AddSubscriber(new DataSubscription<double> (app, "temperature"));
+            SimulateDataStream();
 
-            sr = new SerialHandler();
-            double counter = 0;
-            sr.OnDataReceived((string input) =>
-            {
-                input = input.Replace(Environment.NewLine, "");
-                Console.WriteLine("temperature is " + input);
+            //serial = new SerialHandler();
+            //serial.AddSubscriber(new DataSubscription<double>(app, "temperature"));
 
-                double temp = 0;
-                try
-                {
-                    temp = double.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
-                } catch(Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                double[] payload = { counter++, temp};
-                
-                dataStream.SetPayload(payload);
-                dataStream.DeliverPayload();
-            });
+
+            //SerialHandler.GetPortListInformation();
+            //double counter = 0;
+            //serial.OnDataReceived((object data) =>
+            //{
+            //    string input = data.temp;
+            //    input = input.Replace(Environment.NewLine, "");
+            //    Console.WriteLine("temperature is " + input);
+
+            //    double temp = 0;
+            //    try
+            //    {
+            //        temp = double.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.WriteLine(e.Message);
+            //    }
+            //    double[] payload = { counter++, temp };
+
+            //    dataStream.SetPayload(payload);
+            //    dataStream.DeliverPayload();
+            //});
 
             Application.Run(app);
         }
 
         public static void StopReader()
         {
-            sr.Stop();
+            if(serial != null)
+            {
+                serial.Stop();
+            }
         }
 
         public static void StartReader()
         {
-            sr.Run();
+            if(serial != null)
+            {
+                serial.Connect();
+            }
         }
 
         public static void WriteSerialData(string data)
         {
-            sr.Write(data);
+            serial.WriteData(data);
         }
 
         [STAThread]
         static void SimulateDataStream()
         {
             Console.WriteLine("Starting datastream");
-            double[] payload = { 0, 0 };
+            string payload = "";
 
             Random rand = new Random();
             Task streamTask = Task.Run(async () =>
@@ -79,11 +97,14 @@ namespace SatStat
                 int i = 0;
                 while (i < 100)
                 {
-                    payload[0] = i;
-                    payload[1] = (rand.NextDouble() * 100);
-                    
-                    dataStream.SetPayload(payload);
-                    dataStream.DeliverPayload();
+                    double temp = (rand.NextDouble() * 100);
+
+                    payload = "{\"temperature\": \"" + temp + "\"}";
+
+                    dataStream.Parse(payload);
+                    dataStream.DeliverSubscriptions();
+                    //dataStream.SetPayload(payload);
+                    //dataStream.DeliverPayload();
 
                     await Task.Delay(500);
                     i++;

@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace SatStat
 {
-    public partial class SatStatMainForm : Form, DataReceiver<double[]>
+    public partial class SatStatMainForm : Form, DataReceiver<double>
     {
         private SeriesCollection seriesCollection1;
         private LineSeries lineSeries1;
@@ -193,17 +193,18 @@ namespace SatStat
             }
         }
 
-        public void ReceivePayload(double[] payload)
+        private int counter = 0;
+        public void ReceivePayload(double payload)
         {
-            AddDataPoint(payload[1]);
-
-            if (payload[0] >= maxTimeWindow)
+            AddDataPoint(payload);
+            if (counter >= maxTimeWindow)
             {
-                xMinVal = payload[0] - maxTimeWindow;
-                xMaxVal = payload[0] + 1;
+                xMinVal = counter - maxTimeWindow;
+                xMaxVal = counter + 1;
             }
-            lastVal = payload[1];
-            Console.WriteLine("Received playload: " + payload[1]);
+            lastVal = payload;
+            Console.WriteLine("Received playload: " + payload);
+            counter++;
         }
 
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
