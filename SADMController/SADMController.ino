@@ -28,7 +28,7 @@ bool auto_rotate = false;
 
 void setup() {
 	// initialize the serial port:
-	Serial.begin(115200);
+	Serial.begin(9600);
 	myStepper.setSpeed(700);
 }
 
@@ -74,7 +74,11 @@ void ReadSerialInput() {
 
 void CheckAndSendTemperature() {
 	check = DHT.read11(sensorPin);
-	Serial.println(DHT.temperature);
+	String out = (String) DHT.temperature;
+	out.replace(".", ",");
+	//Serial.println("This is a string bleh");
+	Serial.println("{\"temperature\":\"" + out + "\"}");
+	//Serial.println(DHT.temperature);
 }
 
 void loop() {
