@@ -2,7 +2,7 @@
 
 namespace SatStat
 {
-    class DataSubscription<T> :IDataSubscription
+    public class DataSubscription<T> :IDataSubscription
     {
         Type IDataSubscription.Type => typeof(T);
 
@@ -15,18 +15,30 @@ namespace SatStat
             subscriptionAttribute = attr;
         }
 
-        public void receive(object data)
-        {
-            T payload = (T)Convert.ChangeType(data, typeof(T));
-            receiver.ReceivePayload(payload);
+        public object receive(object data)
+        {   
+            try
+            {
+                T payload = (T)Convert.ChangeType(data, typeof(T));
+                receiver.ReceivePayload(payload);
+                return payload;
+            } catch(InvalidCastException)
+            {
+                Console.WriteLine("Cannot cast received data to type " + typeof(T));
+            } catch(InvalidOperationException)
+            {
+                Console.WriteLine("Error when receiving data");
+            }
+
+            return default(T);
         }
     }
 
-    interface IDataSubscription
+    public interface IDataSubscription
     {
         Type Type { get; }
         string subscriptionAttribute { get; set; }
 
-        void receive(object data);
+        object receive(object data);
     }
 }

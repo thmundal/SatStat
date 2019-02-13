@@ -18,10 +18,6 @@ namespace SatStat
         [STAThread]
         static void Main()
         {
-            //string str = "{\"temperature\": 68.5601386560873}";
-            //Dictionary<string, string> test = JsonConvert.DeserializeObject<Dictionary<string, string>>(str);
-
-
             settings = new AppSettings {
                 selectedComPort = null
             };

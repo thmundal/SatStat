@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    interface DataReceiver<T>
+    public interface DataReceiver<T>
     {
         void ReceivePayload(T payload);
     }
