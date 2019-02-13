@@ -6,11 +6,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace SatStat
 {
-    class DataStream
+    /// <summary>
+    /// A datastream that can be subscibed to trough a DataSubscription
+    /// </summary>
+    public class DataStream
     {
+        private List<Dictionary<string, object>> inputBuffer;
         private DataProvider<int> provider;
         private List<IDataSubscription> subscriptions;
-        private List<Dictionary<string, object>> inputBuffer;
 
         private JsonSerializerSettings json_settings;
         private List<string> json_errors = new List<string>();
@@ -31,6 +34,9 @@ namespace SatStat
             };
         }
 
+        /// <summary>
+        /// Deliver data requested to all subscribers
+        /// </summary>
         public void DeliverSubscriptions()
         {
             foreach(IDataSubscription subscriber in subscriptions)
@@ -55,24 +61,41 @@ namespace SatStat
             }
         }
 
+        /// <summary>
+        /// Return the latest error that has happened in relation to JSON parsing or serialization
+        /// </summary>
+        /// <returns></returns>
         private string GetLastJsonError()
         {
             return json_errors[json_errors.Count - 1];
         }
 
-        public virtual void Parse(string input)
+        /// <summary>
+        /// Parse input string as json key/value pairs and put the parsed data in the input buffer
+        /// </summary>
+        /// <param name="input"></param>
+        public void Parse(string input)
         {   
-            Console.WriteLine(input);
-            Dictionary<string, object> inputParsed = JsonConvert.DeserializeObject<Dictionary<string, object>>(input);
-            
-            if (json_error)
+            if(input.Length > 0)
             {
-                Console.WriteLine(GetLastJsonError());
+                Console.WriteLine("Parsing " + input);
+                Dictionary<string, object> inputParsed = JsonConvert.DeserializeObject<Dictionary<string, object>>(input);
+            
+                if (json_error)
+                {
+                    Console.WriteLine(GetLastJsonError());
+                }
+                inputBuffer.Add(inputParsed);
+            } else
+            {
+                Console.WriteLine("Input is empty, aborting parse");
             }
-            inputBuffer.Add(inputParsed);
-
         }
 
+        /// <summary>
+        /// Add a subscriber to this data stream
+        /// </summary>
+        /// <param name="subscription"></param>
         public void AddSubscriber(IDataSubscription subscription)
         {
             subscriptions.Add(subscription);

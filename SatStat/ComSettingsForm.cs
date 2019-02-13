@@ -35,10 +35,10 @@ namespace SatStat
                 string a = portNames[comSourcesListUI.SelectedIndex];
                 Program.settings.selectedComPort = a;
 
-                Program.serial.Stop();
+                Program.serial.Disconnect();
                 Program.serial.SetComPort(a);
 
-                Program.StartReader();
+                Program.serial.Connect();
                 Console.WriteLine(a);
             }
         }

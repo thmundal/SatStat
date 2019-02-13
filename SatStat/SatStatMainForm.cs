@@ -38,7 +38,6 @@ namespace SatStat
             lineSeries1.Fill = System.Windows.Media.Brushes.Transparent;
 
             seriesCollection1.Add(lineSeries1);
-            //SimulateDataStream();
             
             cartesianChart1.Series = seriesCollection1;
             cartesianChart1.ScrollMode = ScrollMode.X;
@@ -209,7 +208,7 @@ namespace SatStat
 
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.StopReader();
+            Program.serial.Disconnect();
         }
 
         private void cOMSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -220,12 +219,12 @@ namespace SatStat
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.WriteSerialData("auto_start");
+            Program.serial.WriteData("auto_start");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Program.WriteSerialData("auto_stop");
+            Program.serial.WriteData("auto_stop");
         }
     }
 }

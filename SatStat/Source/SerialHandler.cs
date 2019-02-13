@@ -10,33 +10,37 @@ using System.Management;
 
 namespace SatStat
 {
+    /// <summary>
+    /// A class that is responsible for communicating on a serial port connection, and at the same time act as a data stream object
+    /// </summary>
     class SerialHandler : DataStream
     {
-        private string input = "";
-
-        private Action<object> dataReceivedCallback;
-
-
-        private Thread readThread;
         private bool connected;
         private SerialPort connection;
-
         private static Hashtable availableCOMPorts;
 
+        /// <summary>
+        /// Set up serial port connection and configure default settings
+        /// </summary>
         public SerialHandler()
         {
             connection = new SerialPort();
             connected = false;
             //PortName = "";
-            connection.BaudRate = 1115200;
+            connection.BaudRate = 9600;
             connection.Parity = Parity.None;
             connection.DataBits = 8;
             connection.StopBits = StopBits.One;
+            connection.NewLine = "\r\n";
+            connection.DataReceived += new SerialDataReceivedEventHandler(OnDataReceived);
 
-            readThread = new Thread(ReadData);
             availableCOMPorts = new Hashtable();
         }
 
+        /// <summary>
+        /// Set the desired COM port for communication
+        /// </summary>
+        /// <param name="portName">A string that descibes a valid COM port</param>
         public void SetComPort(string portName)
         {
             if(portName != null && portName != "")
@@ -48,32 +52,55 @@ namespace SatStat
             }
         }
         
-        public void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        /// <summary>
+        /// The method to invoke when data is received on the serial port communication channel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            input = connection.ReadLine();
-            dataReceivedCallback.Invoke(input);
+            string input = "";
+            try
+            {
+                input = connection.ReadLine();
+
+                Parse(input);
+                DeliverSubscriptions();
+            }
+            catch (Newtonsoft.Json.JsonSerializationException)
+            {
+                Console.WriteLine("Invalid json received:" + input);
+            }
+            catch(Newtonsoft.Json.JsonReaderException)
+            {
+                Console.WriteLine("Invalid json received:" + input);
+            }
+            catch (System.IO.IOException)
+            {
+                Console.WriteLine("Read thread aborted");
+            }
         }
+
+        /// <summary>
+        /// Connect to the serial port channel if a valid port name is set
+        /// </summary>
+        /// <returns></returns>
         public bool Connect()
         {
-            //string port = Program.settings.selectedComPort;
             if (connection.PortName != "")
             {
-                Console.WriteLine("Starting SerialHandler read thread");
-
-                //Set the datareceived event handler
-                //sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
-                //Open the serial port
-            
-                connection.Open();
-
                 connected = true;
-                readThread.Start();
+                connection.Open();
                 return true;
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Get a list of available COM ports together with a description of what device is connected on these ports
+        /// </summary>
+        /// <returns></returns>
         public static Hashtable GetPortListInformation() {
             // https://stackoverflow.com/a/2876126
             var searcher = new ManagementObjectSearcher("SELECT * FROM WIN32_SerialPort");
@@ -92,27 +119,13 @@ namespace SatStat
                 }
             }
             
-            
             return availableCOMPorts;
         }
-        
 
-        public void ReadData()
-        {
-            while(connected && connection.IsOpen)
-            {
-                input = connection.ReadLine();
-
-                //object inputObject = JSON.parse<object>(input);
-
-                //dataReceivedCallback.Invoke(input);
-                Parse(input);
-                DeliverSubscriptions();
-            }
-
-            Console.WriteLine("SerialHandler read thread stopped");
-        }
-
+        /// <summary>
+        /// Write data to the serial port connection
+        /// </summary>
+        /// <param name="data"></param>
         public void WriteData(string data)
         {
             if(connection.PortName != "")
@@ -121,23 +134,17 @@ namespace SatStat
             }
         }
 
-        public void Stop()
+        /// <summary>
+        /// Disconnect the serial port
+        /// </summary>
+        public void Disconnect()
         {
             if(connected)
             {
+                Console.WriteLine("Stopping serial reader");
                 connected = false;
                 connection.Close();
             }
-        }
-
-        public string GetData()
-        {
-            return input;
-        }
-
-        public void OnDataReceived(Action<object> cb)
-        {
-            dataReceivedCallback = cb;
         }
     }
 }
