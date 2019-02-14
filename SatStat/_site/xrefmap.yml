@@ -51,67 +51,38 @@ references:
   isSpec: "True"
   fullName: SatStat.ComSettingsForm.Dispose
   nameWithType: ComSettingsForm.Dispose
-- uid: SatStat.DataProvider`1
-  name: DataProvider<T>
-  href: api/SatStat.DataProvider-1.html
-  commentId: T:SatStat.DataProvider`1
-  name.vb: DataProvider(Of T)
-  fullName: SatStat.DataProvider<T>
-  fullName.vb: SatStat.DataProvider(Of T)
-  nameWithType: DataProvider<T>
-  nameWithType.vb: DataProvider(Of T)
-- uid: SatStat.DataProvider`1.#ctor(SatStat.DataReceiver{`0})
-  name: DataProvider(DataReceiver<T>)
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1__ctor_SatStat_DataReceiver__0__
-  commentId: M:SatStat.DataProvider`1.#ctor(SatStat.DataReceiver{`0})
-  name.vb: DataProvider(DataReceiver(Of T))
-  fullName: SatStat.DataProvider<T>.DataProvider(SatStat.DataReceiver<T>)
-  fullName.vb: SatStat.DataProvider(Of T).DataProvider(SatStat.DataReceiver(Of T))
-  nameWithType: DataProvider<T>.DataProvider(DataReceiver<T>)
-  nameWithType.vb: DataProvider(Of T).DataProvider(DataReceiver(Of T))
-- uid: SatStat.DataProvider`1.#ctor*
+- uid: SatStat.DataProvider
   name: DataProvider
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1__ctor_
-  commentId: Overload:SatStat.DataProvider`1.#ctor
+  href: api/SatStat.DataProvider.html
+  commentId: T:SatStat.DataProvider
+  fullName: SatStat.DataProvider
+  nameWithType: DataProvider
+- uid: SatStat.DataProvider.#ctor(SatStat.DataStream)
+  name: DataProvider(DataStream)
+  href: api/SatStat.DataProvider.html#SatStat_DataProvider__ctor_SatStat_DataStream_
+  commentId: M:SatStat.DataProvider.#ctor(SatStat.DataStream)
+  fullName: SatStat.DataProvider.DataProvider(SatStat.DataStream)
+  nameWithType: DataProvider.DataProvider(DataStream)
+- uid: SatStat.DataProvider.#ctor*
+  name: DataProvider
+  href: api/SatStat.DataProvider.html#SatStat_DataProvider__ctor_
+  commentId: Overload:SatStat.DataProvider.#ctor
   isSpec: "True"
-  fullName: SatStat.DataProvider<T>.DataProvider
-  fullName.vb: SatStat.DataProvider(Of T).DataProvider
-  nameWithType: DataProvider<T>.DataProvider
-  nameWithType.vb: DataProvider(Of T).DataProvider
-- uid: SatStat.DataProvider`1.DeliverPayload
-  name: DeliverPayload()
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_DeliverPayload
-  commentId: M:SatStat.DataProvider`1.DeliverPayload
-  fullName: SatStat.DataProvider<T>.DeliverPayload()
-  fullName.vb: SatStat.DataProvider(Of T).DeliverPayload()
-  nameWithType: DataProvider<T>.DeliverPayload()
-  nameWithType.vb: DataProvider(Of T).DeliverPayload()
-- uid: SatStat.DataProvider`1.DeliverPayload*
-  name: DeliverPayload
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_DeliverPayload_
-  commentId: Overload:SatStat.DataProvider`1.DeliverPayload
+  fullName: SatStat.DataProvider.DataProvider
+  nameWithType: DataProvider.DataProvider
+- uid: SatStat.DataProvider.Deliver(System.Object)
+  name: Deliver(Object)
+  href: api/SatStat.DataProvider.html#SatStat_DataProvider_Deliver_System_Object_
+  commentId: M:SatStat.DataProvider.Deliver(System.Object)
+  fullName: SatStat.DataProvider.Deliver(System.Object)
+  nameWithType: DataProvider.Deliver(Object)
+- uid: SatStat.DataProvider.Deliver*
+  name: Deliver
+  href: api/SatStat.DataProvider.html#SatStat_DataProvider_Deliver_
+  commentId: Overload:SatStat.DataProvider.Deliver
   isSpec: "True"
-  fullName: SatStat.DataProvider<T>.DeliverPayload
-  fullName.vb: SatStat.DataProvider(Of T).DeliverPayload
-  nameWithType: DataProvider<T>.DeliverPayload
-  nameWithType.vb: DataProvider(Of T).DeliverPayload
-- uid: SatStat.DataProvider`1.SetPayload(`0)
-  name: SetPayload(T)
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_SetPayload__0_
-  commentId: M:SatStat.DataProvider`1.SetPayload(`0)
-  fullName: SatStat.DataProvider<T>.SetPayload(T)
-  fullName.vb: SatStat.DataProvider(Of T).SetPayload(T)
-  nameWithType: DataProvider<T>.SetPayload(T)
-  nameWithType.vb: DataProvider(Of T).SetPayload(T)
-- uid: SatStat.DataProvider`1.SetPayload*
-  name: SetPayload
-  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_SetPayload_
-  commentId: Overload:SatStat.DataProvider`1.SetPayload
-  isSpec: "True"
-  fullName: SatStat.DataProvider<T>.SetPayload
-  fullName.vb: SatStat.DataProvider(Of T).SetPayload
-  nameWithType: DataProvider<T>.SetPayload
-  nameWithType.vb: DataProvider(Of T).SetPayload
+  fullName: SatStat.DataProvider.Deliver
+  nameWithType: DataProvider.Deliver
 - uid: SatStat.DataReceiver`1
   name: DataReceiver<T>
   href: api/SatStat.DataReceiver-1.html
@@ -183,6 +154,35 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.DeliverSubscriptions
   nameWithType: DataStream.DeliverSubscriptions
+- uid: SatStat.DataStream.OnOutputReceived(System.Action{System.String})
+  name: OnOutputReceived(Action<String>)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnOutputReceived_System_Action_System_String__
+  commentId: M:SatStat.DataStream.OnOutputReceived(System.Action{System.String})
+  name.vb: OnOutputReceived(Action(Of String))
+  fullName: SatStat.DataStream.OnOutputReceived(System.Action<System.String>)
+  fullName.vb: SatStat.DataStream.OnOutputReceived(System.Action(Of System.String))
+  nameWithType: DataStream.OnOutputReceived(Action<String>)
+  nameWithType.vb: DataStream.OnOutputReceived(Action(Of String))
+- uid: SatStat.DataStream.OnOutputReceived*
+  name: OnOutputReceived
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnOutputReceived_
+  commentId: Overload:SatStat.DataStream.OnOutputReceived
+  isSpec: "True"
+  fullName: SatStat.DataStream.OnOutputReceived
+  nameWithType: DataStream.OnOutputReceived
+- uid: SatStat.DataStream.Output(System.Object)
+  name: Output(Object)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Output_System_Object_
+  commentId: M:SatStat.DataStream.Output(System.Object)
+  fullName: SatStat.DataStream.Output(System.Object)
+  nameWithType: DataStream.Output(Object)
+- uid: SatStat.DataStream.Output*
+  name: Output
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Output_
+  commentId: Overload:SatStat.DataStream.Output
+  isSpec: "True"
+  fullName: SatStat.DataStream.Output
+  nameWithType: DataStream.Output
 - uid: SatStat.DataStream.Parse(System.String)
   name: Parse(String)
   href: api/SatStat.DataStream.html#SatStat_DataStream_Parse_System_String_
@@ -327,12 +327,19 @@ references:
   commentId: T:SatStat.JSON
   fullName: SatStat.JSON
   nameWithType: JSON
-- uid: SatStat.JSON.parse(System.String)
-  name: parse(String)
-  href: api/SatStat.JSON.html#SatStat_JSON_parse_System_String_
-  commentId: M:SatStat.JSON.parse(System.String)
-  fullName: SatStat.JSON.parse(System.String)
-  nameWithType: JSON.parse(String)
+- uid: SatStat.JSON.GetLastJsonError
+  name: GetLastJsonError()
+  href: api/SatStat.JSON.html#SatStat_JSON_GetLastJsonError
+  commentId: M:SatStat.JSON.GetLastJsonError
+  fullName: SatStat.JSON.GetLastJsonError()
+  nameWithType: JSON.GetLastJsonError()
+- uid: SatStat.JSON.GetLastJsonError*
+  name: GetLastJsonError
+  href: api/SatStat.JSON.html#SatStat_JSON_GetLastJsonError_
+  commentId: Overload:SatStat.JSON.GetLastJsonError
+  isSpec: "True"
+  fullName: SatStat.JSON.GetLastJsonError
+  nameWithType: JSON.GetLastJsonError
 - uid: SatStat.JSON.parse*
   name: parse
   href: api/SatStat.JSON.html#SatStat_JSON_parse_
@@ -340,6 +347,15 @@ references:
   isSpec: "True"
   fullName: SatStat.JSON.parse
   nameWithType: JSON.parse
+- uid: SatStat.JSON.parse``1(System.String)
+  name: parse<T>(String)
+  href: api/SatStat.JSON.html#SatStat_JSON_parse__1_System_String_
+  commentId: M:SatStat.JSON.parse``1(System.String)
+  name.vb: parse(Of T)(String)
+  fullName: SatStat.JSON.parse<T>(System.String)
+  fullName.vb: SatStat.JSON.parse(Of T)(System.String)
+  nameWithType: JSON.parse<T>(String)
+  nameWithType.vb: JSON.parse(Of T)(String)
 - uid: SatStat.JSON.serialize(System.Object)
   name: serialize(Object)
   href: api/SatStat.JSON.html#SatStat_JSON_serialize_System_Object_
