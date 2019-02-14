@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "E:/Programming/Bachelor/SatStat/SatStat",
+  "source_base_path": "C:/Programming/Bachelor/SatStat/SatStat",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -53,11 +53,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.AppSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.AppSettings.html",
+          "hash": "DidDZyQMGvs8ikZIOmkSHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/SatStat.ComSettingsForm.yml",
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ComSettingsForm.html",
           "hash": "P1IC3iSzWRkTzOQdk3AMyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.DataProvider-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.DataProvider-1.html",
+          "hash": "iENTx9td3os1OacH1QE5Xg=="
         }
       },
       "is_incremental": true,
@@ -81,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataStream.html",
-          "hash": "OHayJ1vrwGmHgeqLUREbWw=="
+          "hash": "ykhyOB+wZaN6kt+uAkptGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -113,14 +137,26 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/SatStat.SatStatMainForm.yml",
+      "source_relative_path": "obj/api/SatStat.JSON.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SatStat.SatStatMainForm.html",
-          "hash": "ZpjcdegS9+VZ3qO/YbxdMg=="
+          "relative_path": "api/SatStat.JSON.html",
+          "hash": "cW4Wk/d1Uc1gCrOA1cq3IA=="
         }
       },
       "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.SerialHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.SerialHandler.html",
+          "hash": "My27XnnhgChdc1K4V4fInQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "a6Xeh2gZpgVpwl1Qnkfcdw=="
+          "hash": "ClgiipvPFkIGx3j5oAjjtg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "edeY5DYouS+gsC4myLaLgA=="
+          "hash": "ITKs80TLK6FBRbUcBkzk6g=="
         }
       },
       "is_incremental": false,
@@ -176,17 +212,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 7,
-          "skipped_file_count": 7
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 10,
+          "skipped_file_count": 9
         }
       }
     },

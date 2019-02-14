@@ -7,6 +7,18 @@ references:
   commentId: N:SatStat
   fullName: SatStat
   nameWithType: SatStat
+- uid: SatStat.AppSettings
+  name: AppSettings
+  href: api/SatStat.AppSettings.html
+  commentId: T:SatStat.AppSettings
+  fullName: SatStat.AppSettings
+  nameWithType: AppSettings
+- uid: SatStat.AppSettings.selectedComPort
+  name: selectedComPort
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_selectedComPort
+  commentId: F:SatStat.AppSettings.selectedComPort
+  fullName: SatStat.AppSettings.selectedComPort
+  nameWithType: AppSettings.selectedComPort
 - uid: SatStat.ComSettingsForm
   name: ComSettingsForm
   href: api/SatStat.ComSettingsForm.html
@@ -39,6 +51,67 @@ references:
   isSpec: "True"
   fullName: SatStat.ComSettingsForm.Dispose
   nameWithType: ComSettingsForm.Dispose
+- uid: SatStat.DataProvider`1
+  name: DataProvider<T>
+  href: api/SatStat.DataProvider-1.html
+  commentId: T:SatStat.DataProvider`1
+  name.vb: DataProvider(Of T)
+  fullName: SatStat.DataProvider<T>
+  fullName.vb: SatStat.DataProvider(Of T)
+  nameWithType: DataProvider<T>
+  nameWithType.vb: DataProvider(Of T)
+- uid: SatStat.DataProvider`1.#ctor(SatStat.DataReceiver{`0})
+  name: DataProvider(DataReceiver<T>)
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1__ctor_SatStat_DataReceiver__0__
+  commentId: M:SatStat.DataProvider`1.#ctor(SatStat.DataReceiver{`0})
+  name.vb: DataProvider(DataReceiver(Of T))
+  fullName: SatStat.DataProvider<T>.DataProvider(SatStat.DataReceiver<T>)
+  fullName.vb: SatStat.DataProvider(Of T).DataProvider(SatStat.DataReceiver(Of T))
+  nameWithType: DataProvider<T>.DataProvider(DataReceiver<T>)
+  nameWithType.vb: DataProvider(Of T).DataProvider(DataReceiver(Of T))
+- uid: SatStat.DataProvider`1.#ctor*
+  name: DataProvider
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1__ctor_
+  commentId: Overload:SatStat.DataProvider`1.#ctor
+  isSpec: "True"
+  fullName: SatStat.DataProvider<T>.DataProvider
+  fullName.vb: SatStat.DataProvider(Of T).DataProvider
+  nameWithType: DataProvider<T>.DataProvider
+  nameWithType.vb: DataProvider(Of T).DataProvider
+- uid: SatStat.DataProvider`1.DeliverPayload
+  name: DeliverPayload()
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_DeliverPayload
+  commentId: M:SatStat.DataProvider`1.DeliverPayload
+  fullName: SatStat.DataProvider<T>.DeliverPayload()
+  fullName.vb: SatStat.DataProvider(Of T).DeliverPayload()
+  nameWithType: DataProvider<T>.DeliverPayload()
+  nameWithType.vb: DataProvider(Of T).DeliverPayload()
+- uid: SatStat.DataProvider`1.DeliverPayload*
+  name: DeliverPayload
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_DeliverPayload_
+  commentId: Overload:SatStat.DataProvider`1.DeliverPayload
+  isSpec: "True"
+  fullName: SatStat.DataProvider<T>.DeliverPayload
+  fullName.vb: SatStat.DataProvider(Of T).DeliverPayload
+  nameWithType: DataProvider<T>.DeliverPayload
+  nameWithType.vb: DataProvider(Of T).DeliverPayload
+- uid: SatStat.DataProvider`1.SetPayload(`0)
+  name: SetPayload(T)
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_SetPayload__0_
+  commentId: M:SatStat.DataProvider`1.SetPayload(`0)
+  fullName: SatStat.DataProvider<T>.SetPayload(T)
+  fullName.vb: SatStat.DataProvider(Of T).SetPayload(T)
+  nameWithType: DataProvider<T>.SetPayload(T)
+  nameWithType.vb: DataProvider(Of T).SetPayload(T)
+- uid: SatStat.DataProvider`1.SetPayload*
+  name: SetPayload
+  href: api/SatStat.DataProvider-1.html#SatStat_DataProvider_1_SetPayload_
+  commentId: Overload:SatStat.DataProvider`1.SetPayload
+  isSpec: "True"
+  fullName: SatStat.DataProvider<T>.SetPayload
+  fullName.vb: SatStat.DataProvider(Of T).SetPayload
+  nameWithType: DataProvider<T>.SetPayload
+  nameWithType.vb: DataProvider(Of T).SetPayload
 - uid: SatStat.DataReceiver`1
   name: DataReceiver<T>
   href: api/SatStat.DataReceiver-1.html
@@ -248,48 +321,119 @@ references:
   isSpec: "True"
   fullName: SatStat.IDataSubscription.Type
   nameWithType: IDataSubscription.Type
-- uid: SatStat.SatStatMainForm
-  name: SatStatMainForm
-  href: api/SatStat.SatStatMainForm.html
-  commentId: T:SatStat.SatStatMainForm
-  fullName: SatStat.SatStatMainForm
-  nameWithType: SatStatMainForm
-- uid: SatStat.SatStatMainForm.#ctor
-  name: SatStatMainForm()
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm__ctor
-  commentId: M:SatStat.SatStatMainForm.#ctor
-  fullName: SatStat.SatStatMainForm.SatStatMainForm()
-  nameWithType: SatStatMainForm.SatStatMainForm()
-- uid: SatStat.SatStatMainForm.#ctor*
-  name: SatStatMainForm
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm__ctor_
-  commentId: Overload:SatStat.SatStatMainForm.#ctor
+- uid: SatStat.JSON
+  name: JSON
+  href: api/SatStat.JSON.html
+  commentId: T:SatStat.JSON
+  fullName: SatStat.JSON
+  nameWithType: JSON
+- uid: SatStat.JSON.parse(System.String)
+  name: parse(String)
+  href: api/SatStat.JSON.html#SatStat_JSON_parse_System_String_
+  commentId: M:SatStat.JSON.parse(System.String)
+  fullName: SatStat.JSON.parse(System.String)
+  nameWithType: JSON.parse(String)
+- uid: SatStat.JSON.parse*
+  name: parse
+  href: api/SatStat.JSON.html#SatStat_JSON_parse_
+  commentId: Overload:SatStat.JSON.parse
   isSpec: "True"
-  fullName: SatStat.SatStatMainForm.SatStatMainForm
-  nameWithType: SatStatMainForm.SatStatMainForm
-- uid: SatStat.SatStatMainForm.Dispose(System.Boolean)
-  name: Dispose(Boolean)
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm_Dispose_System_Boolean_
-  commentId: M:SatStat.SatStatMainForm.Dispose(System.Boolean)
-  fullName: SatStat.SatStatMainForm.Dispose(System.Boolean)
-  nameWithType: SatStatMainForm.Dispose(Boolean)
-- uid: SatStat.SatStatMainForm.Dispose*
-  name: Dispose
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm_Dispose_
-  commentId: Overload:SatStat.SatStatMainForm.Dispose
+  fullName: SatStat.JSON.parse
+  nameWithType: JSON.parse
+- uid: SatStat.JSON.serialize(System.Object)
+  name: serialize(Object)
+  href: api/SatStat.JSON.html#SatStat_JSON_serialize_System_Object_
+  commentId: M:SatStat.JSON.serialize(System.Object)
+  fullName: SatStat.JSON.serialize(System.Object)
+  nameWithType: JSON.serialize(Object)
+- uid: SatStat.JSON.serialize*
+  name: serialize
+  href: api/SatStat.JSON.html#SatStat_JSON_serialize_
+  commentId: Overload:SatStat.JSON.serialize
   isSpec: "True"
-  fullName: SatStat.SatStatMainForm.Dispose
-  nameWithType: SatStatMainForm.Dispose
-- uid: SatStat.SatStatMainForm.ReceivePayload(System.Double)
-  name: ReceivePayload(Double)
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm_ReceivePayload_System_Double_
-  commentId: M:SatStat.SatStatMainForm.ReceivePayload(System.Double)
-  fullName: SatStat.SatStatMainForm.ReceivePayload(System.Double)
-  nameWithType: SatStatMainForm.ReceivePayload(Double)
-- uid: SatStat.SatStatMainForm.ReceivePayload*
-  name: ReceivePayload
-  href: api/SatStat.SatStatMainForm.html#SatStat_SatStatMainForm_ReceivePayload_
-  commentId: Overload:SatStat.SatStatMainForm.ReceivePayload
+  fullName: SatStat.JSON.serialize
+  nameWithType: JSON.serialize
+- uid: SatStat.SerialHandler
+  name: SerialHandler
+  href: api/SatStat.SerialHandler.html
+  commentId: T:SatStat.SerialHandler
+  fullName: SatStat.SerialHandler
+  nameWithType: SerialHandler
+- uid: SatStat.SerialHandler.#ctor
+  name: SerialHandler()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler__ctor
+  commentId: M:SatStat.SerialHandler.#ctor
+  fullName: SatStat.SerialHandler.SerialHandler()
+  nameWithType: SerialHandler.SerialHandler()
+- uid: SatStat.SerialHandler.#ctor*
+  name: SerialHandler
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler__ctor_
+  commentId: Overload:SatStat.SerialHandler.#ctor
   isSpec: "True"
-  fullName: SatStat.SatStatMainForm.ReceivePayload
-  nameWithType: SatStatMainForm.ReceivePayload
+  fullName: SatStat.SerialHandler.SerialHandler
+  nameWithType: SerialHandler.SerialHandler
+- uid: SatStat.SerialHandler.Connect
+  name: Connect()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Connect
+  commentId: M:SatStat.SerialHandler.Connect
+  fullName: SatStat.SerialHandler.Connect()
+  nameWithType: SerialHandler.Connect()
+- uid: SatStat.SerialHandler.Connect*
+  name: Connect
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Connect_
+  commentId: Overload:SatStat.SerialHandler.Connect
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.Connect
+  nameWithType: SerialHandler.Connect
+- uid: SatStat.SerialHandler.Disconnect
+  name: Disconnect()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Disconnect
+  commentId: M:SatStat.SerialHandler.Disconnect
+  fullName: SatStat.SerialHandler.Disconnect()
+  nameWithType: SerialHandler.Disconnect()
+- uid: SatStat.SerialHandler.Disconnect*
+  name: Disconnect
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Disconnect_
+  commentId: Overload:SatStat.SerialHandler.Disconnect
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.Disconnect
+  nameWithType: SerialHandler.Disconnect
+- uid: SatStat.SerialHandler.GetPortListInformation
+  name: GetPortListInformation()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_GetPortListInformation
+  commentId: M:SatStat.SerialHandler.GetPortListInformation
+  fullName: SatStat.SerialHandler.GetPortListInformation()
+  nameWithType: SerialHandler.GetPortListInformation()
+- uid: SatStat.SerialHandler.GetPortListInformation*
+  name: GetPortListInformation
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_GetPortListInformation_
+  commentId: Overload:SatStat.SerialHandler.GetPortListInformation
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.GetPortListInformation
+  nameWithType: SerialHandler.GetPortListInformation
+- uid: SatStat.SerialHandler.SetComPort(System.String)
+  name: SetComPort(String)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_SetComPort_System_String_
+  commentId: M:SatStat.SerialHandler.SetComPort(System.String)
+  fullName: SatStat.SerialHandler.SetComPort(System.String)
+  nameWithType: SerialHandler.SetComPort(String)
+- uid: SatStat.SerialHandler.SetComPort*
+  name: SetComPort
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_SetComPort_
+  commentId: Overload:SatStat.SerialHandler.SetComPort
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.SetComPort
+  nameWithType: SerialHandler.SetComPort
+- uid: SatStat.SerialHandler.WriteData(System.String)
+  name: WriteData(String)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_WriteData_System_String_
+  commentId: M:SatStat.SerialHandler.WriteData(System.String)
+  fullName: SatStat.SerialHandler.WriteData(System.String)
+  nameWithType: SerialHandler.WriteData(String)
+- uid: SatStat.SerialHandler.WriteData*
+  name: WriteData
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_WriteData_
+  commentId: Overload:SatStat.SerialHandler.WriteData
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.WriteData
+  nameWithType: SerialHandler.WriteData

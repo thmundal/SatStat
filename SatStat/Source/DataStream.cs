@@ -18,6 +18,7 @@ namespace SatStat
         private List<string> json_errors = new List<string>();
         private bool json_error = false;
 
+
         public DataStream()
         {
             subscriptions = new List<IDataSubscription>();
