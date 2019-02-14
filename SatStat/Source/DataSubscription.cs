@@ -24,7 +24,7 @@ namespace SatStat
                 return payload;
             } catch(InvalidCastException)
             {
-                Console.WriteLine("Cannot cast received data to type " + typeof(T));
+                Console.WriteLine("Cannot cast received "+ data.GetType() +" to type " + typeof(T));
             } catch(InvalidOperationException)
             {
                 Console.WriteLine("Error when receiving data");

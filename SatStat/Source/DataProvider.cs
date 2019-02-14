@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    public class DataProvider<T>
+    public class DataProvider
     {
-        private T payload;
-        private DataReceiver<T> receiver;
+        private DataStream stream;
 
-        public DataProvider(DataReceiver<T> res)
+        public DataProvider(DataStream target)
         {
-            receiver = res;
+            stream = target;
         }
 
-        public void DeliverPayload()
+        public void Deliver(object data)
         {
-            receiver.ReceivePayload(payload);
-        }
-
-        public void SetPayload(T pl)
-        {
-            payload = pl;
+            stream.Output(data);
         }
     }
 }

@@ -11,27 +11,17 @@ namespace SatStat
     public class DataStream
     {
         private List<Dictionary<string, object>> inputBuffer;
-        private DataProvider<int> provider;
+
         private List<IDataSubscription> subscriptions;
 
-        private JsonSerializerSettings json_settings;
-        private List<string> json_errors = new List<string>();
-        private bool json_error = false;
 
+        private Action<string> OutputReceivedCallback;
 
         public DataStream()
         {
             subscriptions = new List<IDataSubscription>();
             inputBuffer = new List<Dictionary<string, object>>();
 
-            json_settings = new JsonSerializerSettings
-            {
-                Error = (object sender, ErrorEventArgs args) =>
-                {
-                    json_errors.Add(args.ErrorContext.Error.Message);
-                    args.ErrorContext.Handled = true;
-                }
-            };
         }
 
         /// <summary>
@@ -39,35 +29,31 @@ namespace SatStat
         /// </summary>
         public void DeliverSubscriptions()
         {
-            foreach(IDataSubscription subscriber in subscriptions)
+            for(int i=0; i<inputBuffer.Count; i++)
             {
-                string attribute = subscriber.subscriptionAttribute;
+                var input = inputBuffer[i];
 
-                Type type = subscriber.Type;
-                
-                //foreach(var input in inputBuffer)
-                for(int i=0; i<inputBuffer.Count; i++)
+                foreach(KeyValuePair<string, object> item in input)
                 {
-                    var input = inputBuffer[i];
-                    if(input.TryGetValue(attribute, out var value))
+                    string key = item.Key;
+                    object value = item.Value;
+
+                    foreach (IDataSubscription subscriber in subscriptions)
                     {
-                        Console.Write("Delivering to subscribers: ");
-                        Console.WriteLine(value);
-                        subscriber.receive(value);
-                        inputBuffer.RemoveAt(i);
+                        string attribute = subscriber.subscriptionAttribute;
+                        if (key == attribute)
+                        {
+                            Console.Write("Delivering to subscribers: ");
+                            Console.WriteLine(value);
+                            subscriber.receive(value);
+                        }
                     }
                 }
+
+                inputBuffer.RemoveAt(i);
             }
         }
 
-        /// <summary>
-        /// Return the latest error that has happened in relation to JSON parsing or serialization
-        /// </summary>
-        /// <returns></returns>
-        private string GetLastJsonError()
-        {
-            return json_errors[json_errors.Count - 1];
-        }
 
         /// <summary>
         /// Parse input string as json key/value pairs and put the parsed data in the input buffer
@@ -78,12 +64,9 @@ namespace SatStat
             if(input.Length > 0)
             {
                 Console.WriteLine("Parsing " + input);
-                Dictionary<string, object> inputParsed = JsonConvert.DeserializeObject<Dictionary<string, object>>(input);
-            
-                if (json_error)
-                {
-                    Console.WriteLine(GetLastJsonError());
-                }
+
+                Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
+
                 inputBuffer.Add(inputParsed);
             } else
             {
@@ -98,6 +81,30 @@ namespace SatStat
         public void AddSubscriber(IDataSubscription subscription)
         {
             subscriptions.Add(subscription);
+        }
+
+        /// <summary>
+        /// Send data trough the output channel of this data stream as a JSON serialized string
+        /// </summary>
+        /// <param name="data">Data object to serialize and send as JSON</param>
+        public void Output(object data)
+        {
+            string json_serialized = JSON.serialize(data);
+            //outputBuffer.Add(json_serialized);
+
+            if(OutputReceivedCallback != null)
+            {
+                OutputReceivedCallback.Invoke(json_serialized);
+            }
+        }
+
+        /// <summary>
+        /// Register a callback function to invoke whenever this stream receives data for output
+        /// </summary>
+        /// <param name="cb">Data serialized to JSON string</param>
+        public void OnOutputReceived(Action<string> cb)
+        {
+            OutputReceivedCallback = cb;
         }
     }
 }
