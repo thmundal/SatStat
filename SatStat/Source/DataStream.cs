@@ -51,7 +51,6 @@ namespace SatStat
                     var input = inputBuffer[i];
                     if(input.TryGetValue(attribute, out var value))
                     {
-                        // Convert data type to subscriber.subscriptionDataType ?????
                         Console.Write("Delivering to subscribers: ");
                         Console.WriteLine(value);
                         subscriber.receive(value);

@@ -116,30 +116,7 @@ namespace SatStat
                 lineSeries1.Values.RemoveAt(0);
             });
         }
-
-        [STAThread]
-        private void SimulateDataStream()
-        {
-            Random rand = new Random();
-            Task dataStream = Task.Run(async () =>
-            {
-                int limit = 10;
-                int i = 0;
-                while(i < 100)
-                {
-                    AddDataPoint(rand.NextDouble() * 100);
-                    
-                    if(i >= limit)
-                    {
-                        xMinVal = i - limit;
-                        xMaxVal = i - 1;
-                    }
-
-                    await Task.Delay(500);
-                    i++;
-                }
-            });
-        }
+        
 
         private void inputDataSource1_TextChanged(object sender, EventArgs e)
         {
