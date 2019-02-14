@@ -5,6 +5,8 @@
 #include "Stepper.h"
 #include "dht.h"
 
+input_handler test;
+
 const int stepsPerRev = 32;
 
 // IN1 - IN4 på pin 8 - 11
@@ -30,6 +32,9 @@ void setup() {
 	// initialize the serial port:
 	Serial.begin(9600);
 	myStepper.setSpeed(700);
+
+	// Jon testing stuff	
+	test.listener();
 }
 
 void AutoRotatePanels() {
@@ -82,17 +87,22 @@ void CheckAndSendTemperature() {
 }
 
 void loop() {
-	if (auto_rotate) {
-		AutoRotatePanels();
-	}
-  
-	if (!(millis() - start_time < duration))
-	{    
-		CheckAndSendTemperature();
-		ReadSerialInput();
+	//if (auto_rotate) {
+	//	AutoRotatePanels();
+	//}
+ // 
+	//if (!(millis() - start_time < duration))
+	//{    
+	//	CheckAndSendTemperature();
+	//	ReadSerialInput();
 
+	//	start_time = millis();
+	//}
+
+	if (!(millis() - start_time < duration))
+	{    		
+		test.
 		start_time = millis();
-	}  
-  
+	}
   
 }
