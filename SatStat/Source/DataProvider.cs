@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    class DataProvider<T>
+    public class DataProvider<T>
     {
         private T payload;
         private DataReceiver<T> receiver;

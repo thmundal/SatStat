@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace SatStat
 {
-    public partial class SatStatMainForm : Form, DataReceiver<double>
+    partial class SatStatMainForm : Form, DataReceiver<double>
     {
         private SeriesCollection seriesCollection1;
         private LineSeries lineSeries1;

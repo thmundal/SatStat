@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    struct AppSettings
+    public struct AppSettings
     {
         public string selectedComPort;
     }

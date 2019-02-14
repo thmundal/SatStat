@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace SatStat
 {
-    class JSON
+    public class JSON
     {
         public static object parse(string input)
         {

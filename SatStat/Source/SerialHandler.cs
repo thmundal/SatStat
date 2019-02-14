@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO.Ports;
-using System.Threading;
-using System.Collections.Generic;
 using System.Management;
 
 namespace SatStat
@@ -13,7 +9,7 @@ namespace SatStat
     /// <summary>
     /// A class that is responsible for communicating on a serial port connection, and at the same time act as a data stream object
     /// </summary>
-    class SerialHandler : DataStream
+    public class SerialHandler : DataStream
     {
         private bool connected;
         private SerialPort connection;
