@@ -124,7 +124,7 @@ namespace SatStat
         /// <param name="data"></param>
         public void WriteData(string data)
         {
-            if(connection.PortName != "")
+            if(connected)
             {
                 connection.WriteLine(data);
             }

@@ -59,10 +59,6 @@ namespace SatStat
                 MaxValue = yMaxVal
             };
 
-            solidGauge1.From = 0;
-            solidGauge1.To = 100;
-            solidGauge1.Value = 0;
-
             cartesianChart1.AxisX.Add(timeAxis);
             cartesianChart1.AxisY.Add(valueAxis);
         }
@@ -78,8 +74,6 @@ namespace SatStat
             valueAxis.MaxValue = yMaxVal;
             timeAxis.MaxValue = xMaxVal;
             timeAxis.MinValue = xMinVal;
-
-            solidGauge1.Value = (int) lastVal;
         }
 
         [STAThread]
@@ -115,50 +109,6 @@ namespace SatStat
             {
                 lineSeries1.Values.RemoveAt(0);
             });
-        }
-        
-
-        private void inputDataSource1_TextChanged(object sender, EventArgs e)
-        {
-            string input = inputDataSource1.Text;
-            char[] c_inputArr = input.ToCharArray();
-            string output = "";
-
-            foreach(char c in c_inputArr) {
-                int intval = (int)c;
-                
-                if((c >= 48 && c <= 57) || (c == 45 || c == 46))
-                {
-                    output += c;
-                } else
-                {
-                    Console.WriteLine(((int)c).ToString() + ":" + c + " is not a digit");
-                }
-            }
-            
-            inputDataSource1.Text = output;
-            inputDataSource1.SelectionStart = output.Length;
-            inputDataSource1.SelectionLength = 0;
-            
-        }
-
-        private void inputDataBtn1_Click(object sender, EventArgs e)
-        {
-            string input = inputDataSource1.Text;
-
-            if(double.TryParse(input, out double n))
-            {
-                AddDataPoint(n);
-                inputDataSource1.Text = "";
-            }
-        }
-        
-        private void inputDataSource1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(e.KeyChar == (char)Keys.Return)
-            {
-                inputDataBtn1_Click(sender, e);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
