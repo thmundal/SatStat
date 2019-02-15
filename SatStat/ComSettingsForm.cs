@@ -28,7 +28,7 @@ namespace SatStat
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ComSettingsSaveBtn(object sender, EventArgs e)
         {
             if(comSourcesListUI.SelectedIndex >= 0)
             {

@@ -191,7 +191,7 @@ namespace SatStat
         private void cOMSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ComSettingsForm comSettings = new ComSettingsForm();
-            comSettings.Show();
+            comSettings.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
