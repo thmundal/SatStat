@@ -114,20 +114,20 @@
   <ItemGroup>
     <ClInclude Include="input_handler.h" />
     <ClInclude Include="output_handler.h" />
-    <ClInclude Include="sensor_controller.h" />
+    <ClInclude Include="Sensor.h" />
     <ClInclude Include="__vm\.SADMController.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="input_handler.cpp" />
     <ClCompile Include="output_handler.cpp" />
-    <ClCompile Include="sensor_controller.cpp" />
+    <ClCompile Include="Sensor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM4" />
+      <UserProperties arduino.upload.port="COM9" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

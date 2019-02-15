@@ -5,16 +5,29 @@
 input_handler::input_handler()
 {
 	// Instantiate JsonObject
-	jsonBuffer = new StaticJsonBuffer<200>();
-	root = &jsonBuffer->createObject();
+	jsonBuffer = new DynamicJsonBuffer();
+	root = &jsonBuffer->createObject();		
+
+	// Insert sensors
+	sensor_collection[0] = new Sensor("temp", 7);
 }
 
 // Listens on inputs from software layer
 void input_handler::listener()
-{	
+{
 	// Testing insertion into the input queue
-	json = "{\"sensor\":\"gps\",\"time\":1351824120,\"data\":[48.756080,2.302038]}";
-	insert_json(json);
+	for (int i = 0; i < 10; i++)
+	{
+		json = "{\"sensor\":\"gps" + String(i) + "\",\"time\":12345,\"data\":[48.756080,2.302038]}";
+		insert_json(json);
+	}
+
+	Serial.println("Number of elements in queue: " + String(instruction_queue.count()));
+}
+
+int input_handler::instruction_count()
+{
+	return instruction_queue.count();
 }
 
 void input_handler::insert_json(String input_data)

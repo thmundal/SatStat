@@ -6,6 +6,8 @@
 #include "dht.h"
 
 input_handler test;
+StaticJsonBuffer<200>* jsonBuffer = new StaticJsonBuffer<200>;
+JsonObject* root = &jsonBuffer->createObject();
 
 const int stepsPerRev = 32;
 
@@ -99,10 +101,18 @@ void loop() {
 	//	start_time = millis();
 	//}
 
-	if (!(millis() - start_time < duration))
-	{    		
-		test.
-		start_time = millis();
+	if (test.instruction_count() > 0)
+	{	
+		root = test.fetch_instruction();
+		const char* sensor = (*root)["sensor"];
+		long time = (*root)["time"];
+		double latitude = (*root)["data"][0];
+		double longitude = (*root)["data"][1];
+		Serial.println(sensor);
+		Serial.println(time);
+		Serial.println(latitude);
+		Serial.println(longitude);
+
 	}
   
 }
