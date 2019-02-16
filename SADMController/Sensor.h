@@ -1,14 +1,14 @@
 #pragma once
 #include "Arduino.h"
-#include "DS1302.h"
 
 class Sensor
 {
 public:
 	Sensor(String name, int pin);
-	String read_sensor();
-private:
+	virtual int read_sensor() = 0;
+	String get_name();
+
+protected:
 	String name;
 	int pin;
-	DS1302* clock;
 };

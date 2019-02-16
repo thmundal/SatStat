@@ -1,13 +1,19 @@
 #pragma once
 #include "output_handler.h"
 
-void output_handler::to_sadm(short &deg)
+void output_handler::print_to_serial(JsonObject *json)
 {
-  
+	json->printTo(Serial);
 }
 
-void output_handler::to_test_unit(byte &controller_id, int &data)
+void output_handler::auto_rotate(bool state)
 {
-  
 }
 
+void output_handler::rotate_sadm(int steps)
+{
+}
+
+void output_handler::rotate_sadm(float degrees)
+{
+}

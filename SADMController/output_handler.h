@@ -1,12 +1,17 @@
 #pragma once
 #include "Arduino.h"
+#include "Json_handler.h"
+#include "Stepper.h"
+#include "DS1302.h"
 
 class output_handler
 {
 public:
-  void to_sadm(short &deg);
-  void to_test_unit(byte &controller_id, int &data);
+	void print_to_serial(JsonObject *json);
+	void auto_rotate(bool state);
+	void rotate_sadm(int steps);
+	void rotate_sadm(float degrees);
 private:
-  
+	Json_handler json_handler;
 };
 
