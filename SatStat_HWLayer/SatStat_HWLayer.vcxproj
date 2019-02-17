@@ -196,26 +196,24 @@
     <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveConst.hpp" />
     <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveReference.hpp" />
     <ClInclude Include="libraries\ArduinoJson\version.hpp" />
-    <ClInclude Include="libraries\DHT.h" />
+    <ClInclude Include="libraries\dht.h" />
     <ClInclude Include="libraries\DS1302.h" />
     <ClInclude Include="libraries\LinkedList.h" />
     <ClInclude Include="libraries\QueueArray.h" />
     <ClInclude Include="libraries\Stepper.h" />
-    <ClInclude Include="sensors\Humidity_sensor.h" />
     <ClInclude Include="sensors\Sensor.h" />
-    <ClInclude Include="sensors\Temperature_sensor.h" />
+    <ClInclude Include="sensors\Temp_hum_sensor.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="handlers\Input_handler.cpp" />
     <ClCompile Include="handlers\Json_handler.cpp" />
     <ClCompile Include="handlers\Output_handler.cpp" />
-    <ClCompile Include="libraries\DHT.cpp" />
+    <ClCompile Include="libraries\dht.cpp" />
     <ClCompile Include="libraries\DS1302.cpp" />
     <ClCompile Include="libraries\Stepper.cpp" />
-    <ClCompile Include="sensors\Humidity_sensor.cpp" />
     <ClCompile Include="sensors\Sensor.cpp" />
-    <ClCompile Include="sensors\Temperature_sensor.cpp" />
+    <ClCompile Include="sensors\Temp_hum_sensor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

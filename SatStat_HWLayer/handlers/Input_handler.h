@@ -2,8 +2,7 @@
 #include "Arduino.h"
 #include "Json_handler.h"
 #include "../libraries/LinkedList.h"
-#include "../sensors/Temperature_sensor.h"
-#include "../sensors/Humidity_sensor.h"
+#include "../sensors/Temp_hum_sensor.h"
 
 class Input_handler
 {

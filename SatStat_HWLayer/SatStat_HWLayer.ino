@@ -1,7 +1,6 @@
 #pragma once
 #include "./handlers/Input_handler.h"
 #include "./handlers/Output_handler.h"
-#include "./libraries/DHT.h"
 
 Input_handler* input_handler;
 Output_handler* output_handler;

@@ -5,7 +5,7 @@ class Sensor
 {
 public:
 	Sensor(String name, int pin);
-	virtual int read_sensor() = 0;
+	virtual String read_sensor() = 0;
 	String get_name();
 
 protected:

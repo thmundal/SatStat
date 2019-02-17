@@ -51,9 +51,6 @@
     <ClInclude Include="handlers\Output_handler.h">
       <Filter>Header Files\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="sensors\Humidity_sensor.h">
-      <Filter>Header Files\sensors</Filter>
-    </ClInclude>
     <ClInclude Include="sensors\Sensor.h">
       <Filter>Header Files\sensors</Filter>
     </ClInclude>
@@ -312,10 +309,10 @@
     <ClInclude Include="libraries\Stepper.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
-    <ClInclude Include="sensors\Temperature_sensor.h">
+    <ClInclude Include="sensors\Temp_hum_sensor.h">
       <Filter>Header Files\sensors</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\DHT.h">
+    <ClInclude Include="libraries\dht.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
   </ItemGroup>
@@ -329,9 +326,6 @@
     <ClCompile Include="handlers\Output_handler.cpp">
       <Filter>Source Files\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="sensors\Humidity_sensor.cpp">
-      <Filter>Source Files\sensors</Filter>
-    </ClCompile>
     <ClCompile Include="sensors\Sensor.cpp">
       <Filter>Source Files\sensors</Filter>
     </ClCompile>
@@ -341,10 +335,10 @@
     <ClCompile Include="libraries\Stepper.cpp">
       <Filter>Source Files\libraries</Filter>
     </ClCompile>
-    <ClCompile Include="sensors\Temperature_sensor.cpp">
+    <ClCompile Include="sensors\Temp_hum_sensor.cpp">
       <Filter>Source Files\sensors</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\DHT.cpp">
+    <ClCompile Include="libraries\dht.cpp">
       <Filter>Source Files\libraries</Filter>
     </ClCompile>
   </ItemGroup>

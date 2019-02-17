@@ -5,8 +5,7 @@
 Input_handler::Input_handler()
 {	
 	// Init sensors
-	sensor_collection.append("temperature", new Temperature_sensor("temperature", 7));
-	sensor_collection.append("humidity", new Humidity_sensor("humidity", 7));
+	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 7));
 }
 
 // Listens on inputs from software layer
@@ -29,7 +28,7 @@ void Input_handler::serial_listener()
 
 JsonObject * Input_handler::read_sensor(String name)
 {
-	return json_handler.convert_to_json(name, (String)sensor_collection.get(name)->read_sensor());
+	return json_handler.convert_to_json(name, sensor_collection.get(name)->read_sensor());
 }
 
 // Reads all sensors
@@ -48,7 +47,6 @@ JsonObject* Input_handler::read_sensors()
 		{
 			tmp += "}";
 		}
-		delay(110);
 	}
 
 	return json_handler.convert_to_json(tmp);
