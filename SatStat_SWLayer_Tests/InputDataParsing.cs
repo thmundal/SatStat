@@ -16,194 +16,303 @@ namespace SatStatTests
         public void ReceiveDouble()
         {
             DataStream stream = new DataStream();
-            Receiver<double> receiver = new Receiver<double>();
+            DataReceiver receiver = new DataReceiver("double");
 
-            DataSubscription<double> sub = new DataSubscription<double>(receiver, "double");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "double", "double");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(2.0, payload);
+                Assert.AreEqual(typeof(double), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
-            Assert.AreEqual(2.0, receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveString()
         {
             DataStream stream = new DataStream();
-            Receiver<string> receiver = new Receiver<string>();
+            DataReceiver receiver = new DataReceiver("string");
 
-            DataSubscription<string> sub = new DataSubscription<string>(receiver, "string");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "string", "string");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual("this is a string", payload);
+                Assert.AreEqual(typeof(string), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
-            Assert.AreEqual("this is a string", receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveFloat()
         {
             DataStream stream = new DataStream();
-            Receiver<float> receiver = new Receiver<float>();
+            DataReceiver receiver = new DataReceiver("float");
 
-            DataSubscription<float> sub = new DataSubscription<float>(receiver, "float");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "float", "float");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(3.2f, payload);
+                Assert.AreEqual(typeof(float), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
-            Assert.AreEqual(3.2f, receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveInt()
         {
             DataStream stream = new DataStream();
-            Receiver<int> receiver = new Receiver<int>();
+            DataReceiver receiver = new DataReceiver("int");
 
-            DataSubscription<int> sub = new DataSubscription<int>(receiver, "int");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5, payload);
+                Assert.AreEqual(typeof(int), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
-            Assert.AreEqual(5, receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveLong()
         {
             DataStream stream = new DataStream();
-            Receiver<long> receiver = new Receiver<long>();
+            DataReceiver receiver = new DataReceiver("long");
 
-            DataSubscription<long> sub = new DataSubscription<long>(receiver, "long");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "long", "long");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5L, payload);
+                Assert.AreEqual(typeof(long), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
-            Assert.AreEqual(5L, receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveJArray()
         {
             DataStream stream = new DataStream();
-            Receiver<JArray> receiver = new Receiver<JArray>();
+            DataReceiver receiver = new DataReceiver("JArray");
 
-            DataSubscription<JArray> sub = new DataSubscription<JArray>(receiver, "genericlist");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "genericlist", "JArray");
 
-            stream.AddSubscriber(sub);
-            stream.Parse(JSON);
-            stream.DeliverSubscriptions();
+            receiver.OnPayloadReceived((object payload) => {
 
-            JArray expected = new JArray { "one", "two", "three" };
-            JArray actual = receiver.receivedPayload;
+                JArray expected = new JArray { "one", "two", "three" };
+                JArray actual = (JArray) payload;
 
-            for(int i=0; i<expected.Count; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
-        }
-
-        
-        public void ReceiveHashtable()
-        {
-            DataStream stream = new DataStream();
-            Receiver<Hashtable> receiver = new Receiver<Hashtable>();
-
-            DataSubscription<Hashtable> sub = new DataSubscription<Hashtable>(receiver, "hashtable");
+                for (int i = 0; i < expected.Count; i++)
+                {
+                    Assert.AreEqual(expected[i], actual[i]);
+                }
+                Console.Write("Datatype: ");
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
-            
-
-            Hashtable actual = new Hashtable();
-            actual.Add("int", 2);
-            actual.Add("string", "value");
-
-            Assert.AreEqual(actual, receiver.receivedPayload);
         }
 
         [TestMethod]
         public void ReceiveJObject()
         {
             DataStream stream = new DataStream();
-            Receiver<JObject> receiver = new Receiver<JObject>();
+            DataReceiver receiver = new DataReceiver("JObject");
 
-            DataSubscription<JObject> sub = new DataSubscription<JObject>(receiver, "hashtable");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "hashtable", "JObject");
+
+            receiver.OnPayloadReceived((object p) =>
+            {
+                JObject payload = (JObject)p;
+                JObject actual = new JObject
+                {
+                    { "int", 2 },
+                    { "string", "value" }
+                };
+
+                foreach (var item in actual)
+                {
+                    Assert.IsTrue(payload.ContainsKey(item.Key));
+                    Assert.AreEqual(payload.GetValue(item.Key), item.Value);
+                }
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
-
-            JObject actual = new JObject();
-            actual.Add("int", 2);
-            actual.Add("string", "value");
-
-            foreach (var item in actual)
-            {
-                Assert.IsTrue(receiver.receivedPayload.ContainsKey(item.Key));
-                Assert.AreEqual(receiver.receivedPayload.GetValue(item.Key), item.Value);
-            }
         }
 
         [TestMethod]
         public void MultipleSubscriptionOnDifferentKeys()
         {
             DataStream stream = new DataStream();
-            Receiver<JObject> receiver = new Receiver<JObject>();
-            Receiver<int> receiver2 = new Receiver<int>();
+            DataReceiver receiver = new DataReceiver("JObject");
+            DataReceiver receiver2 = new DataReceiver("int");
+            
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "hashtable", "JObject");
+            IDataSubscription sub2 = DataSubscription<object>.CreateWithType(receiver2, "int", "int");
 
-            DataSubscription<JObject> sub = new DataSubscription<JObject>(receiver, "hashtable");
-            DataSubscription<int> sub2 = new DataSubscription<int>(receiver2, "int");
+            receiver.OnPayloadReceived((object p) =>
+            {
+                JObject payload = (JObject)p;
+                JObject actual = new JObject();
+                actual.Add("int", 2);
+                actual.Add("string", "value");
+
+                foreach (var item in actual)
+                {
+                    Assert.IsTrue(payload.ContainsKey(item.Key));
+                    Assert.AreEqual(payload.GetValue(item.Key), item.Value);
+                }
+                Console.WriteLine(payload.GetType());
+            });
+
+            receiver2.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5, payload);
+                Assert.AreEqual(typeof(int), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.AddSubscriber(sub2);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
-
-            JObject actual = new JObject();
-            actual.Add("int", 2);
-            actual.Add("string", "value");
-
-            foreach (var item in actual)
-            {
-                Assert.IsTrue(receiver.receivedPayload.ContainsKey(item.Key));
-                Assert.AreEqual(receiver.receivedPayload.GetValue(item.Key), item.Value);
-            }
-
-            int actual2 = 5;
-            Assert.AreEqual(actual2, receiver2.receivedPayload);
         }
 
         [TestMethod]
         public void MultipleSubscribersOnSameKey()
         {
             DataStream stream = new DataStream();
-            Receiver<int> receiver = new Receiver<int>();
-            Receiver<int> receiver2 = new Receiver<int>();
+            DataReceiver receiver = new DataReceiver("int");
+            DataReceiver receiver2 = new DataReceiver("int");
+            
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
+            IDataSubscription sub2 = DataSubscription<object>.CreateWithType(receiver2, "int", "int");
 
-            DataSubscription<int> sub = new DataSubscription<int>(receiver, "int");
-            DataSubscription<int> sub2 = new DataSubscription<int>(receiver2, "int");
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5, payload);
+                Assert.AreEqual(typeof(int), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
+
+            receiver2.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5, payload);
+                Assert.AreEqual(typeof(int), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
 
             stream.AddSubscriber(sub);
             stream.AddSubscriber(sub2);
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
-            
-            Assert.AreEqual(5, receiver.receivedPayload);
-            Assert.AreEqual(5, receiver2.receivedPayload);
+        }
+
+        [TestMethod]
+        public void TypeAsString_int()
+        {
+            DataStream stream = new DataStream();
+            DataReceiver receiver = new DataReceiver("int");
+
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(5, payload);
+                Assert.AreEqual(typeof(int), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
+
+            stream.AddSubscriber(sub);
+            stream.Parse(JSON);
+            stream.DeliverSubscriptions();
+        }
+
+        [TestMethod]
+        public void TypeAsString_double()
+        {
+            DataStream stream = new DataStream();
+            DataReceiver receiver = new DataReceiver("double");
+
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "double", "double");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(2.0d, payload);
+                Assert.AreEqual(typeof(double), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
+
+            stream.AddSubscriber(sub);
+            stream.Parse(JSON);
+            stream.DeliverSubscriptions();
+
+        }
+
+        [TestMethod]
+        public void TypeAsString_float()
+        {
+            DataStream stream = new DataStream();
+            DataReceiver receiver = new DataReceiver("float");
+
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "float", "float");
+
+            receiver.OnPayloadReceived((object payload) =>
+            {
+                Assert.AreEqual(3.2f, payload);
+                Assert.AreEqual(typeof(float), payload.GetType());
+                Console.WriteLine(payload.GetType());
+            });
+
+            stream.AddSubscriber(sub);
+            stream.Parse(JSON);
+            stream.DeliverSubscriptions();
         }
     }
 
-    public class Receiver<T> : DataReceiver<T>
+    public class Receiver<T> : DataReceiver
     {
         public T receivedPayload;
+
+
+        public Receiver(string dataType = "int") : base(dataType)
+        {
+        }
         
+
         public void ReceivePayload(T payload)
         {
             receivedPayload = payload;
