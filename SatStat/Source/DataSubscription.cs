@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 
 namespace SatStat
 {
@@ -7,11 +8,16 @@ namespace SatStat
         Type IDataSubscription.Type => typeof(T);
 
         public string subscriptionAttribute { get; set; }
-        private DataReceiver<T> receiver;
+        private DataReceiver receiver;
 
-        public DataSubscription(DataReceiver<T> r, string attr)
+        public DataSubscription(DataReceiver r, string attr)
         {
             receiver = r;
+            subscriptionAttribute = attr;
+        }
+
+        public DataSubscription(string attr)
+        {
             subscriptionAttribute = attr;
         }
 
@@ -31,6 +37,29 @@ namespace SatStat
             }
 
             return default(T);
+        }
+
+        public static IDataSubscription CreateWithType(DataReceiver receiver, string attr, string type)
+        {
+            switch (type)
+            {
+                case "float":
+                    return new DataSubscription<float>(receiver, attr);
+                case "double":
+                    return new DataSubscription<double>(receiver, attr);
+                case "int":
+                    return new DataSubscription<int>(receiver, attr);
+                case "long":
+                    return new DataSubscription<long>(receiver, attr);
+                case "string":
+                    return new DataSubscription<string>(receiver, attr);
+                case "JObject":
+                    return new DataSubscription<JObject>(receiver, attr);
+                case "JArray":
+                    return new DataSubscription<JArray>(receiver, attr);
+            }
+
+            return null;
         }
     }
 

@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace SatStat
 {
-    partial class SatStatMainForm : Form, DataReceiver<double>
+    partial class SatStatMainForm : Form
     {
         private SeriesCollection seriesCollection1;
         private LineSeries lineSeries1;
@@ -26,11 +26,21 @@ namespace SatStat
         private int maxTimeWindow = 10;
         private double lastVal = 0;
 
+        private DataReceiver dataReceiver;
+
         public SatStatMainForm()
         {
             InitializeComponent();
 
             seriesCollection1 = new SeriesCollection();
+
+            dataReceiver = new DataReceiver("double");
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(dataReceiver, "temperature", "double");
+            dataReceiver.OnPayloadReceived((object payload) =>
+            {
+                ReceivePayload((double) payload);
+            });
+            Program.serial.AddSubscriber(sub);
 
             lineSeries1 = new LineSeries();
             lineSeries1.Title = "Series 1";

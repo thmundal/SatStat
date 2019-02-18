@@ -21,14 +21,12 @@ namespace SatStat
             settings = new AppSettings {
                 selectedComPort = null
             };
+            serial = new SerialHandler();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             SatStatMainForm app = new SatStatMainForm();
-            
-            serial = new SerialHandler();
-            serial.AddSubscriber(new DataSubscription<double>(app, "temperature"));
             
             Application.Run(app);
         }
