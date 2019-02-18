@@ -37,7 +37,6 @@ JsonObject* Input_handler::read_sensors()
 	String tmp = "{";
 	for (int i = sensor_collection.count() - 1; i >= 0; i--)
 	{
-		tmp += "\"" + sensor_collection[i]->get_name() + "\":";
 		tmp += sensor_collection[i]->read_sensor();
 		if (i != 0)
 		{

@@ -30,7 +30,6 @@ void loop()
 	if (!(millis() - start_time < duration))
 	{
 		output_handler->print_to_serial(input_handler->read_sensors());
-		//output_handler->print_to_serial(input_handler->read_sensor("humidity"));
 		start_time = millis();
 	}
 }

@@ -17,6 +17,7 @@ void Json_handler::insert_instruction(String input_data)
 {
 	root = &jsonBuffer->parseObject(input_data);
 	instruction_queue.enqueue(root);
+	jsonBuffer->clear();
 }
 
 JsonObject * Json_handler::fetch_instruction()
@@ -45,7 +46,8 @@ JsonObject * Json_handler::convert_to_json(String key, String value)
 		json = "{\"" + key + "\":\"" + value + "\"}";
 	}
 
-	root = &jsonBuffer->parseObject(json);
+	root = &jsonBuffer->parseObject(json);	
+	jsonBuffer->clear();
 
 	return root;
 }
@@ -53,6 +55,7 @@ JsonObject * Json_handler::convert_to_json(String key, String value)
 JsonObject * Json_handler::convert_to_json(String formatted_string)
 {	
 	root = &jsonBuffer->parseObject(formatted_string);
+	jsonBuffer->clear();
 	return root;
 }
 
