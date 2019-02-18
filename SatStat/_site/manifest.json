@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.AppSettings.html",
-          "hash": "DidDZyQMGvs8ikZIOmkSHA=="
+          "hash": "/+ikcluzSX2dkfx+M1CC1Q=="
         }
       },
       "is_incremental": true,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ComSettingsForm.html",
-          "hash": "P1IC3iSzWRkTzOQdk3AMyg=="
+          "hash": "jMECoqQljbd1fCa1KbPghw=="
         }
       },
       "is_incremental": true,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataProvider.html",
-          "hash": "O2lX3+ODUjqkZxbFTN6Ngg=="
+          "hash": "YMOvq0K6w3estnfzHhpIJQ=="
         }
       },
       "is_incremental": true,
@@ -89,11 +89,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/SatStat.DataReceiver-1.yml",
+      "source_relative_path": "obj/api/SatStat.DataReceiver.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SatStat.DataReceiver-1.html",
-          "hash": "aJZlGBNrtUj9gM5lO7+9gw=="
+          "relative_path": "api/SatStat.DataReceiver.html",
+          "hash": "Bl6bVCEQxT3uvSxcr6aGvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.DataReceiverHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.DataReceiverHelper.html",
+          "hash": "EGwQ43pQBuiOFIH/LbPSHw=="
         }
       },
       "is_incremental": true,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataStream.html",
-          "hash": "Agq0CIKEBfoTzsIrr2wxdw=="
+          "hash": "CX1Y7SsE8luCFWXE97RZ8A=="
         }
       },
       "is_incremental": true,
@@ -117,7 +129,19 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataSubscription-1.html",
-          "hash": "ppAcskHJWWIsLhaGv81IBQ=="
+          "hash": "8akv/bTKkaovOqHT7ElxzQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.IDataReceiver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.IDataReceiver.html",
+          "hash": "dT8V7XOTCYo/RIazwBuivA=="
         }
       },
       "is_incremental": true,
@@ -129,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.IDataSubscription.html",
-          "hash": "3rn28F7Ko9G2spNlFh7R0g=="
+          "hash": "Y7yeMy8VyhI9WgEZZOJqIQ=="
         }
       },
       "is_incremental": true,
@@ -141,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.JSON.html",
-          "hash": "J/Prs4MJCCFOB1JGHD0NCw=="
+          "hash": "OjrbUdaerbs3kT7mVAHuOg=="
         }
       },
       "is_incremental": true,
@@ -153,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.html",
-          "hash": "Gs/31Q4Qvvv8TB2zIB+wpQ=="
+          "hash": "U5uaTfypHXDojQgB5kjpmQ=="
         }
       },
       "is_incremental": true,
@@ -165,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "9Bkhjc6GKfwYPzSUqZwlHw=="
+          "hash": "jea4HyJ+U4MryzHxO4dMsw=="
         }
       },
       "is_incremental": true,
@@ -177,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "lbBbYwzO2QLiPo2k4R+EVQ=="
+          "hash": "JmJmvduF+NU7hzNeq/pT+A=="
         }
       },
       "is_incremental": false,
@@ -205,11 +229,12 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 10,
-          "skipped_file_count": 10
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
@@ -217,12 +242,11 @@
           "total_file_count": 3,
           "skipped_file_count": 3
         },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "total_file_count": 12,
+          "skipped_file_count": 12
         }
       }
     },

@@ -83,32 +83,79 @@ references:
   isSpec: "True"
   fullName: SatStat.DataProvider.Deliver
   nameWithType: DataProvider.Deliver
-- uid: SatStat.DataReceiver`1
-  name: DataReceiver<T>
-  href: api/SatStat.DataReceiver-1.html
-  commentId: T:SatStat.DataReceiver`1
-  name.vb: DataReceiver(Of T)
-  fullName: SatStat.DataReceiver<T>
-  fullName.vb: SatStat.DataReceiver(Of T)
-  nameWithType: DataReceiver<T>
-  nameWithType.vb: DataReceiver(Of T)
-- uid: SatStat.DataReceiver`1.ReceivePayload(`0)
-  name: ReceivePayload(T)
-  href: api/SatStat.DataReceiver-1.html#SatStat_DataReceiver_1_ReceivePayload__0_
-  commentId: M:SatStat.DataReceiver`1.ReceivePayload(`0)
-  fullName: SatStat.DataReceiver<T>.ReceivePayload(T)
-  fullName.vb: SatStat.DataReceiver(Of T).ReceivePayload(T)
-  nameWithType: DataReceiver<T>.ReceivePayload(T)
-  nameWithType.vb: DataReceiver(Of T).ReceivePayload(T)
-- uid: SatStat.DataReceiver`1.ReceivePayload*
-  name: ReceivePayload
-  href: api/SatStat.DataReceiver-1.html#SatStat_DataReceiver_1_ReceivePayload_
-  commentId: Overload:SatStat.DataReceiver`1.ReceivePayload
+- uid: SatStat.DataReceiver
+  name: DataReceiver
+  href: api/SatStat.DataReceiver.html
+  commentId: T:SatStat.DataReceiver
+  fullName: SatStat.DataReceiver
+  nameWithType: DataReceiver
+- uid: SatStat.DataReceiver.#ctor(System.String)
+  name: DataReceiver(String)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver__ctor_System_String_
+  commentId: M:SatStat.DataReceiver.#ctor(System.String)
+  fullName: SatStat.DataReceiver.DataReceiver(System.String)
+  nameWithType: DataReceiver.DataReceiver(String)
+- uid: SatStat.DataReceiver.#ctor*
+  name: DataReceiver
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver__ctor_
+  commentId: Overload:SatStat.DataReceiver.#ctor
   isSpec: "True"
-  fullName: SatStat.DataReceiver<T>.ReceivePayload
-  fullName.vb: SatStat.DataReceiver(Of T).ReceivePayload
-  nameWithType: DataReceiver<T>.ReceivePayload
-  nameWithType.vb: DataReceiver(Of T).ReceivePayload
+  fullName: SatStat.DataReceiver.DataReceiver
+  nameWithType: DataReceiver.DataReceiver
+- uid: SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object})
+  name: OnPayloadReceived(Action<Object>)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object__
+  commentId: M:SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object})
+  name.vb: OnPayloadReceived(Action(Of Object))
+  fullName: SatStat.DataReceiver.OnPayloadReceived(System.Action<System.Object>)
+  fullName.vb: SatStat.DataReceiver.OnPayloadReceived(System.Action(Of System.Object))
+  nameWithType: DataReceiver.OnPayloadReceived(Action<Object>)
+  nameWithType.vb: DataReceiver.OnPayloadReceived(Action(Of Object))
+- uid: SatStat.DataReceiver.OnPayloadReceived*
+  name: OnPayloadReceived
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_
+  commentId: Overload:SatStat.DataReceiver.OnPayloadReceived
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.OnPayloadReceived
+  nameWithType: DataReceiver.OnPayloadReceived
+- uid: SatStat.DataReceiver.OnPayloadReceived_Callback
+  name: OnPayloadReceived_Callback
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_Callback
+  commentId: F:SatStat.DataReceiver.OnPayloadReceived_Callback
+  fullName: SatStat.DataReceiver.OnPayloadReceived_Callback
+  nameWithType: DataReceiver.OnPayloadReceived_Callback
+- uid: SatStat.DataReceiver.ReceivePayload(System.Object)
+  name: ReceivePayload(Object)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ReceivePayload_System_Object_
+  commentId: M:SatStat.DataReceiver.ReceivePayload(System.Object)
+  fullName: SatStat.DataReceiver.ReceivePayload(System.Object)
+  nameWithType: DataReceiver.ReceivePayload(Object)
+- uid: SatStat.DataReceiver.ReceivePayload*
+  name: ReceivePayload
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ReceivePayload_
+  commentId: Overload:SatStat.DataReceiver.ReceivePayload
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.ReceivePayload
+  nameWithType: DataReceiver.ReceivePayload
+- uid: SatStat.DataReceiverHelper
+  name: DataReceiverHelper
+  href: api/SatStat.DataReceiverHelper.html
+  commentId: T:SatStat.DataReceiverHelper
+  fullName: SatStat.DataReceiverHelper
+  nameWithType: DataReceiverHelper
+- uid: SatStat.DataReceiverHelper.Create(System.String)
+  name: Create(String)
+  href: api/SatStat.DataReceiverHelper.html#SatStat_DataReceiverHelper_Create_System_String_
+  commentId: M:SatStat.DataReceiverHelper.Create(System.String)
+  fullName: SatStat.DataReceiverHelper.Create(System.String)
+  nameWithType: DataReceiverHelper.Create(String)
+- uid: SatStat.DataReceiverHelper.Create*
+  name: Create
+  href: api/SatStat.DataReceiverHelper.html#SatStat_DataReceiverHelper_Create_
+  commentId: Overload:SatStat.DataReceiverHelper.Create
+  isSpec: "True"
+  fullName: SatStat.DataReceiverHelper.Create
+  nameWithType: DataReceiverHelper.Create
 - uid: SatStat.DataStream
   name: DataStream
   href: api/SatStat.DataStream.html
@@ -205,15 +252,22 @@ references:
   fullName.vb: SatStat.DataSubscription(Of T)
   nameWithType: DataSubscription<T>
   nameWithType.vb: DataSubscription(Of T)
-- uid: SatStat.DataSubscription`1.#ctor(SatStat.DataReceiver{`0},System.String)
-  name: DataSubscription(DataReceiver<T>, String)
-  href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1__ctor_SatStat_DataReceiver__0__System_String_
-  commentId: M:SatStat.DataSubscription`1.#ctor(SatStat.DataReceiver{`0},System.String)
-  name.vb: DataSubscription(DataReceiver(Of T), String)
-  fullName: SatStat.DataSubscription<T>.DataSubscription(SatStat.DataReceiver<T>, System.String)
-  fullName.vb: SatStat.DataSubscription(Of T).DataSubscription(SatStat.DataReceiver(Of T), System.String)
-  nameWithType: DataSubscription<T>.DataSubscription(DataReceiver<T>, String)
-  nameWithType.vb: DataSubscription(Of T).DataSubscription(DataReceiver(Of T), String)
+- uid: SatStat.DataSubscription`1.#ctor(SatStat.DataReceiver,System.String)
+  name: DataSubscription(DataReceiver, String)
+  href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1__ctor_SatStat_DataReceiver_System_String_
+  commentId: M:SatStat.DataSubscription`1.#ctor(SatStat.DataReceiver,System.String)
+  fullName: SatStat.DataSubscription<T>.DataSubscription(SatStat.DataReceiver, System.String)
+  fullName.vb: SatStat.DataSubscription(Of T).DataSubscription(SatStat.DataReceiver, System.String)
+  nameWithType: DataSubscription<T>.DataSubscription(DataReceiver, String)
+  nameWithType.vb: DataSubscription(Of T).DataSubscription(DataReceiver, String)
+- uid: SatStat.DataSubscription`1.#ctor(System.String)
+  name: DataSubscription(String)
+  href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1__ctor_System_String_
+  commentId: M:SatStat.DataSubscription`1.#ctor(System.String)
+  fullName: SatStat.DataSubscription<T>.DataSubscription(System.String)
+  fullName.vb: SatStat.DataSubscription(Of T).DataSubscription(System.String)
+  nameWithType: DataSubscription<T>.DataSubscription(String)
+  nameWithType.vb: DataSubscription(Of T).DataSubscription(String)
 - uid: SatStat.DataSubscription`1.#ctor*
   name: DataSubscription
   href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1__ctor_
@@ -223,6 +277,23 @@ references:
   fullName.vb: SatStat.DataSubscription(Of T).DataSubscription
   nameWithType: DataSubscription<T>.DataSubscription
   nameWithType.vb: DataSubscription(Of T).DataSubscription
+- uid: SatStat.DataSubscription`1.CreateWithType(SatStat.DataReceiver,System.String,System.String)
+  name: CreateWithType(DataReceiver, String, String)
+  href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1_CreateWithType_SatStat_DataReceiver_System_String_System_String_
+  commentId: M:SatStat.DataSubscription`1.CreateWithType(SatStat.DataReceiver,System.String,System.String)
+  fullName: SatStat.DataSubscription<T>.CreateWithType(SatStat.DataReceiver, System.String, System.String)
+  fullName.vb: SatStat.DataSubscription(Of T).CreateWithType(SatStat.DataReceiver, System.String, System.String)
+  nameWithType: DataSubscription<T>.CreateWithType(DataReceiver, String, String)
+  nameWithType.vb: DataSubscription(Of T).CreateWithType(DataReceiver, String, String)
+- uid: SatStat.DataSubscription`1.CreateWithType*
+  name: CreateWithType
+  href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1_CreateWithType_
+  commentId: Overload:SatStat.DataSubscription`1.CreateWithType
+  isSpec: "True"
+  fullName: SatStat.DataSubscription<T>.CreateWithType
+  fullName.vb: SatStat.DataSubscription(Of T).CreateWithType
+  nameWithType: DataSubscription<T>.CreateWithType
+  nameWithType.vb: DataSubscription(Of T).CreateWithType
 - uid: SatStat.DataSubscription`1.receive(System.Object)
   name: receive(Object)
   href: api/SatStat.DataSubscription-1.html#SatStat_DataSubscription_1_receive_System_Object_
@@ -276,6 +347,12 @@ references:
   fullName.vb: SatStat.DataSubscription(Of T).subscriptionAttribute
   nameWithType: DataSubscription<T>.subscriptionAttribute
   nameWithType.vb: DataSubscription(Of T).subscriptionAttribute
+- uid: SatStat.IDataReceiver
+  name: IDataReceiver
+  href: api/SatStat.IDataReceiver.html
+  commentId: T:SatStat.IDataReceiver
+  fullName: SatStat.IDataReceiver
+  nameWithType: IDataReceiver
 - uid: SatStat.IDataSubscription
   name: IDataSubscription
   href: api/SatStat.IDataSubscription.html

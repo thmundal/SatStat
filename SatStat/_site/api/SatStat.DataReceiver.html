@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class JSON
+    <title>Class DataReceiver
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class JSON
+    <meta name="title" content="Class DataReceiver
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -68,17 +68,21 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SatStat.JSON">
+            <article class="content wrap" id="_content" data-uid="SatStat.DataReceiver">
   
   
-  <h1 id="SatStat_JSON" data-uid="SatStat.JSON" class="text-break">Class JSON
+  <h1 id="SatStat_DataReceiver" data-uid="SatStat.DataReceiver" class="text-break">Class DataReceiver
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">JSON</span></div>
+    <div class="level1"><span class="xref">DataReceiver</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="SatStat.IDataReceiver.html">IDataReceiver</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -106,57 +110,26 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SatStat.html">SatStat</a></h6>
   <h6><strong>Assembly</strong>: SatStat.dll</h6>
-  <h5 id="SatStat_JSON_syntax">Syntax</h5>
+  <h5 id="SatStat_DataReceiver_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class JSON</code></pre>
+    <pre><code class="lang-csharp hljs">public class DataReceiver : IDataReceiver</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_JSON_GetLastJsonError.md&amp;value=---%0Auid%3A%20SatStat.JSON.GetLastJsonError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_DataReceiver__ctor_System_String_.md&amp;value=---%0Auid%3A%20SatStat.DataReceiver.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/JSON.cs/#L44">View Source</a>
+    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/DataReceiver.cs/#L15">View Source</a>
   </span>
-  <a id="SatStat_JSON_GetLastJsonError_" data-uid="SatStat.JSON.GetLastJsonError*"></a>
-  <h4 id="SatStat_JSON_GetLastJsonError" data-uid="SatStat.JSON.GetLastJsonError">GetLastJsonError()</h4>
-  <div class="markdown level1 summary"><p>Return the latest error that has happened in relation to JSON parsing or serialization</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetLastJsonError()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_JSON_parse__1_System_String_.md&amp;value=---%0Auid%3A%20SatStat.JSON.parse%60%601(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/JSON.cs/#L25">View Source</a>
-  </span>
-  <a id="SatStat_JSON_parse_" data-uid="SatStat.JSON.parse*"></a>
-  <h4 id="SatStat_JSON_parse__1_System_String_" data-uid="SatStat.JSON.parse``1(System.String)">parse&lt;T&gt;(String)</h4>
+  <a id="SatStat_DataReceiver__ctor_" data-uid="SatStat.DataReceiver.#ctor*"></a>
+  <h4 id="SatStat_DataReceiver__ctor_System_String_" data-uid="SatStat.DataReceiver.#ctor(System.String)">DataReceiver(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T parse&lt;T&gt;(string input)</code></pre>
+    <pre><code class="lang-csharp hljs">public DataReceiver(string dataType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,12 +143,28 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">input</span></td>
+        <td><span class="parametername">dataType</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_DataReceiver_OnPayloadReceived_Callback.md&amp;value=---%0Auid%3A%20SatStat.DataReceiver.OnPayloadReceived_Callback%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/DataReceiver.cs/#L12">View Source</a>
+  </span>
+  <h4 id="SatStat_DataReceiver_OnPayloadReceived_Callback" data-uid="SatStat.DataReceiver.OnPayloadReceived_Callback">OnPayloadReceived_Callback</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;object&gt; OnPayloadReceived_Callback</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -185,40 +174,59 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">T</span></td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Object</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="typeParameters">Type Parameters</h5>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object__.md&amp;value=---%0Auid%3A%20SatStat.DataReceiver.OnPayloadReceived(System.Action%7BSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/DataReceiver.cs/#L20">View Source</a>
+  </span>
+  <a id="SatStat_DataReceiver_OnPayloadReceived_" data-uid="SatStat.DataReceiver.OnPayloadReceived*"></a>
+  <h4 id="SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object__" data-uid="SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object})">OnPayloadReceived(Action&lt;Object&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnPayloadReceived(Action&lt;object&gt; cb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
+        <th>Type</th>
         <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">T</span></td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">cb</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_JSON_serialize_System_Object_.md&amp;value=---%0Auid%3A%20SatStat.JSON.serialize(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_DataReceiver_ReceivePayload_System_Object_.md&amp;value=---%0Auid%3A%20SatStat.DataReceiver.ReceivePayload(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/JSON.cs/#L35">View Source</a>
+    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/DataReceiver.cs/#L25">View Source</a>
   </span>
-  <a id="SatStat_JSON_serialize_" data-uid="SatStat.JSON.serialize*"></a>
-  <h4 id="SatStat_JSON_serialize_System_Object_" data-uid="SatStat.JSON.serialize(System.Object)">serialize(Object)</h4>
+  <a id="SatStat_DataReceiver_ReceivePayload_" data-uid="SatStat.DataReceiver.ReceivePayload*"></a>
+  <h4 id="SatStat_DataReceiver_ReceivePayload_System_Object_" data-uid="SatStat.DataReceiver.ReceivePayload(System.Object)">ReceivePayload(Object)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string serialize(object input)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ReceivePayload(object payload)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -232,26 +240,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">input</span></td>
+        <td><span class="parametername">payload</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="SatStat.IDataReceiver.html">IDataReceiver</a>
+  </div>
 </article>
           </div>
           
@@ -260,10 +257,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_JSON.md&amp;value=---%0Auid%3A%20SatStat.JSON%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/thmundal/SatStat/new/Alpha2/apiSpec/new?filename=SatStat_DataReceiver.md&amp;value=---%0Auid%3A%20SatStat.DataReceiver%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/JSON.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/thmundal/SatStat/blob/Alpha2/SatStat/Source/DataReceiver.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
