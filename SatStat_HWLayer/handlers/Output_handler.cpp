@@ -14,6 +14,7 @@ Output_handler::Output_handler()
 void Output_handler::print_to_serial(JsonObject *json)
 {
 	json->printTo(Serial);
+	Serial.println();
 }
 
 /*
