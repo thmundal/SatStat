@@ -156,10 +156,6 @@ namespace SatStat
         [STAThread]
         private void ReceiveSensorList(JArray sensor_list)
         {
-            //UISensorCheckboxList.Items.Clear();
-            //sensor_information.Clear();
-
-
             foreach (JObject sensor in sensor_list)
             {
                 foreach (var elem in sensor)
@@ -169,19 +165,9 @@ namespace SatStat
                         sensor_information.Add(elem.Key, elem.Value.ToString());
 
                         UISensorCheckboxList.Items.Add(elem.Key);
-                        //UISensorCheckboxList.Items.Insert(0, new { Text = elem.Key, Value = elem.Value.ToString() });
                     }
-
-                    Console.WriteLine(elem.Key);
-                    Console.WriteLine(elem.Value);
                 }
             }
-
-            Console.WriteLine(UISensorCheckboxList);
-
-
-            Console.WriteLine("Received sensor list");
-            Console.WriteLine(sensor_list);
         }
         
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -213,6 +199,26 @@ namespace SatStat
             Program.streamSimulator.AddSubscriber(DataSubscription<object>.CreateWithType(sensorListReceiver, "available_sensors", "JArray"));
 
             Program.streamSimulator.Connect();
+        }
+
+        private void UISensorCheckboxList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var data_name = UISensorCheckboxList.Items[UISensorCheckboxList.SelectedIndex];
+
+            if(UISensorCheckboxList.GetItemChecked(UISensorCheckboxList.SelectedIndex))
+            {
+                //Console.WriteLine(data_name);
+            }
+
+        }
+
+        private void UISensorCheckboxList_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            CheckedListBox sensor_select = (CheckedListBox)sender;
+
+            var attribute = sensor_select.Items[e.Index];
+
+            Console.WriteLine(attribute);
         }
     }
 }

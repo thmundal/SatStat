@@ -12,29 +12,31 @@ namespace SatStat
         public void Connect()
         {
             Console.WriteLine("Starting datastream");
+            Run();
+        }
+
+        private async Task Run()
+        {
             string payload = "";
 
             Random rand = new Random();
-            Task streamTask = Task.Run(async () =>
+            payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
+            Parse(payload);
+            DeliverSubscriptions();
+
+            int i = 0;
+            while (i < 100)
             {
-                payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
+                double temp = (rand.NextDouble() * 100);
+
+                payload = "{\"temperature\": \"" + temp + "\"}";
+
                 Parse(payload);
                 DeliverSubscriptions();
 
-                int i = 0;
-                while (i < 100)
-                {
-                    double temp = (rand.NextDouble() * 100);
-
-                    payload = "{\"temperature\": \"" + temp + "\"}";
-
-                    Parse(payload);
-                    DeliverSubscriptions();
-
-                    await Task.Delay(500);
-                    i++;
-                }
-            });
+                await Task.Delay(500);
+                i++;
+            }
         }
     }
 }

@@ -64,7 +64,7 @@ namespace SatStat
         {   
             if(input.Length > 0)
             {
-                Console.WriteLine("Parsing " + input);
+                //Console.WriteLine("Parsing " + input);
 
                 Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
 

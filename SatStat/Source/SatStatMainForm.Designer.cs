@@ -229,12 +229,12 @@
             // 
             this.UISensorCheckboxList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UISensorCheckboxList.FormattingEnabled = true;
-            this.UISensorCheckboxList.Items.AddRange(new object[] {
-            "Temperature"});
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
             this.UISensorCheckboxList.Size = new System.Drawing.Size(352, 129);
             this.UISensorCheckboxList.TabIndex = 14;
+            this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
+            this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 

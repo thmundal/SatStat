@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "D:/Programming/CSharp/SatStat/SatStat",
+  "source_base_path": "E:/Programming/Bachelor/SatStat/SatStat",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "Xk4utg9kdvRByhjR2hVdPw=="
+          "hash": "yG5cmfMuG+dMZQBDDCbJ0A=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "SlyLN3OVrd3Tj7bfuaTWAQ=="
+          "hash": "TqQJIBwli+oHZzy1WOwo8g=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "M85PVn0NwcsbiVYhAgDL6Q=="
+          "hash": "IdgB/xd/Qy4LJ9LsYJQhRA=="
         }
       },
       "is_incremental": true,
