@@ -9,5 +9,6 @@ namespace SatStat
     public struct AppSettings
     {
         public string selectedComPort;
+        public int selectedBaudRate;
     }
 }

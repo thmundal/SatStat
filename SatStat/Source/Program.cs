@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SatStat
 {
     static class Program
     {
         public static SerialHandler serial;
-        private static DataStream dataStream;
         public static AppSettings settings;
+        public static StreamSimulator streamSimulator;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -21,6 +21,7 @@ namespace SatStat
             settings = new AppSettings {
                 selectedComPort = null
             };
+
             serial = new SerialHandler();
 
             Application.EnableVisualStyles();
@@ -29,33 +30,6 @@ namespace SatStat
             SatStatMainForm app = new SatStatMainForm();
             
             Application.Run(app);
-        }
-
-        [STAThread]
-        static void SimulateDataStream()
-        {
-            Console.WriteLine("Starting datastream");
-            string payload = "";
-
-            Random rand = new Random();
-            Task streamTask = Task.Run(async () =>
-            {
-                int i = 0;
-                while (i < 100)
-                {
-                    double temp = (rand.NextDouble() * 100);
-
-                    payload = "{\"temperature\": \"" + temp + "\"}";
-
-                    dataStream.Parse(payload);
-                    dataStream.DeliverSubscriptions();
-                    //dataStream.SetPayload(payload);
-                    //dataStream.DeliverPayload();
-
-                    await Task.Delay(500);
-                    i++;
-                }
-            });
         }
     }
 }

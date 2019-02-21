@@ -13,6 +13,12 @@ references:
   commentId: T:SatStat.AppSettings
   fullName: SatStat.AppSettings
   nameWithType: AppSettings
+- uid: SatStat.AppSettings.selectedBaudRate
+  name: selectedBaudRate
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_selectedBaudRate
+  commentId: F:SatStat.AppSettings.selectedBaudRate
+  fullName: SatStat.AppSettings.selectedBaudRate
+  nameWithType: AppSettings.selectedBaudRate
 - uid: SatStat.AppSettings.selectedComPort
   name: selectedComPort
   href: api/SatStat.AppSettings.html#SatStat_AppSettings_selectedComPort
@@ -137,25 +143,6 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.ReceivePayload
   nameWithType: DataReceiver.ReceivePayload
-- uid: SatStat.DataReceiverHelper
-  name: DataReceiverHelper
-  href: api/SatStat.DataReceiverHelper.html
-  commentId: T:SatStat.DataReceiverHelper
-  fullName: SatStat.DataReceiverHelper
-  nameWithType: DataReceiverHelper
-- uid: SatStat.DataReceiverHelper.Create(System.String)
-  name: Create(String)
-  href: api/SatStat.DataReceiverHelper.html#SatStat_DataReceiverHelper_Create_System_String_
-  commentId: M:SatStat.DataReceiverHelper.Create(System.String)
-  fullName: SatStat.DataReceiverHelper.Create(System.String)
-  nameWithType: DataReceiverHelper.Create(String)
-- uid: SatStat.DataReceiverHelper.Create*
-  name: Create
-  href: api/SatStat.DataReceiverHelper.html#SatStat_DataReceiverHelper_Create_
-  commentId: Overload:SatStat.DataReceiverHelper.Create
-  isSpec: "True"
-  fullName: SatStat.DataReceiverHelper.Create
-  nameWithType: DataReceiverHelper.Create
 - uid: SatStat.DataStream
   name: DataStream
   href: api/SatStat.DataStream.html
@@ -530,3 +517,22 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.WriteData
   nameWithType: SerialHandler.WriteData
+- uid: SatStat.StreamSimulator
+  name: StreamSimulator
+  href: api/SatStat.StreamSimulator.html
+  commentId: T:SatStat.StreamSimulator
+  fullName: SatStat.StreamSimulator
+  nameWithType: StreamSimulator
+- uid: SatStat.StreamSimulator.Connect
+  name: Connect()
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Connect
+  commentId: M:SatStat.StreamSimulator.Connect
+  fullName: SatStat.StreamSimulator.Connect()
+  nameWithType: StreamSimulator.Connect()
+- uid: SatStat.StreamSimulator.Connect*
+  name: Connect
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Connect_
+  commentId: Overload:SatStat.StreamSimulator.Connect
+  isSpec: "True"
+  fullName: SatStat.StreamSimulator.Connect
+  nameWithType: StreamSimulator.Connect

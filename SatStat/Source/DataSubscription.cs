@@ -21,6 +21,7 @@ namespace SatStat
             subscriptionAttribute = attr;
         }
 
+        [STAThread]
         public object receive(object data)
         {   
             try

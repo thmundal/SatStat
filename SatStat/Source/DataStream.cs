@@ -27,6 +27,7 @@ namespace SatStat
         /// <summary>
         /// Deliver data requested to all subscribers
         /// </summary>
+        [STAThread]
         public void DeliverSubscriptions()
         {
             for(int i=0; i<inputBuffer.Count; i++)

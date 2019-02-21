@@ -22,6 +22,7 @@ namespace SatStat
             OnPayloadReceived_Callback = cb;
         }
 
+        [STAThread]
         public void ReceivePayload(object payload)
         {
             if (OnPayloadReceived_Callback != null)
