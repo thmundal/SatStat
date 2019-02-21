@@ -201,6 +201,7 @@
     <ClInclude Include="libraries\LinkedList.h" />
     <ClInclude Include="libraries\QueueArray.h" />
     <ClInclude Include="libraries\Stepper.h" />
+    <ClInclude Include="sensors\Result.h" />
     <ClInclude Include="sensors\Sensor.h" />
     <ClInclude Include="sensors\Temp_hum_sensor.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />

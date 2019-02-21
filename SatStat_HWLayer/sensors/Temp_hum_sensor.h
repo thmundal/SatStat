@@ -6,8 +6,8 @@
 class Temp_hum_sensor : public Sensor
 {
 public:
-	Temp_hum_sensor(String name, int pin);	
-	String read_sensor();
-private:
+	Temp_hum_sensor(const String& name, const int& pin);	
+	const Result* read_sensor();	
+private:	
 	dht DHT;
 };

@@ -3,59 +3,43 @@
 
 Json_handler::Json_handler()
 {
-	jsonBuffer = new DynamicJsonBuffer();
-	root = &jsonBuffer->createObject();
+	json_buffer = new DynamicJsonBuffer();
+	root = &json_buffer->createObject();
 }
 
 Json_handler::~Json_handler()
 {
-	delete jsonBuffer;
+	delete json_buffer;
 	delete &root;
+
+	// Dequeue and delete every JsonObject in the instruction queue
+	JsonObject* tmp;
+	while (!instruction_queue.isEmpty())
+	{
+		tmp = instruction_queue.dequeue();
+		delete &tmp;
+	}
 }
 
 void Json_handler::insert_instruction(String input_data)
 {
-	root = &jsonBuffer->parseObject(input_data);
+	root = &json_buffer->parseObject(input_data);
 	instruction_queue.enqueue(root);
-	jsonBuffer->clear();
+	json_buffer->clear();
 }
 
-JsonObject * Json_handler::fetch_instruction()
+JsonObject* Json_handler::fetch_instruction()
 {
 	return instruction_queue.dequeue();
 }
 
-JsonObject * Json_handler::convert_to_json(String key, String value)
+JsonObject* Json_handler::to_json_object(const Result* data, const int& data_count)
 {
-	bool is_numeric = true;
-	
-	for (int i = 0; i < value.length(); i++)
+	for (int i = 0; i < data_count; i++)
 	{
-		if (!isdigit(value.charAt(i)) && value.charAt(i) != '.')
-		{
-			is_numeric = false;
-		}
-	}
-
-	if (is_numeric)
-	{
-		json = "{\"" + key + "\":" + value + "}";
-	}
-	else
-	{
-		json = "{\"" + key + "\":\"" + value + "\"}";
-	}
-
-	root = &jsonBuffer->parseObject(json);	
-	jsonBuffer->clear();
-
-	return root;
-}
-
-JsonObject * Json_handler::convert_to_json(String formatted_string)
-{	
-	root = &jsonBuffer->parseObject(formatted_string);
-	jsonBuffer->clear();
+		root->set(data[i].name, data[i].data);
+	}	
+	json_buffer->clear();
 	return root;
 }
 

@@ -1,11 +1,19 @@
 #pragma once
 #include "Input_handler.h"
 
-// Constructor
+// Instantiate sensors
 Input_handler::Input_handler()
 {	
-	// Init sensors
 	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 7));
+}
+
+// Delete every sensor in the sensor collection
+Input_handler::~Input_handler()
+{
+	for (int i = 0; i < sensor_collection.count(); i++)
+	{
+		delete sensor_collection[i];
+	}	
 }
 
 // Listens on inputs from software layer
@@ -26,32 +34,33 @@ void Input_handler::serial_listener()
 	}
 }
 
-JsonObject * Input_handler::read_sensor(String name)
+const JsonObject* Input_handler::read_sensor(const String& name)
 {
-	return json_handler.convert_to_json(name, sensor_collection.get(name)->read_sensor());
+	Sensor* sensor = sensor_collection.get(name);
+	return json_handler.to_json_object(sensor->read_sensor(), sensor->get_data_count());
 }
 
 // Reads all sensors
-JsonObject* Input_handler::read_sensors()
-{		
-	String tmp = "{";
+const JsonObject* Input_handler::read_sensors()
+{	
+	const Result* result;
+
 	for (int i = sensor_collection.count() - 1; i >= 0; i--)
 	{
-		tmp += sensor_collection[i]->read_sensor();
-		if (i != 0)
+		result = sensor_collection[i]->read_sensor();
+
+		for (int j = 0; j < sensor_collection[i]->get_data_count(); j++)
 		{
-			tmp += ",";
+			json_handler.to_json_object(result[i].name, result[i].data);
 		}
-		else
-		{
-			tmp += "}";
-		}
+
+		// delete result;
 	}
 
-	return json_handler.convert_to_json(tmp);
+	return json_handler.to_json_object("test", 1);
 }
 
-JsonObject * Input_handler::get_instruction()
+JsonObject* Input_handler::get_instruction()
 {
 	return json_handler.fetch_instruction();
 }

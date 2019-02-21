@@ -315,6 +315,9 @@
     <ClInclude Include="libraries\dht.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
+    <ClInclude Include="sensors\Result.h">
+      <Filter>Header Files\sensors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="handlers\Input_handler.cpp">

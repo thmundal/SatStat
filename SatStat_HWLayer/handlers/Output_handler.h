@@ -8,7 +8,7 @@ class Output_handler
 {
 public:
 	Output_handler();
-	void print_to_serial(JsonObject *json);
+	void print_to_serial(const JsonObject *json);
 	void auto_rotate_sadm();
 	bool auto_rotate_on();
 	void rotate_sadm(int steps);

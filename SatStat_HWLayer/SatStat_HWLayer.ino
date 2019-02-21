@@ -16,6 +16,7 @@ void setup()
 	input_handler = new Input_handler();
 	output_handler = new Output_handler();
 	Serial.println(input_handler->get_sensor_list());
+	Serial.println("test123");
 }
 
 void loop()
@@ -29,7 +30,7 @@ void loop()
 
 	if (!(millis() - start_time < duration))
 	{
-		output_handler->print_to_serial(input_handler->read_sensors());
+		output_handler->print_to_serial(input_handler->read_sensor("temp_hum"));
 		start_time = millis();
 	}
 }
