@@ -11,10 +11,10 @@ Output_handler::Output_handler()
 	stepper->setSpeed(700);
 }
 
-void Output_handler::print_to_serial(const JsonObject *json)
+void Output_handler::print_to_serial(const JsonObject* json)
 {
 	json->printTo(Serial);
-	delete &json; // don't know if this should be here to prevent memory leaks
+	//delete &json; // don't know if this should be here to prevent memory leaks
 	Serial.println();
 }
 
