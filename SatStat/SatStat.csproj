@@ -69,18 +69,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComSettingsForm.cs">
+    <Compile Include="Source\ComSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComSettingsForm.Designer.cs">
+    <Compile Include="Source\ComSettingsForm.Designer.cs">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\AppSettings.cs" />
     <Compile Include="Source\DataProvider.cs" />
-    <Compile Include="SatStatMainForm.cs">
+    <Compile Include="Source\SatStatMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SatStatMainForm.Designer.cs">
+    <Compile Include="Source\SatStatMainForm.Designer.cs">
       <DependentUpon>SatStatMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\DataReceiver.cs" />
@@ -90,10 +90,11 @@
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\SerialHandler.cs" />
-    <EmbeddedResource Include="ComSettingsForm.resx">
+    <Compile Include="Source\StreamSimulator.cs" />
+    <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SatStatMainForm.resx">
+    <EmbeddedResource Include="Source\SatStatMainForm.resx">
       <DependentUpon>SatStatMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

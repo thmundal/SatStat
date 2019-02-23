@@ -242,63 +242,38 @@ namespace SatStatTests
         }
 
         [TestMethod]
-        public void TypeAsString_int()
+        public void ReceiveSensorList()
         {
+            string payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("int");
+            DataReceiver receiver = new DataReceiver("JArray");
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
-
-            receiver.OnPayloadReceived((object payload) =>
+            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "available_sensors", "JArray");
+            
+            receiver.OnPayloadReceived((object received_payload) =>
             {
-                Assert.AreEqual(5, payload);
-                Assert.AreEqual(typeof(int), payload.GetType());
-                Console.WriteLine(payload.GetType());
+                JArray received = (JArray)received_payload;
+                foreach(JObject obj in received)
+                {
+                    Console.WriteLine(obj);
+                    Console.WriteLine(obj.GetType());
+
+                    //Assert.IsTrue(obj.ContainsKey("temperature"));
+                    //Assert.IsTrue(obj.ContainsKey("humidity"));
+
+                    //Assert.AreEqual(obj["temperature"], "double");
+                    //Assert.AreEqual(obj["humidity"], "int");
+
+                    foreach (var elem in obj)
+                    {
+                        Console.WriteLine(elem.Key);
+                        Console.WriteLine(elem.Value);
+                    }
+                }
             });
 
             stream.AddSubscriber(sub);
-            stream.Parse(JSON);
-            stream.DeliverSubscriptions();
-        }
-
-        [TestMethod]
-        public void TypeAsString_double()
-        {
-            DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("double");
-
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "double", "double");
-
-            receiver.OnPayloadReceived((object payload) =>
-            {
-                Assert.AreEqual(2.0d, payload);
-                Assert.AreEqual(typeof(double), payload.GetType());
-                Console.WriteLine(payload.GetType());
-            });
-
-            stream.AddSubscriber(sub);
-            stream.Parse(JSON);
-            stream.DeliverSubscriptions();
-
-        }
-
-        [TestMethod]
-        public void TypeAsString_float()
-        {
-            DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("float");
-
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "float", "float");
-
-            receiver.OnPayloadReceived((object payload) =>
-            {
-                Assert.AreEqual(3.2f, payload);
-                Assert.AreEqual(typeof(float), payload.GetType());
-                Console.WriteLine(payload.GetType());
-            });
-
-            stream.AddSubscriber(sub);
-            stream.Parse(JSON);
+            stream.Parse(payload);
             stream.DeliverSubscriptions();
         }
     }

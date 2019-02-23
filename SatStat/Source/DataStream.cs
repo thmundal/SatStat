@@ -27,6 +27,7 @@ namespace SatStat
         /// <summary>
         /// Deliver data requested to all subscribers
         /// </summary>
+        [STAThread]
         public void DeliverSubscriptions()
         {
             for(int i=0; i<inputBuffer.Count; i++)
@@ -63,7 +64,7 @@ namespace SatStat
         {   
             if(input.Length > 0)
             {
-                Console.WriteLine("Parsing " + input);
+                //Console.WriteLine("Parsing " + input);
 
                 Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
 
