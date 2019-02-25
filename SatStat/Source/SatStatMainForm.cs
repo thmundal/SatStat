@@ -38,24 +38,22 @@ namespace SatStat
 
             seriesCollection1 = new SeriesCollection();
 
-            dataReceiver = new DataReceiver("double");
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(dataReceiver, "temperature", "double");
-            dataReceiver.OnPayloadReceived((object payload) =>
+            dataReceiver = new DataReceiver();
+            dataReceiver.OnPayloadReceived((object payload, string attribue) =>
             {
-                ReceivePayload((double) payload);
+                 ReceivePayload(Convert.ToDouble(payload));
             });
 
-            Program.serial.AddSubscriber(sub);
+            dataReceiver.Subscribe(Program.serial, "temperature", "double");
             
-            sensorListReceiver = new DataReceiver("JArray");
+            sensorListReceiver = new DataReceiver();
             
-            sensorListReceiver.OnPayloadReceived((object payload) =>
+            sensorListReceiver.OnPayloadReceived((object payload, string attribue) =>
             {
                 ReceiveSensorList((JArray)payload);
             });
 
-            Program.serial.AddSubscriber(DataSubscription<object>.CreateWithType(sensorListReceiver, "available_sensors", "JArray"));
-
+            sensorListReceiver.Subscribe(Program.serial, "available_sensors", "JArray");
 
             lineSeries1 = new LineSeries();
             lineSeries1.Title = "Series 1";
@@ -135,8 +133,7 @@ namespace SatStat
                 lineSeries1.Values.RemoveAt(0);
             });
         }
-
-
+        
         private int counter = 0;
         public void ReceivePayload(double payload)
         {
@@ -160,6 +157,7 @@ namespace SatStat
             {
                 foreach (var elem in sensor)
                 {
+                    Console.WriteLine(elem.Key);
                     if(!sensor_information.ContainsKey(elem.Key))
                     {
                         sensor_information.Add(elem.Key, elem.Value.ToString());
@@ -196,19 +194,15 @@ namespace SatStat
 
             Program.streamSimulator = new StreamSimulator();
             
-            Program.streamSimulator.AddSubscriber(DataSubscription<object>.CreateWithType(sensorListReceiver, "available_sensors", "JArray"));
+            //Program.streamSimulator.AddSubscriber(DataSubscription<object>.CreateWithType(sensorListReceiver, "available_sensors", "JArray"));
+
+            sensorListReceiver.Subscribe(Program.streamSimulator, "available_sensors", "JArray");
 
             Program.streamSimulator.Connect();
         }
 
         private void UISensorCheckboxList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var data_name = UISensorCheckboxList.Items[UISensorCheckboxList.SelectedIndex];
-
-            if(UISensorCheckboxList.GetItemChecked(UISensorCheckboxList.SelectedIndex))
-            {
-                //Console.WriteLine(data_name);
-            }
 
         }
 
@@ -216,9 +210,19 @@ namespace SatStat
         {
             CheckedListBox sensor_select = (CheckedListBox)sender;
 
-            var attribute = sensor_select.Items[e.Index];
+            string attribute = sensor_select.Items[e.Index].ToString();
+            if(!dataReceiver.HasSubscription(attribute) && sensor_select.CheckedItems.IndexOf(sensor_select.Items[e.Index]) == -1)
+            {
+                string type = (string) sensor_information[attribute];
 
-            Console.WriteLine(attribute);
+                dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                Console.WriteLine("Subscribed to " + attribute);
+            } else
+            {
+                dataReceiver.Unsubscribe(attribute);
+                Console.WriteLine("Unsubscribed to " + attribute);
+            }
+
         }
     }
 }

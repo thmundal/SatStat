@@ -16,18 +16,17 @@ namespace SatStatTests
         public void ReceiveDouble()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("double");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "double", "double");
-
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(2.0, payload);
                 Assert.AreEqual(typeof(double), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "double", "double");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
@@ -37,18 +36,17 @@ namespace SatStatTests
         public void ReceiveString()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("string");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "string", "string");
-
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual("this is a string", payload);
                 Assert.AreEqual(typeof(string), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "string", "string");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
@@ -58,39 +56,37 @@ namespace SatStatTests
         public void ReceiveFloat()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("float");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "float", "float");
 
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(3.2f, payload);
                 Assert.AreEqual(typeof(float), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "float", "float");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
-
         }
 
         [TestMethod]
         public void ReceiveInt()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("int");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
-
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "int", "int");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
@@ -100,18 +96,17 @@ namespace SatStatTests
         public void ReceiveLong()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("long");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "long", "long");
-
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(5L, payload);
                 Assert.AreEqual(typeof(long), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "long", "long");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
 
@@ -121,11 +116,9 @@ namespace SatStatTests
         public void ReceiveJArray()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("JArray");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "genericlist", "JArray");
-
-            receiver.OnPayloadReceived((object payload) => {
+            receiver.OnPayloadReceived((object payload, string attribute) => {
 
                 JArray expected = new JArray { "one", "two", "three" };
                 JArray actual = (JArray) payload;
@@ -138,7 +131,8 @@ namespace SatStatTests
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "genericlist", "JArray");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
         }
@@ -147,11 +141,9 @@ namespace SatStatTests
         public void ReceiveJObject()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("JObject");
+            DataReceiver receiver = new DataReceiver();
 
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "hashtable", "JObject");
-
-            receiver.OnPayloadReceived((object p) =>
+            receiver.OnPayloadReceived((object p, string attribute) =>
             {
                 JObject payload = (JObject)p;
                 JObject actual = new JObject
@@ -168,7 +160,8 @@ namespace SatStatTests
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "hashtable", "JObject");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
         }
@@ -177,13 +170,10 @@ namespace SatStatTests
         public void MultipleSubscriptionOnDifferentKeys()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("JObject");
-            DataReceiver receiver2 = new DataReceiver("int");
+            DataReceiver receiver = new DataReceiver();
+            DataReceiver receiver2 = new DataReceiver();
             
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "hashtable", "JObject");
-            IDataSubscription sub2 = DataSubscription<object>.CreateWithType(receiver2, "int", "int");
-
-            receiver.OnPayloadReceived((object p) =>
+            receiver.OnPayloadReceived((object p, string attribute) =>
             {
                 JObject payload = (JObject)p;
                 JObject actual = new JObject();
@@ -198,15 +188,16 @@ namespace SatStatTests
                 Console.WriteLine(payload.GetType());
             });
 
-            receiver2.OnPayloadReceived((object payload) =>
+            receiver2.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
-            stream.AddSubscriber(sub2);
+            receiver.Subscribe(stream, "hashtable", "JObject");
+            receiver2.Subscribe(stream, "int", "int");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
         }
@@ -215,28 +206,26 @@ namespace SatStatTests
         public void MultipleSubscribersOnSameKey()
         {
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("int");
-            DataReceiver receiver2 = new DataReceiver("int");
+            DataReceiver receiver = new DataReceiver();
+            DataReceiver receiver2 = new DataReceiver();
             
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "int", "int");
-            IDataSubscription sub2 = DataSubscription<object>.CreateWithType(receiver2, "int", "int");
-
-            receiver.OnPayloadReceived((object payload) =>
+            receiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            receiver2.OnPayloadReceived((object payload) =>
+            receiver2.OnPayloadReceived((object payload, string attribute) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            stream.AddSubscriber(sub);
-            stream.AddSubscriber(sub2);
+            receiver.Subscribe(stream, "int", "int");
+            receiver2.Subscribe(stream, "int", "int");
+
             stream.Parse(JSON);
             stream.DeliverSubscriptions();
         }
@@ -246,11 +235,9 @@ namespace SatStatTests
         {
             string payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
             DataStream stream = new DataStream();
-            DataReceiver receiver = new DataReceiver("JArray");
-
-            IDataSubscription sub = DataSubscription<object>.CreateWithType(receiver, "available_sensors", "JArray");
+            DataReceiver receiver = new DataReceiver();
             
-            receiver.OnPayloadReceived((object received_payload) =>
+            receiver.OnPayloadReceived((object received_payload, string attribute) =>
             {
                 JArray received = (JArray)received_payload;
                 foreach(JObject obj in received)
@@ -272,26 +259,35 @@ namespace SatStatTests
                 }
             });
 
-            stream.AddSubscriber(sub);
+            receiver.Subscribe(stream, "available_sensors", "JArray");
+
             stream.Parse(payload);
             stream.DeliverSubscriptions();
         }
-    }
 
-    public class Receiver<T> : DataReceiver
-    {
-        public T receivedPayload;
-
-
-        public Receiver(string dataType = "int") : base(dataType)
+        [TestMethod]
+        public void OneSubscriberMultipleKeys()
         {
-        }
-        
+            string payload = "{\"a\":1, \"b\":2}";
+            DataStream stream = new DataStream();
+            DataReceiver receiver = new DataReceiver();
 
-        public void ReceivePayload(T payload)
-        {
-            receivedPayload = payload;
-            Console.WriteLine(payload);
+            receiver.Subscribe(stream, "a", "int");
+            receiver.Subscribe(stream, "b", "int");
+
+            receiver.OnPayloadReceived((object actual, string attribute) =>
+            {
+                if(attribute == "a")
+                {
+                    Assert.AreEqual(1, actual);
+                } else if(attribute == "b")
+                {
+                    Assert.AreEqual(2, actual);
+                }
+            });
+
+            stream.Parse(payload);
+            stream.DeliverSubscriptions();
         }
     }
 }

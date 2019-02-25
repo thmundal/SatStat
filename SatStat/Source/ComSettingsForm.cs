@@ -24,28 +24,35 @@ namespace SatStat
             foreach (DictionaryEntry n in comPorts)
             {
                 portNames.Add(n.Key.ToString());
-                comSourcesListUI.Items.Add(n.Value.ToString());
+                UIcomSourcesList.Items.Add(n.Value.ToString());
             }
         }
 
-        private void ComSettingsSaveBtn(object sender, EventArgs e)
+        private void UIComSettingsConnectBtn_Click(object sender, EventArgs e)
         {
-            if(comSourcesListUI.SelectedIndex >= 0)
+            ApplyComSettings();
+                
+            Program.serial.Disconnect();
+
+            Program.serial.Connect();
+        }
+
+        private void UIComSettingsApplyBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ApplyComSettings()
+        {
+            if (UIcomSourcesList.SelectedIndex >= 0)
             {
-                string a = portNames[comSourcesListUI.SelectedIndex];
-                Program.settings.selectedComPort = a;
-
-                Program.serial.Disconnect();
-                Program.serial.SetComPort(a);
-
-                Program.serial.Connect();
-                Console.WriteLine(a);
+                string portName = portNames[UIcomSourcesList.SelectedIndex];
+                Program.settings.selectedComPort = portName;
             }
 
-            if(baudRateInputList.SelectedIndex >= 0)
+            if (UIbaudRateInputList.SelectedIndex >= 0)
             {
-                int baud_rate = (int)baudRateInputList.Items[baudRateInputList.SelectedIndex];
-                Program.settings.selectedBaudRate = baud_rate;
+                int baudRate = (int)UIbaudRateInputList.Items[UIbaudRateInputList.SelectedIndex];
+                Program.settings.selectedBaudRate = baudRate;
             }
         }
     }

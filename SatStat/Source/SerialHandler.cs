@@ -83,6 +83,8 @@ namespace SatStat
         /// <returns></returns>
         public bool Connect()
         {
+            ApplyComSettings();
+
             if (connection.PortName != "")
             {
                 connected = true;
@@ -91,6 +93,11 @@ namespace SatStat
             }
 
             return false;
+        }
+
+        private void ApplyComSettings()
+        {
+            SetComPort(Program.settings.selectedComPort);
         }
 
         /// <summary>

@@ -17,10 +17,9 @@ namespace SatStat
 
         private async Task Run()
         {
-            string payload = "";
-
             Random rand = new Random();
-            payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
+            string payload = "{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}";
+
             Parse(payload);
             DeliverSubscriptions();
 
@@ -28,8 +27,9 @@ namespace SatStat
             while (i < 100)
             {
                 double temp = (rand.NextDouble() * 100);
+                double humidity = rand.Next(0, 100);
 
-                payload = "{\"temperature\": \"" + temp + "\"}";
+                payload = "{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + "}";
 
                 Parse(payload);
                 DeliverSubscriptions();

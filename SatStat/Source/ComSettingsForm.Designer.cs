@@ -28,39 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comSourcesListUI = new System.Windows.Forms.ListBox();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.UIcomSourcesList = new System.Windows.Forms.ListBox();
+            this.UIComSettingsConnectBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.COMPortListLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.baudRateInputList = new System.Windows.Forms.ListBox();
+            this.UIbaudRateInputList = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.UIComSettingsCancelBtn = new System.Windows.Forms.Button();
+            this.UIComSettingsApplyBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comSourcesListUI
+            // UIcomSourcesList
             // 
-            this.comSourcesListUI.FormattingEnabled = true;
-            this.comSourcesListUI.Location = new System.Drawing.Point(3, 16);
-            this.comSourcesListUI.Name = "comSourcesListUI";
-            this.comSourcesListUI.Size = new System.Drawing.Size(235, 95);
-            this.comSourcesListUI.TabIndex = 0;
+            this.UIcomSourcesList.FormattingEnabled = true;
+            this.UIcomSourcesList.Location = new System.Drawing.Point(3, 16);
+            this.UIcomSourcesList.Name = "UIcomSourcesList";
+            this.UIcomSourcesList.Size = new System.Drawing.Size(235, 95);
+            this.UIcomSourcesList.TabIndex = 0;
             // 
-            // saveButton
+            // UIComSettingsConnectBtn
             // 
-            this.saveButton.Location = new System.Drawing.Point(275, 3);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.ComSettingsSaveBtn);
+            this.UIComSettingsConnectBtn.Location = new System.Drawing.Point(275, 3);
+            this.UIComSettingsConnectBtn.Name = "UIComSettingsConnectBtn";
+            this.UIComSettingsConnectBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIComSettingsConnectBtn.TabIndex = 1;
+            this.UIComSettingsConnectBtn.Text = "Connect";
+            this.UIComSettingsConnectBtn.UseVisualStyleBackColor = true;
+            this.UIComSettingsConnectBtn.Click += new System.EventHandler(this.UIComSettingsConnectBtn_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -78,7 +79,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.COMPortListLabel);
-            this.panel1.Controls.Add(this.comSourcesListUI);
+            this.panel1.Controls.Add(this.UIcomSourcesList);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(244, 111);
@@ -96,7 +97,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.baudRateInputList);
+            this.panel2.Controls.Add(this.UIbaudRateInputList);
             this.panel2.Location = new System.Drawing.Point(253, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(174, 111);
@@ -111,24 +112,25 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Baud Rate";
             // 
-            // baudRateInputList
+            // UIbaudRateInputList
             // 
-            this.baudRateInputList.FormattingEnabled = true;
-            this.baudRateInputList.Items.AddRange(new object[] {
+            this.UIbaudRateInputList.FormattingEnabled = true;
+            this.UIbaudRateInputList.Items.AddRange(new object[] {
             "9600",
             "19200",
             "115200"});
-            this.baudRateInputList.Location = new System.Drawing.Point(4, 16);
-            this.baudRateInputList.Name = "baudRateInputList";
-            this.baudRateInputList.Size = new System.Drawing.Size(167, 95);
-            this.baudRateInputList.TabIndex = 1;
+            this.UIbaudRateInputList.Location = new System.Drawing.Point(4, 16);
+            this.UIbaudRateInputList.Name = "UIbaudRateInputList";
+            this.UIbaudRateInputList.Size = new System.Drawing.Size(167, 95);
+            this.UIbaudRateInputList.TabIndex = 1;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.cancelButton);
-            this.flowLayoutPanel2.Controls.Add(this.saveButton);
+            this.flowLayoutPanel2.Controls.Add(this.UIComSettingsCancelBtn);
+            this.flowLayoutPanel2.Controls.Add(this.UIComSettingsConnectBtn);
+            this.flowLayoutPanel2.Controls.Add(this.UIComSettingsApplyBtn);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 117);
@@ -136,22 +138,32 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(434, 29);
             this.flowLayoutPanel2.TabIndex = 4;
             // 
-            // cancelButton
+            // UIComSettingsCancelBtn
             // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(356, 3);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.UIComSettingsCancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.UIComSettingsCancelBtn.Location = new System.Drawing.Point(356, 3);
+            this.UIComSettingsCancelBtn.Name = "UIComSettingsCancelBtn";
+            this.UIComSettingsCancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIComSettingsCancelBtn.TabIndex = 1;
+            this.UIComSettingsCancelBtn.Text = "Cancel";
+            this.UIComSettingsCancelBtn.UseVisualStyleBackColor = true;
+            // 
+            // UIComSettingsApplyBtn
+            // 
+            this.UIComSettingsApplyBtn.Location = new System.Drawing.Point(194, 3);
+            this.UIComSettingsApplyBtn.Name = "UIComSettingsApplyBtn";
+            this.UIComSettingsApplyBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIComSettingsApplyBtn.TabIndex = 2;
+            this.UIComSettingsApplyBtn.Text = "Apply";
+            this.UIComSettingsApplyBtn.UseVisualStyleBackColor = true;
+            this.UIComSettingsApplyBtn.Click += new System.EventHandler(this.UIComSettingsApplyBtn_Click);
             // 
             // ComSettingsForm
             // 
-            this.AcceptButton = this.saveButton;
+            this.AcceptButton = this.UIComSettingsConnectBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cancelButton;
+            this.CancelButton = this.UIComSettingsCancelBtn;
             this.ClientSize = new System.Drawing.Size(434, 146);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -176,15 +188,16 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox comSourcesListUI;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.ListBox UIcomSourcesList;
+        private System.Windows.Forms.Button UIComSettingsConnectBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label COMPortListLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox baudRateInputList;
+        private System.Windows.Forms.ListBox UIbaudRateInputList;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button UIComSettingsCancelBtn;
+        private System.Windows.Forms.Button UIComSettingsApplyBtn;
     }
 }

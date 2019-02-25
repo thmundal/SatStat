@@ -11,15 +11,12 @@ namespace SatStat
     public class DataStream
     {
         private List<Dictionary<string, object>> inputBuffer;
-
-        private List<IDataSubscription> subscriptions;
-
-
+        private List<DataSubscription> subscriptions;
         private Action<string> OutputReceivedCallback;
 
         public DataStream()
         {
-            subscriptions = new List<IDataSubscription>();
+            subscriptions = new List<DataSubscription>();
             inputBuffer = new List<Dictionary<string, object>>();
 
         }
@@ -27,7 +24,6 @@ namespace SatStat
         /// <summary>
         /// Deliver data requested to all subscribers
         /// </summary>
-        [STAThread]
         public void DeliverSubscriptions()
         {
             for(int i=0; i<inputBuffer.Count; i++)
@@ -39,9 +35,9 @@ namespace SatStat
                     string key = item.Key;
                     object value = item.Value;
 
-                    foreach (IDataSubscription subscriber in subscriptions)
+                    foreach (DataSubscription subscriber in subscriptions)
                     {
-                        string attribute = subscriber.subscriptionAttribute;
+                        string attribute = subscriber.attribute;
                         if (key == attribute)
                         {
                             Console.Write("Delivering to subscribers: ");
@@ -79,7 +75,7 @@ namespace SatStat
         /// Add a subscriber to this data stream
         /// </summary>
         /// <param name="subscription"></param>
-        public void AddSubscriber(IDataSubscription subscription)
+        public void AddSubscriber(DataSubscription subscription)
         {
             subscriptions.Add(subscription);
         }
