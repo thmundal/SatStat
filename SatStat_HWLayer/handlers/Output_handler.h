@@ -3,12 +3,15 @@
 #include "Json_handler.h"
 #include "../libraries/Stepper.h"
 #include "../libraries/DS1302.h"
+#include "../libraries/LinkedList.h"
+#include "../sensors/Sensor.h"
 
 class Output_handler
 {
 public:
 	Output_handler();
-	void print_to_serial(const JsonObject *json);
+	void send_ack(LinkedList<String, Sensor*>& sensor_collection);
+	void print_to_serial(Json_container<JsonObject>* json);
 	void auto_rotate_sadm();
 	bool auto_rotate_on();
 	void rotate_sadm(int steps);
@@ -22,5 +25,7 @@ private:
 	const int stepsPerRev = 32;
 	const float factor = 3.25;
 	const int step_limit = (int)(1024 * factor);	
+	
+	LinkedList<JsonObject*, void(*)(void)> instruction_interpreter;
 };
 

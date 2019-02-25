@@ -20,10 +20,11 @@ void setup()
 	Serial.begin(9600);	
 	input_handler = new Input_handler();
 	output_handler = new Output_handler();
+	output_handler->send_ack(input_handler->get_sensor_collection());
 }
 
 void loop()
-{
+{	
 	/*if (output_handler->auto_rotate_on())
 	{
 		output_handler->auto_rotate_sadm();
