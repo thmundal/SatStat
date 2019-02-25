@@ -11,11 +11,34 @@ Output_handler::Output_handler()
 	stepper->setSpeed(700);
 }
 
-void Output_handler::print_to_serial(const JsonObject *json)
-{
-	json->printTo(Serial);
-	delete &json; // don't know if this should be here to prevent memory leaks
+//Sends ack to software layer
+void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
+{	
+	Json_container<JsonObject>* ack = json_handler.to_json_object("serial_handshake", "ok");
+	JsonArray& available_data = ack->get()->createNestedArray("available_data");
+
+	for (int i = 0; i < sensor_collection.count(); i++)
+	{
+		Sensor* sensor = sensor_collection[i];
+		for (int i = 0; i < sensor->get_data_count(); i++)
+		{			
+			available_data.add(*json_handler.to_json_object(sensor->read_sensor()[i].name, "int")->get());
+		}
+	}
+
+	ack->get()->printTo(Serial);
 	Serial.println();
+
+	delete ack;
+	//Serial.print(newline_format);
+}
+
+void Output_handler::print_to_serial(Json_container<JsonObject>* json)
+{
+	json->get()->printTo(Serial);
+	Serial.println();
+	
+	delete json;
 }
 
 /*

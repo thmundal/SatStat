@@ -34,6 +34,12 @@
     <Filter Include="Header Files\libraries\ArduinoJson">
       <UniqueIdentifier>{fca7005a-e2a6-4f5f-ad13-ccdae34b73db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\other">
+      <UniqueIdentifier>{97e4752f-8017-477a-bf88-450cfb9a7958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\other">
+      <UniqueIdentifier>{badc78a5-d60f-45c6-9fbf-2db3a5c35226}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -41,9 +47,6 @@
   <ItemGroup>
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="handlers\Input_handler.h">
-      <Filter>Header Files\handlers</Filter>
     </ClInclude>
     <ClInclude Include="handlers\Json_handler.h">
       <Filter>Header Files\handlers</Filter>
@@ -318,6 +321,18 @@
     <ClInclude Include="sensors\Result.h">
       <Filter>Header Files\sensors</Filter>
     </ClInclude>
+    <ClInclude Include="other\Json_object_container.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\Input_handler.h">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="other\Json_array_container.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="other\Json_container.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="handlers\Input_handler.cpp">
@@ -343,6 +358,12 @@
     </ClCompile>
     <ClCompile Include="libraries\dht.cpp">
       <Filter>Source Files\libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="other\Json_object_container.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="other\Json_array_container.cpp">
+      <Filter>Source Files\other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
