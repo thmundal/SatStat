@@ -11,6 +11,11 @@ class Output_handler
 public:
 	Output_handler();
 	void send_ack(LinkedList<String, Sensor*>& sensor_collection);
+	void send_ack();
+	void send_nack();
+
+	void set_newline_format(const String& newline_format);
+
 	void print_to_serial(Json_container<JsonObject>* json);
 	void auto_rotate_sadm();
 	bool auto_rotate_on();
@@ -26,6 +31,8 @@ private:
 	const float factor = 3.25;
 	const int step_limit = (int)(1024 * factor);	
 	
+	String newline_format;
+
 	LinkedList<JsonObject*, void(*)(void)> instruction_interpreter;
 };
 

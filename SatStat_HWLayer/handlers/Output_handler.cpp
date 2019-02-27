@@ -9,6 +9,7 @@ Output_handler::Output_handler()
 	dir = false;
 	auto_rotate_en = false;
 	stepper->setSpeed(700);
+	newline_format = "\n";
 }
 
 //Sends ack to software layer
@@ -27,16 +28,40 @@ void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
 	}
 
 	ack->get()->printTo(Serial);
-	Serial.println();
+	Serial.print(newline_format);
 
 	delete ack;
-	//Serial.print(newline_format);
+}
+
+void Output_handler::send_ack()
+{
+	Json_container<JsonObject>* ack = json_handler.create_object("serial_connect", "ok");
+
+	ack->get()->printTo(Serial);
+	Serial.print(newline_format);
+
+	delete ack;
+}
+
+void Output_handler::send_nack()
+{
+	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
+
+	nack->get()->printTo(Serial);
+	Serial.print(newline_format);
+
+	delete nack;
+}
+
+void Output_handler::set_newline_format(const String & newline_format)
+{
+	this->newline_format = newline_format;
 }
 
 void Output_handler::print_to_serial(Json_container<JsonObject>* json)
 {
 	json->get()->printTo(Serial);
-	Serial.println();
+	Serial.print(newline_format);
 	
 	delete json;
 }
