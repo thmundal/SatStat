@@ -14,7 +14,7 @@ Output_handler::Output_handler()
 //Sends ack to software layer
 void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
 {	
-	Json_container<JsonObject>* ack = json_handler.to_json_object("serial_handshake", "ok");
+	Json_container<JsonObject>* ack = json_handler.create_object("serial_handshake", "ok");
 	JsonArray& available_data = ack->get()->createNestedArray("available_data");
 
 	for (int i = 0; i < sensor_collection.count(); i++)
@@ -22,7 +22,7 @@ void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
 		Sensor* sensor = sensor_collection[i];
 		for (int i = 0; i < sensor->get_data_count(); i++)
 		{			
-			available_data.add(*json_handler.to_json_object(sensor->read_sensor()[i].name, "int")->get());
+			available_data.add(*json_handler.create_object(sensor->read_sensor()[i].name, "int")->get());
 		}
 	}
 

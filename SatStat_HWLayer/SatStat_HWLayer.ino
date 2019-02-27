@@ -25,16 +25,9 @@ void setup()
 
 void loop()
 {	
-	/*if (output_handler->auto_rotate_on())
-	{
-		output_handler->auto_rotate_sadm();
-	}
-
-	input_handler->serial_listener();*/
-
 	if (!(millis() - start_time < duration))
 	{	
-		output_handler->print_to_serial(input_handler->read_sensor("temp_hum"));
+		output_handler->print_to_serial(input_handler->read_sensors());
 		start_time = millis();
 	}
 }

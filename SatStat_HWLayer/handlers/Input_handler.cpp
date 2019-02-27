@@ -99,27 +99,43 @@ void Input_handler::serial_listener()
 Json_container<JsonObject>* Input_handler::read_sensor(const String& name)
 {
 	Sensor* sensor = sensor_collection.get(name);
-	return json_handler.to_json_object(sensor->read_sensor(), sensor->get_data_count());
+	const Result* result = sensor->read_sensor();
+	const int count = sensor->get_data_count();
+	Json_container<JsonObject>* obj = json_handler.create_object<JsonObject>();	
+
+	for (int i = 0; i < count; i++)
+	{
+		json_handler.append_to(obj, result[i].name, result[i].data);
+	}
+
+	return obj;
 }
 
 // Reads all sensors
 Json_container<JsonObject>* Input_handler::read_sensors()
 {	
+	Sensor* sensor;
+	int sensor_count = sensor_collection.count();
 	const Result* result;
+	int result_count;
 
-	for (int i = sensor_collection.count() - 1; i >= 0; i--)
+	Json_container<JsonObject>* obj = json_handler.create_object<JsonObject>();
+
+	for (int i = 0; i < sensor_count; i++)
 	{
-		result = sensor_collection[i]->read_sensor();
+		sensor = sensor_collection[i];
+		result = sensor->read_sensor();
+		result_count = sensor->get_data_count();
 
-		for (int j = 0; j < sensor_collection[i]->get_data_count(); j++)
+		for (int j = 0; j < result_count; j++)
 		{
-			json_handler.to_json_object(result[i].name, result[i].data);
+			json_handler.append_to(obj, result[j].name, result[j].data);
 		}
+	}	
 
-		// delete result;
-	}
+	return obj;
 
-	return json_handler.to_json_object("test", 1);
+	return json_handler.create_object("test", 1);
 }
 
 // Fetches instruction form instruction queue
