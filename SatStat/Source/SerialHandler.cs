@@ -56,25 +56,10 @@ namespace SatStat
         private void OnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string input = "";
-            try
-            {
-                input = connection.ReadLine();
+            input = connection.ReadLine();
 
-                Parse(input);
-                DeliverSubscriptions();
-            }
-            catch (Newtonsoft.Json.JsonSerializationException)
-            {
-                Console.WriteLine("Invalid json received:" + input);
-            }
-            catch(Newtonsoft.Json.JsonReaderException)
-            {
-                Console.WriteLine("Invalid json received:" + input);
-            }
-            catch (System.IO.IOException)
-            {
-                Console.WriteLine("Read thread aborted");
-            }
+            Parse(input);
+            DeliverSubscriptions();
         }
 
         /// <summary>

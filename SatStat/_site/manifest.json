@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "D:/Programming/CSharp/SatStat/SatStat",
+  "source_base_path": "E:/Programming/Bachelor/SatStat/SatStat",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "Xk4utg9kdvRByhjR2hVdPw=="
+          "hash": "yG5cmfMuG+dMZQBDDCbJ0A=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "SlyLN3OVrd3Tj7bfuaTWAQ=="
+          "hash": "TqQJIBwli+oHZzy1WOwo8g=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "M85PVn0NwcsbiVYhAgDL6Q=="
+          "hash": "IdgB/xd/Qy4LJ9LsYJQhRA=="
         }
       },
       "is_incremental": true,
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataReceiver.html",
-          "hash": "LR/mpfW2m1RbGrEdAuLjoQ=="
+          "hash": "pYtp7+MNiI0lfuAWiNBx/Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataStream.html",
-          "hash": "DSl0fGVMRBWF0oaxxHnz+w=="
+          "hash": "nLRmOXyAGymimZPl4xtXmw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "V68eKjSZQtc+iwTsVuXysg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,10 +141,34 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.html",
-          "hash": "A9qoBfsZJWnraqIR6lv3vg=="
+          "hash": "E3mhzUqUlZKm5XjtnCAC8Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.SocketHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.SocketHandler.html",
+          "hash": "zrzeKWTClMUHyW2KYx99wQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.StateObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.StateObject.html",
+          "hash": "bQ5jWQLHzAdR+FU5wvvFbQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,7 +180,7 @@
           "hash": "PKAqpYpUW5wE4Thylyr4Iw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "+3ZZomb4PwwiSwzPHStKmQ=="
+          "hash": "NHu+a3WUZJ/wiXaKe6Yvqw=="
         }
       },
       "is_incremental": false,
@@ -177,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "dxf/SaLUFKjir20zIJTdFQ=="
+          "hash": "NiCkZgBhZBb6i8WfDm0oQg=="
         }
       },
       "is_incremental": false,
@@ -212,17 +236,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 12,
+          "skipped_file_count": 10
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 10,
-          "skipped_file_count": 9
         }
       }
     },

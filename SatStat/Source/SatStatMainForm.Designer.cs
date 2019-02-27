@@ -49,6 +49,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -121,7 +122,8 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cOMSettingsToolStripMenuItem,
-            this.connectToStreamSimulatorToolStripMenuItem});
+            this.connectToStreamSimulatorToolStripMenuItem,
+            this.startSocketServerToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -287,6 +289,13 @@
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
             // 
+            // startSocketServerToolStripMenuItem
+            // 
+            this.startSocketServerToolStripMenuItem.Name = "startSocketServerToolStripMenuItem";
+            this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.startSocketServerToolStripMenuItem.Text = "Start socket server";
+            this.startSocketServerToolStripMenuItem.Click += new System.EventHandler(this.startSocketServerToolStripMenuItem_Click);
+            // 
             // SatStatMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +349,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.ToolStripMenuItem connectToStreamSimulatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startSocketServerToolStripMenuItem;
     }
 }
 

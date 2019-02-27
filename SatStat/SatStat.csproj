@@ -90,6 +90,7 @@
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\SerialHandler.cs" />
+    <Compile Include="Source\SocketHandler.cs" />
     <Compile Include="Source\StreamSimulator.cs" />
     <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>

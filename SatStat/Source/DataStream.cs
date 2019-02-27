@@ -60,11 +60,23 @@ namespace SatStat
         {   
             if(input.Length > 0)
             {
-                //Console.WriteLine("Parsing " + input);
-
-                Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
-
-                inputBuffer.Add(inputParsed);
+                try
+                {
+                    Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
+                    inputBuffer.Add(inputParsed);
+                }
+                catch (JsonSerializationException)
+                {
+                    Console.WriteLine("Invalid json received:" + input);
+                }
+                catch (JsonReaderException)
+                {
+                    Console.WriteLine("Invalid json received:" + input);
+                }
+                catch (System.IO.IOException)
+                {
+                    Console.WriteLine("Read thread aborted");
+                }
             } else
             {
                 Console.WriteLine("Input is empty, aborting parse");

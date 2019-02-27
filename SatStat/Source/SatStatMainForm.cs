@@ -224,5 +224,10 @@ namespace SatStat
             }
 
         }
+
+        private void startSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SocketHandler server = new SocketHandler();
+        }
     }
 }
