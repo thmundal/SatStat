@@ -12,7 +12,8 @@ public:
 	~Input_handler();
 
 	// Serial methods
-	bool establish_connection();
+	bool handshake_approved();
+	bool connection_request_approved();
 	void serial_listener();
 	void serial_init();
 	bool init_connection();

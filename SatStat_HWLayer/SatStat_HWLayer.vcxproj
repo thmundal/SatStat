@@ -201,6 +201,7 @@
     <ClInclude Include="libraries\LinkedList.h" />
     <ClInclude Include="libraries\QueueArray.h" />
     <ClInclude Include="libraries\Stepper.h" />
+    <ClInclude Include="other\Function_pointer_container.h" />
     <ClInclude Include="other\Json_array_container.h" />
     <ClInclude Include="other\Json_container.h" />
     <ClInclude Include="other\Json_object_container.h" />

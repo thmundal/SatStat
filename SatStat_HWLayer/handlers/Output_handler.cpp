@@ -12,8 +12,67 @@ Output_handler::Output_handler()
 	newline_format = "\n";
 }
 
+void Output_handler::send_handshake_response()
+{
+	Json_container<JsonObject>* handshake_response = json_handler.create_object();
+	JsonObject& serial_handshake = handshake_response->get()->createNestedObject("serial_handshake");
+	JsonArray& baud_rates = serial_handshake.createNestedArray("baud_rates");
+	JsonArray& configs = serial_handshake.createNestedArray("configs");
+	JsonArray& newlines = serial_handshake.createNestedArray("newlines");
+
+	for (unsigned long i = 9600; i <= 38400; i *= 2)
+	{
+		baud_rates.add(i);
+	}
+
+
+	for (unsigned long i = 14400; i <= 115200; i *= 2)
+	{
+		baud_rates.add(i);
+	}
+
+	String tmp;
+
+	for (int i = 5; i <= 8; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			for (int k = 1; k <= 2; k++)
+			{
+				tmp = String(i);
+
+				switch (j)
+				{
+				case 0:
+					tmp += 'N';
+					break;
+				case 1:
+					tmp += 'O';
+					break;
+				case 2:
+					tmp += 'E';
+					break;
+				default:
+					break;
+				}
+
+				tmp += String(k);
+
+				configs.add(tmp);
+			}
+		}
+	}
+
+	newlines.add("\r\n");
+	newlines.add("\n");
+
+	handshake_response->get()->printTo(Serial);
+
+	delete handshake_response;
+}
+
 //Sends ack to software layer
-void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
+void Output_handler::send_sensor_collection(LinkedList<String, Sensor*>& sensor_collection)
 {	
 	Json_container<JsonObject>* ack = json_handler.create_object("serial_handshake", "ok");
 	JsonArray& available_data = ack->get()->createNestedArray("available_data");
@@ -28,15 +87,15 @@ void Output_handler::send_ack(LinkedList<String, Sensor*>& sensor_collection)
 	}
 
 	ack->get()->printTo(Serial);
-	Serial.print(newline_format);
+	Serial.print(newline_format);	
 
 	delete ack;
 }
 
 void Output_handler::send_ack()
-{
-	Json_container<JsonObject>* ack = json_handler.create_object("serial_connect", "ok");
-
+{	
+	Json_container<JsonObject>* ack = json_handler.create_object("connect", "init");
+	
 	ack->get()->printTo(Serial);
 	Serial.print(newline_format);
 
@@ -66,11 +125,16 @@ void Output_handler::print_to_serial(Json_container<JsonObject>* json)
 	delete json;
 }
 
+void Output_handler::auto_rotate(const bool& on)
+{
+	auto_rotate_en = on;
+}
+
 /*
 	Automatically rotates the SADM.
 	Must be continuously called.
 */
-void Output_handler::auto_rotate_sadm() 
+void Output_handler::rotate_sadm() 
 {
 	if (steps < step_limit)
 	{
@@ -90,11 +154,6 @@ void Output_handler::auto_rotate_sadm()
 	{
 		stepper->step(-1);
 	}
-}
-
-bool Output_handler::auto_rotate_on()
-{
-	return auto_rotate_en;
 }
 
 // Rotates the SADM the passed number of steps

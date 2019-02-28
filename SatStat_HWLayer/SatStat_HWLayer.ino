@@ -17,22 +17,22 @@ void setup()
 	digitalWrite(7, LOW);
 	pinMode(5, OUTPUT);
 	digitalWrite(5, HIGH);
-
+	
 	// Initialize the serial port
 	Serial.begin(9600);
-
+	
 	// Instantiate input and output handler
 	input_handler = new Input_handler();
 	output_handler = new Output_handler();
 
-	// Loop until connection established
+	// Loop until handshake received
 	bool connection_established = false;
 	while (!connection_established)
 	{
-		// Send ack if connection is propperly established, nack if not
-		if (input_handler->establish_connection())
+		// Send ack if approved, nack if not
+		if (input_handler->handshake_approved())
 		{
-			output_handler->send_ack(input_handler->get_sensor_collection());
+			output_handler->send_handshake_response();
 			connection_established = true;
 		}
 		else
@@ -40,29 +40,37 @@ void setup()
 			output_handler->send_nack();
 		}
 	}	
-	
-	// Wait until serial is done sending ack
-	while (!Serial.available());
+
+	// Loop until connection request received
+	connection_established = false;
+	while (!connection_established)
+	{
+		// Send nack if not approved
+		if (input_handler->connection_request_approved())
+		{
+			connection_established = true;
+		}
+		else
+		{
+			output_handler->send_nack();
+		}
+	}	
 
 	// Apply new config
 	input_handler->serial_init();
 	output_handler->set_newline_format(input_handler->get_newline_format());
 
-	// Loop until confirmation is received with new settings
-	connection_established = false;
+	
+	connection_established = false;	
 	while (!connection_established)
 	{
+		output_handler->send_ack();
+
 		if (input_handler->init_connection())
 		{
-			output_handler->send_ack();
 			connection_established = true;
 		}
-		else
-		{
-			output_handler->send_nack();
-		}
-	}	
-		
+	}
 }
 
 void loop()

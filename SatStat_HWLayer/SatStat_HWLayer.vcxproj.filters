@@ -333,6 +333,9 @@
     <ClInclude Include="other\Json_container.h">
       <Filter>Header Files\other</Filter>
     </ClInclude>
+    <ClInclude Include="other\Function_pointer_container.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="handlers\Input_handler.cpp">

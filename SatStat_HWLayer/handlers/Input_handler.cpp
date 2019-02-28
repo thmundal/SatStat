@@ -5,6 +5,7 @@
 Input_handler::Input_handler()
 {	
 	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 6));	
+	newline_format = "\n";
 }
 
 // Delete every sensor in the sensor collection
@@ -14,11 +15,42 @@ Input_handler::~Input_handler()
 	{
 		delete sensor_collection[i];
 	}	
+
+	//delete handshake_response;
 }
 
-// Reads serial until handshake received and sets up serial with requested config.
+// Reads serial until handshake received
 // Returns false if what's received is not a propper handshake.
-bool Input_handler::establish_connection()
+bool Input_handler::handshake_approved()
+{
+	Json_container<JsonObject>* tmp;
+
+	while (true)
+	{
+		serial_listener();
+
+		if (!json_handler.queue_is_empty())
+		{
+			tmp = json_handler.fetch_instruction();
+
+			if (tmp->get()->containsKey("serial_handshake"))
+			{
+				if (tmp->get()->get<String>("serial_handshake") == "init")
+				{
+					delete tmp;
+					return true;
+				}
+			}
+
+			delete tmp;
+			return false;
+		}
+	}
+}
+
+// Reads serial until connection request received
+// Returns false if what's received is not a propper request.
+bool Input_handler::connection_request_approved()
 {	
 	Json_container<JsonObject>* tmp;
 	JsonObject* nested_obj;
@@ -31,9 +63,9 @@ bool Input_handler::establish_connection()
 		{
 			tmp = json_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("serial_handshake"))
+			if (tmp->get()->containsKey("connection_request"))
 			{
-				nested_obj = &tmp->get()->get<JsonVariant>("serial_handshake").asObject();
+				nested_obj = &tmp->get()->get<JsonVariant>("connection_request").asObject();
 
 				if (config_approved(nested_obj->get<unsigned long>("baud_rate"), nested_obj->get<String>("config")))
 				{
@@ -61,36 +93,29 @@ void Input_handler::serial_listener()
 		{
 			json_handler.insert_instruction(input);
 		}
-		else
-		{
-			//Serial.println("No serial input received");
-		}
 	}
 }
 
 bool Input_handler::config_approved(const unsigned long & baud_rate, const String& config)
 {
-	if
-		(
-			config == "5N1" || config == "6N1" || config == "7N1" || config == "8N1" ||
-			config == "5N2" || config == "6N2" || config == "7N2" || config == "8N2" ||
-			config == "5E1" || config == "6E1" || config == "7E1" || config == "8E1" ||
-			config == "5E2" || config == "6E2" || config == "7E2" || config == "8E2" ||
-			config == "5O1" || config == "6O1" || config == "7O1" || config == "8O1" ||
-			config == "5O2" || config == "6O2" || config == "7O2" || config == "8O2"
-			)
-	{
-		if
-			(
-				baud_rate == 9600 || baud_rate == 14400 || baud_rate == 19200 ||
-				baud_rate == 28800 || baud_rate == 38400 || baud_rate == 57600 ||
-				baud_rate == 115200
-				)
-		{
-			this->config = config;
-			this->baud_rate = baud_rate;
+	int data_bits = config.charAt(0);
+	char parity = config.charAt(1);
+	int stop_bits = config.charAt(2);
+	
+	if (data_bits >= 53 && data_bits <= 56)
+	{		
+		if (parity == 'N' || parity == 'O' || parity == 'E')
+		{			
+			if (stop_bits == 49 || stop_bits == 50)
+			{
+				if (baud_rate == 9600 || baud_rate == 14400 || baud_rate == 19200 || baud_rate == 28800 || baud_rate == 38400 || baud_rate == 57600 || baud_rate == 115200)
+				{
+					this->config = config;
+					this->baud_rate = baud_rate;
 
-			return true;
+					return true;
+				}
+			}
 		}
 	}
 
@@ -129,8 +154,10 @@ void Input_handler::serial_init()
 bool Input_handler::init_connection()
 {
 	Json_container<JsonObject>* tmp;
+	unsigned long start_time = millis();
+	unsigned long timeout = 10000;
 
-	while (true)
+	while (millis() - start_time < timeout)
 	{
 		serial_listener();
 
@@ -138,10 +165,10 @@ bool Input_handler::init_connection()
 		{
 			tmp = json_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("serial_connect"))
+			if (tmp->get()->containsKey("connect"))
 			{				
 
-				if (tmp->get()->get<String>("serial_connect") == "initialize")
+				if (tmp->get()->get<String>("connect") == "ok")
 				{
 					delete tmp;
 					return true;
@@ -199,7 +226,7 @@ Json_container<JsonObject>* Input_handler::read_sensors()
 
 // Fetches instruction form instruction queue
 Json_container<JsonObject>* Input_handler::get_instruction()
-{
+{	
 	return json_handler.fetch_instruction();
 }
 
