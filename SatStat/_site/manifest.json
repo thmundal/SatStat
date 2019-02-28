@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "E:/Programming/Bachelor/SatStat/SatStat",
+  "source_base_path": "D:/Programming/CSharp/SatStat/SatStat",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "yG5cmfMuG+dMZQBDDCbJ0A=="
+          "hash": "Xk4utg9kdvRByhjR2hVdPw=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "TqQJIBwli+oHZzy1WOwo8g=="
+          "hash": "SlyLN3OVrd3Tj7bfuaTWAQ=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "IdgB/xd/Qy4LJ9LsYJQhRA=="
+          "hash": "M85PVn0NwcsbiVYhAgDL6Q=="
         }
       },
       "is_incremental": true,
@@ -96,7 +96,7 @@
           "hash": "pYtp7+MNiI0lfuAWiNBx/Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataStream.html",
-          "hash": "nLRmOXyAGymimZPl4xtXmw=="
+          "hash": "DSl0fGVMRBWF0oaxxHnz+w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "V68eKjSZQtc+iwTsVuXysg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,34 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.html",
-          "hash": "E3mhzUqUlZKm5XjtnCAC8Q=="
+          "hash": "A9qoBfsZJWnraqIR6lv3vg=="
         }
       },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/SatStat.SocketHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SatStat.SocketHandler.html",
-          "hash": "zrzeKWTClMUHyW2KYx99wQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/SatStat.StateObject.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SatStat.StateObject.html",
-          "hash": "bQ5jWQLHzAdR+FU5wvvFbQ=="
-        }
-      },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +156,7 @@
           "hash": "PKAqpYpUW5wE4Thylyr4Iw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "NHu+a3WUZJ/wiXaKe6Yvqw=="
+          "hash": "+3ZZomb4PwwiSwzPHStKmQ=="
         }
       },
       "is_incremental": false,
@@ -201,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "NiCkZgBhZBb6i8WfDm0oQg=="
+          "hash": "dxf/SaLUFKjir20zIJTdFQ=="
         }
       },
       "is_incremental": false,
@@ -235,12 +211,6 @@
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 12,
-          "skipped_file_count": 10
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
