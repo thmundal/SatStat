@@ -27,6 +27,8 @@ public:
 	LinkedList<String, Sensor*>& get_sensor_collection();
 	const String& get_newline_format() const;
 
+	bool instruction_available() const;
+
 private:		
 	bool config_approved(const unsigned long& baud_rate, const String& config);	
 

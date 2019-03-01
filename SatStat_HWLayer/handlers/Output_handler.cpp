@@ -9,7 +9,9 @@ Output_handler::Output_handler()
 	dir = false;
 	auto_rotate_en = false;
 	stepper->setSpeed(700);
-	newline_format = "\n";
+	newline_format = "\r\n";	
+	instruction_interpreter.append("auto_rotate", &Output_handler::set_auto_rotate);
+	instruction_interpreter.append("rotate", &Output_handler::rotate_sadm);
 }
 
 void Output_handler::send_handshake_response()
@@ -67,6 +69,7 @@ void Output_handler::send_handshake_response()
 	newlines.add("\n");
 
 	handshake_response->get()->printTo(Serial);
+	Serial.print(newline_format);
 
 	delete handshake_response;
 }
@@ -125,16 +128,16 @@ void Output_handler::print_to_serial(Json_container<JsonObject>* json)
 	delete json;
 }
 
-void Output_handler::auto_rotate(const bool& on)
-{
-	auto_rotate_en = on;
+void Output_handler::set_auto_rotate(Json_container<JsonObject>* instruction)
+{	
+	auto_rotate_en = instruction->get()->get<bool>("enable");
 }
 
 /*
 	Automatically rotates the SADM.
 	Must be continuously called.
 */
-void Output_handler::rotate_sadm() 
+void Output_handler::auto_rotate_sadm() 
 {
 	if (steps < step_limit)
 	{
@@ -156,9 +159,23 @@ void Output_handler::rotate_sadm()
 	}
 }
 
+void Output_handler::rotate_sadm(Json_container<JsonObject>* instruction)
+{
+	if (instruction->get()->containsKey("deg"))
+	{
+		float deg = instruction->get()->get<float>("deg");
+		rotate_sadm(deg);
+	}
+	else if (instruction->get()->containsKey("steps"))
+	{
+		int steps = instruction->get()->get<int>("steps");
+		rotate_sadm(steps);
+	}
+}
+
 // Rotates the SADM the passed number of steps
 void Output_handler::rotate_sadm(int steps)
-{
+{	
 	stepper->step(steps);
 }
 
@@ -166,5 +183,19 @@ void Output_handler::rotate_sadm(int steps)
 void Output_handler::rotate_sadm(float degrees)
 {
 	// 1 deg = 2048steps/360deg = 5.69 step/deg
-	stepper->step((int)(degrees * ((float)2048 / (float)360)));
+	stepper->step((int)(degrees * ((float)2048 / (float)360)));	
+}
+
+void Output_handler::interpret_instruction(Json_container<JsonObject>* obj)
+{
+	String instruction = obj->get()->get<String>("instruction");
+	void(Output_handler::*ptr)(Json_container<JsonObject>*);
+	ptr = instruction_interpreter.get(instruction);
+	(*this.*ptr)(obj);
+	delete obj;
+}
+
+bool Output_handler::get_auto_rotate_en() const
+{
+	return auto_rotate_en;
 }

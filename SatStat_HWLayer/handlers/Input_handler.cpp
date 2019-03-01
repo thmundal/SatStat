@@ -28,9 +28,9 @@ bool Input_handler::handshake_approved()
 	while (true)
 	{
 		serial_listener();
-
+		
 		if (!json_handler.queue_is_empty())
-		{
+		{			
 			tmp = json_handler.fetch_instruction();
 
 			if (tmp->get()->containsKey("serial_handshake"))
@@ -239,4 +239,9 @@ LinkedList<String, Sensor*>& Input_handler::get_sensor_collection()
 const String & Input_handler::get_newline_format() const
 {
 	return newline_format;
+}
+
+bool Input_handler::instruction_available() const
+{
+	return !json_handler.queue_is_empty();
 }

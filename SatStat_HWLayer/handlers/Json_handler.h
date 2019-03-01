@@ -14,7 +14,7 @@ public:
 	// Instruction queue methods
 	void insert_instruction(const String& input_data);
 	Json_container<JsonObject>* fetch_instruction();
-	bool queue_is_empty();
+	bool queue_is_empty() const;
 
 	// Create object and array methods
 	Json_container<JsonObject>* create_object();

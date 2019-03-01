@@ -17,6 +17,11 @@ void Json_handler::insert_instruction(const String& input_data)
 {
 	Json_container<JsonObject>* obj = new Json_object_container();
 	obj->parse(input_data);
+
+	// For testing purposes
+	obj->get()->printTo(Serial);
+	while (!Serial.availableForWrite());
+
 	instruction_queue.enqueue(obj);
 }
 
@@ -32,7 +37,7 @@ Json_container<JsonObject>* Json_handler::fetch_instruction()
 }
 
 // Returns true if instruction queue is empty
-bool Json_handler::queue_is_empty()
+bool Json_handler::queue_is_empty() const
 {
 	return instruction_queue.isEmpty();
 }
