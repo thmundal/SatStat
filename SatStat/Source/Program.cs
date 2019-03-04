@@ -19,7 +19,12 @@ namespace SatStat
         static void Main()
         {
             settings = new AppSettings {
-                selectedComPort = null
+                portName = null,
+                comSettings =
+                {
+                    baud_rate = 9600,
+                    config = "8N1"
+                }
             };
 
             serial = new SerialHandler();

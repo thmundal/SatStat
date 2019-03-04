@@ -8,7 +8,17 @@ namespace SatStat
 {
     public struct AppSettings
     {
-        public string selectedComPort;
-        public int selectedBaudRate;
+        public string portName;
+        public int baud_rate;
+        public string config;
+
+        public COMSettings comSettings;
+    }
+
+    public struct COMSettings
+    {
+        public int baud_rate;
+        public string config;
+        public string newline;
     }
 }

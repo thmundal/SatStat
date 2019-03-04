@@ -36,6 +36,7 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToStreamSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,7 +50,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -69,7 +69,7 @@
             this.cartesianChart1.Location = new System.Drawing.Point(3, 3);
             this.cartesianChart1.Margin = new System.Windows.Forms.Padding(4);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(775, 586);
+            this.cartesianChart1.Size = new System.Drawing.Size(947, 691);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             this.cartesianChart1.UpdaterTick += new LiveCharts.Events.UpdaterTickHandler(this.ChartOnUpdaterTick);
@@ -80,11 +80,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(373, 3);
+            this.tabControl1.Location = new System.Drawing.Point(454, 3);
             this.tabControl1.Name = "tabControl1";
             this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(789, 618);
+            this.tabControl1.Size = new System.Drawing.Size(961, 723);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -93,7 +93,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(781, 592);
+            this.tabPage1.Size = new System.Drawing.Size(953, 697);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1418, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -142,6 +142,13 @@
             this.connectToStreamSimulatorToolStripMenuItem.Text = "Connect to stream simulator";
             this.connectToStreamSimulatorToolStripMenuItem.Click += new System.EventHandler(this.connectToStreamSimulatorToolStripMenuItem_Click);
             // 
+            // startSocketServerToolStripMenuItem
+            // 
+            this.startSocketServerToolStripMenuItem.Name = "startSocketServerToolStripMenuItem";
+            this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.startSocketServerToolStripMenuItem.Text = "Start socket server";
+            this.startSocketServerToolStripMenuItem.Click += new System.EventHandler(this.startSocketServerToolStripMenuItem_Click);
+            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
@@ -149,7 +156,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 624);
+            this.panel1.Size = new System.Drawing.Size(0, 729);
             this.panel1.TabIndex = 12;
             // 
             // tableLayoutPanel1
@@ -168,7 +175,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.63291F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.36709F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1165, 624);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1418, 729);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // tableLayoutPanel2
@@ -183,7 +190,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.99127F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.00873F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 247);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(445, 290);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
@@ -193,7 +200,7 @@
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(358, 87);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(439, 104);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
@@ -220,9 +227,9 @@
             // 
             this.SensorDataListBoxGroupContainer.Controls.Add(this.UISensorCheckboxList);
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 96);
+            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 113);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(358, 148);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(439, 174);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
@@ -233,7 +240,7 @@
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(352, 129);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(433, 155);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
             this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
@@ -244,12 +251,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.diagnosticLiveOutputValues, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 256);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 299);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(364, 365);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(445, 427);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -258,7 +265,7 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(358, 176);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(439, 207);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
@@ -276,7 +283,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(352, 157);
+            this.dataGridView1.Size = new System.Drawing.Size(433, 188);
             this.dataGridView1.TabIndex = 0;
             // 
             // Key
@@ -289,18 +296,11 @@
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
             // 
-            // startSocketServerToolStripMenuItem
-            // 
-            this.startSocketServerToolStripMenuItem.Name = "startSocketServerToolStripMenuItem";
-            this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.startSocketServerToolStripMenuItem.Text = "Start socket server";
-            this.startSocketServerToolStripMenuItem.Click += new System.EventHandler(this.startSocketServerToolStripMenuItem_Click);
-            // 
             // SatStatMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 648);
+            this.ClientSize = new System.Drawing.Size(1418, 753);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);

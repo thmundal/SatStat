@@ -30,18 +30,18 @@
         {
             this.UIcomSourcesList = new System.Windows.Forms.ListBox();
             this.UIComSettingsConnectBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.UIcomPortSettingsStep1Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.COMPortListLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.UIbaudRateSelectionList = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.UIbaudRateInputList = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.UIComSettingsCancelBtn = new System.Windows.Forms.Button();
             this.UIComSettingsApplyBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.UIcomPortSettingsStep1Panel.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.UIbaudRateSelectionList.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,22 +59,22 @@
             this.UIComSettingsConnectBtn.Name = "UIComSettingsConnectBtn";
             this.UIComSettingsConnectBtn.Size = new System.Drawing.Size(75, 23);
             this.UIComSettingsConnectBtn.TabIndex = 1;
-            this.UIComSettingsConnectBtn.Text = "Connect";
+            this.UIComSettingsConnectBtn.Text = "Next >>";
             this.UIComSettingsConnectBtn.UseVisualStyleBackColor = true;
             this.UIComSettingsConnectBtn.Click += new System.EventHandler(this.UIComSettingsConnectBtn_Click);
             // 
-            // flowLayoutPanel1
+            // UIcomPortSettingsStep1Panel
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(434, 117);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.UIcomPortSettingsStep1Panel.AutoSize = true;
+            this.UIcomPortSettingsStep1Panel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.UIcomPortSettingsStep1Panel.BackColor = System.Drawing.SystemColors.Control;
+            this.UIcomPortSettingsStep1Panel.Controls.Add(this.panel1);
+            this.UIcomPortSettingsStep1Panel.Controls.Add(this.UIbaudRateSelectionList);
+            this.UIcomPortSettingsStep1Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UIcomPortSettingsStep1Panel.Location = new System.Drawing.Point(0, 0);
+            this.UIcomPortSettingsStep1Panel.Name = "UIcomPortSettingsStep1Panel";
+            this.UIcomPortSettingsStep1Panel.Size = new System.Drawing.Size(434, 117);
+            this.UIcomPortSettingsStep1Panel.TabIndex = 3;
             // 
             // panel1
             // 
@@ -94,14 +94,15 @@
             this.COMPortListLabel.TabIndex = 2;
             this.COMPortListLabel.Text = "COM Port";
             // 
-            // panel2
+            // UIbaudRateSelectionList
             // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.UIbaudRateInputList);
-            this.panel2.Location = new System.Drawing.Point(253, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 111);
-            this.panel2.TabIndex = 4;
+            this.UIbaudRateSelectionList.Controls.Add(this.label1);
+            this.UIbaudRateSelectionList.Controls.Add(this.UIbaudRateInputList);
+            this.UIbaudRateSelectionList.Location = new System.Drawing.Point(253, 3);
+            this.UIbaudRateSelectionList.Name = "UIbaudRateSelectionList";
+            this.UIbaudRateSelectionList.Size = new System.Drawing.Size(174, 111);
+            this.UIbaudRateSelectionList.TabIndex = 4;
+            this.UIbaudRateSelectionList.Visible = false;
             // 
             // label1
             // 
@@ -115,10 +116,6 @@
             // UIbaudRateInputList
             // 
             this.UIbaudRateInputList.FormattingEnabled = true;
-            this.UIbaudRateInputList.Items.AddRange(new object[] {
-            "9600",
-            "19200",
-            "115200"});
             this.UIbaudRateInputList.Location = new System.Drawing.Point(4, 16);
             this.UIbaudRateInputList.Name = "UIbaudRateInputList";
             this.UIbaudRateInputList.Size = new System.Drawing.Size(167, 95);
@@ -156,6 +153,7 @@
             this.UIComSettingsApplyBtn.TabIndex = 2;
             this.UIComSettingsApplyBtn.Text = "Apply";
             this.UIComSettingsApplyBtn.UseVisualStyleBackColor = true;
+            this.UIComSettingsApplyBtn.Visible = false;
             this.UIComSettingsApplyBtn.Click += new System.EventHandler(this.UIComSettingsApplyBtn_Click);
             // 
             // ComSettingsForm
@@ -165,7 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.UIComSettingsCancelBtn;
             this.ClientSize = new System.Drawing.Size(434, 146);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.UIcomPortSettingsStep1Panel);
             this.Controls.Add(this.flowLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -175,11 +173,11 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "COM Settings";
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.UIcomPortSettingsStep1Panel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.UIbaudRateSelectionList.ResumeLayout(false);
+            this.UIbaudRateSelectionList.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,10 +188,10 @@
 
         private System.Windows.Forms.ListBox UIcomSourcesList;
         private System.Windows.Forms.Button UIComSettingsConnectBtn;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel UIcomPortSettingsStep1Panel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label COMPortListLabel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel UIbaudRateSelectionList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox UIbaudRateInputList;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

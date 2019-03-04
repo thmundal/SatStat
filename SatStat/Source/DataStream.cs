@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
-using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace SatStat
 {
@@ -10,14 +10,14 @@ namespace SatStat
     /// </summary>
     public class DataStream
     {
-        private List<Dictionary<string, object>> inputBuffer;
+        private List<JObject> inputBuffer;
         private List<DataSubscription> subscriptions;
         private Action<string> OutputReceivedCallback;
 
         public DataStream()
         {
             subscriptions = new List<DataSubscription>();
-            inputBuffer = new List<Dictionary<string, object>>();
+            inputBuffer = new List<JObject>();
 
         }
 
@@ -30,7 +30,7 @@ namespace SatStat
             {
                 var input = inputBuffer[i];
 
-                foreach(KeyValuePair<string, object> item in input)
+                foreach(KeyValuePair<string, JToken> item in input)
                 {
                     string key = item.Key;
                     object value = item.Value;
@@ -56,31 +56,47 @@ namespace SatStat
         /// Parse input string as json key/value pairs and put the parsed data in the input buffer
         /// </summary>
         /// <param name="input"></param>
-        public void Parse(string input)
+        //public Dictionary<string, object> Parse(string input)
+        public JObject Parse(string input)
         {   
             if(input.Length > 0)
             {
                 try
                 {
-                    Dictionary<string, object> inputParsed = JSON.parse<Dictionary<string, object>>(input);
+                    JObject inputParsed = JObject.Parse(input);
                     inputBuffer.Add(inputParsed);
+                    return inputParsed;
                 }
-                catch (JsonSerializationException)
+                catch (JsonSerializationException e)
                 {
                     Console.WriteLine("Invalid json received:" + input);
+                    Console.WriteLine(e.ToString());
                 }
-                catch (JsonReaderException)
+                catch (JsonReaderException e)
                 {
                     Console.WriteLine("Invalid json received:" + input);
-                }
-                catch (System.IO.IOException)
+                    Console.WriteLine(e.ToString());
+}
+                catch (System.IO.IOException e)
                 {
                     Console.WriteLine("Read thread aborted");
+                    Console.WriteLine(e.ToString());
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.ToString());
                 }
             } else
             {
                 Console.WriteLine("Input is empty, aborting parse");
             }
+            return null;
+        }
+
+        public JObject ParseAsObject(string input)
+        {
+            JObject inputParsed = JSON.parse<JObject>(input);
+            return inputParsed;
         }
 
         /// <summary>
