@@ -41,8 +41,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.SadmControlsGroupPanel = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.UIautoRotateOnBtn = new System.Windows.Forms.Button();
+            this.UIAutoRotateOffBtn = new System.Windows.Forms.Button();
             this.SensorDataListBoxGroupContainer = new System.Windows.Forms.GroupBox();
             this.UISensorCheckboxList = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,22 +69,21 @@
             this.cartesianChart1.Location = new System.Drawing.Point(3, 3);
             this.cartesianChart1.Margin = new System.Windows.Forms.Padding(4);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(947, 691);
+            this.cartesianChart1.Size = new System.Drawing.Size(951, 690);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             this.cartesianChart1.UpdaterTick += new LiveCharts.Events.UpdaterTickHandler(this.ChartOnUpdaterTick);
-            this.cartesianChart1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.cartesianChart1_ChildChanged);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(454, 3);
+            this.tabControl1.Location = new System.Drawing.Point(455, 3);
             this.tabControl1.Name = "tabControl1";
             this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(961, 723);
+            this.tabControl1.Size = new System.Drawing.Size(965, 722);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -93,7 +92,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(953, 697);
+            this.tabPage1.Size = new System.Drawing.Size(957, 696);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +102,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(781, 592);
+            this.tabPage2.Size = new System.Drawing.Size(953, 697);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -114,7 +113,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1418, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1423, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -156,7 +155,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 729);
+            this.panel1.Size = new System.Drawing.Size(0, 728);
             this.panel1.TabIndex = 12;
             // 
             // tableLayoutPanel1
@@ -175,7 +174,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.63291F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.36709F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1418, 729);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1423, 728);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // tableLayoutPanel2
@@ -190,46 +189,48 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.99127F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.00873F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(445, 290);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 289);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
             // 
-            this.SadmControlsGroupPanel.Controls.Add(this.button2);
-            this.SadmControlsGroupPanel.Controls.Add(this.button3);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIautoRotateOnBtn);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIAutoRotateOffBtn);
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(439, 104);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 103);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
             // 
-            // button2
+            // UIautoRotateOnBtn
             // 
-            this.button2.Location = new System.Drawing.Point(6, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Start Auto Rotate";
-            this.button2.UseVisualStyleBackColor = true;
+            this.UIautoRotateOnBtn.Location = new System.Drawing.Point(6, 19);
+            this.UIautoRotateOnBtn.Name = "UIautoRotateOnBtn";
+            this.UIautoRotateOnBtn.Size = new System.Drawing.Size(105, 23);
+            this.UIautoRotateOnBtn.TabIndex = 9;
+            this.UIautoRotateOnBtn.Text = "Start Auto Rotate";
+            this.UIautoRotateOnBtn.UseVisualStyleBackColor = true;
+            this.UIautoRotateOnBtn.Click += new System.EventHandler(this.UIautoRotateOnBtn_Click);
             // 
-            // button3
+            // UIAutoRotateOffBtn
             // 
-            this.button3.Location = new System.Drawing.Point(6, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Stop Auto Rotate";
-            this.button3.UseVisualStyleBackColor = true;
+            this.UIAutoRotateOffBtn.Location = new System.Drawing.Point(6, 48);
+            this.UIAutoRotateOffBtn.Name = "UIAutoRotateOffBtn";
+            this.UIAutoRotateOffBtn.Size = new System.Drawing.Size(105, 23);
+            this.UIAutoRotateOffBtn.TabIndex = 10;
+            this.UIAutoRotateOffBtn.Text = "Stop Auto Rotate";
+            this.UIAutoRotateOffBtn.UseVisualStyleBackColor = true;
+            this.UIAutoRotateOffBtn.Click += new System.EventHandler(this.UIAutoRotateOffBtn_Click);
             // 
             // SensorDataListBoxGroupContainer
             // 
             this.SensorDataListBoxGroupContainer.Controls.Add(this.UISensorCheckboxList);
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 113);
+            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 112);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(439, 174);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 174);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
@@ -240,7 +241,7 @@
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(433, 155);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 155);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
             this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
@@ -251,12 +252,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.diagnosticLiveOutputValues, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 299);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 298);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(445, 427);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 427);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -265,7 +266,7 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(439, 207);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 207);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
@@ -283,7 +284,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(433, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(434, 188);
             this.dataGridView1.TabIndex = 0;
             // 
             // Key
@@ -300,7 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1418, 753);
+            this.ClientSize = new System.Drawing.Size(1423, 752);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -339,8 +340,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox SadmControlsGroupPanel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button UIautoRotateOnBtn;
+        private System.Windows.Forms.Button UIAutoRotateOffBtn;
         private System.Windows.Forms.GroupBox SensorDataListBoxGroupContainer;
         private System.Windows.Forms.CheckedListBox UISensorCheckboxList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

@@ -86,11 +86,6 @@ namespace SatStat
             cartesianChart1.AxisY.Add(valueAxis);
         }
 
-        private void cartesianChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
         private void ChartOnUpdaterTick(object sender)
         {
             valueAxis.MinValue = yMinVal;
@@ -194,8 +189,6 @@ namespace SatStat
 
             Program.streamSimulator = new StreamSimulator();
             
-            //Program.streamSimulator.AddSubscriber(DataSubscription<object>.CreateWithType(sensorListReceiver, "available_sensors", "JArray"));
-
             sensorListReceiver.Subscribe(Program.streamSimulator, "available_sensors", "JArray");
 
             Program.streamSimulator.Connect();
@@ -228,6 +221,16 @@ namespace SatStat
         private void startSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SocketHandler server = new SocketHandler();
+        }
+
+        private void UIautoRotateOnBtn_Click(object sender, EventArgs e)
+        {
+            Program.serial.Output(new JObject() { { "request", "auto_rotate" }, { "parameters", new JArray() { true } } });
+        }
+
+        private void UIAutoRotateOffBtn_Click(object sender, EventArgs e)
+        {
+            Program.serial.Output(new JObject() { { "request", "auto_rotate" }, { "parameters", new JArray() { false } } });
         }
     }
 }
