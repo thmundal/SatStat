@@ -19,8 +19,8 @@ void Json_handler::insert_instruction(const String& input_data)
 	obj->parse(input_data);
 
 	// For testing purposes
-	obj->get()->printTo(Serial);
-	while (!Serial.availableForWrite());
+	//obj->get()->printTo(Serial);
+	//while (!Serial.availableForWrite());
 
 	instruction_queue.enqueue(obj);
 }
