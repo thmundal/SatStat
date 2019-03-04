@@ -11,7 +11,7 @@ public:
 
 	virtual void create() = 0;
 	virtual void parse(const String &json) = 0;
-	virtual T* get() = 0;
+	T* get();
 
 protected:
 	DynamicJsonBuffer* buffer;
@@ -19,13 +19,19 @@ protected:
 };
 
 template <class T>
-Json_container<T>::Json_container()
+inline Json_container<T>::Json_container()
 {
 	buffer = new DynamicJsonBuffer;
 }
 
 template <class T>
-Json_container<T>::~Json_container()
+inline Json_container<T>::~Json_container()
 {
 	delete buffer;
+}
+
+template<class T>
+inline T* Json_container<T>::get()
+{
+	return json;
 }

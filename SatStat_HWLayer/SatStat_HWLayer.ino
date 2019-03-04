@@ -1,14 +1,81 @@
 #pragma once
-#include "./handlers/Input_handler.h"
-#include "./handlers/Output_handler.h"
+#include "./handlers/Serial_handler.h"
+#include "./other/Sensor_container.h"
 
 // Init input and output handler
-Input_handler* input_handler;
-Output_handler* output_handler;
+Serial_handler* serial_handler;
+Instruction_handler* instruction_handler;
+Sensor_container* sensor_container;
 
 // Timing constrains
 unsigned long start_time = millis();
 const int duration = 1000;
+
+void handshake()
+{
+	// Loop until handshake received
+	while (true)
+	{
+		// Send ack if approved, nack if not
+		if (serial_handler->handshake_approved())
+		{
+			break;
+		}
+	}
+}
+
+bool connection()
+{
+	// Loop until connection request received
+	unsigned long start_time = millis();
+	unsigned long timeout = 10000;
+
+	while (millis() - start_time < timeout)
+	{
+		// Send nack if not approved
+		if (serial_handler->connection_request_approved())
+		{	
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool connection_init()
+{
+	// Init connection on new config
+	unsigned long start_time = millis();
+	unsigned long timeout = 10000;
+
+	while (millis() - start_time < timeout)
+	{		
+		if (serial_handler->connection_init_approved())
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool provide_sensor_data()
+{
+	// Init connection on new config
+	unsigned long start_time = millis();
+	unsigned long timeout = 10000;
+
+	while (millis() - start_time < timeout)
+	{
+		// Send nack if not approved
+		if (serial_handler->available_data_request_approved())
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void setup()
 {
@@ -17,80 +84,52 @@ void setup()
 	digitalWrite(7, LOW);
 	pinMode(5, OUTPUT);
 	digitalWrite(5, HIGH);
-	
-	// Initialize the serial port
+
+	serial_handler = new Serial_handler();
+	instruction_handler = new Instruction_handler();
+	sensor_container = new Sensor_container();
+
 	Serial.begin(9600);
-	
-	// Instantiate input and output handler
-	input_handler = new Input_handler();
-	output_handler = new Output_handler();
-	
-	// Loop until handshake received
-	bool connection_established = false;
-	while (!connection_established)
-	{		
-		// Send ack if approved, nack if not
-		if (input_handler->handshake_approved())
-		{			
-			output_handler->send_handshake_response();
-			connection_established = true;
-		}
-		else
-		{
-			output_handler->send_nack();			
-		}
-	}	
 
-	// Loop until connection request received
-	connection_established = false;
-	while (!connection_established)
-	{		
-		// Send nack if not approved
-		if (input_handler->connection_request_approved())
-		{
-			connection_established = true;
-		}
-		else
-		{
-			output_handler->send_nack();
-		}
-	}	
+	while (true)
+	{				
+		handshake();
 
-	// Apply new config
-	input_handler->serial_init();
-	output_handler->set_newline_format(input_handler->get_newline_format());
-
-	
-	connection_established = false;	
-	while (!connection_established)
-	{
-		output_handler->send_ack();
-
-		if (input_handler->init_connection())
+		if (connection())
 		{
-			connection_established = true;
+			if (connection_init())
+			{
+				if (provide_sensor_data())
+				{
+					break;
+				}				
+			}
 		}
-	}
+		serial_handler->send_nack();
+		delay(30);
+		Serial.begin(9600);
+	}				
 }
 
 void loop()
 {	
-	input_handler->serial_listener();
+	serial_handler->serial_listener();
 
-	if (input_handler->instruction_available())
-	{		
-		output_handler->interpret_instruction(input_handler->get_instruction());
+	if (!instruction_handler->queue_is_empty())
+	{				
+		instruction_handler->interpret_instruction();
 	}	
-
-	if (output_handler->get_auto_rotate_en())
+	
+	if (instruction_handler->sadm_auto_rotate_en())
 	{
-		output_handler->auto_rotate_sadm();
+		instruction_handler->sadm_auto_rotate();
 	}
+
 	// Runs with an interval equal to the duration
 	if (!(millis() - start_time < duration))
 	{	
 		// Prints sensor data
-		output_handler->print_to_serial(input_handler->read_sensors());
+		serial_handler->print_to_serial(sensor_container->read_sensors());
 
 		// Update start time to current time
 		start_time = millis();

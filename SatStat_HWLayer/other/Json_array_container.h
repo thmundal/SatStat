@@ -9,5 +9,4 @@ public:
 
 	void create();
 	void parse(const String &json);
-	JsonArray* get();
 };

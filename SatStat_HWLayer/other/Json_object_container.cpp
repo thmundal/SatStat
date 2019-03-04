@@ -13,15 +13,10 @@ void Json_object_container::create()
 	Json_container::json = &Json_container::buffer->createObject();
 }
 
-void Json_object_container::parse(const String &json)
+void Json_object_container::parse(const String& json)
 {
 	delete Json_container::buffer;
 	Json_container::buffer = new DynamicJsonBuffer();
 
 	Json_container::json = &Json_container::buffer->parseObject(json);
-}
-
-JsonObject* Json_object_container::get()
-{
-	return Json_container::json;
 }

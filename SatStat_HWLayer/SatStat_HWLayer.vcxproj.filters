@@ -51,9 +51,6 @@
     <ClInclude Include="handlers\Json_handler.h">
       <Filter>Header Files\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\Output_handler.h">
-      <Filter>Header Files\handlers</Filter>
-    </ClInclude>
     <ClInclude Include="sensors\Sensor.h">
       <Filter>Header Files\sensors</Filter>
     </ClInclude>
@@ -324,24 +321,27 @@
     <ClInclude Include="other\Json_object_container.h">
       <Filter>Header Files\other</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\Input_handler.h">
-      <Filter>Header Files\handlers</Filter>
-    </ClInclude>
     <ClInclude Include="other\Json_array_container.h">
       <Filter>Header Files\other</Filter>
     </ClInclude>
     <ClInclude Include="other\Json_container.h">
       <Filter>Header Files\other</Filter>
     </ClInclude>
+    <ClInclude Include="handlers\Instruction_handler.h">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="handlers\Serial_handler.h">
+      <Filter>Header Files\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="other\Sensor_container.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="other\SADM_functions.h">
+      <Filter>Header Files\other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="handlers\Input_handler.cpp">
-      <Filter>Source Files\handlers</Filter>
-    </ClCompile>
     <ClCompile Include="handlers\Json_handler.cpp">
-      <Filter>Source Files\handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="handlers\Output_handler.cpp">
       <Filter>Source Files\handlers</Filter>
     </ClCompile>
     <ClCompile Include="sensors\Sensor.cpp">
@@ -363,6 +363,18 @@
       <Filter>Source Files\other</Filter>
     </ClCompile>
     <ClCompile Include="other\Json_array_container.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\Instruction_handler.cpp">
+      <Filter>Source Files\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="handlers\Serial_handler.cpp">
+      <Filter>Source Files\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="other\Sensor_container.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="other\SADM_functions.cpp">
       <Filter>Source Files\other</Filter>
     </ClCompile>
   </ItemGroup>

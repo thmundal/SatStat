@@ -112,9 +112,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="handlers\Input_handler.h" />
+    <ClInclude Include="handlers\Instruction_handler.h" />
     <ClInclude Include="handlers\Json_handler.h" />
-    <ClInclude Include="handlers\Output_handler.h" />
+    <ClInclude Include="handlers\Serial_handler.h" />
     <ClInclude Include="libraries\ArduinoJson.h" />
     <ClInclude Include="libraries\ArduinoJson.hpp" />
     <ClInclude Include="libraries\ArduinoJson\Configuration.hpp" />
@@ -204,20 +204,24 @@
     <ClInclude Include="other\Json_array_container.h" />
     <ClInclude Include="other\Json_container.h" />
     <ClInclude Include="other\Json_object_container.h" />
+    <ClInclude Include="other\SADM_functions.h" />
+    <ClInclude Include="other\Sensor_container.h" />
     <ClInclude Include="sensors\Result.h" />
     <ClInclude Include="sensors\Sensor.h" />
     <ClInclude Include="sensors\Temp_hum_sensor.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="handlers\Input_handler.cpp" />
+    <ClCompile Include="handlers\Instruction_handler.cpp" />
     <ClCompile Include="handlers\Json_handler.cpp" />
-    <ClCompile Include="handlers\Output_handler.cpp" />
+    <ClCompile Include="handlers\Serial_handler.cpp" />
     <ClCompile Include="libraries\dht.cpp" />
     <ClCompile Include="libraries\DS1302.cpp" />
     <ClCompile Include="libraries\Stepper.cpp" />
     <ClCompile Include="other\Json_array_container.cpp" />
     <ClCompile Include="other\Json_object_container.cpp" />
+    <ClCompile Include="other\SADM_functions.cpp" />
+    <ClCompile Include="other\Sensor_container.cpp" />
     <ClCompile Include="sensors\Sensor.cpp" />
     <ClCompile Include="sensors\Temp_hum_sensor.cpp" />
   </ItemGroup>
@@ -226,7 +230,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM9" />
+      <UserProperties arduino.upload.port="COM11" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
