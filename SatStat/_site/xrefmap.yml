@@ -572,6 +572,19 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.OnHandshakeResponse
   nameWithType: SerialHandler.OnHandshakeResponse
+- uid: SatStat.SerialHandler.Output(System.Object)
+  name: Output(Object)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Output_System_Object_
+  commentId: M:SatStat.SerialHandler.Output(System.Object)
+  fullName: SatStat.SerialHandler.Output(System.Object)
+  nameWithType: SerialHandler.Output(Object)
+- uid: SatStat.SerialHandler.Output*
+  name: Output
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Output_
+  commentId: Overload:SatStat.SerialHandler.Output
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.Output
+  nameWithType: SerialHandler.Output
 - uid: SatStat.SerialHandler.SetComPort(System.String)
   name: SetComPort(String)
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_SetComPort_System_String_

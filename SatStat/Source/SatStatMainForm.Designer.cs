@@ -50,6 +50,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UImotorSpeedInput = new System.Windows.Forms.TextBox();
+            this.UImotorSpeedLabel = new System.Windows.Forms.Label();
+            this.UIsetMotorSpeedBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -102,7 +105,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(953, 697);
+            this.tabPage2.Size = new System.Drawing.Size(957, 696);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -194,6 +197,9 @@
             // 
             // SadmControlsGroupPanel
             // 
+            this.SadmControlsGroupPanel.Controls.Add(this.UIsetMotorSpeedBtn);
+            this.SadmControlsGroupPanel.Controls.Add(this.UImotorSpeedLabel);
+            this.SadmControlsGroupPanel.Controls.Add(this.UImotorSpeedInput);
             this.SadmControlsGroupPanel.Controls.Add(this.UIautoRotateOnBtn);
             this.SadmControlsGroupPanel.Controls.Add(this.UIAutoRotateOffBtn);
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -297,6 +303,32 @@
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
             // 
+            // UImotorSpeedInput
+            // 
+            this.UImotorSpeedInput.Location = new System.Drawing.Point(191, 22);
+            this.UImotorSpeedInput.Name = "UImotorSpeedInput";
+            this.UImotorSpeedInput.Size = new System.Drawing.Size(100, 20);
+            this.UImotorSpeedInput.TabIndex = 15;
+            // 
+            // UImotorSpeedLabel
+            // 
+            this.UImotorSpeedLabel.AutoSize = true;
+            this.UImotorSpeedLabel.Location = new System.Drawing.Point(117, 25);
+            this.UImotorSpeedLabel.Name = "UImotorSpeedLabel";
+            this.UImotorSpeedLabel.Size = new System.Drawing.Size(68, 13);
+            this.UImotorSpeedLabel.TabIndex = 16;
+            this.UImotorSpeedLabel.Text = "Motor Speed";
+            // 
+            // UIsetMotorSpeedBtn
+            // 
+            this.UIsetMotorSpeedBtn.Location = new System.Drawing.Point(297, 20);
+            this.UIsetMotorSpeedBtn.Name = "UIsetMotorSpeedBtn";
+            this.UIsetMotorSpeedBtn.Size = new System.Drawing.Size(102, 23);
+            this.UIsetMotorSpeedBtn.TabIndex = 17;
+            this.UIsetMotorSpeedBtn.Text = "Set motor speed";
+            this.UIsetMotorSpeedBtn.UseVisualStyleBackColor = true;
+            this.UIsetMotorSpeedBtn.Click += new System.EventHandler(this.UIsetMotorSpeedBtn_Click);
+            // 
             // SatStatMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,6 +350,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.SadmControlsGroupPanel.ResumeLayout(false);
+            this.SadmControlsGroupPanel.PerformLayout();
             this.SensorDataListBoxGroupContainer.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.diagnosticLiveOutputValues.ResumeLayout(false);
@@ -351,6 +384,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.ToolStripMenuItem connectToStreamSimulatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startSocketServerToolStripMenuItem;
+        private System.Windows.Forms.Button UIsetMotorSpeedBtn;
+        private System.Windows.Forms.Label UImotorSpeedLabel;
+        private System.Windows.Forms.TextBox UImotorSpeedInput;
     }
 }
 

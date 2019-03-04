@@ -232,5 +232,19 @@ namespace SatStat
         {
             Program.serial.Output(new JObject() { { "request", "auto_rotate" }, { "parameters", new JArray() { false } } });
         }
+
+        private void UIsetMotorSpeedBtn_Click(object sender, EventArgs e)
+        {
+            string motorSpeedInputText = UImotorSpeedInput.Text;
+
+            if(Int32.TryParse(motorSpeedInputText, out int motorSpeed))
+            {
+                Program.serial.Output(new JObject() { { "request", "set_motor_speed" }, { "parameters", new JArray() { motorSpeed } } });
+            }
+            else
+            {
+                Debug.Log("Invalid input, must provide an integer");
+            }
+        }
     }
 }

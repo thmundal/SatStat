@@ -264,8 +264,15 @@ namespace SatStat
             if(connectionStatus != ConnectionStatus.Disconnected)
             {
                 Debug.Log("writing data...");
+                Debug.Log(data);
                 connection.WriteLine(data);
             }
+        }
+
+        public new void Output(object data)
+        {
+            string data_serialized = JSON.serialize(data);
+            WriteData(data_serialized);
         }
 
         /// <summary>
