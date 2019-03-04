@@ -335,19 +335,6 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.Parse
   nameWithType: DataStream.Parse
-- uid: SatStat.DataStream.ParseAsObject(System.String)
-  name: ParseAsObject(String)
-  href: api/SatStat.DataStream.html#SatStat_DataStream_ParseAsObject_System_String_
-  commentId: M:SatStat.DataStream.ParseAsObject(System.String)
-  fullName: SatStat.DataStream.ParseAsObject(System.String)
-  nameWithType: DataStream.ParseAsObject(String)
-- uid: SatStat.DataStream.ParseAsObject*
-  name: ParseAsObject
-  href: api/SatStat.DataStream.html#SatStat_DataStream_ParseAsObject_
-  commentId: Overload:SatStat.DataStream.ParseAsObject
-  isSpec: "True"
-  fullName: SatStat.DataStream.ParseAsObject
-  nameWithType: DataStream.ParseAsObject
 - uid: SatStat.DataSubscription
   name: DataSubscription
   href: api/SatStat.DataSubscription.html
@@ -370,40 +357,13 @@ references:
 - uid: SatStat.DataSubscription.attribute
   name: attribute
   href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_attribute
-  commentId: P:SatStat.DataSubscription.attribute
+  commentId: F:SatStat.DataSubscription.attribute
   fullName: SatStat.DataSubscription.attribute
   nameWithType: DataSubscription.attribute
-- uid: SatStat.DataSubscription.attribute*
-  name: attribute
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_attribute_
-  commentId: Overload:SatStat.DataSubscription.attribute
-  isSpec: "True"
-  fullName: SatStat.DataSubscription.attribute
-  nameWithType: DataSubscription.attribute
-- uid: SatStat.DataSubscription.Create(SatStat.DataReceiver,System.String,System.String)
-  name: Create(DataReceiver, String, String)
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_Create_SatStat_DataReceiver_System_String_System_String_
-  commentId: M:SatStat.DataSubscription.Create(SatStat.DataReceiver,System.String,System.String)
-  fullName: SatStat.DataSubscription.Create(SatStat.DataReceiver, System.String, System.String)
-  nameWithType: DataSubscription.Create(DataReceiver, String, String)
-- uid: SatStat.DataSubscription.Create*
-  name: Create
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_Create_
-  commentId: Overload:SatStat.DataSubscription.Create
-  isSpec: "True"
-  fullName: SatStat.DataSubscription.Create
-  nameWithType: DataSubscription.Create
 - uid: SatStat.DataSubscription.data_type
   name: data_type
   href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_data_type
-  commentId: P:SatStat.DataSubscription.data_type
-  fullName: SatStat.DataSubscription.data_type
-  nameWithType: DataSubscription.data_type
-- uid: SatStat.DataSubscription.data_type*
-  name: data_type
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_data_type_
-  commentId: Overload:SatStat.DataSubscription.data_type
-  isSpec: "True"
+  commentId: F:SatStat.DataSubscription.data_type
   fullName: SatStat.DataSubscription.data_type
   nameWithType: DataSubscription.data_type
 - uid: SatStat.DataSubscription.receive(System.Object)
@@ -422,14 +382,7 @@ references:
 - uid: SatStat.DataSubscription.receiver
   name: receiver
   href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_receiver
-  commentId: P:SatStat.DataSubscription.receiver
-  fullName: SatStat.DataSubscription.receiver
-  nameWithType: DataSubscription.receiver
-- uid: SatStat.DataSubscription.receiver*
-  name: receiver
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_receiver_
-  commentId: Overload:SatStat.DataSubscription.receiver
-  isSpec: "True"
+  commentId: F:SatStat.DataSubscription.receiver
   fullName: SatStat.DataSubscription.receiver
   nameWithType: DataSubscription.receiver
 - uid: SatStat.JSON
@@ -590,19 +543,6 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.GetPortListInformation
   nameWithType: SerialHandler.GetPortListInformation
-- uid: SatStat.SerialHandler.HanshakeResponse
-  name: HanshakeResponse()
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_HanshakeResponse
-  commentId: M:SatStat.SerialHandler.HanshakeResponse
-  fullName: SatStat.SerialHandler.HanshakeResponse()
-  nameWithType: SerialHandler.HanshakeResponse()
-- uid: SatStat.SerialHandler.HanshakeResponse*
-  name: HanshakeResponse
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_HanshakeResponse_
-  commentId: Overload:SatStat.SerialHandler.HanshakeResponse
-  isSpec: "True"
-  fullName: SatStat.SerialHandler.HanshakeResponse
-  nameWithType: SerialHandler.HanshakeResponse
 - uid: SatStat.SerialHandler.InvokeHandshakeResponseCallback(SatStat.SerialSettingsCollection)
   name: InvokeHandshakeResponseCallback(SerialSettingsCollection)
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_InvokeHandshakeResponseCallback_SatStat_SerialSettingsCollection_
