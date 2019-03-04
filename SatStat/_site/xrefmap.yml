@@ -13,18 +13,54 @@ references:
   commentId: T:SatStat.AppSettings
   fullName: SatStat.AppSettings
   nameWithType: AppSettings
-- uid: SatStat.AppSettings.selectedBaudRate
-  name: selectedBaudRate
-  href: api/SatStat.AppSettings.html#SatStat_AppSettings_selectedBaudRate
-  commentId: F:SatStat.AppSettings.selectedBaudRate
-  fullName: SatStat.AppSettings.selectedBaudRate
-  nameWithType: AppSettings.selectedBaudRate
-- uid: SatStat.AppSettings.selectedComPort
-  name: selectedComPort
-  href: api/SatStat.AppSettings.html#SatStat_AppSettings_selectedComPort
-  commentId: F:SatStat.AppSettings.selectedComPort
-  fullName: SatStat.AppSettings.selectedComPort
-  nameWithType: AppSettings.selectedComPort
+- uid: SatStat.AppSettings.baud_rate
+  name: baud_rate
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_baud_rate
+  commentId: F:SatStat.AppSettings.baud_rate
+  fullName: SatStat.AppSettings.baud_rate
+  nameWithType: AppSettings.baud_rate
+- uid: SatStat.AppSettings.comSettings
+  name: comSettings
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_comSettings
+  commentId: F:SatStat.AppSettings.comSettings
+  fullName: SatStat.AppSettings.comSettings
+  nameWithType: AppSettings.comSettings
+- uid: SatStat.AppSettings.config
+  name: config
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_config
+  commentId: F:SatStat.AppSettings.config
+  fullName: SatStat.AppSettings.config
+  nameWithType: AppSettings.config
+- uid: SatStat.AppSettings.portName
+  name: portName
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_portName
+  commentId: F:SatStat.AppSettings.portName
+  fullName: SatStat.AppSettings.portName
+  nameWithType: AppSettings.portName
+- uid: SatStat.COMSettings
+  name: COMSettings
+  href: api/SatStat.COMSettings.html
+  commentId: T:SatStat.COMSettings
+  fullName: SatStat.COMSettings
+  nameWithType: COMSettings
+- uid: SatStat.COMSettings.baud_rate
+  name: baud_rate
+  href: api/SatStat.COMSettings.html#SatStat_COMSettings_baud_rate
+  commentId: F:SatStat.COMSettings.baud_rate
+  fullName: SatStat.COMSettings.baud_rate
+  nameWithType: COMSettings.baud_rate
+- uid: SatStat.COMSettings.config
+  name: config
+  href: api/SatStat.COMSettings.html#SatStat_COMSettings_config
+  commentId: F:SatStat.COMSettings.config
+  fullName: SatStat.COMSettings.config
+  nameWithType: COMSettings.config
+- uid: SatStat.COMSettings.newline
+  name: newline
+  href: api/SatStat.COMSettings.html#SatStat_COMSettings_newline
+  commentId: F:SatStat.COMSettings.newline
+  fullName: SatStat.COMSettings.newline
+  nameWithType: COMSettings.newline
 - uid: SatStat.ComSettingsForm
   name: ComSettingsForm
   href: api/SatStat.ComSettingsForm.html
@@ -57,6 +93,36 @@ references:
   isSpec: "True"
   fullName: SatStat.ComSettingsForm.Dispose
   nameWithType: ComSettingsForm.Dispose
+- uid: SatStat.ConnectionStatus
+  name: ConnectionStatus
+  href: api/SatStat.ConnectionStatus.html
+  commentId: T:SatStat.ConnectionStatus
+  fullName: SatStat.ConnectionStatus
+  nameWithType: ConnectionStatus
+- uid: SatStat.ConnectionStatus.Connected
+  name: Connected
+  href: api/SatStat.ConnectionStatus.html#SatStat_ConnectionStatus_Connected
+  commentId: F:SatStat.ConnectionStatus.Connected
+  fullName: SatStat.ConnectionStatus.Connected
+  nameWithType: ConnectionStatus.Connected
+- uid: SatStat.ConnectionStatus.Disconnected
+  name: Disconnected
+  href: api/SatStat.ConnectionStatus.html#SatStat_ConnectionStatus_Disconnected
+  commentId: F:SatStat.ConnectionStatus.Disconnected
+  fullName: SatStat.ConnectionStatus.Disconnected
+  nameWithType: ConnectionStatus.Disconnected
+- uid: SatStat.ConnectionStatus.Handshake
+  name: Handshake
+  href: api/SatStat.ConnectionStatus.html#SatStat_ConnectionStatus_Handshake
+  commentId: F:SatStat.ConnectionStatus.Handshake
+  fullName: SatStat.ConnectionStatus.Handshake
+  nameWithType: ConnectionStatus.Handshake
+- uid: SatStat.ConnectionStatus.WaitingConnectInit
+  name: WaitingConnectInit
+  href: api/SatStat.ConnectionStatus.html#SatStat_ConnectionStatus_WaitingConnectInit
+  commentId: F:SatStat.ConnectionStatus.WaitingConnectInit
+  fullName: SatStat.ConnectionStatus.WaitingConnectInit
+  nameWithType: ConnectionStatus.WaitingConnectInit
 - uid: SatStat.DataProvider
   name: DataProvider
   href: api/SatStat.DataProvider.html
@@ -269,6 +335,19 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.Parse
   nameWithType: DataStream.Parse
+- uid: SatStat.DataStream.ParseAsObject(System.String)
+  name: ParseAsObject(String)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ParseAsObject_System_String_
+  commentId: M:SatStat.DataStream.ParseAsObject(System.String)
+  fullName: SatStat.DataStream.ParseAsObject(System.String)
+  nameWithType: DataStream.ParseAsObject(String)
+- uid: SatStat.DataStream.ParseAsObject*
+  name: ParseAsObject
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ParseAsObject_
+  commentId: Overload:SatStat.DataStream.ParseAsObject
+  isSpec: "True"
+  fullName: SatStat.DataStream.ParseAsObject
+  nameWithType: DataStream.ParseAsObject
 - uid: SatStat.DataSubscription
   name: DataSubscription
   href: api/SatStat.DataSubscription.html
@@ -420,6 +499,19 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.SerialHandler
   nameWithType: SerialHandler.SerialHandler
+- uid: SatStat.SerialHandler.AvailableSettings
+  name: AvailableSettings
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_AvailableSettings
+  commentId: P:SatStat.SerialHandler.AvailableSettings
+  fullName: SatStat.SerialHandler.AvailableSettings
+  nameWithType: SerialHandler.AvailableSettings
+- uid: SatStat.SerialHandler.AvailableSettings*
+  name: AvailableSettings
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_AvailableSettings_
+  commentId: Overload:SatStat.SerialHandler.AvailableSettings
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.AvailableSettings
+  nameWithType: SerialHandler.AvailableSettings
 - uid: SatStat.SerialHandler.Connect
   name: Connect()
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Connect
@@ -433,6 +525,45 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.Connect
   nameWithType: SerialHandler.Connect
+- uid: SatStat.SerialHandler.ConnectionRequest(SatStat.COMSettings)
+  name: ConnectionRequest(COMSettings)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionRequest_SatStat_COMSettings_
+  commentId: M:SatStat.SerialHandler.ConnectionRequest(SatStat.COMSettings)
+  fullName: SatStat.SerialHandler.ConnectionRequest(SatStat.COMSettings)
+  nameWithType: SerialHandler.ConnectionRequest(COMSettings)
+- uid: SatStat.SerialHandler.ConnectionRequest*
+  name: ConnectionRequest
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionRequest_
+  commentId: Overload:SatStat.SerialHandler.ConnectionRequest
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.ConnectionRequest
+  nameWithType: SerialHandler.ConnectionRequest
+- uid: SatStat.SerialHandler.ConnectionStatus
+  name: ConnectionStatus
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionStatus
+  commentId: P:SatStat.SerialHandler.ConnectionStatus
+  fullName: SatStat.SerialHandler.ConnectionStatus
+  nameWithType: SerialHandler.ConnectionStatus
+- uid: SatStat.SerialHandler.ConnectionStatus*
+  name: ConnectionStatus
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionStatus_
+  commentId: Overload:SatStat.SerialHandler.ConnectionStatus
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.ConnectionStatus
+  nameWithType: SerialHandler.ConnectionStatus
+- uid: SatStat.SerialHandler.DefaultConnect(System.String)
+  name: DefaultConnect(String)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_DefaultConnect_System_String_
+  commentId: M:SatStat.SerialHandler.DefaultConnect(System.String)
+  fullName: SatStat.SerialHandler.DefaultConnect(System.String)
+  nameWithType: SerialHandler.DefaultConnect(String)
+- uid: SatStat.SerialHandler.DefaultConnect*
+  name: DefaultConnect
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_DefaultConnect_
+  commentId: Overload:SatStat.SerialHandler.DefaultConnect
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.DefaultConnect
+  nameWithType: SerialHandler.DefaultConnect
 - uid: SatStat.SerialHandler.Disconnect
   name: Disconnect()
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Disconnect
@@ -459,6 +590,48 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.GetPortListInformation
   nameWithType: SerialHandler.GetPortListInformation
+- uid: SatStat.SerialHandler.HanshakeResponse
+  name: HanshakeResponse()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_HanshakeResponse
+  commentId: M:SatStat.SerialHandler.HanshakeResponse
+  fullName: SatStat.SerialHandler.HanshakeResponse()
+  nameWithType: SerialHandler.HanshakeResponse()
+- uid: SatStat.SerialHandler.HanshakeResponse*
+  name: HanshakeResponse
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_HanshakeResponse_
+  commentId: Overload:SatStat.SerialHandler.HanshakeResponse
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.HanshakeResponse
+  nameWithType: SerialHandler.HanshakeResponse
+- uid: SatStat.SerialHandler.InvokeHandshakeResponseCallback(SatStat.SerialSettingsCollection)
+  name: InvokeHandshakeResponseCallback(SerialSettingsCollection)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_InvokeHandshakeResponseCallback_SatStat_SerialSettingsCollection_
+  commentId: M:SatStat.SerialHandler.InvokeHandshakeResponseCallback(SatStat.SerialSettingsCollection)
+  fullName: SatStat.SerialHandler.InvokeHandshakeResponseCallback(SatStat.SerialSettingsCollection)
+  nameWithType: SerialHandler.InvokeHandshakeResponseCallback(SerialSettingsCollection)
+- uid: SatStat.SerialHandler.InvokeHandshakeResponseCallback*
+  name: InvokeHandshakeResponseCallback
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_InvokeHandshakeResponseCallback_
+  commentId: Overload:SatStat.SerialHandler.InvokeHandshakeResponseCallback
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.InvokeHandshakeResponseCallback
+  nameWithType: SerialHandler.InvokeHandshakeResponseCallback
+- uid: SatStat.SerialHandler.OnHandshakeResponse(System.Action{SatStat.SerialSettingsCollection})
+  name: OnHandshakeResponse(Action<SerialSettingsCollection>)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_OnHandshakeResponse_System_Action_SatStat_SerialSettingsCollection__
+  commentId: M:SatStat.SerialHandler.OnHandshakeResponse(System.Action{SatStat.SerialSettingsCollection})
+  name.vb: OnHandshakeResponse(Action(Of SerialSettingsCollection))
+  fullName: SatStat.SerialHandler.OnHandshakeResponse(System.Action<SatStat.SerialSettingsCollection>)
+  fullName.vb: SatStat.SerialHandler.OnHandshakeResponse(System.Action(Of SatStat.SerialSettingsCollection))
+  nameWithType: SerialHandler.OnHandshakeResponse(Action<SerialSettingsCollection>)
+  nameWithType.vb: SerialHandler.OnHandshakeResponse(Action(Of SerialSettingsCollection))
+- uid: SatStat.SerialHandler.OnHandshakeResponse*
+  name: OnHandshakeResponse
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_OnHandshakeResponse_
+  commentId: Overload:SatStat.SerialHandler.OnHandshakeResponse
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.OnHandshakeResponse
+  nameWithType: SerialHandler.OnHandshakeResponse
 - uid: SatStat.SerialHandler.SetComPort(System.String)
   name: SetComPort(String)
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_SetComPort_System_String_
@@ -472,6 +645,19 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.SetComPort
   nameWithType: SerialHandler.SetComPort
+- uid: SatStat.SerialHandler.StartHandshake
+  name: StartHandshake()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_StartHandshake
+  commentId: M:SatStat.SerialHandler.StartHandshake
+  fullName: SatStat.SerialHandler.StartHandshake()
+  nameWithType: SerialHandler.StartHandshake()
+- uid: SatStat.SerialHandler.StartHandshake*
+  name: StartHandshake
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_StartHandshake_
+  commentId: Overload:SatStat.SerialHandler.StartHandshake
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.StartHandshake
+  nameWithType: SerialHandler.StartHandshake
 - uid: SatStat.SerialHandler.WriteData(System.String)
   name: WriteData(String)
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_WriteData_System_String_
@@ -485,6 +671,30 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.WriteData
   nameWithType: SerialHandler.WriteData
+- uid: SatStat.SerialSettingsCollection
+  name: SerialSettingsCollection
+  href: api/SatStat.SerialSettingsCollection.html
+  commentId: T:SatStat.SerialSettingsCollection
+  fullName: SatStat.SerialSettingsCollection
+  nameWithType: SerialSettingsCollection
+- uid: SatStat.SerialSettingsCollection.baud_rates
+  name: baud_rates
+  href: api/SatStat.SerialSettingsCollection.html#SatStat_SerialSettingsCollection_baud_rates
+  commentId: F:SatStat.SerialSettingsCollection.baud_rates
+  fullName: SatStat.SerialSettingsCollection.baud_rates
+  nameWithType: SerialSettingsCollection.baud_rates
+- uid: SatStat.SerialSettingsCollection.configs
+  name: configs
+  href: api/SatStat.SerialSettingsCollection.html#SatStat_SerialSettingsCollection_configs
+  commentId: F:SatStat.SerialSettingsCollection.configs
+  fullName: SatStat.SerialSettingsCollection.configs
+  nameWithType: SerialSettingsCollection.configs
+- uid: SatStat.SerialSettingsCollection.newlines
+  name: newlines
+  href: api/SatStat.SerialSettingsCollection.html#SatStat_SerialSettingsCollection_newlines
+  commentId: F:SatStat.SerialSettingsCollection.newlines
+  fullName: SatStat.SerialSettingsCollection.newlines
+  nameWithType: SerialSettingsCollection.newlines
 - uid: SatStat.SocketHandler
   name: SocketHandler
   href: api/SatStat.SocketHandler.html
@@ -637,3 +847,35 @@ references:
   isSpec: "True"
   fullName: SatStat.StreamSimulator.Connect
   nameWithType: StreamSimulator.Connect
+- uid: SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
+  name: Output(JObject)
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_Newtonsoft_Json_Linq_JObject_
+  commentId: M:SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
+  fullName: SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
+  nameWithType: StreamSimulator.Output(JObject)
+- uid: SatStat.StreamSimulator.Output*
+  name: Output
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_
+  commentId: Overload:SatStat.StreamSimulator.Output
+  isSpec: "True"
+  fullName: SatStat.StreamSimulator.Output
+  nameWithType: StreamSimulator.Output
+- uid: SatStat.ThreadHelperClass
+  name: ThreadHelperClass
+  href: api/SatStat.ThreadHelperClass.html
+  commentId: T:SatStat.ThreadHelperClass
+  fullName: SatStat.ThreadHelperClass
+  nameWithType: ThreadHelperClass
+- uid: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
+  name: SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_ListBox_SatStat_SerialSettingsCollection_
+  commentId: M:SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
+  fullName: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.ListBox, SatStat.SerialSettingsCollection)
+  nameWithType: ThreadHelperClass.SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
+- uid: SatStat.ThreadHelperClass.SetBaudrates*
+  name: SetBaudrates
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_
+  commentId: Overload:SatStat.ThreadHelperClass.SetBaudrates
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.SetBaudrates
+  nameWithType: ThreadHelperClass.SetBaudrates
