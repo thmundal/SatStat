@@ -9,6 +9,9 @@ using System.Threading;
 
 namespace SatStat
 {
+    /// <summary>
+    /// Socket handler class
+    /// </summary>
     public class SocketHandler : DataStream
     {
         public static ManualResetEvent allDone = new ManualResetEvent(false);

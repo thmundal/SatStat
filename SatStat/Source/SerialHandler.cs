@@ -33,7 +33,6 @@ namespace SatStat
             get { return available_settings; }
         }
 
-
         private ConnectionStatus connectionStatus = ConnectionStatus.Disconnected;
         public ConnectionStatus ConnectionStatus
         {
@@ -98,7 +97,6 @@ namespace SatStat
                 return;
             }
 
-
             try
             {
                 Console.WriteLine("Receiving...");
@@ -144,9 +142,6 @@ namespace SatStat
 
             if (!connection.IsOpen)
             {
-
-                //Console.WriteLine("Closing serial connection...");
-
                 if(Program.settings.baud_rate != 0)
                 {
                     connection.BaudRate = Program.settings.baud_rate;
@@ -161,16 +156,28 @@ namespace SatStat
             }
         }
 
+        /// <summary>
+        /// Register action to invoke when hanshake initialization request has received a response
+        /// </summary>
+        /// <param name="cb"></param>
         public void OnHandshakeResponse(Action<SerialSettingsCollection> cb)
         {
             HandshakeResponse_callback = cb;
         }
 
+        /// <summary>
+        /// Invoke procedure for when handshake returns to the client. Is needed for dispatcher pattern, since we are using threads/tasks in conjuction with Form Control update
+        /// </summary>
+        /// <param name="settings">Object containing settings for the COM connection</param>
         public void InvokeHandshakeResponseCallback(SerialSettingsCollection settings)
         {
             HandshakeResponse_callback.Invoke(available_settings);
         }
 
+        /// <summary>
+        /// Perform a connection on the serial port with default settings to initialize handshake
+        /// </summary>
+        /// <param name="portName"></param>
         public void DefaultConnect(string portName)
         {
             connection.BaudRate = (int)default_settings["BaudRate"];
@@ -187,6 +194,9 @@ namespace SatStat
             StartHandshake();
         }
 
+        /// <summary>
+        /// Initialize handshake
+        /// </summary>
         public void StartHandshake()
         {
             string handshake = "{\"serial_handshake\":\"init\"}";
@@ -197,52 +207,29 @@ namespace SatStat
             WriteData(handshake);
         }
 
-        public void HanshakeResponse()
-        {
-            ApplyComSettings();
-        }
-
+        /// <summary>
+        /// Request connection on serial port with provided settings
+        /// </summary>
+        /// <param name="selected_settings"></param>
         public void ConnectionRequest(COMSettings selected_settings)
         {
-            Console.WriteLine("Requesting connection...");
             string settings = JSON.serialize(selected_settings);
-            
             settings = "{\"connection_request\":"+settings+"}";
-            
-            Console.WriteLine("Sending settings:");
-            Console.WriteLine(settings);
             WriteData(settings);
-
-            Console.WriteLine("Bytes to write:");
-            Console.WriteLine(connection.BytesToWrite);
-            
-            //Calling close clears the output buffer
-
             connectionStatus = ConnectionStatus.WaitingConnectInit;
         }
 
         /// <summary>
-        /// Connect to the serial port channel if a valid port name is set
+        /// Send connection ok confirmation command to HW Layer
         /// </summary>
         /// <returns></returns>
-        public bool Connect()
+        public void Connect()
         {
-            if (connection.PortName != "")
-            {
-                WriteData("{\"connect\":\"ok\"}");
+            WriteData("{\"connect\":\"ok\"}");
 
-                connectionStatus = ConnectionStatus.Connected;
-                return true;
-            }
-
-            return false;
+            connectionStatus = ConnectionStatus.Connected;
         }
-
-        private void ApplyComSettings()
-        {
-            SetComPort(Program.settings.portName);
-        }
-
+        
         /// <summary>
         /// Get a list of available COM ports together with a description of what device is connected on these ports
         /// </summary>
@@ -298,6 +285,9 @@ namespace SatStat
         }
     }
 
+    /// <summary>
+    /// A struct containing fields for COM settings for serialization from JSON
+    /// </summary>
     public struct SerialSettingsCollection
     {
         public int[] baud_rates;

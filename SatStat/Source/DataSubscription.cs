@@ -8,16 +8,27 @@ namespace SatStat
     /// </summary>
     public class DataSubscription
     {
-        public string attribute { get; set; }
-        public string data_type { get; set; }
-        public DataReceiver receiver { get; set; }
+        /// <summary>
+        /// Specifies the attribute that was subscribed to trough this subscription
+        /// </summary>
+        public string attribute;
+
+        /// <summary>
+        /// Specifies the datatype of the data that is delivered on this subscription
+        /// </summary>
+        public string data_type;
+
+        /// <summary>
+        /// Specifies the receiver of the data on this subscription
+        /// </summary>
+        public DataReceiver receiver;
 
         /// <summary>
         /// A DataSubscription needs a receiver to receive data trough this subscription, to define the attribute that contains the relevant data that the receiver wants to receive, and to define what datatype this data is represented as so it can be correctly cast on delivery
         /// </summary>
-        /// <param name="r"></param>
-        /// <param name="attr"></param>
-        /// <param name="type"></param>
+        /// <param name="r">The object that should receive the data</param>
+        /// <param name="attr">The attribute to subscribe to</param>
+        /// <param name="type">The datatype of the data delivered on the subscription</param>
         public DataSubscription(DataReceiver r, string attr, string type)
         {
             receiver = r;
@@ -28,24 +39,12 @@ namespace SatStat
         /// <summary>
         /// Defines procedure to follow when delivering data trough this subscription
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data">Returns the data received</param>
         /// <returns></returns>
         public object receive(object data)
         {   
             receiver.ReceivePayload(data, attribute, data_type);
             return data;
-        }
-
-        /// <summary>
-        /// Shortcut function for creating a subscription based on attribute and type
-        /// </summary>
-        /// <param name="receiver"></param>
-        /// <param name="attr"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static DataSubscription Create(DataReceiver receiver, string attr, string type)
-        {
-            return new DataSubscription(receiver, attr, type);
         }
     }
 }

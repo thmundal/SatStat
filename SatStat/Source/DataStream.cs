@@ -10,8 +10,19 @@ namespace SatStat
     /// </summary>
     public class DataStream
     {
+        /// <summary>
+        /// A buffer containing received input
+        /// </summary>
         private List<JObject> inputBuffer;
+
+        /// <summary>
+        /// A list of all subscribers on this datastream
+        /// </summary>
         private List<DataSubscription> subscriptions;
+
+        /// <summary>
+        /// An action to invoke when output is received on this stream
+        /// </summary>
         private Action<string> OutputReceivedCallback;
 
         public DataStream()
@@ -51,12 +62,11 @@ namespace SatStat
             }
         }
 
-
         /// <summary>
         /// Parse input string as json key/value pairs and put the parsed data in the input buffer
         /// </summary>
-        /// <param name="input"></param>
-        //public Dictionary<string, object> Parse(string input)
+        /// <param name="input">The json string data to be parsed</param>
+        /// <returns>Returns a JObject containing parsed data</returns>
         public JObject Parse(string input)
         {   
             if(input.Length > 0)
@@ -93,16 +103,10 @@ namespace SatStat
             return null;
         }
 
-        public JObject ParseAsObject(string input)
-        {
-            JObject inputParsed = JSON.parse<JObject>(input);
-            return inputParsed;
-        }
-
         /// <summary>
         /// Add a subscriber to this data stream
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">The subscriber to add to the list</param>
         public void AddSubscriber(DataSubscription subscription)
         {
             subscriptions.Add(subscription);

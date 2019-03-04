@@ -22,6 +22,12 @@ namespace SatStat
                 }
             };
 
+        /// <summary>
+        /// Parse a JSON string to a C# object of type T
+        /// </summary>
+        /// <typeparam name="T">Desired return type</typeparam>
+        /// <param name="input">JSON string to be parsed</param>
+        /// <returns>The parsed object</returns>
         public static T parse<T>(string input)
         {
             T parsed = JsonConvert.DeserializeObject<T>(input);
@@ -32,6 +38,11 @@ namespace SatStat
             return parsed;
         }
 
+        /// <summary>
+        /// Serialize a C# object to a JSON string
+        /// </summary>
+        /// <param name="input">Object to serialize</param>
+        /// <returns></returns>
         public static string serialize(object input)
         {
             return JsonConvert.SerializeObject(input);
