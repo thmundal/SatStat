@@ -19,8 +19,8 @@ public:
 	void sadm_auto_rotate();
 
 	void interpret_instruction();
+
 private:	
-	SADM_functions sadm_functions;
 	static QueueArray<Json_container<JsonObject>*> instruction_queue;
 	LinkedList<String, void(*)(Json_container<JsonObject>*)> instruction_interpreter;
 };

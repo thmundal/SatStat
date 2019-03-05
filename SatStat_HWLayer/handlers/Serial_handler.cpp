@@ -3,7 +3,6 @@
 
 Serial_handler::Serial_handler()
 {
-	instruction_handler = new Instruction_handler();
 	baud_rate = 9600;
 	config = "8N1";
 	newline_format = "\r\n";
@@ -47,7 +46,7 @@ void Serial_handler::serial_listener()
 
 		if (input)
 		{
-			instruction_handler->insert_instruction(input);
+			instruction_handler.insert_instruction(input);
 		}
 	}
 }
@@ -65,9 +64,9 @@ bool Serial_handler::handshake_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler->queue_is_empty())
+		if (!instruction_handler.queue_is_empty())
 		{
-			tmp = instruction_handler->fetch_instruction();
+			tmp = instruction_handler.fetch_instruction();
 
 			if (tmp->get()->containsKey("serial_handshake"))
 			{
@@ -100,9 +99,9 @@ bool Serial_handler::connection_request_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler->queue_is_empty())
+		if (!instruction_handler.queue_is_empty())
 		{
-			tmp = instruction_handler->fetch_instruction();
+			tmp = instruction_handler.fetch_instruction();
 
 			if (tmp->get()->containsKey("connection_request"))
 			{
@@ -137,9 +136,9 @@ bool Serial_handler::connection_init_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler->queue_is_empty())
+		if (!instruction_handler.queue_is_empty())
 		{
-			tmp = instruction_handler->fetch_instruction();
+			tmp = instruction_handler.fetch_instruction();
 
 			if (tmp->get()->containsKey("connect"))
 			{
@@ -166,9 +165,9 @@ bool Serial_handler::available_data_request_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler->queue_is_empty())
+		if (!instruction_handler.queue_is_empty())
 		{
-			tmp = instruction_handler->fetch_instruction();
+			tmp = instruction_handler.fetch_instruction();
 
 			if (tmp->get()->containsKey("request"))
 			{

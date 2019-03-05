@@ -6,7 +6,7 @@ QueueArray<Json_container<JsonObject>*> Instruction_handler::instruction_queue;
 // Constructor
 Instruction_handler::Instruction_handler()
 {	
-	sadm_functions.init_stepper();
+	SADM_functions::init_stepper();
 	instruction_interpreter.append("auto_rotate", SADM_functions::set_auto_rotate);
 	instruction_interpreter.append("rotate", SADM_functions::rotate);
 }
@@ -49,12 +49,12 @@ bool Instruction_handler::queue_is_empty() const
 
 bool Instruction_handler::sadm_auto_rotate_en()
 {
-	return sadm_functions.get_auto_rotate_en();
+	return SADM_functions::get_auto_rotate_en();
 }
 
 void Instruction_handler::sadm_auto_rotate()
 {
-	sadm_functions.auto_rotate();
+	SADM_functions::auto_rotate();
 }
 
 void Instruction_handler::interpret_instruction()

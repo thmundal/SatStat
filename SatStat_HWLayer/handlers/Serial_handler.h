@@ -33,5 +33,5 @@ private:
 	
 	Sensor_container sensor_container;
 	Json_handler json_handler;
-	Instruction_handler* instruction_handler;
+	Instruction_handler instruction_handler;
 };
