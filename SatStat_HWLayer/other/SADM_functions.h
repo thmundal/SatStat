@@ -6,6 +6,9 @@
 class SADM_functions
 {
 public:
+	// Pure virtual destructor to make the class abstract
+	virtual ~SADM_functions() = 0;
+
 	static void init_stepper();
 	static void set_auto_rotate(Json_container<JsonObject>* instruction);
 	static void auto_rotate();
