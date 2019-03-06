@@ -51,6 +51,16 @@ void Serial_handler::serial_listener()
 	}
 }
 
+void Serial_handler::send_nack()
+{
+	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
+
+	nack->get()->printTo(Serial);
+	Serial.print(newline_format);
+
+	delete nack;
+}
+
 // Reads serial until handshake received
 // Returns false if what's received is not a propper handshake.
 bool Serial_handler::handshake_approved()
@@ -174,7 +184,7 @@ bool Serial_handler::available_data_request_approved()
 
 				if (tmp->get()->get<String>("request") == "available_data")
 				{
-					send_sensor_collection(sensor_container.get_available_sensors());
+					send_sensor_collection();
 					delete tmp;
 					return true;
 				}
@@ -185,6 +195,14 @@ bool Serial_handler::available_data_request_approved()
 	}
 
 	return false;
+}
+
+void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
+{
+	json->get()->printTo(Serial);
+	Serial.print(newline_format);
+
+	delete json;
 }
 
 bool Serial_handler::config_approved(const unsigned long & baud_rate, const String& config)
@@ -274,17 +292,19 @@ void Serial_handler::send_handshake_response()
 }
 
 //Sends ack to software layer
-void Serial_handler::send_sensor_collection(LinkedList<String, Sensor*>& sensor_collection)
+void Serial_handler::send_sensor_collection()
 {
-	Json_container<JsonObject>* ack = json_handler.create_object("serial_handshake", "ok");
-	JsonArray& available_data = ack->get()->createNestedArray("available_data");
+	Json_container<JsonObject>* ack = json_handler.create_object();
+	JsonObject& available_data = ack->get()->createNestedObject("available_data");
 
-	for (int i = 0; i < sensor_collection.count(); i++)
+	LinkedList<String, Sensor*>& sensor_collection = sensor_container.get_available_sensors();
+
+	for (int i = 0; i < sensor_collection.count(); i++) 
 	{
 		Sensor* sensor = sensor_collection[i];
 		for (int i = 0; i < sensor->get_data_count(); i++)
 		{
-			available_data.add(*json_handler.create_object(sensor->read_sensor()[i].name, "int")->get());
+			available_data.set(sensor->read_sensor()[i].name, "int");
 		}
 	}
 
@@ -302,22 +322,4 @@ void Serial_handler::send_ack()
 	Serial.print(newline_format);
 
 	delete ack;
-}
-
-void Serial_handler::send_nack()
-{
-	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
-
-	nack->get()->printTo(Serial);
-	Serial.print(newline_format);
-
-	delete nack;
-}
-
-void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
-{
-	json->get()->printTo(Serial);
-	Serial.print(newline_format);
-
-	delete json;
 }

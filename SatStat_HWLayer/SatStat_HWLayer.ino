@@ -7,15 +7,17 @@ Instruction_handler instruction_handler;
 Sensor_container sensor_container;
 
 // Timing constrains
-unsigned long start_time = millis();
-const int duration = 1000;
+unsigned long sensor_interval_start_time = millis();
+const unsigned long sensor_interval_duration = 1000;
+
+unsigned long outer_timeout_start_time;
+const unsigned long outer_timeout_duration = 10000;
 
 void handshake()
 {
 	// Loop until handshake received
 	while (true)
 	{
-		// Send ack if approved, nack if not
 		if (serial_handler.handshake_approved())
 		{
 			break;
@@ -26,12 +28,10 @@ void handshake()
 bool connection()
 {
 	// Loop until connection request received
-	unsigned long start_time = millis();
-	unsigned long timeout = 10000;
+	outer_timeout_start_time = millis();
 
-	while (millis() - start_time < timeout)
+	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{
-		// Send nack if not approved
 		if (serial_handler.connection_request_approved())
 		{	
 			return true;
@@ -44,10 +44,9 @@ bool connection()
 bool connection_init()
 {
 	// Init connection on new config
-	unsigned long start_time = millis();
-	unsigned long timeout = 10000;
+	outer_timeout_start_time = millis();
 
-	while (millis() - start_time < timeout)
+	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{		
 		if (serial_handler.connection_init_approved())
 		{
@@ -61,12 +60,10 @@ bool connection_init()
 bool provide_sensor_data()
 {
 	// Init connection on new config
-	unsigned long start_time = millis();
-	unsigned long timeout = 10000;
+	outer_timeout_start_time = millis();
 
-	while (millis() - start_time < timeout)
+	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{
-		// Send nack if not approved
 		if (serial_handler.available_data_request_approved())
 		{
 			return true;
@@ -97,7 +94,7 @@ void setup()
 				if (provide_sensor_data())
 				{
 					break;
-				}				
+				}			
 			}
 		}
 		serial_handler.send_nack();
@@ -121,12 +118,12 @@ void loop()
 	}
 
 	// Runs with an interval equal to the duration
-	if (!(millis() - start_time < duration))
+	if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 	{	
 		// Prints sensor data
 		serial_handler.print_to_serial(sensor_container.read_sensors());
 
 		// Update start time to current time
-		start_time = millis();
+		sensor_interval_start_time = millis();
 	}
 }

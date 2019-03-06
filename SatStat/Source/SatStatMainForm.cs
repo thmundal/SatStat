@@ -53,7 +53,7 @@ namespace SatStat
                 ReceiveSensorList((JArray)payload);
             });
 
-            sensorListReceiver.Subscribe(Program.serial, "available_sensors", "JArray");
+            sensorListReceiver.Subscribe(Program.serial, "available_data", "JArray");
 
             lineSeries1 = new LineSeries();
             lineSeries1.Title = "Series 1";
