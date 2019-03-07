@@ -44,16 +44,16 @@ namespace SatStat
                  ReceivePayload(Convert.ToDouble(payload));
             });
 
-            dataReceiver.Subscribe(Program.serial, "temperature", "double");
+            //dataReceiver.Subscribe(Program.serial, "temperature", "double");
             
             sensorListReceiver = new DataReceiver();
             
             sensorListReceiver.OnPayloadReceived((object payload, string attribue) =>
             {
-                ReceiveSensorList((JArray)payload);
+                ReceiveSensorList((JObject)payload);
             });
 
-            sensorListReceiver.Subscribe(Program.serial, "available_data", "JArray");
+            sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
 
             lineSeries1 = new LineSeries();
             lineSeries1.Title = "Series 1";
@@ -146,13 +146,12 @@ namespace SatStat
         private Hashtable sensor_information = new Hashtable();
 
         [STAThread]
-        private void ReceiveSensorList(JArray sensor_list)
+        private void ReceiveSensorList(JObject sensor_list)
         {
-            foreach (JObject sensor in sensor_list)
+            ThreadHelperClass.Invoke(this, null, UISensorCheckboxList, (data) =>
             {
-                foreach (var elem in sensor)
+                foreach (var elem in (JObject) data["sensor_list"])
                 {
-                    Console.WriteLine(elem.Key);
                     if(!sensor_information.ContainsKey(elem.Key))
                     {
                         sensor_information.Add(elem.Key, elem.Value.ToString());
@@ -160,7 +159,12 @@ namespace SatStat
                         UISensorCheckboxList.Items.Add(elem.Key);
                     }
                 }
-            }
+            }, new Hashtable {
+                { "form", this },
+                { "panel", null },
+                { "control", UISensorCheckboxList },
+                { "sensor_list", sensor_list }
+            });
         }
         
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -208,7 +212,15 @@ namespace SatStat
             {
                 string type = (string) sensor_information[attribute];
 
-                dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                if(Program.streamSimulator != null)
+                {
+                    dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                }
+
+                if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
+                {
+                    dataReceiver.Subscribe(Program.serial, attribute, type);
+                }
                 Console.WriteLine("Subscribed to " + attribute);
             } else
             {
@@ -225,12 +237,17 @@ namespace SatStat
 
         private void UIautoRotateOnBtn_Click(object sender, EventArgs e)
         {
-            Program.serial.Output(new JObject() { { "request", "auto_rotate" }, { "parameters", new JArray() { true } } });
+            // Future planned format:
+            //Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "parameters", new JObject() { { "enable", true } } } });
+            Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "enable", true } });
+
         }
 
         private void UIAutoRotateOffBtn_Click(object sender, EventArgs e)
         {
-            Program.serial.Output(new JObject() { { "request", "auto_rotate" }, { "parameters", new JArray() { false } } });
+            // Future plannet format:
+            //Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "parameters", new JObject() { { "enable", false } } } });
+            Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "enable", false } });
         }
 
         private void UIsetMotorSpeedBtn_Click(object sender, EventArgs e)
@@ -239,11 +256,35 @@ namespace SatStat
 
             if(Int32.TryParse(motorSpeedInputText, out int motorSpeed))
             {
-                Program.serial.Output(new JObject() { { "request", "set_motor_speed" }, { "parameters", new JArray() { motorSpeed } } });
+                Program.serial.Output(new JObject() { { "instruction", "set_motor_speed" }, { "speed", motorSpeed } });
             }
             else
             {
                 Debug.Log("Invalid input, must provide an integer");
+            }
+        }
+
+        private void UIrotateAngleBtn_Click(object sender, EventArgs e)
+        {
+            if(Single.TryParse(UIrotateAngleInput.Text, out float angle))
+            {
+                Program.serial.Output(new JObject() { { "instruction", "rotate" }, { "deg", 3.25 * angle } }); // 3.25 is gear ratio
+            }
+            else
+            {
+                Debug.Log("Invalid input, bust be floating point number (single)");
+            }
+        }
+
+        private void UIrotateStepsBtn_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(UIrotateStepsInput.Text, out int steps))
+            {
+                Program.serial.Output(new JObject() { { "instruction", "rotate" }, { "steps", 3.25 * steps } }); // 3.25 is gear ratio
+            }
+            else
+            {
+                Debug.Log("Invalid input, bust be floating point number (single)");
             }
         }
     }
