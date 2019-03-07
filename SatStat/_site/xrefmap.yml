@@ -819,6 +819,22 @@ references:
   commentId: T:SatStat.ThreadHelperClass
   fullName: SatStat.ThreadHelperClass
   nameWithType: ThreadHelperClass
+- uid: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name: Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_Invoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name.vb: Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+  fullName: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelperClass.Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelperClass.Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelperClass.Invoke*
+  name: Invoke
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_Invoke_
+  commentId: Overload:SatStat.ThreadHelperClass.Invoke
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.Invoke
+  nameWithType: ThreadHelperClass.Invoke
 - uid: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
   name: SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
   href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_ListBox_SatStat_SerialSettingsCollection_
