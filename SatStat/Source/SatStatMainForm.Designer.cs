@@ -41,6 +41,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.SadmControlsGroupPanel = new System.Windows.Forms.GroupBox();
+            this.UIrotateStepsInput = new System.Windows.Forms.TextBox();
+            this.UIrotateAngleInput = new System.Windows.Forms.TextBox();
+            this.UIrotateStepsLabel = new System.Windows.Forms.Label();
+            this.UIrotateAngleLabel = new System.Windows.Forms.Label();
+            this.UIrotateStepsBtn = new System.Windows.Forms.Button();
+            this.UIrotateAngleBtn = new System.Windows.Forms.Button();
+            this.UIsetMotorSpeedBtn = new System.Windows.Forms.Button();
+            this.UImotorSpeedLabel = new System.Windows.Forms.Label();
+            this.UImotorSpeedInput = new System.Windows.Forms.TextBox();
             this.UIautoRotateOnBtn = new System.Windows.Forms.Button();
             this.UIAutoRotateOffBtn = new System.Windows.Forms.Button();
             this.SensorDataListBoxGroupContainer = new System.Windows.Forms.GroupBox();
@@ -50,9 +59,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UImotorSpeedInput = new System.Windows.Forms.TextBox();
-            this.UImotorSpeedLabel = new System.Windows.Forms.Label();
-            this.UIsetMotorSpeedBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -175,8 +181,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.63291F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.36709F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.63736F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.36264F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1423, 728);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
@@ -190,13 +196,19 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.99127F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.00873F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 289);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.70934F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.29066F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 449);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
             // 
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateStepsInput);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateAngleInput);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateStepsLabel);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateAngleLabel);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateStepsBtn);
+            this.SadmControlsGroupPanel.Controls.Add(this.UIrotateAngleBtn);
             this.SadmControlsGroupPanel.Controls.Add(this.UIsetMotorSpeedBtn);
             this.SadmControlsGroupPanel.Controls.Add(this.UImotorSpeedLabel);
             this.SadmControlsGroupPanel.Controls.Add(this.UImotorSpeedInput);
@@ -205,10 +217,88 @@
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 103);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 244);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
+            // 
+            // UIrotateStepsInput
+            // 
+            this.UIrotateStepsInput.Location = new System.Drawing.Point(190, 76);
+            this.UIrotateStepsInput.Name = "UIrotateStepsInput";
+            this.UIrotateStepsInput.Size = new System.Drawing.Size(100, 20);
+            this.UIrotateStepsInput.TabIndex = 23;
+            // 
+            // UIrotateAngleInput
+            // 
+            this.UIrotateAngleInput.Location = new System.Drawing.Point(190, 50);
+            this.UIrotateAngleInput.Name = "UIrotateAngleInput";
+            this.UIrotateAngleInput.Size = new System.Drawing.Size(100, 20);
+            this.UIrotateAngleInput.TabIndex = 22;
+            // 
+            // UIrotateStepsLabel
+            // 
+            this.UIrotateStepsLabel.AutoSize = true;
+            this.UIrotateStepsLabel.Location = new System.Drawing.Point(117, 78);
+            this.UIrotateStepsLabel.Name = "UIrotateStepsLabel";
+            this.UIrotateStepsLabel.Size = new System.Drawing.Size(34, 13);
+            this.UIrotateStepsLabel.TabIndex = 21;
+            this.UIrotateStepsLabel.Text = "Steps";
+            // 
+            // UIrotateAngleLabel
+            // 
+            this.UIrotateAngleLabel.AutoSize = true;
+            this.UIrotateAngleLabel.Location = new System.Drawing.Point(117, 53);
+            this.UIrotateAngleLabel.Name = "UIrotateAngleLabel";
+            this.UIrotateAngleLabel.Size = new System.Drawing.Size(34, 13);
+            this.UIrotateAngleLabel.TabIndex = 20;
+            this.UIrotateAngleLabel.Text = "Angle";
+            // 
+            // UIrotateStepsBtn
+            // 
+            this.UIrotateStepsBtn.Location = new System.Drawing.Point(297, 74);
+            this.UIrotateStepsBtn.Name = "UIrotateStepsBtn";
+            this.UIrotateStepsBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIrotateStepsBtn.TabIndex = 19;
+            this.UIrotateStepsBtn.Text = "Rotate";
+            this.UIrotateStepsBtn.UseVisualStyleBackColor = true;
+            this.UIrotateStepsBtn.Click += new System.EventHandler(this.UIrotateStepsBtn_Click);
+            // 
+            // UIrotateAngleBtn
+            // 
+            this.UIrotateAngleBtn.Location = new System.Drawing.Point(297, 48);
+            this.UIrotateAngleBtn.Name = "UIrotateAngleBtn";
+            this.UIrotateAngleBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIrotateAngleBtn.TabIndex = 18;
+            this.UIrotateAngleBtn.Text = "Rotate";
+            this.UIrotateAngleBtn.UseVisualStyleBackColor = true;
+            this.UIrotateAngleBtn.Click += new System.EventHandler(this.UIrotateAngleBtn_Click);
+            // 
+            // UIsetMotorSpeedBtn
+            // 
+            this.UIsetMotorSpeedBtn.Location = new System.Drawing.Point(297, 18);
+            this.UIsetMotorSpeedBtn.Name = "UIsetMotorSpeedBtn";
+            this.UIsetMotorSpeedBtn.Size = new System.Drawing.Size(102, 23);
+            this.UIsetMotorSpeedBtn.TabIndex = 17;
+            this.UIsetMotorSpeedBtn.Text = "Set motor speed";
+            this.UIsetMotorSpeedBtn.UseVisualStyleBackColor = true;
+            this.UIsetMotorSpeedBtn.Click += new System.EventHandler(this.UIsetMotorSpeedBtn_Click);
+            // 
+            // UImotorSpeedLabel
+            // 
+            this.UImotorSpeedLabel.AutoSize = true;
+            this.UImotorSpeedLabel.Location = new System.Drawing.Point(117, 23);
+            this.UImotorSpeedLabel.Name = "UImotorSpeedLabel";
+            this.UImotorSpeedLabel.Size = new System.Drawing.Size(68, 13);
+            this.UImotorSpeedLabel.TabIndex = 16;
+            this.UImotorSpeedLabel.Text = "Motor Speed";
+            // 
+            // UImotorSpeedInput
+            // 
+            this.UImotorSpeedInput.Location = new System.Drawing.Point(191, 19);
+            this.UImotorSpeedInput.Name = "UImotorSpeedInput";
+            this.UImotorSpeedInput.Size = new System.Drawing.Size(100, 20);
+            this.UImotorSpeedInput.TabIndex = 15;
             // 
             // UIautoRotateOnBtn
             // 
@@ -234,9 +324,9 @@
             // 
             this.SensorDataListBoxGroupContainer.Controls.Add(this.UISensorCheckboxList);
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 112);
+            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 253);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 174);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 193);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
@@ -247,7 +337,7 @@
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 155);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 174);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
             this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
@@ -258,12 +348,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.diagnosticLiveOutputValues, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 298);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 458);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 427);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.61654F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.383459F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 267);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -272,7 +362,7 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 207);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 251);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
@@ -290,7 +380,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(434, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(434, 232);
             this.dataGridView1.TabIndex = 0;
             // 
             // Key
@@ -302,32 +392,6 @@
             // 
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
-            // 
-            // UImotorSpeedInput
-            // 
-            this.UImotorSpeedInput.Location = new System.Drawing.Point(191, 22);
-            this.UImotorSpeedInput.Name = "UImotorSpeedInput";
-            this.UImotorSpeedInput.Size = new System.Drawing.Size(100, 20);
-            this.UImotorSpeedInput.TabIndex = 15;
-            // 
-            // UImotorSpeedLabel
-            // 
-            this.UImotorSpeedLabel.AutoSize = true;
-            this.UImotorSpeedLabel.Location = new System.Drawing.Point(117, 25);
-            this.UImotorSpeedLabel.Name = "UImotorSpeedLabel";
-            this.UImotorSpeedLabel.Size = new System.Drawing.Size(68, 13);
-            this.UImotorSpeedLabel.TabIndex = 16;
-            this.UImotorSpeedLabel.Text = "Motor Speed";
-            // 
-            // UIsetMotorSpeedBtn
-            // 
-            this.UIsetMotorSpeedBtn.Location = new System.Drawing.Point(297, 20);
-            this.UIsetMotorSpeedBtn.Name = "UIsetMotorSpeedBtn";
-            this.UIsetMotorSpeedBtn.Size = new System.Drawing.Size(102, 23);
-            this.UIsetMotorSpeedBtn.TabIndex = 17;
-            this.UIsetMotorSpeedBtn.Text = "Set motor speed";
-            this.UIsetMotorSpeedBtn.UseVisualStyleBackColor = true;
-            this.UIsetMotorSpeedBtn.Click += new System.EventHandler(this.UIsetMotorSpeedBtn_Click);
             // 
             // SatStatMainForm
             // 
@@ -387,6 +451,12 @@
         private System.Windows.Forms.Button UIsetMotorSpeedBtn;
         private System.Windows.Forms.Label UImotorSpeedLabel;
         private System.Windows.Forms.TextBox UImotorSpeedInput;
+        private System.Windows.Forms.TextBox UIrotateStepsInput;
+        private System.Windows.Forms.TextBox UIrotateAngleInput;
+        private System.Windows.Forms.Label UIrotateStepsLabel;
+        private System.Windows.Forms.Label UIrotateAngleLabel;
+        private System.Windows.Forms.Button UIrotateStepsBtn;
+        private System.Windows.Forms.Button UIrotateAngleBtn;
     }
 }
 

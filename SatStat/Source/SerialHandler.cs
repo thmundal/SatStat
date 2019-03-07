@@ -131,13 +131,23 @@ namespace SatStat
                 {
                     DeliverSubscriptions();
                 }
-            } catch(Exception ex)
+            }
+            catch(Newtonsoft.Json.JsonReaderException ex)
+            {
+                Debug.Log("Invalid JSON");
+                Debug.Log(ex);
+            }
+            catch (TimeoutException ex)
             {
                 Debug.Log("Serial.OnDataReceived exception captured\nSettings:");
                 Debug.Log(connection.BaudRate);
                 Debug.Log(ex);
                 Debug.Log(connection.ReadExisting());
                 connection.Close();
+            }
+            catch (Exception ex)
+            {
+
             }
 
             if (!connection.IsOpen)
@@ -226,6 +236,7 @@ namespace SatStat
         public void Connect()
         {
             WriteData("{\"connect\":\"ok\"}");
+            WriteData("{\"request\":\"available_data\"}");
 
             connectionStatus = ConnectionStatus.Connected;
         }
