@@ -1,8 +1,13 @@
 #pragma once
-#include "Arduino.h"
 #include "Instruction_handler.h"
-#include "../other/Sensor_container.h"
+#include "../containers/Sensor_container.h"
 
+/**
+*	The Serial_handler class is responsible for establishing connection with a client through the serial port,
+*	as well as listening for input and printing output through the serial port when a connection has been established.
+*	It has methods complementing the handshake protocol defined in the SatStat communication protocol document,
+*	and for listening and printing to serial.
+*/
 class Serial_handler
 {
 public:

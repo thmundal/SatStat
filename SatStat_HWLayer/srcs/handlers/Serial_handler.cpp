@@ -1,6 +1,9 @@
 #pragma once
 #include "Serial_handler.h"
 
+/**
+*	Sets defualt baud rate, configuration and newline format.
+*/
 Serial_handler::Serial_handler()
 {
 	baud_rate = 9600;
@@ -8,7 +11,9 @@ Serial_handler::Serial_handler()
 	newline_format = "\r\n";
 }
 
-// Init serial with given config.
+/**
+*	Initializes serial with configuration stored in the member variables baud_rate and config.
+*/
 void Serial_handler::serial_init()
 {
 	if (config == "5N1") { Serial.begin(baud_rate, SERIAL_5N1); }
@@ -37,7 +42,9 @@ void Serial_handler::serial_init()
 	else if (config == "8O2") { Serial.begin(baud_rate, SERIAL_8O2); }
 }
 
-// Listens for serial input
+/**
+*	Listens for serial input. Has to be continuously called to store the input as soon as it's available.
+*/
 void Serial_handler::serial_listener()
 {
 	if (Serial.available() > 0)
@@ -51,6 +58,9 @@ void Serial_handler::serial_listener()
 	}
 }
 
+/**
+*	Prints JSON formatted negative acknowledgement to serial. Output looks as follows: {"serial_handshake":"failed"}.
+*/
 void Serial_handler::send_nack()
 {
 	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
@@ -61,8 +71,11 @@ void Serial_handler::send_nack()
 	delete nack;
 }
 
-// Reads serial until handshake received
-// Returns false if what's received is not a propper handshake.
+/**
+*	Reads serial until handshake received, and sends handshake response according to SatStat communication protocol when it is.
+*	Sends NACK and returns false if what's received is not a proper handshake.
+*	If no input is received before timeout occurs, it returns false without sending NACK.
+*/
 bool Serial_handler::handshake_approved()
 {
 	Json_container<JsonObject>* tmp;
@@ -95,8 +108,11 @@ bool Serial_handler::handshake_approved()
 	return false;
 }
 
-// Reads serial until connection request received
-// Returns false if what's received is not a propper request.
+/**
+*	Reads serial until connection request received, and initializes serial with the received configuration when it is.
+*	Sends NACK and returns false if what's received is not a proper request.
+*	If no input is received before timeout occurs, it returns false without sending NACK.
+*/
 bool Serial_handler::connection_request_approved()
 {
 	Json_container<JsonObject>* tmp;
@@ -134,6 +150,11 @@ bool Serial_handler::connection_request_approved()
 	return false;
 }
 
+/**
+*	Reads serial until connection acknowledgement received.
+*	Sends NACK and returns false if what's received is not a proper acknowledgement.
+*	If no input is received before timeout occurs, it returns false without sending NACK.
+*/
 bool Serial_handler::connection_init_approved()
 {
 	Json_container<JsonObject>* tmp;
@@ -165,6 +186,11 @@ bool Serial_handler::connection_init_approved()
 	return false;
 }
 
+/**
+*	Reads serial until request for available data is received, and responds by sending a list of available sensors when it is.
+*	Sends NACK and returns false if what's received is not a proper request.
+*	If no input is received before timeout occurs, it returns false without sending NACK.
+*/
 bool Serial_handler::available_data_request_approved()
 {
 	Json_container<JsonObject>* tmp;
@@ -197,6 +223,9 @@ bool Serial_handler::available_data_request_approved()
 	return false;
 }
 
+/**
+*	Prints the Json_container<JsonObject> pointer passed as argument to the serial.
+*/
 void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
 {
 	json->get()->printTo(Serial);
@@ -205,6 +234,10 @@ void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
 	delete json;
 }
 
+/**
+*	Checks if the configuration passed as arguments are valid.
+*	Returns true if they are, false if one or more of them are not.
+*/
 bool Serial_handler::config_approved(const unsigned long & baud_rate, const String& config)
 {
 	int data_bits = config.charAt(0);
@@ -231,6 +264,9 @@ bool Serial_handler::config_approved(const unsigned long & baud_rate, const Stri
 	return false;
 }
 
+/**
+*	Creates a Json_container<JsonObject> pointer, appends the available baud rates, configurations and newline formats and print it to the serial.
+*/
 void Serial_handler::send_handshake_response()
 {
 	Json_container<JsonObject>* handshake_response = json_handler.create_object();
@@ -291,7 +327,9 @@ void Serial_handler::send_handshake_response()
 	delete handshake_response;
 }
 
-//Sends ack to software layer
+/**
+*	Creates a Json_container<JsonObject> pointer, appends the name and data type of the sensors in the sensor collection and prints it to the serial.
+*/
 void Serial_handler::send_sensor_collection()
 {
 	Json_container<JsonObject>* ack = json_handler.create_object();
@@ -314,6 +352,9 @@ void Serial_handler::send_sensor_collection()
 	delete ack;
 }
 
+/**
+*	Creates a Json_container<JsonObject> pointer, appends the acknowledgement message and prints it to the serial.
+*/
 void Serial_handler::send_ack()
 {
 	Json_container<JsonObject>* ack = json_handler.create_object("connect", "init");

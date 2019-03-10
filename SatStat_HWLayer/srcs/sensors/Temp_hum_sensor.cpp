@@ -1,14 +1,18 @@
 #pragma once
 #include "Temp_hum_sensor.h"
 
-// Pass parameter inputs to parent constructor arguments
+/**
+*	Pass parameter inputs to parent constructor arguments.
+*/
 Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin, 2)
 {	
 	result[0].name = "temperature";
 	result[1].name = "humidity";
 }
 
-// Read and return every reading the sensor support
+/**
+*	Read all data the sensor can provide, and return as a Result pointer.
+*/
 const Result* Temp_hum_sensor::read_sensor()
 {
 	DHT.read11(pin);

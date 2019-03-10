@@ -13,32 +13,38 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\handlers">
-      <UniqueIdentifier>{0c323f2c-b8f0-423e-a1cc-02864f2bf2b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\sensors">
-      <UniqueIdentifier>{0410a9b4-b778-4582-816d-b79c7d13acbe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\libraries">
       <UniqueIdentifier>{6a2f6611-385b-4f69-a419-aca97db22b29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\handlers">
-      <UniqueIdentifier>{389bd87e-2a65-4c4c-9b79-02c9b59e50f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\libraries">
-      <UniqueIdentifier>{fd4f2a93-3c98-4e18-8557-cbca7ae0c4a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\sensors">
-      <UniqueIdentifier>{060e1d91-a3ed-4d76-97b2-58be647f49c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\libraries\ArduinoJson">
       <UniqueIdentifier>{fca7005a-e2a6-4f5f-ad13-ccdae34b73db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\other">
+    <Filter Include="Source Files\srcs">
+      <UniqueIdentifier>{b7b10842-d728-4873-b9ff-78f34c92decf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\sensors">
+      <UniqueIdentifier>{060e1d91-a3ed-4d76-97b2-58be647f49c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\containers">
+      <UniqueIdentifier>{badc78a5-d60f-45c6-9fbf-2db3a5c35226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries">
+      <UniqueIdentifier>{fd4f2a93-3c98-4e18-8557-cbca7ae0c4a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\handlers">
+      <UniqueIdentifier>{389bd87e-2a65-4c4c-9b79-02c9b59e50f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\srcs">
+      <UniqueIdentifier>{1669f749-b18b-4994-a37b-7e4a2619d494}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\srcs\handlers">
+      <UniqueIdentifier>{0c323f2c-b8f0-423e-a1cc-02864f2bf2b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\srcs\containers">
       <UniqueIdentifier>{97e4752f-8017-477a-bf88-450cfb9a7958}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\other">
-      <UniqueIdentifier>{badc78a5-d60f-45c6-9fbf-2db3a5c35226}</UniqueIdentifier>
+    <Filter Include="Header Files\srcs\sensors">
+      <UniqueIdentifier>{0410a9b4-b778-4582-816d-b79c7d13acbe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,12 +53,6 @@
   <ItemGroup>
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="handlers\Json_handler.h">
-      <Filter>Header Files\handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="sensors\Sensor.h">
-      <Filter>Header Files\sensors</Filter>
     </ClInclude>
     <ClInclude Include="libraries\ArduinoJson.h">
       <Filter>Header Files\libraries</Filter>
@@ -309,73 +309,85 @@
     <ClInclude Include="libraries\Stepper.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
-    <ClInclude Include="sensors\Temp_hum_sensor.h">
-      <Filter>Header Files\sensors</Filter>
-    </ClInclude>
     <ClInclude Include="libraries\dht.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
-    <ClInclude Include="sensors\Result.h">
-      <Filter>Header Files\sensors</Filter>
+    <ClInclude Include="srcs\containers\Sensor_container.h">
+      <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
-    <ClInclude Include="other\Json_object_container.h">
-      <Filter>Header Files\other</Filter>
+    <ClInclude Include="srcs\containers\Json_array_container.h">
+      <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
-    <ClInclude Include="other\Json_array_container.h">
-      <Filter>Header Files\other</Filter>
+    <ClInclude Include="srcs\containers\Json_container.h">
+      <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
-    <ClInclude Include="other\Json_container.h">
-      <Filter>Header Files\other</Filter>
+    <ClInclude Include="srcs\containers\Json_object_container.h">
+      <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\Instruction_handler.h">
-      <Filter>Header Files\handlers</Filter>
+    <ClInclude Include="srcs\containers\SADM_functions.h">
+      <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\Serial_handler.h">
-      <Filter>Header Files\handlers</Filter>
+    <ClInclude Include="srcs\handlers\Instruction_handler.h">
+      <Filter>Header Files\srcs\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="other\Sensor_container.h">
-      <Filter>Header Files\other</Filter>
+    <ClInclude Include="srcs\handlers\Json_handler.h">
+      <Filter>Header Files\srcs\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="other\SADM_functions.h">
-      <Filter>Header Files\other</Filter>
+    <ClInclude Include="srcs\handlers\Serial_handler.h">
+      <Filter>Header Files\srcs\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="srcs\sensors\Result.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="srcs\sensors\Sensor.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="srcs\sensors\Temp_hum_sensor.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="srcs\SatStat_HWLayer.h">
+      <Filter>Header Files\srcs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="handlers\Json_handler.cpp">
-      <Filter>Source Files\handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="sensors\Sensor.cpp">
-      <Filter>Source Files\sensors</Filter>
-    </ClCompile>
     <ClCompile Include="libraries\DS1302.cpp">
       <Filter>Source Files\libraries</Filter>
     </ClCompile>
     <ClCompile Include="libraries\Stepper.cpp">
       <Filter>Source Files\libraries</Filter>
     </ClCompile>
-    <ClCompile Include="sensors\Temp_hum_sensor.cpp">
-      <Filter>Source Files\sensors</Filter>
-    </ClCompile>
     <ClCompile Include="libraries\dht.cpp">
       <Filter>Source Files\libraries</Filter>
     </ClCompile>
-    <ClCompile Include="other\Json_object_container.cpp">
-      <Filter>Source Files\other</Filter>
+    <ClCompile Include="srcs\containers\Json_array_container.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
-    <ClCompile Include="other\Json_array_container.cpp">
-      <Filter>Source Files\other</Filter>
+    <ClCompile Include="srcs\containers\Json_object_container.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
-    <ClCompile Include="handlers\Instruction_handler.cpp">
-      <Filter>Source Files\handlers</Filter>
+    <ClCompile Include="srcs\containers\SADM_functions.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
-    <ClCompile Include="handlers\Serial_handler.cpp">
-      <Filter>Source Files\handlers</Filter>
+    <ClCompile Include="srcs\containers\Sensor_container.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
-    <ClCompile Include="other\Sensor_container.cpp">
-      <Filter>Source Files\other</Filter>
+    <ClCompile Include="srcs\handlers\Instruction_handler.cpp">
+      <Filter>Source Files\srcs\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="other\SADM_functions.cpp">
-      <Filter>Source Files\other</Filter>
+    <ClCompile Include="srcs\handlers\Json_handler.cpp">
+      <Filter>Source Files\srcs\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\handlers\Serial_handler.cpp">
+      <Filter>Source Files\srcs\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp">
+      <Filter>Source Files\srcs\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\sensors\Sensor.cpp">
+      <Filter>Source Files\srcs\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\SatStat_HWLayer.cpp">
+      <Filter>Source Files\srcs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

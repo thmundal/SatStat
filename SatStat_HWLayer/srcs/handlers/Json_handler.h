@@ -1,8 +1,11 @@
 #pragma once
-#include "Arduino.h"
-#include "../other/Json_object_container.h"
-#include "../other/Json_array_container.h"
+#include "../containers/Json_object_container.h"
+#include "../containers/Json_array_container.h"
 
+/**
+*	The Json_handler class provides functionality for creating and appending to JsonObjects and/or JsonArrays.
+*	This class have no member variables, as it operates upon objects stored in Json_container objects.
+*/
 class Json_handler
 {
 public:
@@ -17,7 +20,9 @@ public:
 	template<class T> void append_to(Json_container<JsonArray>* arr, const String& key, const T& value);	
 };
 
-// Creates a pointer to a Json_object_container with predefined key and value
+/**
+*	Creates a pointer to a Json_object_container with predefined key and value.
+*/
 template<class T>
 inline Json_container<JsonObject>* Json_handler::create_object(const String& key, const T& value)
 {
@@ -27,7 +32,9 @@ inline Json_container<JsonObject>* Json_handler::create_object(const String& key
 	return obj;
 }
 
-// Creates a pointer to a Json_array_container with predefined key and value
+/**
+*	Creates a pointer to a Json_array_container with predefined key and value.
+*/
 template<class T>
 inline Json_container<JsonArray>* Json_handler::create_array(const T* value, const int& data_count)
 {
@@ -41,14 +48,18 @@ inline Json_container<JsonArray>* Json_handler::create_array(const T* value, con
 	return arr;
 }
 
-// Appends a key-value pair to an existing object
+/**
+*	Appends a key-value pair to an existing object.	
+*/
 template<class T>
 inline void Json_handler::append_to(Json_container<JsonObject>* obj, const String& key, const T& value)
 {
 	obj->get()->set(key, value);
 }
 
-// Appends a key-value pair to an existing array
+/**
+*	Appends a key-value pair to an existing array.
+*/
 template<class T>
 inline void Json_handler::append_to(Json_container<JsonArray>* arr, const String& key, const T& value)
 {

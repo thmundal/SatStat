@@ -1,9 +1,12 @@
 #pragma once
 #include "Instruction_handler.h"
 
+// Declaration of static member.
 QueueArray<Json_container<JsonObject>*> Instruction_handler::instruction_queue;
 
-// Constructor
+/**
+*	Constructor initializing the stepper, as well as appending instructions and the corresponding functions to the instruction_interpreter.
+*/
 Instruction_handler::Instruction_handler()
 {	
 	SADM_functions::init_stepper();
@@ -11,7 +14,9 @@ Instruction_handler::Instruction_handler()
 	instruction_interpreter.append("rotate", SADM_functions::rotate);
 }
 
-// Delete every JsonObject in the instruction queue
+/**
+*	Delete every JsonObject in the instruction_queue.
+*/
 Instruction_handler::~Instruction_handler()
 {
 	Json_container<JsonObject>* tmp;
@@ -22,7 +27,9 @@ Instruction_handler::~Instruction_handler()
 	}
 }
 
-// Insert instruction into instruction queue
+/**
+*	Inserts passed instruction into the instruction_queue.
+*/
 void Instruction_handler::insert_instruction(const String& input_data)
 {
 	Json_container<JsonObject>* obj = new Json_object_container();
@@ -30,7 +37,9 @@ void Instruction_handler::insert_instruction(const String& input_data)
 	instruction_queue.enqueue(obj);	
 }
 
-// Fetches an instruction from the instruction queue
+/**
+*	Fetches an instruction from the instruction queue. Returned as Json_container<JsonObject> pointer.
+*/
 Json_container<JsonObject>* Instruction_handler::fetch_instruction()
 {
 	if (!instruction_queue.isEmpty())
@@ -41,22 +50,34 @@ Json_container<JsonObject>* Instruction_handler::fetch_instruction()
 	return nullptr;
 }
 
-// Returns true if instruction queue is empty
+/**
+*	Returns true if instruction queue is empty, false if not.
+*/
 bool Instruction_handler::queue_is_empty() const
 {	
 	return instruction_queue.isEmpty();
 }
 
+/**
+*	Returns true if auto rotate is enabled, false if not.
+*/
 bool Instruction_handler::sadm_auto_rotate_en()
 {
 	return SADM_functions::get_auto_rotate_en();
 }
 
+/**
+*	Calls the static auto_rotate function from the SADM_functions container.
+*/
 void Instruction_handler::sadm_auto_rotate()
 {
 	SADM_functions::auto_rotate();
 }
 
+/**
+*	Fetches the first instruction in the instruction_queue, getting the corresponding function from the instruction_interpreter
+*	and calling the retreived function passing the instruction as argument.
+*/
 void Instruction_handler::interpret_instruction()
 {	
 	Json_container<JsonObject>* obj = instruction_queue.dequeue();

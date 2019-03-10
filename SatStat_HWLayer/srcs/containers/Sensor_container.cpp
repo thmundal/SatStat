@@ -1,13 +1,17 @@
 #pragma once
 #include "Sensor_container.h"
 
-// Instantiate sensors
+/**
+*	Instantiate sensors with name and the pin it's connected to.
+*/
 Sensor_container::Sensor_container()
 {
 	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 6));
 }
 
-// Delete every sensor in the sensor collection
+/**
+*	Delete every sensor in the sensor collection.
+*/
 Sensor_container::~Sensor_container()
 {
 	for (int i = 0; i < sensor_collection.count(); i++)
@@ -16,7 +20,9 @@ Sensor_container::~Sensor_container()
 	}
 }
 
-// Read given sensor
+/**
+*	Read sensor corresponding to the name sent as argument, and return result as Json_container<JsonObject> pointer.
+*/
 Json_container<JsonObject>* Sensor_container::read_sensor(const String& name)
 {
 	Sensor* sensor = sensor_collection.get(name);
@@ -32,7 +38,9 @@ Json_container<JsonObject>* Sensor_container::read_sensor(const String& name)
 	return obj;
 }
 
-// Reads all sensors
+/**
+*	Reads all sensors in the sensor collection, and return result as a Json_container<JsonObject> pointer.
+*/
 Json_container<JsonObject>* Sensor_container::read_sensors()
 {
 	Sensor* sensor;
@@ -57,6 +65,9 @@ Json_container<JsonObject>* Sensor_container::read_sensors()
 	return obj;
 }
 
+/**
+*	Returns a reference to the linked list containing every available sensor.
+*/
 LinkedList<String, Sensor*>& Sensor_container::get_available_sensors()
 {
 	return sensor_collection;
