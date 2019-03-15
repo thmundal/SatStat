@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json.Linq;
 
 namespace SatStat
 {
@@ -35,6 +31,7 @@ namespace SatStat
             SatStatMainForm app = new SatStatMainForm();
             
             Application.Run(app);
+
         }
     }
 }

@@ -142,12 +142,16 @@ namespace SatStat
                 Debug.Log("Serial.OnDataReceived exception captured\nSettings:");
                 Debug.Log(connection.BaudRate);
                 Debug.Log(ex);
-                Debug.Log(connection.ReadExisting());
-                connection.Close();
+
+                if(connection.IsOpen)
+                {
+                    Debug.Log(connection.ReadExisting());
+                    connection.Close();
+                }
             }
             catch (Exception ex)
             {
-
+                Debug.Log(ex);
             }
 
             if (!connection.IsOpen)

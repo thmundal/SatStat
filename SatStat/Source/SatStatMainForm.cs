@@ -13,6 +13,8 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using LiteDB;
+using System.IO;
 
 namespace SatStat
 {
@@ -31,6 +33,8 @@ namespace SatStat
 
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
+
+        private Hashtable lineSeriesTable = new Hashtable();
         
         public SatStatMainForm()
         {
@@ -39,13 +43,11 @@ namespace SatStat
             seriesCollection1 = new SeriesCollection();
 
             dataReceiver = new DataReceiver();
-            dataReceiver.OnPayloadReceived((object payload, string attribue) =>
+            dataReceiver.OnPayloadReceived((object payload, string attribute) =>
             {
-                 ReceivePayload(Convert.ToDouble(payload));
+                 ReceivePayload(Convert.ToDouble(payload), attribute);
             });
 
-            //dataReceiver.Subscribe(Program.serial, "temperature", "double");
-            
             sensorListReceiver = new DataReceiver();
             
             sensorListReceiver.OnPayloadReceived((object payload, string attribue) =>
@@ -55,13 +57,7 @@ namespace SatStat
 
             sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
 
-            lineSeries1 = new LineSeries();
-            lineSeries1.Title = "Series 1";
-            lineSeries1.Values = new ChartValues<double>();
-            lineSeries1.Fill = System.Windows.Media.Brushes.Transparent;
 
-            seriesCollection1.Add(lineSeries1);
-            
             cartesianChart1.Series = seriesCollection1;
             cartesianChart1.ScrollMode = ScrollMode.X;
             cartesianChart1.DisableAnimations = false;
@@ -104,7 +100,7 @@ namespace SatStat
         }
 
         [STAThread]
-        private void AddDataPoint(double dp)
+        private void AddDataPoint(double dp, LineSeries series)
         {
             Task.Run(() =>
             {
@@ -116,7 +112,7 @@ namespace SatStat
                     yMinVal = dp - 50;
                 }
                 
-                lineSeries1.Values.Add(dp);
+                series.Values.Add(dp);
             });
         }
 
@@ -129,18 +125,38 @@ namespace SatStat
             });
         }
         
-        private int counter = 0;
-        public void ReceivePayload(double payload)
+        private void CreateDataSeries(SeriesCollection collection, string title)
         {
-            AddDataPoint(payload);
-            if (counter >= maxTimeWindow)
+            if(!lineSeriesTable.ContainsKey(title))
             {
-                xMinVal = counter - maxTimeWindow;
-                xMaxVal = counter + 1;
+                LineSeries ls = new LineSeries();
+                ls.Title = title;
+                ls.Values = new ChartValues<double>();
+                ls.Fill = System.Windows.Media.Brushes.Transparent;
+
+                collection.Add(ls);
+                lineSeriesTable.Add(title, ls);
             }
-            lastVal = payload;
-            Console.WriteLine("Received playload: " + payload);
-            counter++;
+        }
+
+        private int counter = 0;
+        public void ReceivePayload(double payload, string attribute)
+        {
+            if(lineSeriesTable[attribute] != null)
+            {
+                AddDataPoint(payload, (LineSeries) lineSeriesTable[attribute]);
+                if (counter >= maxTimeWindow)
+                {
+                    xMinVal = counter - maxTimeWindow;
+                    xMaxVal = counter + 1;
+                }
+                lastVal = payload;
+                Console.WriteLine("Received playload: " + payload);
+                counter++;
+            } else
+            {
+                Debug.Log("The line series object is null");
+            }
         }
 
         private Hashtable sensor_information = new Hashtable();
@@ -166,7 +182,8 @@ namespace SatStat
                 { "sensor_list", sensor_list }
             });
         }
-        
+
+        #region event listeners
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.serial.Disconnect();
@@ -193,7 +210,7 @@ namespace SatStat
 
             Program.streamSimulator = new StreamSimulator();
             
-            sensorListReceiver.Subscribe(Program.streamSimulator, "available_sensors", "JArray");
+            sensorListReceiver.Subscribe(Program.streamSimulator, "available_sensors", "JObject");
 
             Program.streamSimulator.Connect();
         }
@@ -214,12 +231,22 @@ namespace SatStat
 
                 if(Program.streamSimulator != null)
                 {
-                    dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                    CreateDataSeries(seriesCollection1, attribute);
+
+                    if(!dataReceiver.HasSubscription(attribute))
+                    {
+                        dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                    }
                 }
 
                 if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    dataReceiver.Subscribe(Program.serial, attribute, type);
+                    CreateDataSeries(seriesCollection1, attribute);
+
+                    if (!dataReceiver.HasSubscription(attribute))
+                    {
+                        dataReceiver.Subscribe(Program.serial, attribute, type);
+                    }
                 }
                 Console.WriteLine("Subscribed to " + attribute);
             } else
@@ -237,17 +264,12 @@ namespace SatStat
 
         private void UIautoRotateOnBtn_Click(object sender, EventArgs e)
         {
-            // Future planned format:
-            //Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "parameters", new JObject() { { "enable", true } } } });
-            Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "enable", true } });
-
+            Program.serial.Output(Instruction.Create("auto_rotate", "enable", true));
         }
 
         private void UIAutoRotateOffBtn_Click(object sender, EventArgs e)
         {
-            // Future plannet format:
-            //Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "parameters", new JObject() { { "enable", false } } } });
-            Program.serial.Output(new JObject() { { "instruction", "auto_rotate" }, { "enable", false } });
+            Program.serial.Output(Instruction.Create("auto_rotate", "enable", false));
         }
 
         private void UIsetMotorSpeedBtn_Click(object sender, EventArgs e)
@@ -256,7 +278,7 @@ namespace SatStat
 
             if(Int32.TryParse(motorSpeedInputText, out int motorSpeed))
             {
-                Program.serial.Output(new JObject() { { "instruction", "set_motor_speed" }, { "speed", motorSpeed } });
+                Program.serial.Output(Instruction.Create("set_motor_speed", "speed", motorSpeed));
             }
             else
             {
@@ -268,7 +290,7 @@ namespace SatStat
         {
             if(Single.TryParse(UIrotateAngleInput.Text, out float angle))
             {
-                Program.serial.Output(new JObject() { { "instruction", "rotate" }, { "deg", 3.25 * angle } }); // 3.25 is gear ratio
+                Program.serial.Output(Instruction.Create("rotate", "deg", 3.25 * angle));
             }
             else
             {
@@ -280,12 +302,50 @@ namespace SatStat
         {
             if (int.TryParse(UIrotateStepsInput.Text, out int steps))
             {
-                Program.serial.Output(new JObject() { { "instruction", "rotate" }, { "steps", 3.25 * steps } }); // 3.25 is gear ratio
+                Program.serial.Output(Instruction.Create("rotate", "steps", steps));
             }
             else
             {
                 Debug.Log("Invalid input, bust be floating point number (single)");
             }
         }
+
+        private void saveToDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = Directory.GetCurrentDirectory() + @"\Database.db";
+            Console.WriteLine("Path is {0}", path);
+            using (var db = new LiteDatabase(@path))
+            {
+                var col = db.GetCollection("ChartData");
+                var col2 = db.GetCollection<DB_SensorDataItem>("ChartData");
+
+                foreach (DictionaryEntry line in lineSeriesTable)
+                {
+                    LineSeries lineSeries = (LineSeries)line.Value;
+
+                    var title = lineSeries.Title;
+
+                    List<object> values = new List<object>();
+                    foreach(object it in lineSeries.Values)
+                    {
+                        values.Add(it);
+                    }
+
+                    DB_SensorDataItem item = new DB_SensorDataItem() {
+                        title = title,
+                        values = values
+                    };
+                    col2.Insert(item);
+                }
+            }
+        }
+
+        private void displayDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseViewer databaseViewer = new DatabaseViewer();
+            databaseViewer.ShowDialog();
+        }
+        #endregion
+
     }
 }

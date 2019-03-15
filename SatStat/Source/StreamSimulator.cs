@@ -66,8 +66,8 @@ namespace SatStat
                     }
                 } else
                 {
-                    double temp = (rand.NextDouble() * 100);
-                    double humidity = rand.Next(0, 100);
+                    double temp = (double) (rand.Next(0, 100));
+                    int humidity = rand.Next(0, 100);
 
                     input_buffer.Enqueue("{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + "}");
 
@@ -111,7 +111,7 @@ namespace SatStat
                     }
                 }
             });
-            input_buffer.Enqueue("{\"available_sensors\":[{\"temperature\":\"double\"}, {\"humidity\":\"int\"}]}");
+            input_buffer.Enqueue("{\"available_sensors\":{\"temperature\":\"double\", \"humidity\":\"int\"}}");
         }
 
         //private void OnDataReceived(string input)

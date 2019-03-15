@@ -123,6 +123,51 @@ references:
   commentId: F:SatStat.ConnectionStatus.WaitingConnectInit
   fullName: SatStat.ConnectionStatus.WaitingConnectInit
   nameWithType: ConnectionStatus.WaitingConnectInit
+- uid: SatStat.DatabaseViewer
+  name: DatabaseViewer
+  href: api/SatStat.DatabaseViewer.html
+  commentId: T:SatStat.DatabaseViewer
+  fullName: SatStat.DatabaseViewer
+  nameWithType: DatabaseViewer
+- uid: SatStat.DatabaseViewer.#ctor
+  name: DatabaseViewer()
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer__ctor
+  commentId: M:SatStat.DatabaseViewer.#ctor
+  fullName: SatStat.DatabaseViewer.DatabaseViewer()
+  nameWithType: DatabaseViewer.DatabaseViewer()
+- uid: SatStat.DatabaseViewer.#ctor*
+  name: DatabaseViewer
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer__ctor_
+  commentId: Overload:SatStat.DatabaseViewer.#ctor
+  isSpec: "True"
+  fullName: SatStat.DatabaseViewer.DatabaseViewer
+  nameWithType: DatabaseViewer.DatabaseViewer
+- uid: SatStat.DatabaseViewer.DisplayCollectionList
+  name: DisplayCollectionList()
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer_DisplayCollectionList
+  commentId: M:SatStat.DatabaseViewer.DisplayCollectionList
+  fullName: SatStat.DatabaseViewer.DisplayCollectionList()
+  nameWithType: DatabaseViewer.DisplayCollectionList()
+- uid: SatStat.DatabaseViewer.DisplayCollectionList*
+  name: DisplayCollectionList
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer_DisplayCollectionList_
+  commentId: Overload:SatStat.DatabaseViewer.DisplayCollectionList
+  isSpec: "True"
+  fullName: SatStat.DatabaseViewer.DisplayCollectionList
+  nameWithType: DatabaseViewer.DisplayCollectionList
+- uid: SatStat.DatabaseViewer.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer_Dispose_System_Boolean_
+  commentId: M:SatStat.DatabaseViewer.Dispose(System.Boolean)
+  fullName: SatStat.DatabaseViewer.Dispose(System.Boolean)
+  nameWithType: DatabaseViewer.Dispose(Boolean)
+- uid: SatStat.DatabaseViewer.Dispose*
+  name: Dispose
+  href: api/SatStat.DatabaseViewer.html#SatStat_DatabaseViewer_Dispose_
+  commentId: Overload:SatStat.DatabaseViewer.Dispose
+  isSpec: "True"
+  fullName: SatStat.DatabaseViewer.Dispose
+  nameWithType: DatabaseViewer.Dispose
 - uid: SatStat.DataProvider
   name: DataProvider
   href: api/SatStat.DataProvider.html

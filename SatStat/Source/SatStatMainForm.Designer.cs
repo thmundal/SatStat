@@ -37,6 +37,10 @@
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToStreamSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,9 +60,10 @@
             this.UISensorCheckboxList = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.diagnosticLiveOutputValues = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.UIliveOutputValuesList = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.displayDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -68,7 +73,7 @@
             this.SensorDataListBoxGroupContainer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.diagnosticLiveOutputValues.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).BeginInit();
             this.SuspendLayout();
             // 
             // cartesianChart1
@@ -103,7 +108,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(957, 696);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Plot 1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -113,13 +118,14 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(957, 696);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Plot 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem});
+            this.settingsToolStripMenuItem,
+            this.dataToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1423, 24);
@@ -156,6 +162,36 @@
             this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.startSocketServerToolStripMenuItem.Text = "Start socket server";
             this.startSocketServerToolStripMenuItem.Click += new System.EventHandler(this.startSocketServerToolStripMenuItem_Click);
+            // 
+            // dataToolStripMenuItem
+            // 
+            this.dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToDatabaseToolStripMenuItem,
+            this.exportToolStripMenuItem,
+            this.importToolStripMenuItem,
+            this.displayDatabaseToolStripMenuItem});
+            this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.dataToolStripMenuItem.Text = "Data";
+            // 
+            // saveToDatabaseToolStripMenuItem
+            // 
+            this.saveToDatabaseToolStripMenuItem.Name = "saveToDatabaseToolStripMenuItem";
+            this.saveToDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToDatabaseToolStripMenuItem.Text = "Save to database";
+            this.saveToDatabaseToolStripMenuItem.Click += new System.EventHandler(this.saveToDatabaseToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Text = "Import";
             // 
             // panel1
             // 
@@ -358,7 +394,7 @@
             // 
             // diagnosticLiveOutputValues
             // 
-            this.diagnosticLiveOutputValues.Controls.Add(this.dataGridView1);
+            this.diagnosticLiveOutputValues.Controls.Add(this.UIliveOutputValuesList);
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
@@ -367,21 +403,21 @@
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
             // 
-            // dataGridView1
+            // UIliveOutputValuesList
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UIliveOutputValuesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UIliveOutputValuesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UIliveOutputValuesList.ColumnHeadersVisible = false;
+            this.UIliveOutputValuesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(434, 232);
-            this.dataGridView1.TabIndex = 0;
+            this.UIliveOutputValuesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UIliveOutputValuesList.Location = new System.Drawing.Point(3, 16);
+            this.UIliveOutputValuesList.Name = "UIliveOutputValuesList";
+            this.UIliveOutputValuesList.RowHeadersVisible = false;
+            this.UIliveOutputValuesList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.UIliveOutputValuesList.Size = new System.Drawing.Size(434, 232);
+            this.UIliveOutputValuesList.TabIndex = 0;
             // 
             // Key
             // 
@@ -392,6 +428,13 @@
             // 
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
+            // 
+            // displayDatabaseToolStripMenuItem
+            // 
+            this.displayDatabaseToolStripMenuItem.Name = "displayDatabaseToolStripMenuItem";
+            this.displayDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.displayDatabaseToolStripMenuItem.Text = "Display Database";
+            this.displayDatabaseToolStripMenuItem.Click += new System.EventHandler(this.displayDatabaseToolStripMenuItem_Click);
             // 
             // SatStatMainForm
             // 
@@ -418,7 +461,7 @@
             this.SensorDataListBoxGroupContainer.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.diagnosticLiveOutputValues.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,7 +486,7 @@
         private System.Windows.Forms.CheckedListBox UISensorCheckboxList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox diagnosticLiveOutputValues;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView UIliveOutputValuesList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.ToolStripMenuItem connectToStreamSimulatorToolStripMenuItem;
@@ -457,6 +500,11 @@
         private System.Windows.Forms.Label UIrotateAngleLabel;
         private System.Windows.Forms.Button UIrotateStepsBtn;
         private System.Windows.Forms.Button UIrotateAngleBtn;
+        private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem displayDatabaseToolStripMenuItem;
     }
 }
 

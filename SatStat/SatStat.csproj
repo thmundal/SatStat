@@ -38,6 +38,9 @@
     <Reference Include="LibUsbDotNet.LibUsbDotNet, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c677239abe1e02a9, processorArchitecture=MSIL">
       <HintPath>..\packages\LibUsbDotNet.2.2.29\lib\net45\LibUsbDotNet.LibUsbDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -76,8 +79,16 @@
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\AppSettings.cs" />
+    <Compile Include="Source\DatabaseViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\DatabaseViewer.Designer.cs">
+      <DependentUpon>DatabaseViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\DataProvider.cs" />
+    <Compile Include="Source\DB_SensorDataItem.cs" />
     <Compile Include="Source\Debug.cs" />
+    <Compile Include="Source\Instruction.cs" />
     <Compile Include="Source\SatStatMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +108,9 @@
     <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\DatabaseViewer.resx">
+      <DependentUpon>DatabaseViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\SatStatMainForm.resx">
       <DependentUpon>SatStatMainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +129,7 @@
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="docfx.json" />
     <None Include="index.md" />
     <None Include="packages.config" />
