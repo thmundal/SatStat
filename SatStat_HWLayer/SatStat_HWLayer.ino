@@ -1,11 +1,11 @@
 #pragma once
-#include "./srcs/SatStat_HWLayer.h"
+#include "./srcs/HWLayer.h"
 
-SatStat_HWLayer satstat_hwlayer;
+HWLayer satstat_hwlayer;
 
 void setup()
 {
-	satstat_hwlayer.setup();
+	satstat_hwlayer.setup();	
 }
 
 void loop()

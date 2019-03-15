@@ -10,12 +10,9 @@
 *	The setup method of this class handles the handshake protocol, where as the loop method handles the receiving of instructions from serial,
 *	transmition of sensor data through serial, and execution of instructions.
 */
-class SatStat_HWLayer
+class HWLayer
 {
-public:	
-	// Constructor
-	SatStat_HWLayer();
-
+public:
 	// Main methods
 	void setup();
 	void loop();

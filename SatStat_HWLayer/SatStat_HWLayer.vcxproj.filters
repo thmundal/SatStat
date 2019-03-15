@@ -345,7 +345,7 @@
     <ClInclude Include="srcs\sensors\Temp_hum_sensor.h">
       <Filter>Header Files\srcs\sensors</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\SatStat_HWLayer.h">
+    <ClInclude Include="srcs\HWLayer.h">
       <Filter>Header Files\srcs</Filter>
     </ClInclude>
   </ItemGroup>
@@ -386,7 +386,7 @@
     <ClCompile Include="srcs\sensors\Sensor.cpp">
       <Filter>Source Files\srcs\sensors</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\SatStat_HWLayer.cpp">
+    <ClCompile Include="srcs\HWLayer.cpp">
       <Filter>Source Files\srcs</Filter>
     </ClCompile>
   </ItemGroup>

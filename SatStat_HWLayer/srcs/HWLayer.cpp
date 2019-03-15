@@ -1,10 +1,11 @@
 #pragma once
-#include "SatStat_HWLayer.h"
+#include "HWLayer.h"
 
 /**
 *	Sets up Vcc and GND pins for DHT11 temperature and humidity sensor, and initializes the serial port.
+*	Also handles the handshake protocol as defined in SatStat communication protocol.
 */
-SatStat_HWLayer::SatStat_HWLayer()
+void HWLayer::setup()
 {
 	// Temp and hum sensor gnd and 5V
 	pinMode(7, OUTPUT);
@@ -12,14 +13,9 @@ SatStat_HWLayer::SatStat_HWLayer()
 	pinMode(5, OUTPUT);
 	digitalWrite(5, HIGH);
 
+	// Init serial
 	Serial.begin(9600);
-}
 
-/**
-*	Handles the handshake protocol as defined in SatStat communication protocol.
-*/
-inline void SatStat_HWLayer::setup()
-{		
 	while (true)
 	{
 		handshake();
@@ -45,7 +41,7 @@ inline void SatStat_HWLayer::setup()
 /**
 *	Continuously listens for serial inputs, prints read sensor data to serial at a given interval and execute received instructions.
 */
-inline void SatStat_HWLayer::loop()
+void HWLayer::loop()
 {
 	serial_handler.serial_listener();
 
@@ -64,7 +60,7 @@ inline void SatStat_HWLayer::loop()
 	{
 		// Prints sensor data
 		serial_handler.print_to_serial(sensor_container.read_sensors());
-
+		
 		// Update start time to current time
 		sensor_interval_start_time = millis();
 	}
@@ -75,7 +71,7 @@ inline void SatStat_HWLayer::loop()
 *	No timeout for this method as this is the root of the handshake protocol.
 *	If an error occur at any other phase in the procol, it will reset to this point and wait for client to try again.
 */
-void SatStat_HWLayer::handshake()
+void HWLayer::handshake()
 {
 	while (true)
 	{
@@ -89,7 +85,7 @@ void SatStat_HWLayer::handshake()
 /**
 *	Loops until connection request is received, or a timeout occur.
 */
-bool SatStat_HWLayer::connection()
+bool HWLayer::connection()
 {
 	outer_timeout_start_time = millis();
 
@@ -107,7 +103,7 @@ bool SatStat_HWLayer::connection()
 /**
 *	Loops until connection acknowledgement is received, or a timeout occur.
 */
-bool SatStat_HWLayer::connection_init()
+bool HWLayer::connection_init()
 {
 	outer_timeout_start_time = millis();
 
@@ -125,7 +121,7 @@ bool SatStat_HWLayer::connection_init()
 /**
 *	Loops until available sensor data request is received, or a timeout occur.
 */
-bool SatStat_HWLayer::provide_sensor_data()
+bool HWLayer::provide_sensor_data()
 {
 	outer_timeout_start_time = millis();
 
