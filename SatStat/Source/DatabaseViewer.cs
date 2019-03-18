@@ -64,7 +64,6 @@ namespace SatStat
                         DB_SensorDataItem result = col.FindById(new BsonValue(item.Tag));
 
                         SeriesCollection seriesCollection = new SeriesCollection();
-                        
 
                         LineSeries lineSeries = new LineSeries();
                         lineSeries.Values = new ChartValues<float>();
@@ -75,7 +74,6 @@ namespace SatStat
                             lineSeries.Values.Add(Convert.ToSingle(i));
                         }
                         seriesCollection.Add(lineSeries);
-
 
                         UIdatabasePlotView.Visible = true;
                         UIdatabasePlotView.Series = seriesCollection;
