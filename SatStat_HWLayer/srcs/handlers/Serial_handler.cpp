@@ -342,7 +342,7 @@ void Serial_handler::send_sensor_collection()
 		Sensor* sensor = sensor_collection[i];
 		for (int i = 0; i < sensor->get_data_count(); i++)
 		{
-			available_data.set(sensor->read_sensor()[i].name, "int");
+			available_data.set(sensor->read_sensor()[i].get_name(), "int");
 		}
 	}
 

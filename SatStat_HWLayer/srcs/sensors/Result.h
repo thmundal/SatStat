@@ -8,6 +8,24 @@
 */
 struct Result
 {
+public:
+	// Constructer with initializer list
+	Result()
+		: subscribed_to(false) {};
+
+	// Getters
+	const String& get_name() const { return name; };
+	const int& get_data() const { return data; };
+	const bool& is_subscribed_to() const { return subscribed_to; };
+
+	// Setters
+	void set_name(const String& name) { this->name = name; };
+	void set_data(const int& data) { this->data = data; };
+	void subscribe() { this->subscribed_to = true; };
+	void unsubscribe() { this->subscribed_to = false; };
+
+private:
 	String name;
 	int data;
+	bool subscribed_to;
 };

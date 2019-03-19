@@ -32,7 +32,7 @@ Json_container<JsonObject>* Sensor_container::read_sensor(const String& name)
 
 	for (int i = 0; i < count; i++)
 	{
-		json_handler.append_to(obj, result[i].name, result[i].data);
+		json_handler.append_to(obj, result[i].get_name(), result[i].get_data());
 	}
 
 	return obj;
@@ -58,7 +58,10 @@ Json_container<JsonObject>* Sensor_container::read_sensors()
 
 		for (int j = 0; j < result_count; j++)
 		{
-			json_handler.append_to(obj, result[j].name, result[j].data);
+			if (result[j].is_subscribed_to())
+			{
+				json_handler.append_to(obj, result[j].get_name(), result[j].get_data());
+			}			
 		}
 	}
 
