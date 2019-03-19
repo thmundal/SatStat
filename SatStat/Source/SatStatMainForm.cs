@@ -61,6 +61,8 @@ namespace SatStat
             cartesianChart1.Series = seriesCollection1;
             cartesianChart1.ScrollMode = ScrollMode.X;
             cartesianChart1.DisableAnimations = false;
+            cartesianChart1.Hoverable = false;
+            cartesianChart1.DataTooltip = null;
 
             timeAxis = new Axis
             {
@@ -93,16 +95,19 @@ namespace SatStat
         [STAThread]
         private void AddDataPoint(double dp, LineSeries series)
         {
-            if (dp > yMaxVal)
+            Task.Run(() =>
             {
-                yMaxVal = dp + 50;
-            }
-            else if (dp < yMinVal)
-            {
-                yMinVal = dp - 50;
-            }
+                if (dp > yMaxVal)
+                {
+                    yMaxVal = dp + 50;
+                }
+                else if (dp < yMinVal)
+                {
+                    yMinVal = dp - 50;
+                }
 
-            series.Values.Add(dp);
+                series.Values.Add(dp);
+            });
         }
         
         private void CreateDataSeries(SeriesCollection collection, string title)
@@ -146,7 +151,7 @@ namespace SatStat
                     //}
                 }
                 lastVal = payload;
-                Console.WriteLine("Received playload: " + payload);
+                //Console.WriteLine("Received playload: " + payload);
                 
                 // This counts for every received payload, which is incorrect, since we can display several payloads in a plot at once
                 // This results in the plot moving too fast

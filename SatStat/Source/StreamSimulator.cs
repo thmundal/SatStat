@@ -66,8 +66,8 @@ namespace SatStat
                     }
                 } else
                 {
-                    double temp = (double) (rand.Next(0, 100));
-                    int humidity = rand.Next(0, 100);
+                    double temp = (double) (rand.Next(0, 1));
+                    int humidity = rand.Next(0, 1);
 
                     input_buffer.Enqueue("{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + "}");
 
@@ -83,7 +83,7 @@ namespace SatStat
                     }
                 }
 
-                await Task.Delay(500);
+                await Task.Delay(10);
             }
         }
 

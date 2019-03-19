@@ -59,7 +59,7 @@ namespace SatStat
             // Bind socket
             try
             {
-                server = new TcpListener(listen_addr, listen_port);
+                server = new TcpListener(IPAddress.Loopback, listen_port);
                 server.Start();
 
                 Byte[] bytes = new byte[1024];
@@ -79,11 +79,22 @@ namespace SatStat
                     while((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data = Encoding.ASCII.GetString(bytes, 0, i);
+                        string[] buffer = data.Split('\n');
 
                         // Send to subscribers here...
-                        Parse(data);
-                        DeliverSubscriptions();
-                        Console.WriteLine("Received: {0}", data);
+                        foreach(string b in buffer)
+                        {
+                            if(b.Length > 0)
+                            {
+                                if(b.StartsWith("{") && b.EndsWith("}"))
+                                {
+                                    Parse(b);
+                                    DeliverSubscriptions();
+                                }
+                            }
+                        }
+                        buffer = null;
+                        //Console.WriteLine("Received: {0}", data);
                     }
 
                     // Probably not close right away...
