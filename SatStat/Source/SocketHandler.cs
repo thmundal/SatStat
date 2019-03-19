@@ -15,16 +15,18 @@ namespace SatStat
     public class SocketHandler : DataStream
     {
         public static ManualResetEvent allDone = new ManualResetEvent(false);
-
+        
         private IPAddress listen_addr;
         private int listen_port;
-        private Socket listener;
         private IPEndPoint localEndPoint;
-        private List<Socket> connected_clients;
+
+        private List<TcpClient> connected_clients;
+        private Thread serverListenerThread;
+        private TcpListener server;
 
         public SocketHandler()
         {
-            connected_clients = new List<Socket>();
+            connected_clients = new List<TcpClient>();
 
             // https://docs.microsoft.com/en-us/dotnet/framework/network-programming/asynchronous-server-socket-example
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
@@ -32,33 +34,60 @@ namespace SatStat
             listen_port = 11000;
             localEndPoint = new IPEndPoint(listen_addr, listen_port);
 
-            // Create socket
-            listener = new Socket(listen_addr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
             Console.WriteLine("Host name is {0}", Dns.GetHostName());
 
-            Task.Run(() =>
-            {
-                StartListening();
-            });
+            StartServer();
 
         }
 
-        public async Task StartListening()
+        public void StartServer()
+        {
+            try
+            {
+                serverListenerThread = new Thread(new ThreadStart(StartListening));
+                serverListenerThread.IsBackground = true;
+                serverListenerThread.Start();
+            } catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        public void StartListening()
         {
 
             // Bind socket
             try
             {
-                listener.Bind(localEndPoint);
-                listener.Listen(100);
+                server = new TcpListener(listen_addr, listen_port);
+                server.Start();
 
-                while (true)
+                Byte[] bytes = new byte[1024];
+                string data = null;
+
+                while(true)
                 {
-                    allDone.Reset();
-                    Console.WriteLine("Waiting for connection...");
-                    listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
-                    allDone.WaitOne();  // Block thread until signal is received, aka allDone.Set()
+                    Console.WriteLine("Waiting for a connection....");
+                    TcpClient client = server.AcceptTcpClient();
+                    connected_clients.Add(client);
+                    Console.WriteLine("A client connected");
+
+                    data = null;
+
+                    NetworkStream stream = client.GetStream();
+                    int i;
+                    while((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    {
+                        data = Encoding.ASCII.GetString(bytes, 0, i);
+
+                        // Send to subscribers here...
+                        Parse(data);
+                        DeliverSubscriptions();
+                        Console.WriteLine("Received: {0}", data);
+                    }
+
+                    // Probably not close right away...
+                    //client.Close();
                 }
             }
             catch (Exception e)
@@ -66,83 +95,23 @@ namespace SatStat
                 Console.WriteLine(e.ToString());
             }
         }
+        
 
-        public void AcceptCallback(IAsyncResult ar)
-        {
-            allDone.Set(); // Continue main socket handler thread
-
-            Socket listener = (Socket)ar.AsyncState;
-            Socket client = listener.EndAccept(ar);
-
-            IPEndPoint clientEndpoint = (IPEndPoint) client.RemoteEndPoint;
-            string clientHostname = Dns.GetHostEntry(clientEndpoint.Address).HostName;
-
-            StateObject state = new StateObject();
-            state.workSocket = client;
-            client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
-
-            connected_clients.Add(client);
-
-            Console.Write("A client connected: {0}", clientHostname);
-            Send(client, "You are now connected");
-        }
-
-        public void ReadCallback(IAsyncResult ar)
-        {
-            string content = String.Empty;
-            StateObject state = (StateObject)ar.AsyncState;
-            Socket client = state.workSocket;
-
-            int bytesRead = client.EndReceive(ar);
-
-            if(bytesRead > 0)
-            {
-                state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
-
-                content = state.sb.ToString();
-                if(content.IndexOf("<EOF>") > -1)
-                {
-                    Console.WriteLine("Read {0} bytes from socket. \n Data: {1}", content.Length, content);
-
-                    Send(client, "This is a response to your message");
-                    // Run deliver subs here...
-                    //Parse(content);
-                    //DeliverSubscriptions();
-                } else
-                {
-                    client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
-                }
-            }
-        }
-
-        public void Send(Socket handler, string data)
+        public void Send(string data)
         {
             byte[] byteData = Encoding.ASCII.GetBytes(data);
-            handler.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), handler);
-        }
-
-        public void SendCallback(IAsyncResult ar)
-        {
-            try
+            
+            foreach(TcpClient client in connected_clients)
             {
-                Socket handler = (Socket)ar.AsyncState;
-
-                int bytesSent = handler.EndSend(ar);
-
-                // Not sure we want to do this now....
-                //handler.Shutdown(SocketShutdown.Both);
-                //handler.Close();
-
-            } catch(Exception e)
-            {
-                Console.WriteLine(e.ToString());
+                NetworkStream stream = client.GetStream();
+                stream.Write(byteData, 0, byteData.Length);
             }
         }
+        
 
-        public void Disconnect(Socket client)
+        public void Disconnect(TcpClient client)
         {
             connected_clients.Remove(client);
-            client.Shutdown(SocketShutdown.Both);
             client.Close();
         }
     }

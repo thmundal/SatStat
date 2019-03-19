@@ -24,18 +24,19 @@ namespace SatStat
         private LineSeries lineSeries1;
         private Axis timeAxis;
         private Axis valueAxis;
-        private double yMinVal = -10;
-        private double yMaxVal = 10;
+        private double yMinVal = -1;
+        private double yMaxVal = 1;
         private double xMinVal = 0;
-        private double xMaxVal = 10;
-        private int maxTimeWindow = 10;
+        private double xMaxVal = 1000;
+        private int maxTimeWindow = 1000;
         private double lastVal = 0;
 
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
 
         private Hashtable lineSeriesTable = new Hashtable();
-        
+
+        private int counter = 0;
         public SatStatMainForm()
         {
             InitializeComponent();
@@ -56,8 +57,7 @@ namespace SatStat
             });
 
             sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
-
-
+            
             cartesianChart1.Series = seriesCollection1;
             cartesianChart1.ScrollMode = ScrollMode.X;
             cartesianChart1.DisableAnimations = false;
@@ -89,40 +89,20 @@ namespace SatStat
             timeAxis.MaxValue = xMaxVal;
             timeAxis.MinValue = xMinVal;
         }
-
-        [STAThread]
-        private void AddData(LineSeries data)
-        {
-            Task t1 = Task.Run(() =>
-            {
-                seriesCollection1.Add(data);
-            });
-        }
-
+        
         [STAThread]
         private void AddDataPoint(double dp, LineSeries series)
         {
-            Task.Run(() =>
+            if (dp > yMaxVal)
             {
-                if(dp > yMaxVal)
-                {
-                    yMaxVal = dp + 50;
-                } else if(dp < yMinVal)
-                {
-                    yMinVal = dp - 50;
-                }
-                
-                series.Values.Add(dp);
-            });
-        }
+                yMaxVal = dp + 50;
+            }
+            else if (dp < yMinVal)
+            {
+                yMinVal = dp - 50;
+            }
 
-        [STAThread]
-        private void RemoveFirstDataPoint()
-        {
-            Task.Run(() =>
-            {
-                lineSeries1.Values.RemoveAt(0);
-            });
+            series.Values.Add(dp);
         }
         
         private void CreateDataSeries(SeriesCollection collection, string title)
@@ -131,15 +111,25 @@ namespace SatStat
             {
                 LineSeries ls = new LineSeries();
                 ls.Title = title;
-                ls.Values = new ChartValues<double>();
                 ls.Fill = System.Windows.Media.Brushes.Transparent;
+                ls.PointGeometry = null;
+
+                double[] nullValues = new double[counter];
+                for(int i=0; i<counter; i++)
+                {
+                    nullValues[i] = double.NaN;
+                }
+
+                var cv = new ChartValues<double>();
+
+                cv.AddRange(nullValues);
+                ls.Values = cv;
 
                 collection.Add(ls);
                 lineSeriesTable.Add(title, ls);
             }
         }
 
-        private int counter = 0;
         public void ReceivePayload(double payload, string attribute)
         {
             if(lineSeriesTable[attribute] != null)
@@ -149,9 +139,17 @@ namespace SatStat
                 {
                     xMinVal = counter - maxTimeWindow;
                     xMaxVal = counter + 1;
+
+                    //foreach(LineSeries ls in lineSeriesTable)
+                    //{
+                    //    ls.Values.RemoveAt(counter - maxTimeWindow + 1);
+                    //}
                 }
                 lastVal = payload;
                 Console.WriteLine("Received playload: " + payload);
+                
+                // This counts for every received payload, which is incorrect, since we can display several payloads in a plot at once
+                // This results in the plot moving too fast
                 counter++;
             } else
             {
@@ -210,7 +208,7 @@ namespace SatStat
 
             Program.streamSimulator = new StreamSimulator();
             
-            sensorListReceiver.Subscribe(Program.streamSimulator, "available_sensors", "JObject");
+            sensorListReceiver.Subscribe(Program.streamSimulator, "available_data", "JObject");
 
             Program.streamSimulator.Connect();
         }
@@ -229,25 +227,24 @@ namespace SatStat
             {
                 string type = (string) sensor_information[attribute];
 
+                // This has to only be done once?
+                CreateDataSeries(seriesCollection1, attribute);
+
                 if(Program.streamSimulator != null)
                 {
-                    CreateDataSeries(seriesCollection1, attribute);
-
-                    if(!dataReceiver.HasSubscription(attribute))
-                    {
-                        dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
-                    }
+                    dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
                 }
 
                 if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    CreateDataSeries(seriesCollection1, attribute);
-
-                    if (!dataReceiver.HasSubscription(attribute))
-                    {
-                        dataReceiver.Subscribe(Program.serial, attribute, type);
-                    }
+                    dataReceiver.Subscribe(Program.serial, attribute, type);
                 }
+
+                if(Program.socketHandler != null)
+                {
+                    dataReceiver.Subscribe(Program.socketHandler, attribute, type);
+                }
+
                 Console.WriteLine("Subscribed to " + attribute);
             } else
             {
@@ -259,7 +256,9 @@ namespace SatStat
 
         private void startSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SocketHandler server = new SocketHandler();
+            Program.socketHandler = new SocketHandler();
+
+            sensorListReceiver.Subscribe(Program.socketHandler, "available_data", "JObject");
         }
 
         private void UIautoRotateOnBtn_Click(object sender, EventArgs e)
@@ -294,7 +293,7 @@ namespace SatStat
             }
             else
             {
-                Debug.Log("Invalid input, bust be floating point number (single)");
+                Debug.Log("Invalid input, must be floating point number (single)");
             }
         }
 
@@ -306,7 +305,7 @@ namespace SatStat
             }
             else
             {
-                Debug.Log("Invalid input, bust be floating point number (single)");
+                Debug.Log("Invalid input, must be floating point number (single)");
             }
         }
 

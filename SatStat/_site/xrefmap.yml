@@ -712,31 +712,18 @@ references:
   isSpec: "True"
   fullName: SatStat.SocketHandler.SocketHandler
   nameWithType: SocketHandler.SocketHandler
-- uid: SatStat.SocketHandler.AcceptCallback(System.IAsyncResult)
-  name: AcceptCallback(IAsyncResult)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_AcceptCallback_System_IAsyncResult_
-  commentId: M:SatStat.SocketHandler.AcceptCallback(System.IAsyncResult)
-  fullName: SatStat.SocketHandler.AcceptCallback(System.IAsyncResult)
-  nameWithType: SocketHandler.AcceptCallback(IAsyncResult)
-- uid: SatStat.SocketHandler.AcceptCallback*
-  name: AcceptCallback
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_AcceptCallback_
-  commentId: Overload:SatStat.SocketHandler.AcceptCallback
-  isSpec: "True"
-  fullName: SatStat.SocketHandler.AcceptCallback
-  nameWithType: SocketHandler.AcceptCallback
 - uid: SatStat.SocketHandler.allDone
   name: allDone
   href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_allDone
   commentId: F:SatStat.SocketHandler.allDone
   fullName: SatStat.SocketHandler.allDone
   nameWithType: SocketHandler.allDone
-- uid: SatStat.SocketHandler.Disconnect(System.Net.Sockets.Socket)
-  name: Disconnect(Socket)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Disconnect_System_Net_Sockets_Socket_
-  commentId: M:SatStat.SocketHandler.Disconnect(System.Net.Sockets.Socket)
-  fullName: SatStat.SocketHandler.Disconnect(System.Net.Sockets.Socket)
-  nameWithType: SocketHandler.Disconnect(Socket)
+- uid: SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
+  name: Disconnect(TcpClient)
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Disconnect_System_Net_Sockets_TcpClient_
+  commentId: M:SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
+  fullName: SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
+  nameWithType: SocketHandler.Disconnect(TcpClient)
 - uid: SatStat.SocketHandler.Disconnect*
   name: Disconnect
   href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Disconnect_
@@ -744,25 +731,12 @@ references:
   isSpec: "True"
   fullName: SatStat.SocketHandler.Disconnect
   nameWithType: SocketHandler.Disconnect
-- uid: SatStat.SocketHandler.ReadCallback(System.IAsyncResult)
-  name: ReadCallback(IAsyncResult)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_ReadCallback_System_IAsyncResult_
-  commentId: M:SatStat.SocketHandler.ReadCallback(System.IAsyncResult)
-  fullName: SatStat.SocketHandler.ReadCallback(System.IAsyncResult)
-  nameWithType: SocketHandler.ReadCallback(IAsyncResult)
-- uid: SatStat.SocketHandler.ReadCallback*
-  name: ReadCallback
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_ReadCallback_
-  commentId: Overload:SatStat.SocketHandler.ReadCallback
-  isSpec: "True"
-  fullName: SatStat.SocketHandler.ReadCallback
-  nameWithType: SocketHandler.ReadCallback
-- uid: SatStat.SocketHandler.Send(System.Net.Sockets.Socket,System.String)
-  name: Send(Socket, String)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Send_System_Net_Sockets_Socket_System_String_
-  commentId: M:SatStat.SocketHandler.Send(System.Net.Sockets.Socket,System.String)
-  fullName: SatStat.SocketHandler.Send(System.Net.Sockets.Socket, System.String)
-  nameWithType: SocketHandler.Send(Socket, String)
+- uid: SatStat.SocketHandler.Send(System.String)
+  name: Send(String)
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Send_System_String_
+  commentId: M:SatStat.SocketHandler.Send(System.String)
+  fullName: SatStat.SocketHandler.Send(System.String)
+  nameWithType: SocketHandler.Send(String)
 - uid: SatStat.SocketHandler.Send*
   name: Send
   href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Send_
@@ -770,19 +744,6 @@ references:
   isSpec: "True"
   fullName: SatStat.SocketHandler.Send
   nameWithType: SocketHandler.Send
-- uid: SatStat.SocketHandler.SendCallback(System.IAsyncResult)
-  name: SendCallback(IAsyncResult)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_SendCallback_System_IAsyncResult_
-  commentId: M:SatStat.SocketHandler.SendCallback(System.IAsyncResult)
-  fullName: SatStat.SocketHandler.SendCallback(System.IAsyncResult)
-  nameWithType: SocketHandler.SendCallback(IAsyncResult)
-- uid: SatStat.SocketHandler.SendCallback*
-  name: SendCallback
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_SendCallback_
-  commentId: Overload:SatStat.SocketHandler.SendCallback
-  isSpec: "True"
-  fullName: SatStat.SocketHandler.SendCallback
-  nameWithType: SocketHandler.SendCallback
 - uid: SatStat.SocketHandler.StartListening
   name: StartListening()
   href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_StartListening
@@ -796,6 +757,19 @@ references:
   isSpec: "True"
   fullName: SatStat.SocketHandler.StartListening
   nameWithType: SocketHandler.StartListening
+- uid: SatStat.SocketHandler.StartServer
+  name: StartServer()
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_StartServer
+  commentId: M:SatStat.SocketHandler.StartServer
+  fullName: SatStat.SocketHandler.StartServer()
+  nameWithType: SocketHandler.StartServer()
+- uid: SatStat.SocketHandler.StartServer*
+  name: StartServer
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_StartServer_
+  commentId: Overload:SatStat.SocketHandler.StartServer
+  isSpec: "True"
+  fullName: SatStat.SocketHandler.StartServer
+  nameWithType: SocketHandler.StartServer
 - uid: SatStat.StateObject
   name: StateObject
   href: api/SatStat.StateObject.html

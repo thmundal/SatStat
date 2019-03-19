@@ -8,6 +8,7 @@ namespace SatStat
         public static SerialHandler serial;
         public static AppSettings settings;
         public static StreamSimulator streamSimulator;
+        public static SocketHandler socketHandler;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -111,7 +111,7 @@ namespace SatStat
                     }
                 }
             });
-            input_buffer.Enqueue("{\"available_sensors\":{\"temperature\":\"double\", \"humidity\":\"int\"}}");
+            input_buffer.Enqueue("{\"available_data\":{\"temperature\":\"double\", \"humidity\":\"int\"}}");
         }
 
         //private void OnDataReceived(string input)
