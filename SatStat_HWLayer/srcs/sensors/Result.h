@@ -9,7 +9,9 @@
 struct Result
 {
 public:
-	// Constructer with initializer list
+	/**
+	* Constructer with initializer list. Initializing the subscribe_to member.
+	*/
 	Result()
 		: subscribed_to(false) {};
 

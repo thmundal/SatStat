@@ -53,7 +53,14 @@ void Serial_handler::serial_listener()
 
 		if (input)
 		{
-			instruction_handler.insert_instruction(input);
+			if (!instruction_handler.insert_instruction(input))
+			{
+				Json_container<JsonObject>* tmp_obj = new Json_object_container();
+				JsonObject& tmp_ref = tmp_obj->get();
+				tmp_ref.set("Error", "Could not parse received data!");
+				tmp_ref.printTo(Serial);
+				delete tmp_obj;
+			}
 		}
 	}
 }
@@ -65,7 +72,7 @@ void Serial_handler::send_nack()
 {
 	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
 
-	nack->get()->printTo(Serial);
+	nack->get().printTo(Serial);
 	Serial.print(newline_format);
 
 	delete nack;
@@ -91,9 +98,9 @@ bool Serial_handler::handshake_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("serial_handshake"))
+			if (tmp->get().containsKey("serial_handshake"))
 			{
-				if (tmp->get()->get<String>("serial_handshake") == "init")
+				if (tmp->get().get<String>("serial_handshake") == "init")
 				{
 					send_handshake_response();
 					delete tmp;
@@ -129,9 +136,9 @@ bool Serial_handler::connection_request_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("connection_request"))
+			if (tmp->get().containsKey("connection_request"))
 			{
-				nested_obj = &tmp->get()->get<JsonVariant>("connection_request").asObject();
+				nested_obj = &tmp->get().get<JsonVariant>("connection_request").asObject();
 
 				if (config_approved(nested_obj->get<unsigned long>("baud_rate"), nested_obj->get<String>("config")))
 				{
@@ -171,10 +178,10 @@ bool Serial_handler::connection_init_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("connect"))
+			if (tmp->get().containsKey("connect"))
 			{
 
-				if (tmp->get()->get<String>("connect") == "ok")
+				if (tmp->get().get<String>("connect") == "ok")
 				{
 					delete tmp;
 					return true;
@@ -205,10 +212,10 @@ bool Serial_handler::available_data_request_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get()->containsKey("request"))
+			if (tmp->get().containsKey("request"))
 			{
 
-				if (tmp->get()->get<String>("request") == "available_data")
+				if (tmp->get().get<String>("request") == "available_data")
 				{
 					send_sensor_collection();
 					delete tmp;
@@ -228,7 +235,7 @@ bool Serial_handler::available_data_request_approved()
 */
 void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
 {
-	json->get()->printTo(Serial);
+	json->get().printTo(Serial);
 	Serial.print(newline_format);
 
 	delete json;
@@ -270,7 +277,7 @@ bool Serial_handler::config_approved(const unsigned long & baud_rate, const Stri
 void Serial_handler::send_handshake_response()
 {
 	Json_container<JsonObject>* handshake_response = json_handler.create_object();
-	JsonObject& serial_handshake = handshake_response->get()->createNestedObject("serial_handshake");
+	JsonObject& serial_handshake = handshake_response->get().createNestedObject("serial_handshake");
 	JsonArray& baud_rates = serial_handshake.createNestedArray("baud_rates");
 	JsonArray& configs = serial_handshake.createNestedArray("configs");
 	JsonArray& newlines = serial_handshake.createNestedArray("newlines");
@@ -321,7 +328,7 @@ void Serial_handler::send_handshake_response()
 	newlines.add("\r\n");
 	newlines.add("\n");
 
-	handshake_response->get()->printTo(Serial);
+	handshake_response->get().printTo(Serial);
 	Serial.print(newline_format);
 
 	delete handshake_response;
@@ -333,7 +340,7 @@ void Serial_handler::send_handshake_response()
 void Serial_handler::send_sensor_collection()
 {
 	Json_container<JsonObject>* ack = json_handler.create_object();
-	JsonObject& available_data = ack->get()->createNestedObject("available_data");
+	JsonObject& available_data = ack->get().createNestedObject("available_data");
 
 	LinkedList<String, Sensor*>& sensor_collection = sensor_container.get_available_sensors();
 
@@ -346,7 +353,7 @@ void Serial_handler::send_sensor_collection()
 		}
 	}
 
-	ack->get()->printTo(Serial);
+	ack->get().printTo(Serial);
 	Serial.print(newline_format);
 
 	delete ack;
@@ -359,7 +366,7 @@ void Serial_handler::send_ack()
 {
 	Json_container<JsonObject>* ack = json_handler.create_object("connect", "init");
 
-	ack->get()->printTo(Serial);
+	ack->get().printTo(Serial);
 	Serial.print(newline_format);
 
 	delete ack;

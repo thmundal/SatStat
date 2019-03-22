@@ -14,11 +14,11 @@ class Json_container
 {
 public:
 	Json_container();
-	~Json_container();
+	virtual ~Json_container();
 
 	virtual void create() = 0;
-	virtual void parse(const String &json) = 0;
-	T* get();
+	virtual bool parse(const String &json) = 0;
+	T& get() const;
 
 protected:
 	DynamicJsonBuffer* buffer;
@@ -47,7 +47,7 @@ inline Json_container<T>::~Json_container()
 *	Returns the generic json data, either a JsonObject or JsonArray depending what the object was instantiated as.
 */
 template<class T>
-inline T* Json_container<T>::get()
+inline T& Json_container<T>::get() const
 {
-	return json;
+	return *json;
 }

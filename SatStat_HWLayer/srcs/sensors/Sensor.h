@@ -11,7 +11,7 @@ class Sensor
 {
 public:
 	Sensor(const String& name, const int& pin, const int& data_count = 1);
-	~Sensor();
+	virtual ~Sensor();
 
 	virtual const Result* read_sensor() = 0;
 	const String& get_name() const;

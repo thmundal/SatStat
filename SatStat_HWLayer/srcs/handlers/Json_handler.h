@@ -27,7 +27,7 @@ template<class T>
 inline Json_container<JsonObject>* Json_handler::create_object(const String& key, const T& value)
 {
 	Json_container<JsonObject>* obj = new Json_object_container();
-	obj->get()->set(key, value);
+	obj->get().set(key, value);
 
 	return obj;
 }
@@ -42,7 +42,7 @@ inline Json_container<JsonArray>* Json_handler::create_array(const T* value, con
 	
 	for (int i = 0; i < data_count; i++)
 	{
-		arr->get()->add(value[i]);
+		arr->get().add(value[i]);
 	}	
 
 	return arr;
@@ -54,7 +54,7 @@ inline Json_container<JsonArray>* Json_handler::create_array(const T* value, con
 template<class T>
 inline void Json_handler::append_to(Json_container<JsonObject>* obj, const String& key, const T& value)
 {
-	obj->get()->set(key, value);
+	obj->get().set(key, value);
 }
 
 /**
@@ -63,5 +63,5 @@ inline void Json_handler::append_to(Json_container<JsonObject>* obj, const Strin
 template<class T>
 inline void Json_handler::append_to(Json_container<JsonArray>* arr, const String& key, const T& value)
 {
-	arr->get()->set(key, value);
+	arr->get().set(key, value);
 }
