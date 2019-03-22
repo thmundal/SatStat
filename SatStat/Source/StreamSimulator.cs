@@ -83,7 +83,7 @@ namespace SatStat
                     }
                 }
 
-                await Task.Delay(100);
+                await Task.Delay(10);
             }
         }
 

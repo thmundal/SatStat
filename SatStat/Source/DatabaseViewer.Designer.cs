@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.UIdatabaseCollectionList = new System.Windows.Forms.ListView();
-            this.UIdatabasePlotView = new LiveCharts.WinForms.CartesianChart();
+            this.UIdatabasePlotView = new OxyPlot.WindowsForms.PlotView();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,14 +65,16 @@
             // 
             // UIdatabasePlotView
             // 
-            this.UIdatabasePlotView.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.UIdatabasePlotView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UIdatabasePlotView.Location = new System.Drawing.Point(308, 3);
             this.UIdatabasePlotView.Name = "UIdatabasePlotView";
+            this.UIdatabasePlotView.PanCursor = System.Windows.Forms.Cursors.Hand;
             this.UIdatabasePlotView.Size = new System.Drawing.Size(1030, 771);
             this.UIdatabasePlotView.TabIndex = 2;
-            this.UIdatabasePlotView.Text = "UIdatabasePlotView";
-            this.UIdatabasePlotView.Visible = false;
+            this.UIdatabasePlotView.Text = "plotView1";
+            this.UIdatabasePlotView.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.UIdatabasePlotView.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.UIdatabasePlotView.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // DatabaseViewer
             // 
@@ -91,6 +93,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView UIdatabaseCollectionList;
-        private LiveCharts.WinForms.CartesianChart UIdatabasePlotView;
+        private OxyPlot.WindowsForms.PlotView UIdatabasePlotView;
     }
 }

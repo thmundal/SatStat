@@ -1,6 +1,6 @@
 ﻿using LiteDB;
-using LiveCharts;
-using LiveCharts.Wpf;
+using OxyPlot;
+using OxyPlot.Series;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,20 +63,24 @@ namespace SatStat
                     {
                         DB_SensorDataItem result = col.FindById(new BsonValue(item.Tag));
 
-                        SeriesCollection seriesCollection = new SeriesCollection();
+                        PlotModel plotModel = new PlotModel() { Title = result.title };
 
                         LineSeries lineSeries = new LineSeries();
-                        lineSeries.Values = new ChartValues<float>();
-                        lineSeries.Fill = System.Windows.Media.Brushes.Transparent;
+                        List<DataPoint> values = new List<DataPoint>();
 
-                        foreach (var i in result.values)
+
+                        //foreach (var i in result.values)
+                        for(int i=0; i<result.values.Count; i++)
                         {
-                            lineSeries.Values.Add(Convert.ToSingle(i));
+                            //lineSeries.Values.Add();
+                            values.Add(new DataPoint(Convert.ToSingle(i), Convert.ToSingle(result.values[i])));
                         }
-                        seriesCollection.Add(lineSeries);
 
+                        lineSeries.Points.AddRange(values);
+                        plotModel.Series.Add(lineSeries);
+
+                        UIdatabasePlotView.Model = plotModel;
                         UIdatabasePlotView.Visible = true;
-                        UIdatabasePlotView.Series = seriesCollection;
 
                         Console.WriteLine(result.ToString());
                     }

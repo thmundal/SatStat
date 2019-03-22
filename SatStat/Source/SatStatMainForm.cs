@@ -30,8 +30,6 @@ namespace SatStat
         private int maxTimeWindow = 1000;
         private double lastVal = 0;
 
-        private LineSeries oxLineSeries;
-
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
 
@@ -42,7 +40,6 @@ namespace SatStat
         private LinearAxis yAxis;
         private DateTime startTime;
 
-        private int counter = 0;
         public SatStatMainForm()
         {
             InitializeComponent();
@@ -82,7 +79,7 @@ namespace SatStat
                 MinimumRange = 10
             };
 
-            plotModel = new PlotModel { Title = "Oxyplot test" };
+            plotModel = new PlotModel { Title = "Live data view" };
             
             plotModel.Axes.Add(xAxis);
             plotModel.Axes.Add(yAxis);
@@ -113,41 +110,19 @@ namespace SatStat
                 double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
                 series.Points.Add(new DataPoint(timeVal, payload));
 
-                double elapsedTime = (DateTime.Now.ToOADate() - startTime.ToOADate()) * 6e3;
+                Console.WriteLine(payload);
+
+                double elapsedTime = timeVal - lastVal;
                 //series.Points.Add(new DataPoint(elapsedTime, payload));
                 
                 if (DateTime.Now > startTime.AddSeconds(5))
-                    //if (counter > xMaxVal)
                 {
-                    xAxis.Minimum = DateTimeAxis.ToDouble(DateTime.Now.AddMinutes(-1));
-                    xAxis.Maximum = DateTimeAxis.ToDouble(DateTime.Now);
-                    xAxis.Zoom(xAxis.Minimum, xAxis.Maximum);
-
-                    //double panStep = (xAxis.ActualMaximum - xAxis.DataMaximum) * xAxis.Scale;
-                    Console.WriteLine(xAxis.Scale);
-                    double panStep = xAxis.Transform(-1 + xAxis.Offset);
-                    //double panStep = xAxis.Transform(DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(-5)));
-                    //xAxis.Pan(-elapsedTime);
-
-                    //double firstValue = DateTimeAxis.ToDouble(DateTime.Now.AddMilliseconds(10));
-                    //double secondValue = DateTimeAxis.ToDouble(DateTime.Now);
-
-                    //double transformedfirstValue = xAxis.Transform(firstValue);
-                    //double transformedsecondValue = xAxis.Transform(secondValue);
-
-                    //xAxis.Pan(
-                    //  new ScreenPoint(firstValue, 0),
-                    //  new ScreenPoint(secondValue, 0)
-                    //);
-
+                    double panStep = -elapsedTime * xAxis.Scale;
+                    xAxis.Pan(panStep);
                 }
 
                 oxPlot.Invalidate();
-                lastVal = payload;
-                
-                // This counts for every received payload, which is incorrect, since we can display several payloads in a plot at once
-                // This results in the plot moving too fast
-                counter++;
+                lastVal = timeVal;
             }
             else
             {
