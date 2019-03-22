@@ -210,6 +210,7 @@
     <ClInclude Include="srcs\sensors\Result.h" />
     <ClInclude Include="srcs\sensors\Sensor.h" />
     <ClInclude Include="srcs\sensors\Temp_hum_sensor.h" />
+    <ClInclude Include="srcs\containers\Subscriber_functions.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
@@ -226,13 +227,14 @@
     <ClCompile Include="srcs\HWLayer.cpp" />
     <ClCompile Include="srcs\sensors\Sensor.cpp" />
     <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp" />
+    <ClCompile Include="srcs\containers\Subscriber_functions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM11" />
+      <UserProperties arduino.upload.port="COM9" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

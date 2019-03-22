@@ -6,8 +6,8 @@
 */
 Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin, 2)
 {	
-	result[0].name = "temperature";
-	result[1].name = "humidity";
+	result[0].set_name("temperature");
+	result[1].set_name("humidity");
 }
 
 /**
@@ -16,8 +16,8 @@ Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(na
 const Result* Temp_hum_sensor::read_sensor()
 {
 	DHT.read11(pin);
-	result[0].data = DHT.temperature;
-	result[1].data = DHT.humidity;
+	result[0].set_data(DHT.temperature);
+	result[1].set_data(DHT.humidity);
 
 	return result;
 }

@@ -29,12 +29,19 @@ Instruction_handler::~Instruction_handler()
 
 /**
 *	Inserts passed instruction into the instruction_queue.
+*	Returns true if success, false if not.
 */
-void Instruction_handler::insert_instruction(const String& input_data)
+bool Instruction_handler::insert_instruction(const String& input_data)
 {
 	Json_container<JsonObject>* obj = new Json_object_container();
-	obj->parse(input_data);		
-	instruction_queue.enqueue(obj);	
+	
+	if (obj->parse(input_data))
+	{
+		instruction_queue.enqueue(obj);
+		return true;
+	}
+
+	return false;
 }
 
 /**
@@ -77,13 +84,41 @@ void Instruction_handler::sadm_auto_rotate()
 /**
 *	Fetches the first instruction in the instruction_queue, getting the corresponding function from the instruction_interpreter
 *	and calling the retreived function passing the instruction as argument.
+*	Returns true if success, false if not.
 */
 void Instruction_handler::interpret_instruction()
 {	
 	Json_container<JsonObject>* obj = instruction_queue.dequeue();
-	String instruction = obj->get()->get<String>("instruction");	
-	void(*ptr)(Json_container<JsonObject>*);
-	ptr = instruction_interpreter.get(instruction);
-	ptr(obj);
+	String instruction = obj->get().get<String>("instruction");	
+
+	if (instruction != NULL)
+	{
+		void(*ptr)(Json_container<JsonObject>*);	
+		ptr = instruction_interpreter.get(instruction);
+
+		if (ptr != NULL)
+		{
+			ptr(obj);
+		}
+		else
+		{
+			delete obj;
+
+			obj = new Json_object_container();
+			JsonObject& tmp = obj->get();
+			tmp.set("error", instruction + " is not a valid instruction!");
+			tmp.printTo(Serial);
+		}
+	}
+	else
+	{
+		delete obj;
+
+		obj = new Json_object_container();
+		JsonObject& tmp = obj->get();
+		tmp.set("error", "Invalid argument!");
+		tmp.printTo(Serial);
+	}
+	
 	delete obj;
 }

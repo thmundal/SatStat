@@ -11,5 +11,5 @@ public:
 	Json_object_container();
 
 	void create();
-	void parse(const String &json);
+	bool parse(const String &json);
 };

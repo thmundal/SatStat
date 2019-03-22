@@ -17,7 +17,7 @@ public:
 	Instruction_handler();
 	~Instruction_handler();
 	
-	void insert_instruction(const String& input_data);
+	bool insert_instruction(const String& input_data);
 	Json_container<JsonObject>* fetch_instruction();
 	bool queue_is_empty() const;
 

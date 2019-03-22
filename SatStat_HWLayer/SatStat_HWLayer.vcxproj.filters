@@ -348,6 +348,9 @@
     <ClInclude Include="srcs\HWLayer.h">
       <Filter>Header Files\srcs</Filter>
     </ClInclude>
+    <ClInclude Include="srcs\containers\Subscriber_functions.h">
+      <Filter>Header Files\srcs\containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libraries\DS1302.cpp">
@@ -388,6 +391,9 @@
     </ClCompile>
     <ClCompile Include="srcs\HWLayer.cpp">
       <Filter>Source Files\srcs</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\containers\Subscriber_functions.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

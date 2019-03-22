@@ -24,7 +24,29 @@ void SADM_functions::init_stepper()
 */
 void SADM_functions::set_auto_rotate(Json_container<JsonObject>* instruction)
 {
-	auto_rotate_en = instruction->get()->get<bool>("enable");
+	JsonObject& ins_obj = instruction->get();
+
+	if (ins_obj.containsKey("enable"))
+	{
+		if (ins_obj.is<bool>("enable"))
+		{
+			auto_rotate_en = ins_obj.get<bool>("enable");
+		}
+		else
+		{
+			instruction->create();
+			JsonObject& tmp_obj = instruction->get();
+			tmp_obj.set("error", "Invalid value!");
+			tmp_obj.printTo(Serial);
+		}
+	}
+	else
+	{
+		instruction->create();
+		JsonObject& tmp_obj = instruction->get();
+		tmp_obj.set("error", "Invalid argument!");
+		tmp_obj.printTo(Serial);
+	}
 }
 
 /**
@@ -74,15 +96,44 @@ void SADM_functions::rotate(float degrees)
 */
 void SADM_functions::rotate(Json_container<JsonObject>* instruction)
 {
-	if (instruction->get()->containsKey("deg"))
+	JsonObject& ins_obj = instruction->get();
+
+	if (ins_obj.containsKey("deg"))
 	{
-		float deg = instruction->get()->get<float>("deg");
-		rotate(deg);
+		if (ins_obj.is<float>("deg"))
+		{
+			float deg = ins_obj.get<float>("deg");
+			rotate(deg);
+		}
+		else
+		{
+			instruction->create();
+			JsonObject& tmp_obj = instruction->get();
+			tmp_obj.set("error", "Invalid value!");
+			tmp_obj.printTo(Serial);
+		}
 	}
-	else if (instruction->get()->containsKey("steps"))
+	else if (ins_obj.containsKey("steps"))
 	{
-		int steps = instruction->get()->get<int>("steps");
-		rotate(steps);
+		if (ins_obj.is<int>("steps"))
+		{
+			int steps = ins_obj.get<int>("steps");
+			rotate(steps);
+		}
+		else
+		{
+			instruction->create();
+			JsonObject& tmp_obj = instruction->get();
+			tmp_obj.set("error", "Invalid value!");
+			tmp_obj.printTo(Serial);
+		}
+	}
+	else
+	{
+		instruction->create();
+		JsonObject& tmp_obj = instruction->get();
+		tmp_obj.set("error", "Invalid argument!");
+		tmp_obj.printTo(Serial);
 	}
 }
 
