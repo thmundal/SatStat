@@ -7,41 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiveCharts;
-using LiveCharts.Wpf;
 using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using LiteDB;
 using System.IO;
+using LiveCharts.Geared;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
 
 namespace SatStat
 {
     partial class SatStatMainForm : Form
     {
-        private SeriesCollection seriesCollection1;
-        private LineSeries lineSeries1;
-        private Axis timeAxis;
-        private Axis valueAxis;
-        private double yMinVal = -1;
-        private double yMaxVal = 1;
+        private double yMinVal = -20;
+        private double yMaxVal = 20;
         private double xMinVal = 0;
         private double xMaxVal = 1000;
         private int maxTimeWindow = 1000;
         private double lastVal = 0;
+
+        private LineSeries oxLineSeries;
 
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
 
         private Hashtable lineSeriesTable = new Hashtable();
 
+        private PlotModel plotModel;
+        private LinearAxis xAxis;
+        private LinearAxis yAxis;
+        private DateTime startTime;
+
         private int counter = 0;
         public SatStatMainForm()
         {
             InitializeComponent();
-
-            seriesCollection1 = new SeriesCollection();
 
             dataReceiver = new DataReceiver();
             dataReceiver.OnPayloadReceived((object payload, string attribute) =>
@@ -57,106 +61,95 @@ namespace SatStat
             });
 
             sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
+
+            startTime = DateTime.Now;
+
+            xAxis = new DateTimeAxis {
+                Key ="xAxis",
+                Position = AxisPosition.Bottom,
+                Title = "Time",
+                //Maximum = xMaxVal,
+                //Minimum = xMinVal
+                Minimum = DateTimeAxis.ToDouble(startTime),
+                Maximum = DateTimeAxis.ToDouble(DateTime.Now.AddMinutes(1)),
+                MinorIntervalType = DateTimeIntervalType.Minutes
+            };
+
+            yAxis = new LinearAxis {
+                Key ="yAxis",
+                Position = AxisPosition.Left,
+                Title = "Value",
+                MinimumRange = 10
+            };
+
+            plotModel = new PlotModel { Title = "Oxyplot test" };
             
-            cartesianChart1.Series = seriesCollection1;
-            cartesianChart1.ScrollMode = ScrollMode.X;
-            cartesianChart1.DisableAnimations = false;
-            cartesianChart1.Hoverable = false;
-            cartesianChart1.DataTooltip = null;
-
-            timeAxis = new Axis
-            {
-                IsMerged = true,
-                Position = AxisPosition.LeftBottom,
-                MaxValue = xMaxVal,
-                MinValue = xMinVal
-            };
-
-            valueAxis = new Axis
-            {
-                IsMerged = false,
-                Position = AxisPosition.LeftBottom,
-                MinValue = yMinVal,
-                MaxValue = yMaxVal
-            };
-
-            cartesianChart1.AxisX.Add(timeAxis);
-            cartesianChart1.AxisY.Add(valueAxis);
+            plotModel.Axes.Add(xAxis);
+            plotModel.Axes.Add(yAxis);
+            oxPlot.Model = plotModel;
         }
 
-        private void ChartOnUpdaterTick(object sender)
+        private void CreateDataSeries(PlotModel model, string title)
         {
-            valueAxis.MinValue = yMinVal;
-            valueAxis.MaxValue = yMaxVal;
-            timeAxis.MaxValue = xMaxVal;
-            timeAxis.MinValue = xMinVal;
-        }
-        
-        [STAThread]
-        private void AddDataPoint(double dp, LineSeries series)
-        {
-            Task.Run(() =>
+            if (!lineSeriesTable.ContainsKey(title))
             {
-                if (dp > yMaxVal)
-                {
-                    yMaxVal = dp + 50;
-                }
-                else if (dp < yMinVal)
-                {
-                    yMinVal = dp - 50;
-                }
+                LineSeries ls = new LineSeries { Title=title, MarkerType = MarkerType.None };
 
-                series.Values.Add(dp);
-            });
-        }
-        
-        private void CreateDataSeries(SeriesCollection collection, string title)
-        {
-            if(!lineSeriesTable.ContainsKey(title))
-            {
-                LineSeries ls = new LineSeries();
-                ls.Title = title;
-                ls.Fill = System.Windows.Media.Brushes.Transparent;
-                ls.PointGeometry = null;
+                model.Series.Add(ls);
 
-                double[] nullValues = new double[counter];
-                for(int i=0; i<counter; i++)
-                {
-                    nullValues[i] = double.NaN;
-                }
-
-                var cv = new ChartValues<double>();
-
-                cv.AddRange(nullValues);
-                ls.Values = cv;
-
-                collection.Add(ls);
+                oxPlot.Invalidate();
                 lineSeriesTable.Add(title, ls);
+                PngExporter.Export(plotModel, "test.png", 100, 100);
             }
         }
 
         public void ReceivePayload(double payload, string attribute)
         {
-            if(lineSeriesTable[attribute] != null)
+            if (lineSeriesTable[attribute] != null)
             {
-                AddDataPoint(payload, (LineSeries) lineSeriesTable[attribute]);
-                if (counter >= maxTimeWindow)
-                {
-                    xMinVal = counter - maxTimeWindow;
-                    xMaxVal = counter + 1;
+                // Oxyplot test
+                LineSeries series = (LineSeries) lineSeriesTable[attribute];
 
-                    //foreach(LineSeries ls in lineSeriesTable)
-                    //{
-                    //    ls.Values.RemoveAt(counter - maxTimeWindow + 1);
-                    //}
+                double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
+                series.Points.Add(new DataPoint(timeVal, payload));
+
+                double elapsedTime = (DateTime.Now.ToOADate() - startTime.ToOADate()) * 6e3;
+                //series.Points.Add(new DataPoint(elapsedTime, payload));
+                
+                if (DateTime.Now > startTime.AddSeconds(5))
+                    //if (counter > xMaxVal)
+                {
+                    xAxis.Minimum = DateTimeAxis.ToDouble(DateTime.Now.AddMinutes(-1));
+                    xAxis.Maximum = DateTimeAxis.ToDouble(DateTime.Now);
+                    xAxis.Zoom(xAxis.Minimum, xAxis.Maximum);
+
+                    //double panStep = (xAxis.ActualMaximum - xAxis.DataMaximum) * xAxis.Scale;
+                    Console.WriteLine(xAxis.Scale);
+                    double panStep = xAxis.Transform(-1 + xAxis.Offset);
+                    //double panStep = xAxis.Transform(DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(-5)));
+                    //xAxis.Pan(-elapsedTime);
+
+                    //double firstValue = DateTimeAxis.ToDouble(DateTime.Now.AddMilliseconds(10));
+                    //double secondValue = DateTimeAxis.ToDouble(DateTime.Now);
+
+                    //double transformedfirstValue = xAxis.Transform(firstValue);
+                    //double transformedsecondValue = xAxis.Transform(secondValue);
+
+                    //xAxis.Pan(
+                    //  new ScreenPoint(firstValue, 0),
+                    //  new ScreenPoint(secondValue, 0)
+                    //);
+
                 }
+
+                oxPlot.Invalidate();
                 lastVal = payload;
-                //Console.WriteLine("Received playload: " + payload);
                 
                 // This counts for every received payload, which is incorrect, since we can display several payloads in a plot at once
                 // This results in the plot moving too fast
                 counter++;
-            } else
+            }
+            else
             {
                 Debug.Log("The line series object is null");
             }
@@ -233,7 +226,7 @@ namespace SatStat
                 string type = (string) sensor_information[attribute];
 
                 // This has to only be done once?
-                CreateDataSeries(seriesCollection1, attribute);
+                CreateDataSeries(plotModel, attribute);
 
                 if(Program.streamSimulator != null)
                 {
@@ -330,12 +323,13 @@ namespace SatStat
                     var title = lineSeries.Title;
 
                     List<object> values = new List<object>();
-                    foreach(object it in lineSeries.Values)
+                    foreach (DataPoint it in lineSeries.Points)
                     {
-                        values.Add(it);
+                        values.Add(it.Y);
                     }
 
-                    DB_SensorDataItem item = new DB_SensorDataItem() {
+                    DB_SensorDataItem item = new DB_SensorDataItem()
+                    {
                         title = title,
                         values = values
                     };

@@ -29,7 +29,6 @@ namespace SatStat
         {
             subscriptions = new List<DataSubscription>();
             inputBuffer = new List<JObject>();
-
         }
 
         /// <summary>
@@ -51,8 +50,8 @@ namespace SatStat
                         string attribute = subscriber.attribute;
                         if (key == attribute)
                         {
-                            Console.Write("Delivering to subscribers: ");
-                            Console.WriteLine(value);
+                            //Console.Write("Delivering to subscribers: ");
+                            //Console.WriteLine(value);
                             subscriber.receive(value);
                         }
                     }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -41,6 +40,7 @@
             this.saveToDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.displayDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,7 +63,7 @@
             this.UIliveOutputValuesList = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.displayDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oxPlot = new OxyPlot.WindowsForms.PlotView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -75,18 +75,6 @@
             this.diagnosticLiveOutputValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cartesianChart1
-            // 
-            this.cartesianChart1.BackColor = System.Drawing.SystemColors.Window;
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart1.Location = new System.Drawing.Point(3, 3);
-            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(4);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(951, 690);
-            this.cartesianChart1.TabIndex = 0;
-            this.cartesianChart1.Text = "cartesianChart1";
-            this.cartesianChart1.UpdaterTick += new LiveCharts.Events.UpdaterTickHandler(this.ChartOnUpdaterTick);
             // 
             // tabControl1
             // 
@@ -102,7 +90,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.cartesianChart1);
+            this.tabPage1.Controls.Add(this.oxPlot);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -177,21 +165,28 @@
             // saveToDatabaseToolStripMenuItem
             // 
             this.saveToDatabaseToolStripMenuItem.Name = "saveToDatabaseToolStripMenuItem";
-            this.saveToDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.saveToDatabaseToolStripMenuItem.Text = "Save to database";
             this.saveToDatabaseToolStripMenuItem.Click += new System.EventHandler(this.saveToDatabaseToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.importToolStripMenuItem.Text = "Import";
+            // 
+            // displayDatabaseToolStripMenuItem
+            // 
+            this.displayDatabaseToolStripMenuItem.Name = "displayDatabaseToolStripMenuItem";
+            this.displayDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.displayDatabaseToolStripMenuItem.Text = "Display Database";
+            this.displayDatabaseToolStripMenuItem.Click += new System.EventHandler(this.displayDatabaseToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -429,12 +424,18 @@
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
             // 
-            // displayDatabaseToolStripMenuItem
+            // oxPlot
             // 
-            this.displayDatabaseToolStripMenuItem.Name = "displayDatabaseToolStripMenuItem";
-            this.displayDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.displayDatabaseToolStripMenuItem.Text = "Display Database";
-            this.displayDatabaseToolStripMenuItem.Click += new System.EventHandler(this.displayDatabaseToolStripMenuItem_Click);
+            this.oxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.oxPlot.Location = new System.Drawing.Point(3, 3);
+            this.oxPlot.Name = "oxPlot";
+            this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.oxPlot.Size = new System.Drawing.Size(951, 690);
+            this.oxPlot.TabIndex = 1;
+            this.oxPlot.Text = "plotView1";
+            this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.oxPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.oxPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // SatStatMainForm
             // 
@@ -468,8 +469,6 @@
         }
 
         #endregion
-
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMSettingsToolStripMenuItem;
@@ -505,6 +504,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem displayDatabaseToolStripMenuItem;
+        private OxyPlot.WindowsForms.PlotView oxPlot;
     }
 }
 
