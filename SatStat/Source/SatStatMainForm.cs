@@ -28,7 +28,7 @@ namespace SatStat
         private double xMinVal = 0;
         private double xMaxVal = 1000;
         private int maxTimeWindow = 1000;
-        private double lastVal = 0;
+        private double lastTimeVal = 0;
 
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
@@ -112,17 +112,17 @@ namespace SatStat
 
                 Console.WriteLine(payload);
 
-                double elapsedTime = timeVal - lastVal;
+                double elapsedTime = timeVal - lastTimeVal;
                 //series.Points.Add(new DataPoint(elapsedTime, payload));
                 
-                if (DateTime.Now > startTime.AddSeconds(5))
+                if (DateTime.Now > startTime.AddSeconds(60) && lastTimeVal != 0)
                 {
                     double panStep = -elapsedTime * xAxis.Scale;
                     xAxis.Pan(panStep);
                 }
 
                 oxPlot.Invalidate();
-                lastVal = timeVal;
+                lastTimeVal = timeVal;
             }
             else
             {
