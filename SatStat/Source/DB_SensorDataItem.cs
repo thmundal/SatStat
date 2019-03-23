@@ -13,6 +13,7 @@ namespace SatStat
         public ObjectId Id { get; set; }
         public string title { get; set; }
         public List<object> values { get; set; }
+        public List<object> times { get; set; }
 
         public int test = 1;
 

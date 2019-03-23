@@ -298,15 +298,18 @@ namespace SatStat
                     var title = lineSeries.Title;
 
                     List<object> values = new List<object>();
+                    List<object> times = new List<object>();
                     foreach (DataPoint it in lineSeries.Points)
                     {
                         values.Add(it.Y);
+                        times.Add(it.X);
                     }
 
                     DB_SensorDataItem item = new DB_SensorDataItem()
                     {
                         title = title,
-                        values = values
+                        values = values,
+                        times = times
                     };
                     col2.Insert(item);
                 }

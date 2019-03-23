@@ -1,5 +1,6 @@
 ﻿using LiteDB;
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using System;
 using System.Collections;
@@ -51,6 +52,7 @@ namespace SatStat
         {
             if(UIdatabaseCollectionList.SelectedIndices.Count > 0)
             {
+                // Change to support multiple selections!
                 ListViewItem item = UIdatabaseCollectionList.Items[UIdatabaseCollectionList.SelectedIndices[0]];
                 Console.WriteLine("SelectedIndexChanged");
                 Console.WriteLine(item.Tag);
@@ -68,12 +70,35 @@ namespace SatStat
                         LineSeries lineSeries = new LineSeries();
                         List<DataPoint> values = new List<DataPoint>();
 
+                        DateTimeAxis xAxis = new DateTimeAxis
+                        {
+                            Key = "xAxis",
+                            Position = AxisPosition.Bottom,
+                            Title = "Time",
+                            //Maximum = xMaxVal,
+                            //Minimum = xMinVal
+                            Minimum = DateTimeAxis.ToDouble(result.times[0]),
+                            Maximum = DateTimeAxis.ToDouble(result.times[result.times.Count - 1]),
+                            MinorIntervalType = DateTimeIntervalType.Minutes
+                        };
+
+
+                        LinearAxis yAxis = new LinearAxis
+                        {
+                            Key = "yAxis",
+                            Position = AxisPosition.Left,
+                            Title = "Value",
+                            MinimumRange = 10
+                        };
+
+                        plotModel.Axes.Add(xAxis);
+                        plotModel.Axes.Add(yAxis);
 
                         //foreach (var i in result.values)
-                        for(int i=0; i<result.values.Count; i++)
+                        for (int i=0; i<result.values.Count; i++)
                         {
                             //lineSeries.Values.Add();
-                            values.Add(new DataPoint(Convert.ToSingle(i), Convert.ToSingle(result.values[i])));
+                            values.Add(new DataPoint(Convert.ToDouble(result.times[i]), Convert.ToDouble(result.values[i])));
                         }
 
                         lineSeries.Points.AddRange(values);

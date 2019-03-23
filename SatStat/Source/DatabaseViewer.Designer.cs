@@ -55,7 +55,6 @@
             this.UIdatabaseCollectionList.FullRowSelect = true;
             this.UIdatabaseCollectionList.GridLines = true;
             this.UIdatabaseCollectionList.Location = new System.Drawing.Point(3, 3);
-            this.UIdatabaseCollectionList.MultiSelect = false;
             this.UIdatabaseCollectionList.Name = "UIdatabaseCollectionList";
             this.UIdatabaseCollectionList.Size = new System.Drawing.Size(299, 771);
             this.UIdatabaseCollectionList.TabIndex = 1;
