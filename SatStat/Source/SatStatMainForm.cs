@@ -288,8 +288,7 @@ namespace SatStat
             Console.WriteLine("Path is {0}", path);
             using (var db = new LiteDatabase(@path))
             {
-                var col = db.GetCollection("ChartData");
-                var col2 = db.GetCollection<DB_SensorDataItem>("ChartData");
+                LiteCollection<DB_SensorDataItem> col = db.GetCollection<DB_SensorDataItem>("ChartData");
 
                 foreach (DictionaryEntry line in lineSeriesTable)
                 {
@@ -311,7 +310,7 @@ namespace SatStat
                         values = values,
                         times = times
                     };
-                    col2.Insert(item);
+                    col.Insert(item);
                 }
             }
         }

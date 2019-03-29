@@ -12,7 +12,7 @@
           "hash": "zX2vhtbIpqEJ5R1PHeF0kg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "zwADpTO3dUELpOBFZWIKdA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "0/fKEQG2Tv1ghW13ofClkA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ComSettingsForm.html",
-          "hash": "rXCesvl2RT+HD1EwBSMPkQ=="
+          "hash": "MOQ0J+KrFvOeWaKCmYG/qg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -96,7 +96,19 @@
           "hash": "2p3Fjr0zNlMp9y1OrUri8w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.DB_ComSettingsItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.DB_ComSettingsItem.html",
+          "hash": "p7m/OVKUwXlT89kcjEkYCw=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +120,7 @@
           "hash": "kPwX0M1BVJoeGqXSXcJIjA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +132,7 @@
           "hash": "VNwHQxiB18+oL6OuSite3A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -132,7 +144,7 @@
           "hash": "rytB2Ug2FLqbej/O4GFkrg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -144,7 +156,7 @@
           "hash": "SnCj6S8Q2uDeIjY8Tk/jAQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,7 +168,7 @@
           "hash": "CkTxhjvhtWwv8wwNlghg+w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +180,19 @@
           "hash": "hYBB1FItYbr6o0HAmTy0XA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.SerialHandler.default_settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.SerialHandler.default_settings.html",
+          "hash": "blc/D69dBvsz/NIAxEAXTA=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -180,7 +204,7 @@
           "hash": "tSPC+9OtDC5d4lBD3n1AGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -192,7 +216,7 @@
           "hash": "U+j9B2LibZ27MJHAzFZDQg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -204,7 +228,7 @@
           "hash": "U7uKvZ0rEyz81K03hliYaQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -216,7 +240,7 @@
           "hash": "PynRfmkew+fiBysr+WFNpg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -228,7 +252,7 @@
           "hash": "CHXKPbO/RFAchvc3klEVhA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -240,7 +264,7 @@
           "hash": "lfO3PW3AfxjEhmX1daXPJQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "MneW5fymb26ELlWpMR8/uQ=="
+          "hash": "qcpJjHZ6Cspj2oF1TEIg0Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "taX0UdC2Pti1nvpkgWjpBw=="
+          "hash": "O4wISCPLIwDgx5DPGrcN3A=="
         }
       },
       "is_incremental": false,
@@ -296,17 +320,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 19,
+          "skipped_file_count": 15
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 17,
-          "skipped_file_count": 17
         }
       }
     },

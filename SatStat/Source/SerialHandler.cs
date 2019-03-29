@@ -39,13 +39,13 @@ namespace SatStat
             get { return connectionStatus;  }
         }
 
-        private readonly Hashtable default_settings = new Hashtable()
+        public struct default_settings 
         {
-            {"BaudRate", 9600 },
-            {"Parity", Parity.None },
-            {"DataBits", 8 },
-            {"StopBits", StopBits.One },
-            {"NewLine", "\r\n" },
+            static public int BaudRate = 9600;
+            static public Parity Parity = Parity.None;
+            static public int DataBits = 8;
+            static public StopBits StopBits = StopBits.One;
+            static public string NewLine = "\r\n";
         };
 
         /// <summary>
@@ -56,11 +56,11 @@ namespace SatStat
             connection = new SerialPort
             {
                 // Set default protocol settings
-                BaudRate = (int)default_settings["BaudRate"],
-                Parity = (Parity)default_settings["Parity"],
-                DataBits = (int)default_settings["DataBits"],
-                StopBits = (StopBits)default_settings["StopBits"],
-                NewLine = (string)default_settings["NewLine"],
+                BaudRate = default_settings.BaudRate,
+                Parity =  default_settings.Parity,
+                DataBits = default_settings.DataBits,
+                StopBits = default_settings.StopBits,
+                NewLine = default_settings.NewLine,
                 ReadTimeout = 1000
             };
 
@@ -159,10 +159,10 @@ namespace SatStat
                 if(Program.settings.baud_rate != 0)
                 {
                     connection.BaudRate = Program.settings.baud_rate;
-                    connection.Parity = (Parity)default_settings["Parity"];
-                    connection.DataBits = (int)default_settings["DataBits"];
-                    connection.StopBits = (StopBits)default_settings["StopBits"];
-                    connection.NewLine = (string)default_settings["NewLine"];
+                    connection.Parity = default_settings.Parity;
+                    connection.DataBits = default_settings.DataBits;
+                    connection.StopBits = default_settings.StopBits;
+                    connection.NewLine = default_settings.NewLine;
                 }
                 
                 Debug.Log("Reopening connection...");
@@ -194,11 +194,11 @@ namespace SatStat
         /// <param name="portName"></param>
         public void DefaultConnect(string portName)
         {
-            connection.BaudRate = (int)default_settings["BaudRate"];
-            connection.Parity = (Parity)default_settings["Parity"];
-            connection.DataBits = (int)default_settings["DataBits"];
-            connection.StopBits = (StopBits)default_settings["StopBits"];
-            connection.NewLine = (string)default_settings["NewLine"];
+            connection.BaudRate = Program.settings.baud_rate;
+            connection.Parity = default_settings.Parity;
+            connection.DataBits = default_settings.DataBits;
+            connection.StopBits = default_settings.StopBits;
+            connection.NewLine = default_settings.NewLine;
 
             connection.PortName = portName;
             connection.Open();

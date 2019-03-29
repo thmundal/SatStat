@@ -95,6 +95,7 @@
       <DependentUpon>DatabaseViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\DataProvider.cs" />
+    <Compile Include="Source\DB_ComSettingsItem.cs" />
     <Compile Include="Source\DB_SensorDataItem.cs" />
     <Compile Include="Source\Debug.cs" />
     <Compile Include="Source\Instruction.cs" />

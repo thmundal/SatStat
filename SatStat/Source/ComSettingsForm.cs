@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Collections;
 using Newtonsoft.Json.Linq;
+using LiteDB;
+using System.IO;
 
 namespace SatStat
 {
@@ -61,15 +63,17 @@ namespace SatStat
 
         private void ApplyComSettings()
         {
+            string portName = null;
+            int baudRate = (int) SerialHandler.default_settings.BaudRate;
             if (UIcomSourcesList.SelectedIndex >= 0)
             {
-                string portName = portNames[UIcomSourcesList.SelectedIndex];
+                portName = portNames[UIcomSourcesList.SelectedIndex];
                 Program.settings.portName = portName;
             }
 
             if (UIbaudRateInputList.SelectedIndex >= 0)
             {
-                int baudRate = (int)UIbaudRateInputList.Items[UIbaudRateInputList.SelectedIndex];
+                baudRate = (int)UIbaudRateInputList.Items[UIbaudRateInputList.SelectedIndex];
                 Program.settings.baud_rate = baudRate;
                 Program.settings.comSettings.baud_rate = baudRate;
             }
@@ -77,6 +81,41 @@ namespace SatStat
             // Fix this
             Program.settings.comSettings.config = "8N1";
             Program.settings.comSettings.newline = "\r\n";
+
+            if(portName != null)
+            {
+                // Save last com settings to db
+                string path = Directory.GetCurrentDirectory() + @"\Database.db";
+                using (LiteDatabase db = new LiteDatabase(@path))
+                {
+                    LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>("ComSettings");
+
+                    IEnumerable<DB_ComSettingsItem> results = collection.FindAll();
+
+                    DB_ComSettingsItem store = new DB_ComSettingsItem
+                    {
+                        baud_rate = baudRate,
+                        Parity = (int)SerialHandler.default_settings.Parity,
+                        DataBits = (int)SerialHandler.default_settings.DataBits,
+                        StopBits = (int)SerialHandler.default_settings.StopBits,
+                        NewLine = SerialHandler.default_settings.NewLine,
+                        Config = "8N1"
+                    };
+                    
+                    if(results.Count() > 0)
+                    {
+                        // Update existing item
+                        DB_ComSettingsItem existing = results.First();
+                        ObjectId id = existing.Id;
+                        store.Id = id;
+                        collection.Update(store);
+                    } else
+                    {
+                        // Add item
+                        collection.Insert(store);
+                    }
+                }
+            }
         }
     }
 }

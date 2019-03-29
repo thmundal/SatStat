@@ -15,17 +15,8 @@ namespace SatStat
         public List<object> values { get; set; }
         public List<object> times { get; set; }
 
-        public int test = 1;
-
         public DateTime time()  {
             return Id.CreationTime;
         }
-
-        //public DB_SensorDataItem(string title, IChartValues values)
-        //{
-        //    Id = ObjectId.NewObjectId();
-        //    this.title = title;
-        //    this.values = values;
-        //}
     }
 }
