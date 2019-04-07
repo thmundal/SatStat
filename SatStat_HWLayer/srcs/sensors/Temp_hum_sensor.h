@@ -13,7 +13,7 @@ class Temp_hum_sensor : public Sensor
 {
 public:
 	Temp_hum_sensor(const String& name, const int& pin);	
-	const Result* read_sensor();	
+	const Sensor::sub_list_type& read_sensor();	
 private:	
 	dht DHT;
 };

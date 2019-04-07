@@ -351,6 +351,9 @@
     <ClInclude Include="srcs\containers\Subscriber_functions.h">
       <Filter>Header Files\srcs\containers</Filter>
     </ClInclude>
+    <ClInclude Include="srcs\sensors\Data_types.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libraries\DS1302.cpp">

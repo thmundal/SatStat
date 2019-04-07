@@ -1,5 +1,6 @@
 #pragma once
 #include "Result.h"
+#include "../../libraries/LinkedList.h"
 
 /**
 *	The Sensor class is the parent class of every specific sensor added to the system.
@@ -10,16 +11,19 @@
 class Sensor
 {
 public:
-	Sensor(const String& name, const int& pin, const int& data_count = 1);
-	virtual ~Sensor();
+	Sensor(const String& name, const int& pin);
+	virtual ~Sensor() {};
 
-	virtual const Result* read_sensor() = 0;
+	using sub_list_type = LinkedList<String, data::Subscribable*>;
+
+	virtual const sub_list_type& read_sensor() = 0;
+
 	const String& get_name() const;
-	const int& get_data_count() const;
 
 protected:
 	String name;
-	int pin;	
-	int data_count;
-	Result* result;	
+	int pin;
+
+	static sub_list_type data_list;
+	static sub_list_type sub_list;
 };

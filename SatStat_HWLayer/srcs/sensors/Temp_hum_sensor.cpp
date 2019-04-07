@@ -4,20 +4,27 @@
 /**
 *	Pass parameter inputs to parent constructor arguments.
 */
-Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin, 2)
+Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin)
 {	
-	result[0].set_name("temperature");
-	result[1].set_name("humidity");
+	Sensor::data_list.add("temperature");
+	Sensor::data_list.add("humidity");
 }
 
 /**
 *	Read all data the sensor can provide, and return as a Result pointer.
 */
-const Result* Temp_hum_sensor::read_sensor()
+const Sensor::sub_list& Temp_hum_sensor::read_sensor()
 {
 	DHT.read11(pin);
-	result[0].set_data(DHT.temperature);
-	result[1].set_data(DHT.humidity);
+
+	data::Subscribable* val = result.get("temperature");
+	data::result_double d_res = (data::result_double)val;
+	data::val_of(d_res) = DHT.humidity;
+
+	
+	val = result.get("humidity");
+	d_res = (data::result_double)val;
+	data::val_of(d_res) = DHT.humidity;
 
 	return result;
 }

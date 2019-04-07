@@ -18,8 +18,10 @@ public:
 	LinkedList<KEY, VALUE> &operator=(const LinkedList<KEY, VALUE> &other);
 	VALUE &operator[](const int);
 
+	void add(const KEY &key);
 	void append(const KEY &key, const VALUE &value);
 	VALUE &get(const KEY &key);
+	void set(const KEY &key, const VALUE& value);
 	void setDefault(const VALUE &value);
 	int count();
 };
@@ -83,6 +85,27 @@ inline VALUE& LinkedList<KEY, VALUE>::operator[](int index)
 	return m_default;	
 }
 
+// Jon tester
+template<class KEY, class VALUE>
+inline void LinkedList<KEY, VALUE>::add(const KEY &key)
+{
+	if (!m_set)
+	{
+		m_key = key;
+		m_set = true;
+	}
+	else if (m_next == 0)
+	{
+		m_next = new LinkedList;
+		m_next->add(key);
+		m_next->setDefault(m_default);
+	}
+	else
+	{
+		m_next->add(key);
+	}
+}
+
 template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
 {
@@ -112,6 +135,16 @@ inline VALUE &LinkedList<KEY, VALUE>::get(const KEY &key)
 	if (m_next != 0)
 		return m_next->get(key);
 	return m_default;
+}
+
+// Jon tester
+template<class KEY, class VALUE>
+inline void LinkedList<KEY, VALUE>::set(const KEY &key, const VALUE& value)
+{
+	if (m_key == key)
+		m_value = value;
+	if (m_next != 0)
+		m_next->set(key, value);
 }
 
 template<class KEY, class VALUE>
