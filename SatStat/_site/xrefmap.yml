@@ -1098,3 +1098,19 @@ references:
   isSpec: "True"
   fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus
   nameWithType: ThreadHelperClass.SetNetworkConnectionStatus
+- uid: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name: ThreadInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_ThreadInvoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name.vb: ThreadInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+  fullName: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelperClass.ThreadInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelperClass.ThreadInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelperClass.ThreadInvoke*
+  name: ThreadInvoke
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_ThreadInvoke_
+  commentId: Overload:SatStat.ThreadHelperClass.ThreadInvoke
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.ThreadInvoke
+  nameWithType: ThreadHelperClass.ThreadInvoke
