@@ -1,5 +1,5 @@
 #pragma once
-#include "Result.h"
+#include "../../libraries/SSTL/sstl.h"
 #include "../../libraries/LinkedList.h"
 
 /**
@@ -14,8 +14,6 @@ public:
 	Sensor(const String& name, const int& pin);
 	virtual ~Sensor() {};
 
-	using sub_list_type = LinkedList<String, data::Subscribable*>;
-
 	virtual const sub_list_type& read_sensor() = 0;
 
 	const String& get_name() const;
@@ -23,7 +21,4 @@ public:
 protected:
 	String name;
 	int pin;
-
-	static sub_list_type data_list;
-	static sub_list_type sub_list;
 };

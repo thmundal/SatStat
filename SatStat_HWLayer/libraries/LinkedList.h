@@ -1,42 +1,38 @@
 #pragma once
+#include "Arduino.h"
 
 template <class KEY, class VALUE>
 class LinkedList
 {
-private:
-	LinkedList *m_next;
-	KEY m_key;
-	VALUE m_value;
-	VALUE m_default;
-	bool m_set;
-	int count(int current);
 public:
 	LinkedList();
 	LinkedList(const LinkedList<KEY, VALUE> &other);
 	~LinkedList();
 
 	LinkedList<KEY, VALUE> &operator=(const LinkedList<KEY, VALUE> &other);
-	VALUE &operator[](const int);
+	VALUE &operator[](int index);
+	VALUE& operator[](const KEY& key);
 
 	void add(const KEY &key);
 	void append(const KEY &key, const VALUE &value);
 	VALUE &get(const KEY &key);
 	void set(const KEY &key, const VALUE& value);
+	void erase(const KEY &key);
 	void setDefault(const VALUE &value);
 	int count();
+
+private:
+	LinkedList *m_next;
+	KEY m_key;
+	VALUE m_value;
+	VALUE m_default;
+	bool m_set;
+
+	static int obj_count;
 };
 
-// Jon tester
 template<class KEY, class VALUE>
-inline int LinkedList<KEY, VALUE>::count(int current)
-{
-	if (m_next != 0)
-	{
-		return m_next->count(++current);
-	}
-
-	return ++current;
-}
+int LinkedList<KEY, VALUE>::obj_count = 0;
 
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList()
@@ -65,24 +61,40 @@ inline LinkedList<KEY, VALUE>& LinkedList<KEY, VALUE>::operator=(const LinkedLis
 	m_key = other.m_key;
 	m_value = other.m_value;
 	m_set = other.m_set;
-	m_next = new LinkedList<KEY,VALUE>;
+	m_next = new LinkedList<KEY, VALUE>;
 	*m_next = *other.m_next;
 }
 
 // Jon tester
 template<class KEY, class VALUE>
 inline VALUE& LinkedList<KEY, VALUE>::operator[](int index)
-{	
+{
 	if (index == 0)
 	{
 		return m_value;
 	}
-	if (m_next != 0)
-	{		
+	else if (m_next != 0)
+	{
 		return m_next->operator[](--index);
 	}
 
-	return m_default;	
+	return m_default;
+}
+
+// Jon tester
+template<class KEY, class VALUE>
+inline VALUE& LinkedList<KEY, VALUE>::operator[](const KEY& key)
+{
+	if (m_key == key)
+	{
+		return m_value;
+	}
+	else if (m_next != 0)
+	{
+		return m_next->get(key);
+	}
+
+	return m_default;
 }
 
 // Jon tester
@@ -93,6 +105,7 @@ inline void LinkedList<KEY, VALUE>::add(const KEY &key)
 	{
 		m_key = key;
 		m_set = true;
+		obj_count++;
 	}
 	else if (m_next == 0)
 	{
@@ -114,6 +127,7 @@ inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
 		m_key = key;
 		m_value = value;
 		m_set = true;
+		obj_count++;
 	}
 	else if (m_next == 0)
 	{
@@ -142,9 +156,29 @@ template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::set(const KEY &key, const VALUE& value)
 {
 	if (m_key == key)
+	{
 		m_value = value;
-	if (m_next != 0)
+	}
+	else if (m_next != 0)
+	{
 		m_next->set(key, value);
+	}
+}
+
+// Jon tester
+template<class KEY, class VALUE>
+inline void LinkedList<KEY, VALUE>::erase(const KEY &key)
+{
+	if (m_key == key)
+	{
+		LinkedList* tmp = m_next;
+		*this = *tmp;
+		obj_count--;
+	}
+	else if (m_next != 0)
+	{
+		m_next->erase(key);
+	}
 }
 
 template<class KEY, class VALUE>
@@ -158,8 +192,8 @@ inline void LinkedList<KEY, VALUE>::setDefault(const VALUE & value)
 // Jon tester
 template<class KEY, class VALUE>
 inline int LinkedList<KEY, VALUE>::count()
-{	
-	if (m_next != 0)
+{
+	/*if (m_next != 0)
 	{
 		return m_next->count(1);
 	}
@@ -167,6 +201,8 @@ inline int LinkedList<KEY, VALUE>::count()
 	{
 		return 1;
 	}
-	
-	return 0;
+
+	return 0;*/
+
+	return obj_count;
 }
