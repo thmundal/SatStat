@@ -120,33 +120,70 @@ namespace SatStat
 
         public void ReceivePayload(double payload, string attribute)
         {
-            if (lineSeriesTable[attribute] != null)
+            lock(plotModel.SyncRoot)
             {
-                // Oxyplot test
-                LineSeries series = (LineSeries) lineSeriesTable[attribute];
-
-                double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
-                series.Points.Add(new DataPoint(timeVal, payload));
-
-                Debug.Log(payload);
-
-                double elapsedTime = timeVal - lastTimeVal;
-                //series.Points.Add(new DataPoint(elapsedTime, payload));
-                
-                if (DateTime.Now > startTime.AddSeconds(60) && lastTimeVal != 0)
+                // Add data in plot
+                if (lineSeriesTable[attribute] != null)
                 {
-                    double panStep = -elapsedTime * xAxis.Scale;
-                    xAxis.Pan(panStep);
+                    // Oxyplot test
+                    LineSeries series = (LineSeries) lineSeriesTable[attribute];
+
+                    double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
+                    series.Points.Add(new DataPoint(timeVal, payload));
+
+                    Debug.Log(payload);
+
+                    double elapsedTime = timeVal - lastTimeVal;
+                
+                    if (DateTime.Now > startTime.AddSeconds(60) && lastTimeVal != 0)
+                    {
+                        double panStep = -elapsedTime * xAxis.Scale;
+                        xAxis.Pan(panStep);
+                    }
+
+                    oxPlot.Invalidate();
+                    lastTimeVal = timeVal;
+                }
+                else
+                {
+                    Debug.Log("The line series object is null");
+                }
+            }
+
+            // Add/update data in live view
+            ThreadHelperClass.ThreadInvoke(this, null, UIliveOutputValuesList, (a) =>
+            {
+                if(!liveDataList.ContainsKey(attribute))
+                {
+                    DataGridViewRow addd = UIliveOutputValuesList.Rows[0];
+
+                    LiveDataRow row = new LiveDataRow
+                    {
+                        name = attribute,
+                        value = payload.ToString()
+                    };
+
+                    row.index = UIliveOutputValuesList.Rows.Add(new string[]{ row.name, row.value });
+                    liveDataList.Add(attribute, row);
+                } else
+                {
+                    LiveDataRow row = (LiveDataRow) liveDataList[attribute];
+                    row.value = payload.ToString();
+                    UIliveOutputValuesList.Rows[row.index].SetValues(new string[] { row.name, row.value });
                 }
 
-                oxPlot.Invalidate();
-                lastTimeVal = timeVal;
-            }
-            else
-            {
-                Debug.Log("The line series object is null");
-            }
+
+            }, null);
         }
+
+        private struct LiveDataRow
+        {
+            public int index;
+            public string value;
+            public string name;
+        }
+
+        private Hashtable liveDataList = new Hashtable();
 
         private Hashtable sensor_information = new Hashtable();
 
@@ -371,6 +408,5 @@ namespace SatStat
             }
         }
         #endregion
-
     }
 }

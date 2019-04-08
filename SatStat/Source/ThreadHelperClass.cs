@@ -56,5 +56,13 @@ namespace SatStat
                 cb.Invoke(data);
             }
         }
+
+        public static void ThreadInvoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
+        {
+            Task.Run(() =>
+            {
+                Invoke(f, p, c, cb, data);
+            });
+        }
     }
 }
