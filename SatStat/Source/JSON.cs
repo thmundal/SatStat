@@ -33,7 +33,7 @@ namespace SatStat
             T parsed = JsonConvert.DeserializeObject<T>(input);
             if (json_error)
             {
-                Console.WriteLine(GetLastJsonError());
+                Debug.Log(GetLastJsonError());
             }
             return parsed;
         }

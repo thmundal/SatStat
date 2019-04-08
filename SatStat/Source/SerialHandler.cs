@@ -93,17 +93,18 @@ namespace SatStat
         {
             if (connectionStatus == ConnectionStatus.Disconnected || !connection.IsOpen)
             {
-                Console.WriteLine("Serial not connected");
+                ThreadHelperClass.SetCOMConnectionStatus("Disconnected");
+                Debug.Log("Serial not connected");
                 return;
             }
 
             try
             {
-                Console.WriteLine("Receiving...");
+                Debug.Log("Receiving...");
                 string input = connection.ReadLine();
 
-                Console.WriteLine(input);
-                Console.WriteLine(ConnectionStatus);
+                Debug.Log(input);
+                Debug.Log(ConnectionStatus);
 
                 JObject inputParsed = Parse(input);
 
@@ -119,8 +120,8 @@ namespace SatStat
                 if(ConnectionStatus == ConnectionStatus.WaitingConnectInit && inputParsed.ContainsKey("connect"))
                 {
                     string param = inputParsed["connect"].ToObject<string>();
-                    Console.WriteLine("Param received:");
-                    Console.WriteLine(param);
+                    Debug.Log("Param received:");
+                    Debug.Log(param);
                     if(param == "init")
                     {
                         Connect();
@@ -129,6 +130,7 @@ namespace SatStat
 
                 if(ConnectionStatus == ConnectionStatus.Connected)
                 {
+                    Program.app.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
                     DeliverSubscriptions();
                 }
             }
@@ -139,7 +141,7 @@ namespace SatStat
             }
             catch (TimeoutException ex)
             {
-                Debug.Log("Serial.OnDataReceived exception captured\nSettings:");
+                Debug.Log("Serial.OnDataReceived timeout exception captured\nSettings:");
                 Debug.Log(connection.BaudRate);
                 Debug.Log(ex);
 
@@ -151,14 +153,15 @@ namespace SatStat
             }
             catch (Exception ex)
             {
+                Debug.Log("Exception caught in SerialHandler.OnDataReceived()");
                 Debug.Log(ex);
             }
 
             if (!connection.IsOpen)
             {
-                if(Program.settings.baud_rate != 0)
+                if(Program.settings.comSettings.baud_rate != 0)
                 {
-                    connection.BaudRate = Program.settings.baud_rate;
+                    connection.BaudRate = Program.settings.comSettings.baud_rate;
                     connection.Parity = default_settings.Parity;
                     connection.DataBits = default_settings.DataBits;
                     connection.StopBits = default_settings.StopBits;
@@ -194,7 +197,7 @@ namespace SatStat
         /// <param name="portName"></param>
         public void DefaultConnect(string portName)
         {
-            connection.BaudRate = Program.settings.baud_rate;
+            connection.BaudRate = default_settings.BaudRate;
             connection.Parity = default_settings.Parity;
             connection.DataBits = default_settings.DataBits;
             connection.StopBits = default_settings.StopBits;
@@ -218,6 +221,8 @@ namespace SatStat
             Debug.Log("Initializing handshake...");
             Debug.Log(connectionStatus);
 
+            ThreadHelperClass.SetCOMConnectionStatus("Initializing handshake");
+
             WriteData(handshake);
         }
 
@@ -239,8 +244,11 @@ namespace SatStat
         /// <returns></returns>
         public void Connect()
         {
+            Debug.Log("Running connect method");
             WriteData("{\"connect\":\"ok\"}");
             WriteData("{\"request\":\"available_data\"}");
+
+            ThreadHelperClass.SetCOMConnectionStatus("Waiting for available data");
 
             connectionStatus = ConnectionStatus.Connected;
         }
@@ -297,12 +305,12 @@ namespace SatStat
         {
             if(connectionStatus != ConnectionStatus.Disconnected)
             {
-                Console.WriteLine("Stopping serial reader");
+                Debug.Log("Stopping serial reader");
                 connectionStatus = ConnectionStatus.Disconnected;
                 connection.Close();
             } else
             {
-                Console.WriteLine("Cannot disconnect");
+                Debug.Log("Cannot disconnect");
             }
         }
     }

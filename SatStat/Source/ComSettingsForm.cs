@@ -65,30 +65,34 @@ namespace SatStat
         {
             string portName = null;
             int baudRate = (int) SerialHandler.default_settings.BaudRate;
+            COMSettings comSettings = new COMSettings();
+
             if (UIcomSourcesList.SelectedIndex >= 0)
             {
                 portName = portNames[UIcomSourcesList.SelectedIndex];
                 Program.settings.portName = portName;
+                Program.settings.portDescription = UIcomSourcesList.Items[UIcomSourcesList.SelectedIndex].ToString();
             }
 
             if (UIbaudRateInputList.SelectedIndex >= 0)
             {
                 baudRate = (int)UIbaudRateInputList.Items[UIbaudRateInputList.SelectedIndex];
-                Program.settings.baud_rate = baudRate;
-                Program.settings.comSettings.baud_rate = baudRate;
+                comSettings.baud_rate = baudRate;
             }
 
             // Fix this
-            Program.settings.comSettings.config = "8N1";
-            Program.settings.comSettings.newline = "\r\n";
+            comSettings.config = "8N1";
+            comSettings.newline = "\r\n";
+
+            Program.settings.comSettings = comSettings;
 
             if(portName != null)
             {
                 // Save last com settings to db
-                string path = Directory.GetCurrentDirectory() + @"\Database.db";
+                string path = Program.settings.DatabasePath;
                 using (LiteDatabase db = new LiteDatabase(@path))
                 {
-                    LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>("ComSettings");
+                    LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>(Program.settings.COMSettingsDB);
 
                     IEnumerable<DB_ComSettingsItem> results = collection.FindAll();
 
@@ -99,7 +103,9 @@ namespace SatStat
                         DataBits = (int)SerialHandler.default_settings.DataBits,
                         StopBits = (int)SerialHandler.default_settings.StopBits,
                         NewLine = SerialHandler.default_settings.NewLine,
-                        Config = "8N1"
+                        Config = "8N1",
+                        PortDescription = Program.settings.portDescription,
+                        PortName = Program.settings.portName
                     };
                     
                     if(results.Count() > 0)

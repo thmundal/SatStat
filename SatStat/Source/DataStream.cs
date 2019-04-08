@@ -51,7 +51,7 @@ namespace SatStat
                         if (key == attribute)
                         {
                             //Console.Write("Delivering to subscribers: ");
-                            //Console.WriteLine(value);
+                            //Debug.Log(value);
                             subscriber.receive(value);
                         }
                     }
@@ -78,26 +78,26 @@ namespace SatStat
                 }
                 catch (JsonSerializationException e)
                 {
-                    Console.WriteLine("Invalid json received:" + input);
-                    Console.WriteLine(e.ToString());
+                    Debug.Log("Invalid json received:" + input);
+                    Debug.Log(e.ToString());
                 }
                 catch (JsonReaderException e)
                 {
-                    Console.WriteLine("Invalid json received:" + input);
-                    Console.WriteLine(e.ToString());
+                    Debug.Log("Invalid json received:" + input);
+                    Debug.Log(e.ToString());
 }
                 catch (System.IO.IOException e)
                 {
-                    Console.WriteLine("Read thread aborted");
-                    Console.WriteLine(e.ToString());
+                    Debug.Log("Read thread aborted");
+                    Debug.Log(e.ToString());
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e.ToString());
+                    Debug.Log(e.ToString());
                 }
             } else
             {
-                Console.WriteLine("Input is empty, aborting parse");
+                Debug.Log("Input is empty, aborting parse");
             }
             return null;
         }

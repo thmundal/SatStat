@@ -30,6 +30,22 @@ namespace SatStat
             }
         }
 
+        public static void SetCOMConnectionStatus(string status)
+        {
+            Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
+            {
+                Program.app.SetCOMConnectionStatus(status);
+            }, null);
+        }
+
+        public static void SetNetworkConnectionStatus(string status)
+        {
+            Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
+            {
+                Program.app.SetNetworkConnectionStatus(status);
+            }, null);
+        }
+
         public static void Invoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
         {
             if(c.InvokeRequired)

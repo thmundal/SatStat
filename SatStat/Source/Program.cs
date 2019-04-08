@@ -9,6 +9,7 @@ namespace SatStat
         public static AppSettings settings;
         public static StreamSimulator streamSimulator;
         public static SocketHandler socketHandler;
+        public static SatStatMainForm app;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -29,10 +30,20 @@ namespace SatStat
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SatStatMainForm app = new SatStatMainForm();
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(ExceptionHandler);
+
+            app = new SatStatMainForm();
             
             Application.Run(app);
 
+        }
+
+        private static void ExceptionHandler(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = (Exception)e.ExceptionObject;
+            Debug.Log("An unhandled exception was thrown");
+            Debug.Log(ex);
         }
     }
 }

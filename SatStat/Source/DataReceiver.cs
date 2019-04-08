@@ -119,12 +119,12 @@ namespace SatStat
                             }
                             catch (InvalidCastException e)
                             {
-                                Console.WriteLine("Cannot cast received " + payload.GetType() + " to type " + data_type);
-                                Console.WriteLine(e.StackTrace);
+                                Debug.Log("Cannot cast received " + payload.GetType() + " to type " + data_type);
+                                Debug.Log(e.StackTrace);
                             }
                             catch (InvalidOperationException)
                             {
-                                Console.WriteLine("Error when receiving data");
+                                Debug.Log("Error when receiving data");
                             }
                         }
                     }

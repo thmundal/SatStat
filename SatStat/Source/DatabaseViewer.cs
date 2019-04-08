@@ -18,8 +18,8 @@ namespace SatStat
 {
     public partial class DatabaseViewer : Form
     {
-        string collectionName = "ChartData";
-        string databasePath = Directory.GetCurrentDirectory() + @"\Database.db";
+        string collectionName = Program.settings.PlotDatabase;
+        string databasePath = Program.settings.DatabasePath;
 
         public DatabaseViewer()
         {
@@ -54,8 +54,8 @@ namespace SatStat
             {
                 // Change to support multiple selections!
                 ListViewItem item = UIdatabaseCollectionList.Items[UIdatabaseCollectionList.SelectedIndices[0]];
-                Console.WriteLine("SelectedIndexChanged");
-                Console.WriteLine(item.Tag);
+                Debug.Log("SelectedIndexChanged");
+                Debug.Log(item.Tag);
 
                 using (LiteDatabase db = new LiteDatabase(databasePath))
                 {
@@ -107,7 +107,7 @@ namespace SatStat
                         UIdatabasePlotView.Model = plotModel;
                         UIdatabasePlotView.Visible = true;
 
-                        Console.WriteLine(result.ToString());
+                        Debug.Log(result.ToString());
                     }
                 }
             }

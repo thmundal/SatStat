@@ -13,24 +13,57 @@ references:
   commentId: T:SatStat.AppSettings
   fullName: SatStat.AppSettings
   nameWithType: AppSettings
-- uid: SatStat.AppSettings.baud_rate
-  name: baud_rate
-  href: api/SatStat.AppSettings.html#SatStat_AppSettings_baud_rate
-  commentId: F:SatStat.AppSettings.baud_rate
-  fullName: SatStat.AppSettings.baud_rate
-  nameWithType: AppSettings.baud_rate
 - uid: SatStat.AppSettings.comSettings
   name: comSettings
   href: api/SatStat.AppSettings.html#SatStat_AppSettings_comSettings
   commentId: F:SatStat.AppSettings.comSettings
   fullName: SatStat.AppSettings.comSettings
   nameWithType: AppSettings.comSettings
-- uid: SatStat.AppSettings.config
-  name: config
-  href: api/SatStat.AppSettings.html#SatStat_AppSettings_config
-  commentId: F:SatStat.AppSettings.config
-  fullName: SatStat.AppSettings.config
-  nameWithType: AppSettings.config
+- uid: SatStat.AppSettings.COMSettingsDB
+  name: COMSettingsDB
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_COMSettingsDB
+  commentId: P:SatStat.AppSettings.COMSettingsDB
+  fullName: SatStat.AppSettings.COMSettingsDB
+  nameWithType: AppSettings.COMSettingsDB
+- uid: SatStat.AppSettings.COMSettingsDB*
+  name: COMSettingsDB
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_COMSettingsDB_
+  commentId: Overload:SatStat.AppSettings.COMSettingsDB
+  isSpec: "True"
+  fullName: SatStat.AppSettings.COMSettingsDB
+  nameWithType: AppSettings.COMSettingsDB
+- uid: SatStat.AppSettings.DatabasePath
+  name: DatabasePath
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_DatabasePath
+  commentId: P:SatStat.AppSettings.DatabasePath
+  fullName: SatStat.AppSettings.DatabasePath
+  nameWithType: AppSettings.DatabasePath
+- uid: SatStat.AppSettings.DatabasePath*
+  name: DatabasePath
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_DatabasePath_
+  commentId: Overload:SatStat.AppSettings.DatabasePath
+  isSpec: "True"
+  fullName: SatStat.AppSettings.DatabasePath
+  nameWithType: AppSettings.DatabasePath
+- uid: SatStat.AppSettings.PlotDatabase
+  name: PlotDatabase
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_PlotDatabase
+  commentId: P:SatStat.AppSettings.PlotDatabase
+  fullName: SatStat.AppSettings.PlotDatabase
+  nameWithType: AppSettings.PlotDatabase
+- uid: SatStat.AppSettings.PlotDatabase*
+  name: PlotDatabase
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_PlotDatabase_
+  commentId: Overload:SatStat.AppSettings.PlotDatabase
+  isSpec: "True"
+  fullName: SatStat.AppSettings.PlotDatabase
+  nameWithType: AppSettings.PlotDatabase
+- uid: SatStat.AppSettings.portDescription
+  name: portDescription
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_portDescription
+  commentId: F:SatStat.AppSettings.portDescription
+  fullName: SatStat.AppSettings.portDescription
+  nameWithType: AppSettings.portDescription
 - uid: SatStat.AppSettings.portName
   name: portName
   href: api/SatStat.AppSettings.html#SatStat_AppSettings_portName
@@ -514,6 +547,32 @@ references:
   isSpec: "True"
   fullName: SatStat.DB_ComSettingsItem.Parity
   nameWithType: DB_ComSettingsItem.Parity
+- uid: SatStat.DB_ComSettingsItem.PortDescription
+  name: PortDescription
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_PortDescription
+  commentId: P:SatStat.DB_ComSettingsItem.PortDescription
+  fullName: SatStat.DB_ComSettingsItem.PortDescription
+  nameWithType: DB_ComSettingsItem.PortDescription
+- uid: SatStat.DB_ComSettingsItem.PortDescription*
+  name: PortDescription
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_PortDescription_
+  commentId: Overload:SatStat.DB_ComSettingsItem.PortDescription
+  isSpec: "True"
+  fullName: SatStat.DB_ComSettingsItem.PortDescription
+  nameWithType: DB_ComSettingsItem.PortDescription
+- uid: SatStat.DB_ComSettingsItem.PortName
+  name: PortName
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_PortName
+  commentId: P:SatStat.DB_ComSettingsItem.PortName
+  fullName: SatStat.DB_ComSettingsItem.PortName
+  nameWithType: DB_ComSettingsItem.PortName
+- uid: SatStat.DB_ComSettingsItem.PortName*
+  name: PortName
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_PortName_
+  commentId: Overload:SatStat.DB_ComSettingsItem.PortName
+  isSpec: "True"
+  fullName: SatStat.DB_ComSettingsItem.PortName
+  nameWithType: DB_ComSettingsItem.PortName
 - uid: SatStat.DB_ComSettingsItem.StopBits
   name: StopBits
   href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_StopBits
@@ -527,6 +586,19 @@ references:
   isSpec: "True"
   fullName: SatStat.DB_ComSettingsItem.StopBits
   nameWithType: DB_ComSettingsItem.StopBits
+- uid: SatStat.DB_ComSettingsItem.toComSettings
+  name: toComSettings()
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_toComSettings
+  commentId: M:SatStat.DB_ComSettingsItem.toComSettings
+  fullName: SatStat.DB_ComSettingsItem.toComSettings()
+  nameWithType: DB_ComSettingsItem.toComSettings()
+- uid: SatStat.DB_ComSettingsItem.toComSettings*
+  name: toComSettings
+  href: api/SatStat.DB_ComSettingsItem.html#SatStat_DB_ComSettingsItem_toComSettings_
+  commentId: Overload:SatStat.DB_ComSettingsItem.toComSettings
+  isSpec: "True"
+  fullName: SatStat.DB_ComSettingsItem.toComSettings
+  nameWithType: DB_ComSettingsItem.toComSettings
 - uid: SatStat.JSON
   name: JSON
   href: api/SatStat.JSON.html
@@ -1000,3 +1072,29 @@ references:
   isSpec: "True"
   fullName: SatStat.ThreadHelperClass.SetBaudrates
   nameWithType: ThreadHelperClass.SetBaudrates
+- uid: SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
+  name: SetCOMConnectionStatus(String)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetCOMConnectionStatus_System_String_
+  commentId: M:SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
+  nameWithType: ThreadHelperClass.SetCOMConnectionStatus(String)
+- uid: SatStat.ThreadHelperClass.SetCOMConnectionStatus*
+  name: SetCOMConnectionStatus
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetCOMConnectionStatus_
+  commentId: Overload:SatStat.ThreadHelperClass.SetCOMConnectionStatus
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.SetCOMConnectionStatus
+  nameWithType: ThreadHelperClass.SetCOMConnectionStatus
+- uid: SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
+  name: SetNetworkConnectionStatus(String)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetNetworkConnectionStatus_System_String_
+  commentId: M:SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
+  nameWithType: ThreadHelperClass.SetNetworkConnectionStatus(String)
+- uid: SatStat.ThreadHelperClass.SetNetworkConnectionStatus*
+  name: SetNetworkConnectionStatus
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetNetworkConnectionStatus_
+  commentId: Overload:SatStat.ThreadHelperClass.SetNetworkConnectionStatus
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus
+  nameWithType: ThreadHelperClass.SetNetworkConnectionStatus

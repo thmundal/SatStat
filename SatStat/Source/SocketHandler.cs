@@ -49,7 +49,7 @@ namespace SatStat
                 serverListenerThread.Start();
             } catch(Exception e)
             {
-                Console.WriteLine(e);
+                Debug.Log(e);
             }
         }
 
@@ -59,6 +59,8 @@ namespace SatStat
             // Bind socket
             try
             {
+                ThreadHelperClass.SetNetworkConnectionStatus("Listening on port " + listen_port.ToString());
+
                 server = new TcpListener(IPAddress.Loopback, listen_port);
                 server.Start();
 
@@ -67,10 +69,12 @@ namespace SatStat
 
                 while(true)
                 {
-                    Console.WriteLine("Waiting for a connection....");
+                    Debug.Log("Waiting for a connection....");
                     TcpClient client = server.AcceptTcpClient();
                     connected_clients.Add(client);
-                    Console.WriteLine("A client connected");
+                    Debug.Log("A client connected");
+
+                    ThreadHelperClass.SetNetworkConnectionStatus("Client connected");
 
                     data = null;
 
@@ -94,16 +98,15 @@ namespace SatStat
                             }
                         }
                         buffer = null;
-                        //Console.WriteLine("Received: {0}", data);
                     }
 
-                    // Probably not close right away...
-                    //client.Close();
+                    connected_clients.Remove(client);
+                    client.Close();
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Debug.Log(e.ToString());
             }
         }
         
@@ -122,6 +125,7 @@ namespace SatStat
 
         public void Disconnect(TcpClient client)
         {
+            ThreadHelperClass.SetNetworkConnectionStatus("Disconnected");
             connected_clients.Remove(client);
             client.Close();
         }

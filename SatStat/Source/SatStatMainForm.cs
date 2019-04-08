@@ -1,23 +1,15 @@
 ﻿using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 using Newtonsoft.Json.Linq;
-using System.Windows.Controls;
 using System.Collections.Generic;
 using LiteDB;
 using System.IO;
-using LiveCharts.Geared;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
+using System.Linq;
 
 namespace SatStat
 {
@@ -40,9 +32,35 @@ namespace SatStat
         private LinearAxis yAxis;
         private DateTime startTime;
 
+        private DB_ComSettingsItem savedComSettings;
+
         public SatStatMainForm()
         {
             InitializeComponent();
+            
+            using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
+            {
+                LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>(Program.settings.COMSettingsDB);
+                IEnumerable<DB_ComSettingsItem> result = collection.FindAll();
+
+
+                if(result.Count() > 0)
+                {
+                    savedComSettings = result.First();
+                    ToolStripMenuItem recentConnect = new ToolStripMenuItem
+                    {
+                        Name = "UICOMRecentConnect",
+                        Text = "Connect to " + result.First().PortDescription,
+                    };
+
+                    recentConnect.Click += new EventHandler(ConnectToRecent);
+
+                    settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                            recentConnect
+                        }
+                    );
+                }
+            }
 
             dataReceiver = new DataReceiver();
             dataReceiver.OnPayloadReceived((object payload, string attribute) =>
@@ -85,7 +103,7 @@ namespace SatStat
             plotModel.Axes.Add(yAxis);
             oxPlot.Model = plotModel;
         }
-
+        
         private void CreateDataSeries(PlotModel model, string title)
         {
             if (!lineSeriesTable.ContainsKey(title))
@@ -110,7 +128,7 @@ namespace SatStat
                 double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
                 series.Points.Add(new DataPoint(timeVal, payload));
 
-                Console.WriteLine(payload);
+                Debug.Log(payload);
 
                 double elapsedTime = timeVal - lastTimeVal;
                 //series.Points.Add(new DataPoint(elapsedTime, payload));
@@ -136,7 +154,7 @@ namespace SatStat
         private void ReceiveSensorList(JObject sensor_list)
         {
             ThreadHelperClass.Invoke(this, null, UISensorCheckboxList, (data) =>
-            {
+            {   
                 foreach (var elem in (JObject) data["sensor_list"])
                 {
                     if(!sensor_information.ContainsKey(elem.Key))
@@ -152,6 +170,21 @@ namespace SatStat
                 { "control", UISensorCheckboxList },
                 { "sensor_list", sensor_list }
             });
+        }
+
+        public void SetCOMConnectionStatus(string status)
+        {
+            UICOMConnectionStatus.Text = status;
+        }
+
+        public void SetNetworkConnectionStatus(string status)
+        {
+            UINetworkConnectionStatus.Text = status;
+        }
+
+        public Control GetConnectionStatusControl()
+        {
+            return UIStatusStrip;
         }
 
         #region event listeners
@@ -218,11 +251,11 @@ namespace SatStat
                     dataReceiver.Subscribe(Program.socketHandler, attribute, type);
                 }
 
-                Console.WriteLine("Subscribed to " + attribute);
+                Debug.Log("Subscribed to " + attribute);
             } else
             {
                 dataReceiver.Unsubscribe(attribute);
-                Console.WriteLine("Unsubscribed to " + attribute);
+                Debug.Log("Unsubscribed to " + attribute);
             }
 
         }
@@ -285,7 +318,6 @@ namespace SatStat
         private void saveToDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path = Directory.GetCurrentDirectory() + @"\Database.db";
-            Console.WriteLine("Path is {0}", path);
             using (var db = new LiteDatabase(@path))
             {
                 LiteCollection<DB_SensorDataItem> col = db.GetCollection<DB_SensorDataItem>("ChartData");
@@ -319,6 +351,24 @@ namespace SatStat
         {
             DatabaseViewer databaseViewer = new DatabaseViewer();
             databaseViewer.ShowDialog();
+        }
+
+        private void ConnectToRecent(object sender, EventArgs e)
+        {
+            if(savedComSettings != null)
+            {
+                Program.serial.Disconnect();
+
+                Program.settings.comSettings = savedComSettings.toComSettings();
+
+                Program.serial.OnHandshakeResponse((settings) =>
+                {
+                    Debug.Log("Handshake response");
+                    Program.serial.ConnectionRequest(savedComSettings.toComSettings());
+                });
+
+                Program.serial.DefaultConnect(savedComSettings.PortName);
+            }
         }
         #endregion
 

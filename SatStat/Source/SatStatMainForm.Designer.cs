@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.oxPlot = new OxyPlot.WindowsForms.PlotView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,9 @@
             this.UIliveOutputValuesList = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oxPlot = new OxyPlot.WindowsForms.PlotView();
+            this.UIStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.UICOMConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UINetworkConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -74,6 +77,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.diagnosticLiveOutputValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).BeginInit();
+            this.UIStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -85,7 +89,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(965, 722);
+            this.tabControl1.Size = new System.Drawing.Size(965, 701);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -94,17 +98,30 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(957, 696);
+            this.tabPage1.Size = new System.Drawing.Size(957, 675);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Plot 1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // oxPlot
+            // 
+            this.oxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.oxPlot.Location = new System.Drawing.Point(3, 3);
+            this.oxPlot.Name = "oxPlot";
+            this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.oxPlot.Size = new System.Drawing.Size(951, 669);
+            this.oxPlot.TabIndex = 1;
+            this.oxPlot.Text = "plotView1";
+            this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.oxPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.oxPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(957, 696);
+            this.tabPage2.Size = new System.Drawing.Size(957, 675);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Plot 2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -208,12 +225,14 @@
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.UIStatusStrip, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.63736F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.36264F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1423, 728);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
@@ -229,7 +248,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.70934F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.29066F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 449);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 437);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
@@ -248,7 +267,7 @@
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 244);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 237);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
@@ -355,9 +374,9 @@
             // 
             this.SensorDataListBoxGroupContainer.Controls.Add(this.UISensorCheckboxList);
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 253);
+            this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 246);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 193);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 188);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
@@ -368,7 +387,7 @@
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 174);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 169);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
             this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
@@ -379,12 +398,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.diagnosticLiveOutputValues, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 458);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 446);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.61654F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.383459F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 267);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 258);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -393,7 +412,7 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 251);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 243);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
@@ -411,7 +430,7 @@
             this.UIliveOutputValuesList.Name = "UIliveOutputValuesList";
             this.UIliveOutputValuesList.RowHeadersVisible = false;
             this.UIliveOutputValuesList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UIliveOutputValuesList.Size = new System.Drawing.Size(434, 232);
+            this.UIliveOutputValuesList.Size = new System.Drawing.Size(434, 224);
             this.UIliveOutputValuesList.TabIndex = 0;
             // 
             // Key
@@ -424,18 +443,29 @@
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
             // 
-            // oxPlot
+            // UIStatusStrip
             // 
-            this.oxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.oxPlot.Location = new System.Drawing.Point(3, 3);
-            this.oxPlot.Name = "oxPlot";
-            this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.oxPlot.Size = new System.Drawing.Size(951, 690);
-            this.oxPlot.TabIndex = 1;
-            this.oxPlot.Text = "plotView1";
-            this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.oxPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.oxPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.tableLayoutPanel1.SetColumnSpan(this.UIStatusStrip, 2);
+            this.UIStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UICOMConnectionStatus,
+            this.UINetworkConnectionStatus});
+            this.UIStatusStrip.Location = new System.Drawing.Point(0, 707);
+            this.UIStatusStrip.Name = "UIStatusStrip";
+            this.UIStatusStrip.Size = new System.Drawing.Size(1423, 21);
+            this.UIStatusStrip.TabIndex = 15;
+            this.UIStatusStrip.Text = "statusStrip";
+            // 
+            // UICOMConnectionStatus
+            // 
+            this.UICOMConnectionStatus.Name = "UICOMConnectionStatus";
+            this.UICOMConnectionStatus.Size = new System.Drawing.Size(110, 16);
+            this.UICOMConnectionStatus.Text = "COM Disconnected";
+            // 
+            // UINetworkConnectionStatus
+            // 
+            this.UINetworkConnectionStatus.Name = "UINetworkConnectionStatus";
+            this.UINetworkConnectionStatus.Size = new System.Drawing.Size(127, 16);
+            this.UINetworkConnectionStatus.Text = "Network Disconnected";
             // 
             // SatStatMainForm
             // 
@@ -456,6 +486,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.SadmControlsGroupPanel.ResumeLayout(false);
             this.SadmControlsGroupPanel.PerformLayout();
@@ -463,6 +494,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.diagnosticLiveOutputValues.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).EndInit();
+            this.UIStatusStrip.ResumeLayout(false);
+            this.UIStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,6 +538,9 @@
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem displayDatabaseToolStripMenuItem;
         private OxyPlot.WindowsForms.PlotView oxPlot;
+        private System.Windows.Forms.StatusStrip UIStatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel UICOMConnectionStatus;
+        private System.Windows.Forms.ToolStripStatusLabel UINetworkConnectionStatus;
     }
 }
 

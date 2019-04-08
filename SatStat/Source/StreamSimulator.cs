@@ -18,7 +18,7 @@ namespace SatStat
         [STAThread]
         public void Connect()
         {
-            Console.WriteLine("Starting datastream");
+            Debug.Log("Starting datastream");
 
             output_buffer = new Queue<JObject>();
             input_buffer = new Queue<string>();
@@ -89,20 +89,20 @@ namespace SatStat
 
         private void ClientInitializeHandshake()
         {
-            Console.WriteLine("Initializing handshake from client");
+            Debug.Log("Initializing handshake from client");
             JObject o = new JObject() { { "serial_handshake", "init" } };
             output_buffer.Enqueue(o);
         }
 
         private void StartHandshake()
         {
-            Console.WriteLine("Starting serial handshake");
+            Debug.Log("Starting serial handshake");
             input_buffer.Enqueue("{\"serial_handshake\":{\"baud_rates\":[9600,4800,19200,115200], \"configs\":[\"8N1\", \"8Y1\"], \"newlines\":[\"\r\n\", \"\r\", \"\n\"]}}");
         }
 
         private void EndHandshake()
         {
-            Console.WriteLine("Ending serial handshake");
+            Debug.Log("Ending serial handshake");
             output_buffer.Enqueue(new JObject()
             {
                 {"connection_request",
@@ -120,7 +120,7 @@ namespace SatStat
 
         //    if (inputParsed.ContainsKey("serial_handshake"))
         //    {
-        //        Console.WriteLine(inputParsed);
+        //        Debug.Log(inputParsed);
         //    }
         //    else
         //    {
@@ -131,7 +131,7 @@ namespace SatStat
         public void Output(JObject data)
         {
             output_buffer.Enqueue(data);
-            Console.WriteLine("Sending data to output endpoint " + data);
+            Debug.Log("Sending data to output endpoint " + data);
         }
     }
 }
