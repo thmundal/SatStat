@@ -1,8 +1,6 @@
 #pragma once
 #include "Sensor.h"
 
-Sensor::sub_list result;
-
 /**
 *	Constructor setting name, pin and data_count as well as initializing the Result pointer as an array of size provided by the data_count parameter.
 */

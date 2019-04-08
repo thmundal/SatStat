@@ -22,6 +22,30 @@
     <Filter Include="Header Files\libraries\SSTL">
       <UniqueIdentifier>{e20466bd-855b-4650-81f9-78055cdcb7f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\srcs\containers">
+      <UniqueIdentifier>{72fa5744-adea-47f5-9daf-ea87f1aacea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\srcs\handlers">
+      <UniqueIdentifier>{29c35d83-cbf0-46e9-ba9b-f8d51a573836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\srcs\sensors">
+      <UniqueIdentifier>{683357b1-5774-4520-88be-0ea557b9d164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries">
+      <UniqueIdentifier>{c3cfec22-b206-4d0c-90c1-11940b56e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs">
+      <UniqueIdentifier>{2e43d1c9-fb16-4b73-8221-510a739c8e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\containers">
+      <UniqueIdentifier>{ba50545a-ae1e-4089-9437-59fe6afb4721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\handlers">
+      <UniqueIdentifier>{4dc705a1-ad13-4473-897a-5c2f65b537ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srcs\sensors">
+      <UniqueIdentifier>{4680b180-8f1b-4733-ad00-a22b85ad0889}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -66,16 +90,28 @@
     <ClInclude Include="libraries\Stepper.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
+    <ClInclude Include="srcs\sensors\Sensor.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="srcs\sensors\Temp_hum_sensor.h">
+      <Filter>Header Files\srcs\sensors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libraries\DHT.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\libraries</Filter>
     </ClCompile>
     <ClCompile Include="libraries\DS1302.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\libraries</Filter>
     </ClCompile>
     <ClCompile Include="libraries\Stepper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\sensors\Sensor.cpp">
+      <Filter>Source Files\srcs\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp">
+      <Filter>Source Files\srcs\sensors</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

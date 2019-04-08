@@ -1,6 +1,5 @@
 #pragma once
 #include "../../libraries/SSTL/sstl.h"
-#include "../../libraries/LinkedList.h"
 
 /**
 *	The Sensor class is the parent class of every specific sensor added to the system.
@@ -14,7 +13,7 @@ public:
 	Sensor(const String& name, const int& pin);
 	virtual ~Sensor() {};
 
-	virtual const sub_list_type& read_sensor() = 0;
+	virtual void read_sensor() = 0;
 
 	const String& get_name() const;
 

@@ -1,55 +1,61 @@
-#include "./libraries/SSTL/sstl.h"
+#pragma once
+#include "./srcs/sensors/Temp_hum_sensor.h"
 
-// the setup function runs once when you press reset or power the board
-void setup() {
+Temp_hum_sensor* temp_hum;
+//LinkedList<String, sstl::Subscribable*>* list;
+
+void setup()
+{	
 	Serial.begin(9600);
 
-	auto temp = new sstl::Data_container<int>("temperature");
-	auto hum = new sstl::Data_container<float>("humidity");
-	auto some = new sstl::Data_container<double>("something");
-	
-	temp->get_data().val = 10;
-	hum->get_data().val = 2.2f;
-	some->get_data().val = 1.23;
+	pinMode(5, OUTPUT);
+	pinMode(6, INPUT);
+	pinMode(7, OUTPUT);
 
-	sstl::Lists::append_data("temperature", temp);
-	sstl::Lists::append_data("humidity", hum);
-	sstl::Lists::append_data("something", some);
-	
+	digitalWrite(5, HIGH);
+	digitalWrite(7, LOW);
 
+	temp_hum = new Temp_hum_sensor("temp_hum", 6);
 	sstl::Lists::subscribe("temperature");
-	sstl::Lists::subscribe("humidity");
-	sstl::Lists::subscribe("something");	
+	sstl::Lists::subscribe("humidity");		
+	
+	//list = &sstl::Lists::get_sub_list();
+	Serial.println("test");
+	
 }
 
-// the loop function runs over and over again until power down or reset
-void loop() {
-	auto& sub_list = sstl::Lists::get_sub_list();
+void loop()
+{			
+	temp_hum->read_sensor();		
 
-	sstl::types type;
+	sstl::Subscribable* sub = sstl::Lists::get_data("temperature");
 
-	for (int i = 0; i < sub_list.count(); i++)
+	auto data = sstl::downcast<double>(sub);
+
+	Serial.println(data->get_data());
+
+	delay(500);
+
+	/*for (size_t i = 0; i < list.count(); i++)
 	{
-		//Serial.println(i);
-		auto sub = sub_list[i];
-		type = sub->get_type();
+		if (type == sstl::types::t_float)
+		{
+			auto data = sstl::downcast<float>(sub);
+			Serial.print(data->get_name() + ": ");
+			Serial.println(data->get_data());
 
-		if (type == sstl::types::t_int)
-		{
-			sstl::Data_container<int>* data = (sstl::Data_container<int>*)sub;
-			Serial.println("int");
-		}
-		else if (type == sstl::types::t_float)
-		{
-			sstl::Data_container<float>* data = (sstl::Data_container<float>*)sub;
-			Serial.println("float");
 		}
 		else if (type == sstl::types::t_double)
 		{
-			sstl::Data_container<double>* data = (sstl::Data_container<double>*)sub;
-			Serial.println("double");
+			auto data = sstl::downcast<double>(sub);
+			Serial.print(data->get_name() + ": ");
+			Serial.println(data->get_data());
 		}
-	}
-
-	delay(1000);
+		else
+		{
+			auto data = sstl::downcast<int>(sub);
+			Serial.print(data->get_name() + ": ");
+			Serial.println(data->get_data());
+		}
+	}*/
 }

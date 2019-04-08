@@ -19,12 +19,15 @@ namespace sstl
 
 		// Getters
 		inline const String& get_name() const { return m_name; };
-		inline data_types::Data<T>& get_data() { return m_data; };
+		inline T& get_data() { return m_data.val; };
 
 		inline data_types::Types get_type() const override
 		{
 			return m_data.type;
 		};
+
+		// Setter
+		inline void set_data(const T& val) { m_data.val = val; };
 
 	private:
 		String m_name;
