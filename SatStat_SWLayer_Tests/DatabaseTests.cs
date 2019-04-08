@@ -29,7 +29,9 @@ namespace SatStatTests
                     DataBits = 16,
                     StopBits = 1,
                     NewLine = SerialHandler.default_settings.NewLine,
-                    Config = "8N1"
+                    Config = "8N1",
+                    PortDescription = "DatabaseTest",
+                    PortName = "DBT"
                 };
 
                 if (results.Count() > 0)
@@ -41,6 +43,15 @@ namespace SatStatTests
                     bool updateSucess = collection.Update(store);
                     Console.WriteLine("Settings document exists, updating values...");
                     Assert.IsTrue(updateSucess);
+
+                    Assert.AreEqual(store.baud_rate, existing.baud_rate);
+                    Assert.AreEqual(store.Parity, existing.Parity);
+                    Assert.AreEqual(store.DataBits, existing.DataBits);
+                    Assert.AreEqual(store.StopBits, existing.StopBits);
+                    Assert.AreEqual(store.NewLine, existing.NewLine);
+                    Assert.AreEqual(store.Config, existing.Config);
+                    Assert.AreEqual(store.PortName, existing.PortName);
+                    Assert.AreEqual(store.PortDescription, existing.PortDescription);
                 }
                 else
                 {
