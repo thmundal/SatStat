@@ -20,10 +20,39 @@ namespace SatStat
     {
         string collectionName = Program.settings.PlotDatabase;
         string databasePath = Program.settings.DatabasePath;
+        PlotModel plotModel;
+        DateTimeAxis xAxis;
+        LinearAxis yAxis;
 
         public DatabaseViewer()
         {
             InitializeComponent();
+
+            plotModel = new PlotModel() { Title = "Database view" };
+
+            xAxis = new DateTimeAxis
+            {
+                Key = "xAxis",
+                Position = AxisPosition.Bottom,
+                Title = "Time",
+                //Maximum = xMaxVal,
+                //Minimum = xMinVal
+                MinorIntervalType = DateTimeIntervalType.Minutes
+            };
+            
+            yAxis = new LinearAxis
+            {
+                Key = "yAxis",
+                Position = AxisPosition.Left,
+                Title = "Value",
+                MinimumRange = 10
+            };
+
+            plotModel.Axes.Add(xAxis);
+            plotModel.Axes.Add(yAxis);
+
+            UIdatabasePlotView.Model = plotModel;
+
             DisplayCollectionList();
         }
 
@@ -52,62 +81,38 @@ namespace SatStat
         {
             if(UIdatabaseCollectionList.SelectedIndices.Count > 0)
             {
-                // Change to support multiple selections!
-                ListViewItem item = UIdatabaseCollectionList.Items[UIdatabaseCollectionList.SelectedIndices[0]];
-                Debug.Log("SelectedIndexChanged");
-                Debug.Log(item.Tag);
-
-                using (LiteDatabase db = new LiteDatabase(databasePath))
+                plotModel.Series.Clear();
+                
+                for (int i=0; i<UIdatabaseCollectionList.SelectedIndices.Count; i++)
                 {
-                    LiteCollection<DB_SensorDataItem> col = db.GetCollection<DB_SensorDataItem>(collectionName);
+                    ListViewItem item = UIdatabaseCollectionList.Items[UIdatabaseCollectionList.SelectedIndices[i]];
 
-                    if (item.Tag != null)
+                    using (LiteDatabase db = new LiteDatabase(databasePath))
                     {
-                        DB_SensorDataItem result = col.FindById(new BsonValue(item.Tag));
+                        LiteCollection<DB_SensorDataItem> col = db.GetCollection<DB_SensorDataItem>(collectionName);
 
-                        PlotModel plotModel = new PlotModel() { Title = result.title };
-
-                        LineSeries lineSeries = new LineSeries();
-                        List<DataPoint> values = new List<DataPoint>();
-
-                        DateTimeAxis xAxis = new DateTimeAxis
+                        if (item.Tag != null)
                         {
-                            Key = "xAxis",
-                            Position = AxisPosition.Bottom,
-                            Title = "Time",
-                            //Maximum = xMaxVal,
-                            //Minimum = xMinVal
-                            Minimum = DateTimeAxis.ToDouble(result.times[0]),
-                            Maximum = DateTimeAxis.ToDouble(result.times[result.times.Count - 1]),
-                            MinorIntervalType = DateTimeIntervalType.Minutes
-                        };
+                            DB_SensorDataItem result = col.FindById(new BsonValue(item.Tag));
 
+                            plotModel.ResetAllAxes();
 
-                        LinearAxis yAxis = new LinearAxis
-                        {
-                            Key = "yAxis",
-                            Position = AxisPosition.Left,
-                            Title = "Value",
-                            MinimumRange = 10
-                        };
+                            List<DataPoint> values = new List<DataPoint>();
 
-                        plotModel.Axes.Add(xAxis);
-                        plotModel.Axes.Add(yAxis);
+                            for (int j=0; j<result.values.Count; j++)
+                            {
+                                values.Add(new DataPoint(Convert.ToDouble(result.times[j]), Convert.ToDouble(result.values[j])));
+                            }
 
-                        //foreach (var i in result.values)
-                        for (int i=0; i<result.values.Count; i++)
-                        {
-                            //lineSeries.Values.Add();
-                            values.Add(new DataPoint(Convert.ToDouble(result.times[i]), Convert.ToDouble(result.values[i])));
+                            LineSeries lineSeries = new LineSeries();
+                            lineSeries.Title = result.title;
+                            plotModel.Series.Add(lineSeries);
+                            lineSeries.Points.AddRange(values);
+
+                            plotModel.InvalidatePlot(true);
+
+                            UIdatabasePlotView.Visible = true;
                         }
-
-                        lineSeries.Points.AddRange(values);
-                        plotModel.Series.Add(lineSeries);
-
-                        UIdatabasePlotView.Model = plotModel;
-                        UIdatabasePlotView.Visible = true;
-
-                        Debug.Log(result.ToString());
                     }
                 }
             }
