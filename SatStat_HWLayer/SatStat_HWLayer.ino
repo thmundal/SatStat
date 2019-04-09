@@ -1,14 +1,15 @@
 #pragma once
 #include "./srcs/HWLayer.h"
 
-HWLayer satstat_hwlayer;
+HWLayer hw;
 
 void setup()
 {
-	satstat_hwlayer.setup();	
+	Serial.begin(9600);
+	hw.setup();
 }
 
 void loop()
 {	
-	satstat_hwlayer.loop();
+	hw.loop();
 }

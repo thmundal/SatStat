@@ -216,8 +216,7 @@ bool Serial_handler::available_data_request_approved()
 			{
 
 				if (tmp->get().get<String>("request") == "available_data")
-				{
-					send_sensor_collection();
+				{					
 					delete tmp;
 					return true;
 				}
@@ -337,21 +336,11 @@ void Serial_handler::send_handshake_response()
 /**
 *	Creates a Json_container<JsonObject> pointer, appends the name and data type of the sensors in the sensor collection and prints it to the serial.
 */
-void Serial_handler::send_sensor_collection()
+void Serial_handler::send_available_data(Sensor_container& sc)
 {
-	Json_container<JsonObject>* ack = json_handler.create_object();
-	JsonObject& available_data = ack->get().createNestedObject("available_data");
+	Json_container<JsonObject>* ack = json_handler.create_object();	
 
-	LinkedList<String, Sensor*>& sensor_collection = sensor_container.get_available_sensors();
-
-	for (int i = 0; i < sensor_collection.count(); i++) 
-	{
-		Sensor* sensor = sensor_collection[i];
-		for (int i = 0; i < sensor->get_data_count(); i++)
-		{
-			available_data.set(sensor->read_sensor()[i].get_name(), "int");
-		}
-	}
+	sc.append_available_data(ack);
 
 	ack->get().printTo(Serial);
 	Serial.print(newline_format);

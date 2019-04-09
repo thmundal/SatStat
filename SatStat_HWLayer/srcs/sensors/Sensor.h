@@ -1,5 +1,5 @@
 #pragma once
-#include "Result.h"
+#include "../../libraries/SSTL/sstl.h"
 
 /**
 *	The Sensor class is the parent class of every specific sensor added to the system.
@@ -10,16 +10,31 @@
 class Sensor
 {
 public:
-	Sensor(const String& name, const int& pin, const int& data_count = 1);
-	virtual ~Sensor();
+	Sensor(const String& name, const int& pin);
+	virtual ~Sensor() {};
 
-	virtual const Result* read_sensor() = 0;
+	virtual void read_sensor() = 0;
+
 	const String& get_name() const;
-	const int& get_data_count() const;
 
 protected:
 	String name;
-	int pin;	
-	int data_count;
-	Result* result;	
+	int pin;
 };
+
+/**
+*	Constructor setting name, pin and data_count as well as initializing the Result pointer as an array of size provided by the data_count parameter.
+*/
+inline Sensor::Sensor(const String& name, const int& pin)
+{
+	this->name = name;
+	this->pin = pin;
+}
+
+/**
+*	Returns a constant string reference to the name member.
+*/
+inline const String& Sensor::get_name() const
+{
+	return this->name;
+}

@@ -80,7 +80,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\SatStat_HWLayer;$(ProjectDir)..\..\..\..\Arduino\libraries;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.23\libraries;$(ProjectDir)..\..\..\arduino_projects\libraries;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.23\cores\arduino;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.23\variants\mega;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\avr\include;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\avr\include\avr;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\lib\gcc\avr\4.8.1\include;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\lib\gcc\avr\4.9.2\include;C:\Users\skjel\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.SatStat_HWLayer.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10805;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_atmega2560__;__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10805;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -193,10 +193,15 @@
     <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveConst.hpp" />
     <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveReference.hpp" />
     <ClInclude Include="libraries\ArduinoJson\version.hpp" />
-    <ClInclude Include="libraries\dht.h" />
+    <ClInclude Include="libraries\DHT.h" />
     <ClInclude Include="libraries\DS1302.h" />
     <ClInclude Include="libraries\LinkedList.h" />
     <ClInclude Include="libraries\QueueArray.h" />
+    <ClInclude Include="libraries\SSTL\Data_container.h" />
+    <ClInclude Include="libraries\SSTL\Data_types.h" />
+    <ClInclude Include="libraries\SSTL\Lists.h" />
+    <ClInclude Include="libraries\SSTL\sstl.h" />
+    <ClInclude Include="libraries\SSTL\Subscribable.h" />
     <ClInclude Include="libraries\Stepper.h" />
     <ClInclude Include="srcs\containers\Json_array_container.h" />
     <ClInclude Include="srcs\containers\Json_container.h" />
@@ -207,15 +212,14 @@
     <ClInclude Include="srcs\handlers\Json_handler.h" />
     <ClInclude Include="srcs\handlers\Serial_handler.h" />
     <ClInclude Include="srcs\HWLayer.h" />
-    <ClInclude Include="srcs\sensors\Result.h" />
     <ClInclude Include="srcs\sensors\Sensor.h" />
     <ClInclude Include="srcs\sensors\Temp_hum_sensor.h" />
-    <ClInclude Include="srcs\containers\Subscriber_functions.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libraries\dht.cpp" />
+    <ClCompile Include="libraries\DHT.cpp" />
     <ClCompile Include="libraries\DS1302.cpp" />
+    <ClCompile Include="libraries\SSTL\Lists.cpp" />
     <ClCompile Include="libraries\Stepper.cpp" />
     <ClCompile Include="srcs\containers\Json_array_container.cpp" />
     <ClCompile Include="srcs\containers\Json_object_container.cpp" />
@@ -225,16 +229,14 @@
     <ClCompile Include="srcs\handlers\Json_handler.cpp" />
     <ClCompile Include="srcs\handlers\Serial_handler.cpp" />
     <ClCompile Include="srcs\HWLayer.cpp" />
-    <ClCompile Include="srcs\sensors\Sensor.cpp" />
     <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp" />
-    <ClCompile Include="srcs\containers\Subscriber_functions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM9" />
+      <UserProperties arduino.upload.port="COM3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
