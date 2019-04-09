@@ -31,7 +31,7 @@ protected:
 template <class T>
 inline Json_container<T>::Json_container()
 {
-	buffer = new DynamicJsonBuffer;
+	buffer = new DynamicJsonBuffer();
 }
 
 /**

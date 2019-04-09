@@ -17,14 +17,18 @@ namespace sstl
 		{		
 		}
 
-		// Getters
-		inline const String& get_name() const { return m_name; };
+		// Getters		
 		inline T& get_data() { return m_data.val; };
 
-		inline data_types::Types get_type() const override
+		inline const data_types::Types& get_type() const override
 		{
 			return m_data.type;
 		};
+
+		inline const String& get_name() const override
+		{
+			return m_name;
+		}
 
 		// Setter
 		inline void set_data(const T& val) { m_data.val = val; };

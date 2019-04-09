@@ -19,20 +19,16 @@ public:
 	void set(const KEY &key, const VALUE& value);
 	void erase(const KEY &key);
 	void setDefault(const VALUE &value);
-	int count();
+	int count() const;	
 
 private:
+	int count(int& current) const;
 	LinkedList *m_next;
 	KEY m_key;
 	VALUE m_value;
 	VALUE m_default;
 	bool m_set;
-
-	static int obj_count;
 };
-
-template<class KEY, class VALUE>
-int LinkedList<KEY, VALUE>::obj_count = 0;
 
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList()
@@ -105,7 +101,6 @@ inline void LinkedList<KEY, VALUE>::add(const KEY &key)
 	{
 		m_key = key;
 		m_set = true;
-		obj_count++;
 	}
 	else if (m_next == 0)
 	{
@@ -127,7 +122,6 @@ inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
 		m_key = key;
 		m_value = value;
 		m_set = true;
-		obj_count++;
 	}
 	else if (m_next == 0)
 	{
@@ -173,7 +167,6 @@ inline void LinkedList<KEY, VALUE>::erase(const KEY &key)
 	{
 		LinkedList* tmp = m_next;
 		*this = *tmp;
-		obj_count--;
 	}
 	else if (m_next != 0)
 	{
@@ -191,18 +184,30 @@ inline void LinkedList<KEY, VALUE>::setDefault(const VALUE & value)
 
 // Jon tester
 template<class KEY, class VALUE>
-inline int LinkedList<KEY, VALUE>::count()
+inline int LinkedList<KEY, VALUE>::count() const
 {
-	/*if (m_next != 0)
+	if (m_next != 0)
 	{
-		return m_next->count(1);
+		int i = 1;
+		m_next->count(i);
+		return i;
 	}
 	else if (m_set)
 	{
 		return 1;
 	}
 
-	return 0;*/
+	return 0;
+}
 
-	return obj_count;
+// Jon tester
+template<class KEY, class VALUE>
+inline int LinkedList<KEY, VALUE>::count(int& current) const
+{
+	if (m_next != 0)
+	{
+		return m_next->count(++current);
+	}
+
+	return ++current;
 }

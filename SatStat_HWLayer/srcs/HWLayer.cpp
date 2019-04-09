@@ -58,8 +58,11 @@ void HWLayer::loop()
 	// Runs with an interval equal to the duration
 	if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 	{
+		// Reads the sensors
+		sensor_container.read_all_sensors();
+
 		// Prints sensor data
-		serial_handler.print_to_serial(sensor_container.read_sensors());
+		serial_handler.print_to_serial(sensor_container.get_all_data());
 		
 		// Update start time to current time
 		sensor_interval_start_time = millis();
@@ -129,6 +132,7 @@ bool HWLayer::provide_sensor_data()
 	{
 		if (serial_handler.available_data_request_approved())
 		{
+			serial_handler.send_available_data(sensor_container);
 			return true;
 		}
 	}

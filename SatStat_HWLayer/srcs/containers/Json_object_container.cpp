@@ -28,7 +28,7 @@ bool Json_object_container::parse(const String& json)
 {
 	delete Json_container::buffer;
 	Json_container::buffer = new DynamicJsonBuffer();
-
+	
 	Json_container::json = &Json_container::buffer->parseObject(json);
 	
 	if (Json_container::json->success())

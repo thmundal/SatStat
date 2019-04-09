@@ -18,6 +18,7 @@ namespace sstl
 		/**
 		*	Returns the type of the polymorphed object to be able to downcast to the correct type when needed.
 		*/
-		virtual data_types::Types get_type() const = 0;
+		virtual const data_types::Types& get_type() const = 0;
+		virtual const String& get_name() const = 0;
 	};
 }
