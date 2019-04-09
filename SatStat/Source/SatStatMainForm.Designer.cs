@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.oxPlot = new OxyPlot.WindowsForms.PlotView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.UImenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToStreamSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +71,7 @@
             this.UINetworkConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.UImenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SadmControlsGroupPanel.SuspendLayout();
@@ -85,11 +87,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(455, 3);
+            this.tabControl1.Location = new System.Drawing.Point(436, 3);
             this.tabControl1.Name = "tabControl1";
             this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(965, 701);
+            this.tabControl1.Size = new System.Drawing.Size(984, 701);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -98,7 +100,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(957, 675);
+            this.tabPage1.Size = new System.Drawing.Size(976, 675);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Plot 1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -109,7 +111,7 @@
             this.oxPlot.Location = new System.Drawing.Point(3, 3);
             this.oxPlot.Name = "oxPlot";
             this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.oxPlot.Size = new System.Drawing.Size(951, 669);
+            this.oxPlot.Size = new System.Drawing.Size(970, 669);
             this.oxPlot.TabIndex = 1;
             this.oxPlot.Text = "plotView1";
             this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -126,16 +128,16 @@
             this.tabPage2.Text = "Plot 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
+            // UImenuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UImenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.dataToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1423, 24);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
+            this.UImenuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.UImenuStrip1.Name = "UImenuStrip1";
+            this.UImenuStrip1.Size = new System.Drawing.Size(1423, 24);
+            this.UImenuStrip1.TabIndex = 8;
+            this.UImenuStrip1.Text = "menuStrip1";
             // 
             // settingsToolStripMenuItem
             // 
@@ -220,8 +222,8 @@
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.81199F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.18801F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.49895F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.50105F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
@@ -248,7 +250,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.70934F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.29066F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 437);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(427, 437);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
@@ -267,7 +269,7 @@
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(440, 237);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(421, 237);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
@@ -376,7 +378,7 @@
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 246);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(440, 188);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(421, 188);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
@@ -387,7 +389,7 @@
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(434, 169);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(415, 169);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
             this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
@@ -403,7 +405,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.61654F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.383459F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(446, 258);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(427, 258);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -412,36 +414,56 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(440, 243);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(421, 243);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
             // 
             // UIliveOutputValuesList
             // 
+            this.UIliveOutputValuesList.AllowUserToResizeColumns = false;
+            this.UIliveOutputValuesList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            this.UIliveOutputValuesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.UIliveOutputValuesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UIliveOutputValuesList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.UIliveOutputValuesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UIliveOutputValuesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.UIliveOutputValuesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UIliveOutputValuesList.ColumnHeadersVisible = false;
             this.UIliveOutputValuesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIliveOutputValuesList.DefaultCellStyle = dataGridViewCellStyle2;
             this.UIliveOutputValuesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UIliveOutputValuesList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.UIliveOutputValuesList.Location = new System.Drawing.Point(3, 16);
+            this.UIliveOutputValuesList.MultiSelect = false;
             this.UIliveOutputValuesList.Name = "UIliveOutputValuesList";
+            this.UIliveOutputValuesList.ReadOnly = true;
             this.UIliveOutputValuesList.RowHeadersVisible = false;
             this.UIliveOutputValuesList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UIliveOutputValuesList.Size = new System.Drawing.Size(434, 224);
+            this.UIliveOutputValuesList.Size = new System.Drawing.Size(415, 224);
             this.UIliveOutputValuesList.TabIndex = 0;
             // 
             // Key
             // 
             this.Key.HeaderText = "Key";
             this.Key.Name = "Key";
+            this.Key.ReadOnly = true;
             // 
             // Value
             // 
             this.Value.HeaderText = "Value";
             this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
             // 
             // UIStatusStrip
             // 
@@ -474,8 +496,8 @@
             this.ClientSize = new System.Drawing.Size(1423, 752);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.UImenuStrip1);
+            this.MainMenuStrip = this.UImenuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SatStatMainForm";
             this.Text = "Form1";
@@ -483,8 +505,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SatStatMainForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.UImenuStrip1.ResumeLayout(false);
+            this.UImenuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -502,7 +524,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip UImenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMSettingsToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;

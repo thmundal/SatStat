@@ -85,7 +85,7 @@ namespace SatStat
                 {
                     Debug.Log("Invalid json received:" + input);
                     Debug.Log(e.ToString());
-}
+                }
                 catch (System.IO.IOException e)
                 {
                     Debug.Log("Read thread aborted");
