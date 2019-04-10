@@ -32,7 +32,7 @@ namespace SatStat
 
         public static void SetCOMConnectionStatus(string status)
         {
-            Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
+            UI_Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
             {
                 Program.app.SetCOMConnectionStatus(status);
             }, null);
@@ -40,13 +40,13 @@ namespace SatStat
 
         public static void SetNetworkConnectionStatus(string status)
         {
-            Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
+            UI_Invoke(Program.app, null, Program.app.GetConnectionStatusControl(), (Hashtable h) =>
             {
                 Program.app.SetNetworkConnectionStatus(status);
             }, null);
         }
 
-        public static void Invoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
+        public static void UI_Invoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
         {
             if(c.InvokeRequired)
             {
@@ -57,11 +57,11 @@ namespace SatStat
             }
         }
 
-        public static void ThreadInvoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
+        public static void UI_TaskInvoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
         {
             Task.Run(() =>
             {
-                Invoke(f, p, c, cb, data);
+                UI_Invoke(f, p, c, cb, data);
             });
         }
     }

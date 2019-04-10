@@ -151,26 +151,26 @@ namespace SatStat
             }
 
             // Add/update data in live view
-            ThreadHelperClass.ThreadInvoke(this, null, UIliveOutputValuesList, (a) =>
+            ThreadHelperClass.UI_TaskInvoke(this, null, UIliveOutputValuesList, (a) =>
             {
-                if(!liveDataList.ContainsKey(attribute))
-                {
-                    DataGridViewRow addd = UIliveOutputValuesList.Rows[0];
+                LiveDataRow row;
 
-                    LiveDataRow row = new LiveDataRow
+                if (!liveDataList.ContainsKey(attribute))
+                {
+                    row = new LiveDataRow
                     {
                         name = attribute,
                         value = payload.ToString()
                     };
 
                     row.index = UIliveOutputValuesList.Rows.Add(new string[]{ row.name, row.value });
+                    UIParameterControlInput.Rows.Add(new string[] { row.name, row.value, row.value });
                     liveDataList.Add(attribute, row);
-                } else
-                {
-                    LiveDataRow row = (LiveDataRow) liveDataList[attribute];
-                    row.value = payload.ToString();
-                    UIliveOutputValuesList.Rows[row.index].SetValues(new string[] { row.name, row.value });
                 }
+
+                row = (LiveDataRow) liveDataList[attribute];
+                row.value = payload.ToString();
+                UIliveOutputValuesList.Rows[row.index].SetValues(new string[] { row.name, row.value });
 
 
             }, null);
@@ -190,7 +190,7 @@ namespace SatStat
         [STAThread]
         private void ReceiveSensorList(JObject sensor_list)
         {
-            ThreadHelperClass.Invoke(this, null, UISensorCheckboxList, (data) =>
+            ThreadHelperClass.UI_Invoke(this, null, UISensorCheckboxList, (data) =>
             {   
                 foreach (var elem in (JObject) data["sensor_list"])
                 {
