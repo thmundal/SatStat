@@ -15,11 +15,6 @@ namespace SatStat
 {
     partial class SatStatMainForm : Form
     {
-        private double yMinVal = -20;
-        private double yMaxVal = 20;
-        private double xMinVal = 0;
-        private double xMaxVal = 1000;
-        private int maxTimeWindow = 1000;
         private double lastTimeVal = 0;
 
         private DataReceiver dataReceiver;
@@ -34,10 +29,14 @@ namespace SatStat
 
         private DB_ComSettingsItem savedComSettings;
 
+        private ObservableNumericValueCollection observedValues;
+
         public SatStatMainForm()
         {
             InitializeComponent();
-            
+
+            observedValues = new ObservableNumericValueCollection();
+
             using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
             {
                 LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>(Program.settings.COMSettingsDB);
@@ -63,11 +62,52 @@ namespace SatStat
             }
 
             dataReceiver = new DataReceiver();
+            dataReceiver.Observe = true;
             dataReceiver.OnPayloadReceived((object payload, string attribute) =>
             {
                  ReceivePayload(Convert.ToDouble(payload), attribute);
             });
 
+            dataReceiver.OnObservedvalueChanged((IObservableNumericValue val) =>
+            {
+                DataGridViewRow row = null;
+
+                foreach (DataGridViewRow r in UIObservedValuesOuputGrid.Rows)
+                {
+                    if(r.Tag == val.Label)
+                    {
+                        row = r;
+                        break;
+                    }
+                }
+
+                if(row != null)
+                {
+                    string status = "Unknown";
+                    if (val.Over())
+                    {
+                        status = "Over";
+                    }
+
+                    if(val.Under())
+                    {
+                        status = "Under";
+                    }
+
+                    if(val.Stable())
+                    {
+                        status = "Stable";
+                    }
+
+                    int diff = 0;
+
+                    row.Cells["observedValue"].Value = val.Value;
+                    row.Cells["status"].Value = status;
+                    row.Cells["difference"].Value = val.Diff().ToString();
+
+                }
+            });
+            
             sensorListReceiver = new DataReceiver();
             
             sensorListReceiver.OnPayloadReceived((object payload, string attribue) =>
@@ -125,13 +165,10 @@ namespace SatStat
                 // Add data in plot
                 if (lineSeriesTable[attribute] != null)
                 {
-                    // Oxyplot test
                     LineSeries series = (LineSeries) lineSeriesTable[attribute];
 
                     double timeVal = DateTimeAxis.ToDouble(DateTime.Now);
                     series.Points.Add(new DataPoint(timeVal, payload));
-
-                    Debug.Log(payload);
 
                     double elapsedTime = timeVal - lastTimeVal;
                 
@@ -164,15 +201,21 @@ namespace SatStat
                     };
 
                     row.index = UIliveOutputValuesList.Rows.Add(new string[]{ row.name, row.value });
-                    UIParameterControlInput.Rows.Add(new string[] { row.name, row.value, row.value });
                     liveDataList.Add(attribute, row);
+
+                    if(dataReceiver.Observe)
+                    {
+                        int rowIndex = UIParameterControlInput.Rows.Add(new string[] { row.name, row.value, row.value });
+                        UIParameterControlInput.Rows[rowIndex].Tag = attribute;
+
+                        rowIndex = UIObservedValuesOuputGrid.Rows.Add(new string[] { row.name, row.value, "Not configured", "Not configured" });
+                        UIObservedValuesOuputGrid.Rows[rowIndex].Tag = attribute;
+                    }
                 }
 
                 row = (LiveDataRow) liveDataList[attribute];
                 row.value = payload.ToString();
                 UIliveOutputValuesList.Rows[row.index].SetValues(new string[] { row.name, row.value });
-
-
             }, null);
         }
 
@@ -258,7 +301,11 @@ namespace SatStat
 
         private void UISensorCheckboxList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            foreach(int index in UISensorCheckboxList.SelectedIndices)
+            {
+                bool isChecked = UISensorCheckboxList.GetItemChecked(index);
+                UISensorCheckboxList.SetItemChecked(index, !isChecked);
+            }
         }
 
         private void UISensorCheckboxList_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -407,6 +454,46 @@ namespace SatStat
                 Program.serial.DefaultConnect(savedComSettings.PortName);
             }
         }
+
+        private void UIParameterControlInput_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            // Implement better UI response to error handling so that user understands when an invalid input is entered
+            UIParameterControlInput.CurrentCell.ErrorText = "";
+
+            if (UIParameterControlInput.Rows[e.RowIndex].IsNewRow)
+            {
+                return;
+            }
+
+            if (!double.TryParse(e.FormattedValue.ToString(), out double numericValue) && e.ColumnIndex > 0)
+            {
+                UIParameterControlInput.CurrentCell.ErrorText = "The value must be a number";
+            }
+            else
+            {
+                DataGridViewCell current = UIParameterControlInput.CurrentCell;
+                string tag = current.OwningRow.Tag.ToString();
+
+                if (dataReceiver.ObservedValues.ContainsLabel(tag))
+                {
+                    IObservableNumericValue obsValue = dataReceiver.ObservedValues[tag];
+
+                    object castNumericValue = Convert.ChangeType(numericValue, obsValue.type);
+
+                    if (current.OwningColumn.Name == "ParamMin")
+                    {
+                        obsValue.Min = castNumericValue;
+                    } else if(current.OwningColumn.Name == "ParamMax")
+                    {
+                        obsValue.Max = castNumericValue;
+                    }
+                }
+            }
+        }
         #endregion
+
+        private void UIParameterControlInput_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+        }
     }
 }

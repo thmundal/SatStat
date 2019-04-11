@@ -265,6 +265,48 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.HasSubscription
   nameWithType: DataReceiver.HasSubscription
+- uid: SatStat.DataReceiver.Observe
+  name: Observe
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Observe
+  commentId: P:SatStat.DataReceiver.Observe
+  fullName: SatStat.DataReceiver.Observe
+  nameWithType: DataReceiver.Observe
+- uid: SatStat.DataReceiver.Observe*
+  name: Observe
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Observe_
+  commentId: Overload:SatStat.DataReceiver.Observe
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.Observe
+  nameWithType: DataReceiver.Observe
+- uid: SatStat.DataReceiver.ObservedValues
+  name: ObservedValues
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ObservedValues
+  commentId: P:SatStat.DataReceiver.ObservedValues
+  fullName: SatStat.DataReceiver.ObservedValues
+  nameWithType: DataReceiver.ObservedValues
+- uid: SatStat.DataReceiver.ObservedValues*
+  name: ObservedValues
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ObservedValues_
+  commentId: Overload:SatStat.DataReceiver.ObservedValues
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.ObservedValues
+  nameWithType: DataReceiver.ObservedValues
+- uid: SatStat.DataReceiver.OnObservedvalueChanged(System.Action{SatStat.IObservableNumericValue})
+  name: OnObservedvalueChanged(Action<IObservableNumericValue>)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnObservedvalueChanged_System_Action_SatStat_IObservableNumericValue__
+  commentId: M:SatStat.DataReceiver.OnObservedvalueChanged(System.Action{SatStat.IObservableNumericValue})
+  name.vb: OnObservedvalueChanged(Action(Of IObservableNumericValue))
+  fullName: SatStat.DataReceiver.OnObservedvalueChanged(System.Action<SatStat.IObservableNumericValue>)
+  fullName.vb: SatStat.DataReceiver.OnObservedvalueChanged(System.Action(Of SatStat.IObservableNumericValue))
+  nameWithType: DataReceiver.OnObservedvalueChanged(Action<IObservableNumericValue>)
+  nameWithType.vb: DataReceiver.OnObservedvalueChanged(Action(Of IObservableNumericValue))
+- uid: SatStat.DataReceiver.OnObservedvalueChanged*
+  name: OnObservedvalueChanged
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnObservedvalueChanged_
+  commentId: Overload:SatStat.DataReceiver.OnObservedvalueChanged
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.OnObservedvalueChanged
+  nameWithType: DataReceiver.OnObservedvalueChanged
 - uid: SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object,System.String})
   name: OnPayloadReceived(Action<Object, String>)
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object_System_String__
@@ -599,6 +641,171 @@ references:
   isSpec: "True"
   fullName: SatStat.DB_ComSettingsItem.toComSettings
   nameWithType: DB_ComSettingsItem.toComSettings
+- uid: SatStat.IObservableNumericValue
+  name: IObservableNumericValue
+  href: api/SatStat.IObservableNumericValue.html
+  commentId: T:SatStat.IObservableNumericValue
+  fullName: SatStat.IObservableNumericValue
+  nameWithType: IObservableNumericValue
+- uid: SatStat.IObservableNumericValue.Diff
+  name: Diff()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Diff
+  commentId: M:SatStat.IObservableNumericValue.Diff
+  fullName: SatStat.IObservableNumericValue.Diff()
+  nameWithType: IObservableNumericValue.Diff()
+- uid: SatStat.IObservableNumericValue.Diff*
+  name: Diff
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Diff_
+  commentId: Overload:SatStat.IObservableNumericValue.Diff
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Diff
+  nameWithType: IObservableNumericValue.Diff
+- uid: SatStat.IObservableNumericValue.EqualMax
+  name: EqualMax()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_EqualMax
+  commentId: M:SatStat.IObservableNumericValue.EqualMax
+  fullName: SatStat.IObservableNumericValue.EqualMax()
+  nameWithType: IObservableNumericValue.EqualMax()
+- uid: SatStat.IObservableNumericValue.EqualMax*
+  name: EqualMax
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_EqualMax_
+  commentId: Overload:SatStat.IObservableNumericValue.EqualMax
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.EqualMax
+  nameWithType: IObservableNumericValue.EqualMax
+- uid: SatStat.IObservableNumericValue.EqualMin
+  name: EqualMin()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_EqualMin
+  commentId: M:SatStat.IObservableNumericValue.EqualMin
+  fullName: SatStat.IObservableNumericValue.EqualMin()
+  nameWithType: IObservableNumericValue.EqualMin()
+- uid: SatStat.IObservableNumericValue.EqualMin*
+  name: EqualMin
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_EqualMin_
+  commentId: Overload:SatStat.IObservableNumericValue.EqualMin
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.EqualMin
+  nameWithType: IObservableNumericValue.EqualMin
+- uid: SatStat.IObservableNumericValue.Label
+  name: Label
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Label
+  commentId: P:SatStat.IObservableNumericValue.Label
+  fullName: SatStat.IObservableNumericValue.Label
+  nameWithType: IObservableNumericValue.Label
+- uid: SatStat.IObservableNumericValue.Label*
+  name: Label
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Label_
+  commentId: Overload:SatStat.IObservableNumericValue.Label
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Label
+  nameWithType: IObservableNumericValue.Label
+- uid: SatStat.IObservableNumericValue.Max
+  name: Max
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Max
+  commentId: P:SatStat.IObservableNumericValue.Max
+  fullName: SatStat.IObservableNumericValue.Max
+  nameWithType: IObservableNumericValue.Max
+- uid: SatStat.IObservableNumericValue.Max*
+  name: Max
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Max_
+  commentId: Overload:SatStat.IObservableNumericValue.Max
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Max
+  nameWithType: IObservableNumericValue.Max
+- uid: SatStat.IObservableNumericValue.Min
+  name: Min
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Min
+  commentId: P:SatStat.IObservableNumericValue.Min
+  fullName: SatStat.IObservableNumericValue.Min
+  nameWithType: IObservableNumericValue.Min
+- uid: SatStat.IObservableNumericValue.Min*
+  name: Min
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Min_
+  commentId: Overload:SatStat.IObservableNumericValue.Min
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Min
+  nameWithType: IObservableNumericValue.Min
+- uid: SatStat.IObservableNumericValue.OnUpdate(System.Action{SatStat.IObservableNumericValue})
+  name: OnUpdate(Action<IObservableNumericValue>)
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_OnUpdate_System_Action_SatStat_IObservableNumericValue__
+  commentId: M:SatStat.IObservableNumericValue.OnUpdate(System.Action{SatStat.IObservableNumericValue})
+  name.vb: OnUpdate(Action(Of IObservableNumericValue))
+  fullName: SatStat.IObservableNumericValue.OnUpdate(System.Action<SatStat.IObservableNumericValue>)
+  fullName.vb: SatStat.IObservableNumericValue.OnUpdate(System.Action(Of SatStat.IObservableNumericValue))
+  nameWithType: IObservableNumericValue.OnUpdate(Action<IObservableNumericValue>)
+  nameWithType.vb: IObservableNumericValue.OnUpdate(Action(Of IObservableNumericValue))
+- uid: SatStat.IObservableNumericValue.OnUpdate*
+  name: OnUpdate
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_OnUpdate_
+  commentId: Overload:SatStat.IObservableNumericValue.OnUpdate
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.OnUpdate
+  nameWithType: IObservableNumericValue.OnUpdate
+- uid: SatStat.IObservableNumericValue.Over
+  name: Over()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Over
+  commentId: M:SatStat.IObservableNumericValue.Over
+  fullName: SatStat.IObservableNumericValue.Over()
+  nameWithType: IObservableNumericValue.Over()
+- uid: SatStat.IObservableNumericValue.Over*
+  name: Over
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Over_
+  commentId: Overload:SatStat.IObservableNumericValue.Over
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Over
+  nameWithType: IObservableNumericValue.Over
+- uid: SatStat.IObservableNumericValue.Stable
+  name: Stable()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Stable
+  commentId: M:SatStat.IObservableNumericValue.Stable
+  fullName: SatStat.IObservableNumericValue.Stable()
+  nameWithType: IObservableNumericValue.Stable()
+- uid: SatStat.IObservableNumericValue.Stable*
+  name: Stable
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Stable_
+  commentId: Overload:SatStat.IObservableNumericValue.Stable
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Stable
+  nameWithType: IObservableNumericValue.Stable
+- uid: SatStat.IObservableNumericValue.type
+  name: type
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_type
+  commentId: P:SatStat.IObservableNumericValue.type
+  fullName: SatStat.IObservableNumericValue.type
+  nameWithType: IObservableNumericValue.type
+- uid: SatStat.IObservableNumericValue.type*
+  name: type
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_type_
+  commentId: Overload:SatStat.IObservableNumericValue.type
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.type
+  nameWithType: IObservableNumericValue.type
+- uid: SatStat.IObservableNumericValue.Under
+  name: Under()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Under
+  commentId: M:SatStat.IObservableNumericValue.Under
+  fullName: SatStat.IObservableNumericValue.Under()
+  nameWithType: IObservableNumericValue.Under()
+- uid: SatStat.IObservableNumericValue.Under*
+  name: Under
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Under_
+  commentId: Overload:SatStat.IObservableNumericValue.Under
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Under
+  nameWithType: IObservableNumericValue.Under
+- uid: SatStat.IObservableNumericValue.Value
+  name: Value
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Value
+  commentId: P:SatStat.IObservableNumericValue.Value
+  fullName: SatStat.IObservableNumericValue.Value
+  nameWithType: IObservableNumericValue.Value
+- uid: SatStat.IObservableNumericValue.Value*
+  name: Value
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Value_
+  commentId: Overload:SatStat.IObservableNumericValue.Value
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Value
+  nameWithType: IObservableNumericValue.Value
 - uid: SatStat.JSON
   name: JSON
   href: api/SatStat.JSON.html
@@ -647,6 +854,673 @@ references:
   isSpec: "True"
   fullName: SatStat.JSON.serialize
   nameWithType: JSON.serialize
+- uid: SatStat.ObservableDouble
+  name: ObservableDouble
+  href: api/SatStat.ObservableDouble.html
+  commentId: T:SatStat.ObservableDouble
+  fullName: SatStat.ObservableDouble
+  nameWithType: ObservableDouble
+- uid: SatStat.ObservableDouble.Diff
+  name: Diff()
+  href: api/SatStat.ObservableDouble.html#SatStat_ObservableDouble_Diff
+  commentId: M:SatStat.ObservableDouble.Diff
+  fullName: SatStat.ObservableDouble.Diff()
+  nameWithType: ObservableDouble.Diff()
+- uid: SatStat.ObservableDouble.Diff*
+  name: Diff
+  href: api/SatStat.ObservableDouble.html#SatStat_ObservableDouble_Diff_
+  commentId: Overload:SatStat.ObservableDouble.Diff
+  isSpec: "True"
+  fullName: SatStat.ObservableDouble.Diff
+  nameWithType: ObservableDouble.Diff
+- uid: SatStat.ObservableFloat
+  name: ObservableFloat
+  href: api/SatStat.ObservableFloat.html
+  commentId: T:SatStat.ObservableFloat
+  fullName: SatStat.ObservableFloat
+  nameWithType: ObservableFloat
+- uid: SatStat.ObservableFloat.Diff
+  name: Diff()
+  href: api/SatStat.ObservableFloat.html#SatStat_ObservableFloat_Diff
+  commentId: M:SatStat.ObservableFloat.Diff
+  fullName: SatStat.ObservableFloat.Diff()
+  nameWithType: ObservableFloat.Diff()
+- uid: SatStat.ObservableFloat.Diff*
+  name: Diff
+  href: api/SatStat.ObservableFloat.html#SatStat_ObservableFloat_Diff_
+  commentId: Overload:SatStat.ObservableFloat.Diff
+  isSpec: "True"
+  fullName: SatStat.ObservableFloat.Diff
+  nameWithType: ObservableFloat.Diff
+- uid: SatStat.ObservableInt
+  name: ObservableInt
+  href: api/SatStat.ObservableInt.html
+  commentId: T:SatStat.ObservableInt
+  fullName: SatStat.ObservableInt
+  nameWithType: ObservableInt
+- uid: SatStat.ObservableInt.Diff
+  name: Diff()
+  href: api/SatStat.ObservableInt.html#SatStat_ObservableInt_Diff
+  commentId: M:SatStat.ObservableInt.Diff
+  fullName: SatStat.ObservableInt.Diff()
+  nameWithType: ObservableInt.Diff()
+- uid: SatStat.ObservableInt.Diff*
+  name: Diff
+  href: api/SatStat.ObservableInt.html#SatStat_ObservableInt_Diff_
+  commentId: Overload:SatStat.ObservableInt.Diff
+  isSpec: "True"
+  fullName: SatStat.ObservableInt.Diff
+  nameWithType: ObservableInt.Diff
+- uid: SatStat.ObservableLong
+  name: ObservableLong
+  href: api/SatStat.ObservableLong.html
+  commentId: T:SatStat.ObservableLong
+  fullName: SatStat.ObservableLong
+  nameWithType: ObservableLong
+- uid: SatStat.ObservableLong.Diff
+  name: Diff()
+  href: api/SatStat.ObservableLong.html#SatStat_ObservableLong_Diff
+  commentId: M:SatStat.ObservableLong.Diff
+  fullName: SatStat.ObservableLong.Diff()
+  nameWithType: ObservableLong.Diff()
+- uid: SatStat.ObservableLong.Diff*
+  name: Diff
+  href: api/SatStat.ObservableLong.html#SatStat_ObservableLong_Diff_
+  commentId: Overload:SatStat.ObservableLong.Diff
+  isSpec: "True"
+  fullName: SatStat.ObservableLong.Diff
+  nameWithType: ObservableLong.Diff
+- uid: SatStat.ObservableNumericValue`1
+  name: ObservableNumericValue<T>
+  href: api/SatStat.ObservableNumericValue-1.html
+  commentId: T:SatStat.ObservableNumericValue`1
+  name.vb: ObservableNumericValue(Of T)
+  fullName: SatStat.ObservableNumericValue<T>
+  fullName.vb: SatStat.ObservableNumericValue(Of T)
+  nameWithType: ObservableNumericValue<T>
+  nameWithType.vb: ObservableNumericValue(Of T)
+- uid: SatStat.ObservableNumericValue`1.Diff
+  name: Diff()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Diff
+  commentId: M:SatStat.ObservableNumericValue`1.Diff
+  fullName: SatStat.ObservableNumericValue<T>.Diff()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Diff()
+  nameWithType: ObservableNumericValue<T>.Diff()
+  nameWithType.vb: ObservableNumericValue(Of T).Diff()
+- uid: SatStat.ObservableNumericValue`1.Diff*
+  name: Diff
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Diff_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Diff
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Diff
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Diff
+  nameWithType: ObservableNumericValue<T>.Diff
+  nameWithType.vb: ObservableNumericValue(Of T).Diff
+- uid: SatStat.ObservableNumericValue`1.Equal(`0)
+  name: Equal(T)
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Equal__0_
+  commentId: M:SatStat.ObservableNumericValue`1.Equal(`0)
+  fullName: SatStat.ObservableNumericValue<T>.Equal(T)
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Equal(T)
+  nameWithType: ObservableNumericValue<T>.Equal(T)
+  nameWithType.vb: ObservableNumericValue(Of T).Equal(T)
+- uid: SatStat.ObservableNumericValue`1.Equal*
+  name: Equal
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Equal_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Equal
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Equal
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Equal
+  nameWithType: ObservableNumericValue<T>.Equal
+  nameWithType.vb: ObservableNumericValue(Of T).Equal
+- uid: SatStat.ObservableNumericValue`1.EqualMax
+  name: EqualMax()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMax
+  commentId: M:SatStat.ObservableNumericValue`1.EqualMax
+  fullName: SatStat.ObservableNumericValue<T>.EqualMax()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).EqualMax()
+  nameWithType: ObservableNumericValue<T>.EqualMax()
+  nameWithType.vb: ObservableNumericValue(Of T).EqualMax()
+- uid: SatStat.ObservableNumericValue`1.EqualMax*
+  name: EqualMax
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMax_
+  commentId: Overload:SatStat.ObservableNumericValue`1.EqualMax
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.EqualMax
+  fullName.vb: SatStat.ObservableNumericValue(Of T).EqualMax
+  nameWithType: ObservableNumericValue<T>.EqualMax
+  nameWithType.vb: ObservableNumericValue(Of T).EqualMax
+- uid: SatStat.ObservableNumericValue`1.EqualMin
+  name: EqualMin()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMin
+  commentId: M:SatStat.ObservableNumericValue`1.EqualMin
+  fullName: SatStat.ObservableNumericValue<T>.EqualMin()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).EqualMin()
+  nameWithType: ObservableNumericValue<T>.EqualMin()
+  nameWithType.vb: ObservableNumericValue(Of T).EqualMin()
+- uid: SatStat.ObservableNumericValue`1.EqualMin*
+  name: EqualMin
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMin_
+  commentId: Overload:SatStat.ObservableNumericValue`1.EqualMin
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.EqualMin
+  fullName.vb: SatStat.ObservableNumericValue(Of T).EqualMin
+  nameWithType: ObservableNumericValue<T>.EqualMin
+  nameWithType.vb: ObservableNumericValue(Of T).EqualMin
+- uid: SatStat.ObservableNumericValue`1.Label
+  name: Label
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Label
+  commentId: P:SatStat.ObservableNumericValue`1.Label
+  fullName: SatStat.ObservableNumericValue<T>.Label
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Label
+  nameWithType: ObservableNumericValue<T>.Label
+  nameWithType.vb: ObservableNumericValue(Of T).Label
+- uid: SatStat.ObservableNumericValue`1.Label*
+  name: Label
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Label_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Label
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Label
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Label
+  nameWithType: ObservableNumericValue<T>.Label
+  nameWithType.vb: ObservableNumericValue(Of T).Label
+- uid: SatStat.ObservableNumericValue`1.Max
+  name: Max
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Max
+  commentId: P:SatStat.ObservableNumericValue`1.Max
+  fullName: SatStat.ObservableNumericValue<T>.Max
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Max
+  nameWithType: ObservableNumericValue<T>.Max
+  nameWithType.vb: ObservableNumericValue(Of T).Max
+- uid: SatStat.ObservableNumericValue`1.Max*
+  name: Max
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Max_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Max
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Max
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Max
+  nameWithType: ObservableNumericValue<T>.Max
+  nameWithType.vb: ObservableNumericValue(Of T).Max
+- uid: SatStat.ObservableNumericValue`1.Min
+  name: Min
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Min
+  commentId: P:SatStat.ObservableNumericValue`1.Min
+  fullName: SatStat.ObservableNumericValue<T>.Min
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Min
+  nameWithType: ObservableNumericValue<T>.Min
+  nameWithType.vb: ObservableNumericValue(Of T).Min
+- uid: SatStat.ObservableNumericValue`1.Min*
+  name: Min
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Min_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Min
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Min
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Min
+  nameWithType: ObservableNumericValue<T>.Min
+  nameWithType.vb: ObservableNumericValue(Of T).Min
+- uid: SatStat.ObservableNumericValue`1.OnUpdate(System.Action{SatStat.IObservableNumericValue})
+  name: OnUpdate(Action<IObservableNumericValue>)
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_OnUpdate_System_Action_SatStat_IObservableNumericValue__
+  commentId: M:SatStat.ObservableNumericValue`1.OnUpdate(System.Action{SatStat.IObservableNumericValue})
+  name.vb: OnUpdate(Action(Of IObservableNumericValue))
+  fullName: SatStat.ObservableNumericValue<T>.OnUpdate(System.Action<SatStat.IObservableNumericValue>)
+  fullName.vb: SatStat.ObservableNumericValue(Of T).OnUpdate(System.Action(Of SatStat.IObservableNumericValue))
+  nameWithType: ObservableNumericValue<T>.OnUpdate(Action<IObservableNumericValue>)
+  nameWithType.vb: ObservableNumericValue(Of T).OnUpdate(Action(Of IObservableNumericValue))
+- uid: SatStat.ObservableNumericValue`1.OnUpdate*
+  name: OnUpdate
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_OnUpdate_
+  commentId: Overload:SatStat.ObservableNumericValue`1.OnUpdate
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.OnUpdate
+  fullName.vb: SatStat.ObservableNumericValue(Of T).OnUpdate
+  nameWithType: ObservableNumericValue<T>.OnUpdate
+  nameWithType.vb: ObservableNumericValue(Of T).OnUpdate
+- uid: SatStat.ObservableNumericValue`1.Over
+  name: Over()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Over
+  commentId: M:SatStat.ObservableNumericValue`1.Over
+  fullName: SatStat.ObservableNumericValue<T>.Over()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Over()
+  nameWithType: ObservableNumericValue<T>.Over()
+  nameWithType.vb: ObservableNumericValue(Of T).Over()
+- uid: SatStat.ObservableNumericValue`1.Over*
+  name: Over
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Over_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Over
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Over
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Over
+  nameWithType: ObservableNumericValue<T>.Over
+  nameWithType.vb: ObservableNumericValue(Of T).Over
+- uid: SatStat.ObservableNumericValue`1.Stable
+  name: Stable()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Stable
+  commentId: M:SatStat.ObservableNumericValue`1.Stable
+  fullName: SatStat.ObservableNumericValue<T>.Stable()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Stable()
+  nameWithType: ObservableNumericValue<T>.Stable()
+  nameWithType.vb: ObservableNumericValue(Of T).Stable()
+- uid: SatStat.ObservableNumericValue`1.Stable*
+  name: Stable
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Stable_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Stable
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Stable
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Stable
+  nameWithType: ObservableNumericValue<T>.Stable
+  nameWithType.vb: ObservableNumericValue(Of T).Stable
+- uid: SatStat.ObservableNumericValue`1.type
+  name: type
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_type
+  commentId: P:SatStat.ObservableNumericValue`1.type
+  fullName: SatStat.ObservableNumericValue<T>.type
+  fullName.vb: SatStat.ObservableNumericValue(Of T).type
+  nameWithType: ObservableNumericValue<T>.type
+  nameWithType.vb: ObservableNumericValue(Of T).type
+- uid: SatStat.ObservableNumericValue`1.type*
+  name: type
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_type_
+  commentId: Overload:SatStat.ObservableNumericValue`1.type
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.type
+  fullName.vb: SatStat.ObservableNumericValue(Of T).type
+  nameWithType: ObservableNumericValue<T>.type
+  nameWithType.vb: ObservableNumericValue(Of T).type
+- uid: SatStat.ObservableNumericValue`1.Under
+  name: Under()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Under
+  commentId: M:SatStat.ObservableNumericValue`1.Under
+  fullName: SatStat.ObservableNumericValue<T>.Under()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Under()
+  nameWithType: ObservableNumericValue<T>.Under()
+  nameWithType.vb: ObservableNumericValue(Of T).Under()
+- uid: SatStat.ObservableNumericValue`1.Under*
+  name: Under
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Under_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Under
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Under
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Under
+  nameWithType: ObservableNumericValue<T>.Under
+  nameWithType.vb: ObservableNumericValue(Of T).Under
+- uid: SatStat.ObservableNumericValue`1.value
+  name: value
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_value
+  commentId: F:SatStat.ObservableNumericValue`1.value
+  fullName: SatStat.ObservableNumericValue<T>.value
+  fullName.vb: SatStat.ObservableNumericValue(Of T).value
+  nameWithType: ObservableNumericValue<T>.value
+  nameWithType.vb: ObservableNumericValue(Of T).value
+- uid: SatStat.ObservableNumericValue`1.Value
+  name: Value
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Value
+  commentId: P:SatStat.ObservableNumericValue`1.Value
+  fullName: SatStat.ObservableNumericValue<T>.Value
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Value
+  nameWithType: ObservableNumericValue<T>.Value
+  nameWithType.vb: ObservableNumericValue(Of T).Value
+- uid: SatStat.ObservableNumericValue`1.Value*
+  name: Value
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Value_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Value
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Value
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Value
+  nameWithType: ObservableNumericValue<T>.Value
+  nameWithType.vb: ObservableNumericValue(Of T).Value
+- uid: SatStat.ObservableNumericValueCollection
+  name: ObservableNumericValueCollection
+  href: api/SatStat.ObservableNumericValueCollection.html
+  commentId: T:SatStat.ObservableNumericValueCollection
+  fullName: SatStat.ObservableNumericValueCollection
+  nameWithType: ObservableNumericValueCollection
+- uid: SatStat.ObservableNumericValueCollection.#ctor
+  name: ObservableNumericValueCollection()
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection__ctor
+  commentId: M:SatStat.ObservableNumericValueCollection.#ctor
+  fullName: SatStat.ObservableNumericValueCollection.ObservableNumericValueCollection()
+  nameWithType: ObservableNumericValueCollection.ObservableNumericValueCollection()
+- uid: SatStat.ObservableNumericValueCollection.#ctor*
+  name: ObservableNumericValueCollection
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection__ctor_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.#ctor
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.ObservableNumericValueCollection
+  nameWithType: ObservableNumericValueCollection.ObservableNumericValueCollection
+- uid: SatStat.ObservableNumericValueCollection.Add(SatStat.IObservableNumericValue)
+  name: Add(IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Add_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.Add(SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.Add(SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.Add(IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.Add*
+  name: Add
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Add_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Add
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Add
+  nameWithType: ObservableNumericValueCollection.Add
+- uid: SatStat.ObservableNumericValueCollection.Clear
+  name: Clear()
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Clear
+  commentId: M:SatStat.ObservableNumericValueCollection.Clear
+  fullName: SatStat.ObservableNumericValueCollection.Clear()
+  nameWithType: ObservableNumericValueCollection.Clear()
+- uid: SatStat.ObservableNumericValueCollection.Clear*
+  name: Clear
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Clear_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Clear
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Clear
+  nameWithType: ObservableNumericValueCollection.Clear
+- uid: SatStat.ObservableNumericValueCollection.Contains(SatStat.IObservableNumericValue)
+  name: Contains(IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Contains_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.Contains(SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.Contains(SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.Contains(IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.Contains*
+  name: Contains
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Contains_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Contains
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Contains
+  nameWithType: ObservableNumericValueCollection.Contains
+- uid: SatStat.ObservableNumericValueCollection.ContainsLabel(System.String)
+  name: ContainsLabel(String)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_ContainsLabel_System_String_
+  commentId: M:SatStat.ObservableNumericValueCollection.ContainsLabel(System.String)
+  fullName: SatStat.ObservableNumericValueCollection.ContainsLabel(System.String)
+  nameWithType: ObservableNumericValueCollection.ContainsLabel(String)
+- uid: SatStat.ObservableNumericValueCollection.ContainsLabel*
+  name: ContainsLabel
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_ContainsLabel_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.ContainsLabel
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.ContainsLabel
+  nameWithType: ObservableNumericValueCollection.ContainsLabel
+- uid: SatStat.ObservableNumericValueCollection.CopyTo(SatStat.IObservableNumericValue[],System.Int32)
+  name: CopyTo(IObservableNumericValue[], Int32)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_CopyTo_SatStat_IObservableNumericValue___System_Int32_
+  commentId: M:SatStat.ObservableNumericValueCollection.CopyTo(SatStat.IObservableNumericValue[],System.Int32)
+  name.vb: CopyTo(IObservableNumericValue(), Int32)
+  fullName: SatStat.ObservableNumericValueCollection.CopyTo(SatStat.IObservableNumericValue[], System.Int32)
+  fullName.vb: SatStat.ObservableNumericValueCollection.CopyTo(SatStat.IObservableNumericValue(), System.Int32)
+  nameWithType: ObservableNumericValueCollection.CopyTo(IObservableNumericValue[], Int32)
+  nameWithType.vb: ObservableNumericValueCollection.CopyTo(IObservableNumericValue(), Int32)
+- uid: SatStat.ObservableNumericValueCollection.CopyTo*
+  name: CopyTo
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_CopyTo_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.CopyTo
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.CopyTo
+  nameWithType: ObservableNumericValueCollection.CopyTo
+- uid: SatStat.ObservableNumericValueCollection.Count
+  name: Count
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Count
+  commentId: P:SatStat.ObservableNumericValueCollection.Count
+  fullName: SatStat.ObservableNumericValueCollection.Count
+  nameWithType: ObservableNumericValueCollection.Count
+- uid: SatStat.ObservableNumericValueCollection.Count*
+  name: Count
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Count_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Count
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Count
+  nameWithType: ObservableNumericValueCollection.Count
+- uid: SatStat.ObservableNumericValueCollection.Get(System.Int32)
+  name: Get(Int32)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Get_System_Int32_
+  commentId: M:SatStat.ObservableNumericValueCollection.Get(System.Int32)
+  fullName: SatStat.ObservableNumericValueCollection.Get(System.Int32)
+  nameWithType: ObservableNumericValueCollection.Get(Int32)
+- uid: SatStat.ObservableNumericValueCollection.Get(System.String)
+  name: Get(String)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Get_System_String_
+  commentId: M:SatStat.ObservableNumericValueCollection.Get(System.String)
+  fullName: SatStat.ObservableNumericValueCollection.Get(System.String)
+  nameWithType: ObservableNumericValueCollection.Get(String)
+- uid: SatStat.ObservableNumericValueCollection.Get*
+  name: Get
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Get_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Get
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Get
+  nameWithType: ObservableNumericValueCollection.Get
+- uid: SatStat.ObservableNumericValueCollection.GetEnumerator
+  name: GetEnumerator()
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_GetEnumerator
+  commentId: M:SatStat.ObservableNumericValueCollection.GetEnumerator
+  fullName: SatStat.ObservableNumericValueCollection.GetEnumerator()
+  nameWithType: ObservableNumericValueCollection.GetEnumerator()
+- uid: SatStat.ObservableNumericValueCollection.GetEnumerator*
+  name: GetEnumerator
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_GetEnumerator_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.GetEnumerator
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.GetEnumerator
+  nameWithType: ObservableNumericValueCollection.GetEnumerator
+- uid: SatStat.ObservableNumericValueCollection.IndexOf(SatStat.IObservableNumericValue)
+  name: IndexOf(IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IndexOf_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.IndexOf(SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.IndexOf(SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.IndexOf(IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.IndexOf*
+  name: IndexOf
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IndexOf_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.IndexOf
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.IndexOf
+  nameWithType: ObservableNumericValueCollection.IndexOf
+- uid: SatStat.ObservableNumericValueCollection.Insert(System.Int32,SatStat.IObservableNumericValue)
+  name: Insert(Int32, IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Insert_System_Int32_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.Insert(System.Int32,SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.Insert(System.Int32, SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.Insert(Int32, IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.Insert*
+  name: Insert
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Insert_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Insert
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Insert
+  nameWithType: ObservableNumericValueCollection.Insert
+- uid: SatStat.ObservableNumericValueCollection.IsFixedSize
+  name: IsFixedSize
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsFixedSize
+  commentId: P:SatStat.ObservableNumericValueCollection.IsFixedSize
+  fullName: SatStat.ObservableNumericValueCollection.IsFixedSize
+  nameWithType: ObservableNumericValueCollection.IsFixedSize
+- uid: SatStat.ObservableNumericValueCollection.IsFixedSize*
+  name: IsFixedSize
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsFixedSize_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.IsFixedSize
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.IsFixedSize
+  nameWithType: ObservableNumericValueCollection.IsFixedSize
+- uid: SatStat.ObservableNumericValueCollection.IsReadOnly
+  name: IsReadOnly
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsReadOnly
+  commentId: P:SatStat.ObservableNumericValueCollection.IsReadOnly
+  fullName: SatStat.ObservableNumericValueCollection.IsReadOnly
+  nameWithType: ObservableNumericValueCollection.IsReadOnly
+- uid: SatStat.ObservableNumericValueCollection.IsReadOnly*
+  name: IsReadOnly
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsReadOnly_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.IsReadOnly
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.IsReadOnly
+  nameWithType: ObservableNumericValueCollection.IsReadOnly
+- uid: SatStat.ObservableNumericValueCollection.IsSynchronized
+  name: IsSynchronized
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsSynchronized
+  commentId: P:SatStat.ObservableNumericValueCollection.IsSynchronized
+  fullName: SatStat.ObservableNumericValueCollection.IsSynchronized
+  nameWithType: ObservableNumericValueCollection.IsSynchronized
+- uid: SatStat.ObservableNumericValueCollection.IsSynchronized*
+  name: IsSynchronized
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_IsSynchronized_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.IsSynchronized
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.IsSynchronized
+  nameWithType: ObservableNumericValueCollection.IsSynchronized
+- uid: SatStat.ObservableNumericValueCollection.Item(System.Int32)
+  name: Item[Int32]
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Item_System_Int32_
+  commentId: P:SatStat.ObservableNumericValueCollection.Item(System.Int32)
+  name.vb: Item(Int32)
+  fullName: SatStat.ObservableNumericValueCollection.Item[System.Int32]
+  fullName.vb: SatStat.ObservableNumericValueCollection.Item(System.Int32)
+  nameWithType: ObservableNumericValueCollection.Item[Int32]
+  nameWithType.vb: ObservableNumericValueCollection.Item(Int32)
+- uid: SatStat.ObservableNumericValueCollection.Item(System.String)
+  name: Item[String]
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Item_System_String_
+  commentId: P:SatStat.ObservableNumericValueCollection.Item(System.String)
+  name.vb: Item(String)
+  fullName: SatStat.ObservableNumericValueCollection.Item[System.String]
+  fullName.vb: SatStat.ObservableNumericValueCollection.Item(System.String)
+  nameWithType: ObservableNumericValueCollection.Item[String]
+  nameWithType.vb: ObservableNumericValueCollection.Item(String)
+- uid: SatStat.ObservableNumericValueCollection.Item*
+  name: Item
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Item_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Item
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Item
+  nameWithType: ObservableNumericValueCollection.Item
+- uid: SatStat.ObservableNumericValueCollection.Remove(SatStat.IObservableNumericValue)
+  name: Remove(IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Remove_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.Remove(SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.Remove(SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.Remove(IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.Remove*
+  name: Remove
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Remove_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Remove
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Remove
+  nameWithType: ObservableNumericValueCollection.Remove
+- uid: SatStat.ObservableNumericValueCollection.RemoveAt(System.Int32)
+  name: RemoveAt(Int32)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_RemoveAt_System_Int32_
+  commentId: M:SatStat.ObservableNumericValueCollection.RemoveAt(System.Int32)
+  fullName: SatStat.ObservableNumericValueCollection.RemoveAt(System.Int32)
+  nameWithType: ObservableNumericValueCollection.RemoveAt(Int32)
+- uid: SatStat.ObservableNumericValueCollection.RemoveAt*
+  name: RemoveAt
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_RemoveAt_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.RemoveAt
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.RemoveAt
+  nameWithType: ObservableNumericValueCollection.RemoveAt
+- uid: SatStat.ObservableNumericValueCollection.Set(System.String,SatStat.IObservableNumericValue)
+  name: Set(String, IObservableNumericValue)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Set_System_String_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.ObservableNumericValueCollection.Set(System.String,SatStat.IObservableNumericValue)
+  fullName: SatStat.ObservableNumericValueCollection.Set(System.String, SatStat.IObservableNumericValue)
+  nameWithType: ObservableNumericValueCollection.Set(String, IObservableNumericValue)
+- uid: SatStat.ObservableNumericValueCollection.Set*
+  name: Set
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Set_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.Set
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.Set
+  nameWithType: ObservableNumericValueCollection.Set
+- uid: SatStat.ObservableNumericValueCollection.SyncRoot
+  name: SyncRoot
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_SyncRoot
+  commentId: P:SatStat.ObservableNumericValueCollection.SyncRoot
+  fullName: SatStat.ObservableNumericValueCollection.SyncRoot
+  nameWithType: ObservableNumericValueCollection.SyncRoot
+- uid: SatStat.ObservableNumericValueCollection.SyncRoot*
+  name: SyncRoot
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_SyncRoot_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.SyncRoot
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.SyncRoot
+  nameWithType: ObservableNumericValueCollection.SyncRoot
+- uid: SatStat.ObservableNumericValueCollection.System#Collections#Generic#IEnumerable{SatStat#IObservableNumericValue}#GetEnumerator
+  name: IEnumerable<IObservableNumericValue>.GetEnumerator()
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_System_Collections_Generic_IEnumerable_SatStat_IObservableNumericValue__GetEnumerator
+  commentId: M:SatStat.ObservableNumericValueCollection.System#Collections#Generic#IEnumerable{SatStat#IObservableNumericValue}#GetEnumerator
+  name.vb: System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator()
+  fullName: SatStat.ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator()
+  nameWithType: ObservableNumericValueCollection.IEnumerable<IObservableNumericValue>.GetEnumerator()
+  nameWithType.vb: ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator()
+- uid: SatStat.ObservableNumericValueCollection.System#Collections#Generic#IEnumerable{SatStat#IObservableNumericValue}#GetEnumerator*
+  name: IEnumerable<IObservableNumericValue>.GetEnumerator
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_System_Collections_Generic_IEnumerable_SatStat_IObservableNumericValue__GetEnumerator_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.System#Collections#Generic#IEnumerable{SatStat#IObservableNumericValue}#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator
+  fullName: SatStat.ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator
+  nameWithType: ObservableNumericValueCollection.IEnumerable<IObservableNumericValue>.GetEnumerator
+  nameWithType.vb: ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator
+- uid: SatStat.ObservableNumericValueCollectionEnum
+  name: ObservableNumericValueCollectionEnum
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html
+  commentId: T:SatStat.ObservableNumericValueCollectionEnum
+  fullName: SatStat.ObservableNumericValueCollectionEnum
+  nameWithType: ObservableNumericValueCollectionEnum
+- uid: SatStat.ObservableNumericValueCollectionEnum.#ctor(SatStat.IObservableNumericValue[])
+  name: ObservableNumericValueCollectionEnum(IObservableNumericValue[])
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum__ctor_SatStat_IObservableNumericValue___
+  commentId: M:SatStat.ObservableNumericValueCollectionEnum.#ctor(SatStat.IObservableNumericValue[])
+  name.vb: ObservableNumericValueCollectionEnum(IObservableNumericValue())
+  fullName: SatStat.ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum(SatStat.IObservableNumericValue[])
+  fullName.vb: SatStat.ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum(SatStat.IObservableNumericValue())
+  nameWithType: ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum(IObservableNumericValue[])
+  nameWithType.vb: ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum(IObservableNumericValue())
+- uid: SatStat.ObservableNumericValueCollectionEnum.#ctor*
+  name: ObservableNumericValueCollectionEnum
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum__ctor_
+  commentId: Overload:SatStat.ObservableNumericValueCollectionEnum.#ctor
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum
+  nameWithType: ObservableNumericValueCollectionEnum.ObservableNumericValueCollectionEnum
+- uid: SatStat.ObservableNumericValueCollectionEnum.Current
+  name: Current
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_Current
+  commentId: P:SatStat.ObservableNumericValueCollectionEnum.Current
+  fullName: SatStat.ObservableNumericValueCollectionEnum.Current
+  nameWithType: ObservableNumericValueCollectionEnum.Current
+- uid: SatStat.ObservableNumericValueCollectionEnum.Current*
+  name: Current
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_Current_
+  commentId: Overload:SatStat.ObservableNumericValueCollectionEnum.Current
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollectionEnum.Current
+  nameWithType: ObservableNumericValueCollectionEnum.Current
+- uid: SatStat.ObservableNumericValueCollectionEnum.MoveNext
+  name: MoveNext()
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_MoveNext
+  commentId: M:SatStat.ObservableNumericValueCollectionEnum.MoveNext
+  fullName: SatStat.ObservableNumericValueCollectionEnum.MoveNext()
+  nameWithType: ObservableNumericValueCollectionEnum.MoveNext()
+- uid: SatStat.ObservableNumericValueCollectionEnum.MoveNext*
+  name: MoveNext
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_MoveNext_
+  commentId: Overload:SatStat.ObservableNumericValueCollectionEnum.MoveNext
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollectionEnum.MoveNext
+  nameWithType: ObservableNumericValueCollectionEnum.MoveNext
+- uid: SatStat.ObservableNumericValueCollectionEnum.Reset
+  name: Reset()
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_Reset
+  commentId: M:SatStat.ObservableNumericValueCollectionEnum.Reset
+  fullName: SatStat.ObservableNumericValueCollectionEnum.Reset()
+  nameWithType: ObservableNumericValueCollectionEnum.Reset()
+- uid: SatStat.ObservableNumericValueCollectionEnum.Reset*
+  name: Reset
+  href: api/SatStat.ObservableNumericValueCollectionEnum.html#SatStat_ObservableNumericValueCollectionEnum_Reset_
+  commentId: Overload:SatStat.ObservableNumericValueCollectionEnum.Reset
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollectionEnum.Reset
+  nameWithType: ObservableNumericValueCollectionEnum.Reset
 - uid: SatStat.SerialHandler
   name: SerialHandler
   href: api/SatStat.SerialHandler.html
@@ -1043,22 +1917,6 @@ references:
   commentId: T:SatStat.ThreadHelperClass
   fullName: SatStat.ThreadHelperClass
   nameWithType: ThreadHelperClass
-- uid: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
-  name: Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_Invoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
-  commentId: M:SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
-  name.vb: Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-  fullName: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
-  fullName.vb: SatStat.ThreadHelperClass.Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
-  nameWithType: ThreadHelperClass.Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  nameWithType.vb: ThreadHelperClass.Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-- uid: SatStat.ThreadHelperClass.Invoke*
-  name: Invoke
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_Invoke_
-  commentId: Overload:SatStat.ThreadHelperClass.Invoke
-  isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.Invoke
-  nameWithType: ThreadHelperClass.Invoke
 - uid: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
   name: SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
   href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_ListBox_SatStat_SerialSettingsCollection_
@@ -1098,19 +1956,35 @@ references:
   isSpec: "True"
   fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus
   nameWithType: ThreadHelperClass.SetNetworkConnectionStatus
-- uid: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
-  name: ThreadInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_ThreadInvoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
-  commentId: M:SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
-  name.vb: ThreadInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-  fullName: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
-  fullName.vb: SatStat.ThreadHelperClass.ThreadInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
-  nameWithType: ThreadHelperClass.ThreadInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  nameWithType.vb: ThreadHelperClass.ThreadInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-- uid: SatStat.ThreadHelperClass.ThreadInvoke*
-  name: ThreadInvoke
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_ThreadInvoke_
-  commentId: Overload:SatStat.ThreadHelperClass.ThreadInvoke
+- uid: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name: UI_Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_Invoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name.vb: UI_Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+  fullName: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelperClass.UI_Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelperClass.UI_Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelperClass.UI_Invoke*
+  name: UI_Invoke
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_Invoke_
+  commentId: Overload:SatStat.ThreadHelperClass.UI_Invoke
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.ThreadInvoke
-  nameWithType: ThreadHelperClass.ThreadInvoke
+  fullName: SatStat.ThreadHelperClass.UI_Invoke
+  nameWithType: ThreadHelperClass.UI_Invoke
+- uid: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name: UI_TaskInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_TaskInvoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  name.vb: UI_TaskInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+  fullName: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelperClass.UI_TaskInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelperClass.UI_TaskInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelperClass.UI_TaskInvoke*
+  name: UI_TaskInvoke
+  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_TaskInvoke_
+  commentId: Overload:SatStat.ThreadHelperClass.UI_TaskInvoke
+  isSpec: "True"
+  fullName: SatStat.ThreadHelperClass.UI_TaskInvoke
+  nameWithType: ThreadHelperClass.UI_TaskInvoke

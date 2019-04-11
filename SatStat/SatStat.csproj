@@ -99,6 +99,7 @@
     <Compile Include="Source\DB_SensorDataItem.cs" />
     <Compile Include="Source\Debug.cs" />
     <Compile Include="Source\Instruction.cs" />
+    <Compile Include="Source\ObservableValue.cs" />
     <Compile Include="Source\SatStatMainForm.cs">
       <SubType>Form</SubType>
     </Compile>

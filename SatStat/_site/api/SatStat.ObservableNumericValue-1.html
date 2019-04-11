@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ObservableNumericValue&lt;T&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ObservableNumericValue&lt;T&gt;
+   ">
+    <meta name="generator" content="docfx 2.40.10.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SatStat.ObservableNumericValue`1">
+  
+  
+  <h1 id="SatStat_ObservableNumericValue_1" data-uid="SatStat.ObservableNumericValue`1" class="text-break">Class ObservableNumericValue&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ObservableNumericValue&lt;T&gt;</span></div>
+      <div class="level2"><a class="xref" href="SatStat.ObservableDouble.html">ObservableDouble</a></div>
+      <div class="level2"><a class="xref" href="SatStat.ObservableFloat.html">ObservableFloat</a></div>
+      <div class="level2"><a class="xref" href="SatStat.ObservableInt.html">ObservableInt</a></div>
+      <div class="level2"><a class="xref" href="SatStat.ObservableLong.html">ObservableLong</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="SatStat.IObservableNumericValue.html">IObservableNumericValue</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SatStat.html">SatStat</a></h6>
+  <h6><strong>Assembly</strong>: SatStat.dll</h6>
+  <h5 id="SatStat_ObservableNumericValue_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ObservableNumericValue&lt;T&gt; : IObservableNumericValue where T : IComparable</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_value.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L12">View Source</a>
+  </span>
+  <h4 id="SatStat_ObservableNumericValue_1_value" data-uid="SatStat.ObservableNumericValue`1.value">value</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected T value</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Label.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Label%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L38">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Label_" data-uid="SatStat.ObservableNumericValue`1.Label*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Label" data-uid="SatStat.ObservableNumericValue`1.Label">Label</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Label { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Max.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Max%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L36">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Max_" data-uid="SatStat.ObservableNumericValue`1.Max*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Max" data-uid="SatStat.ObservableNumericValue`1.Max">Max</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Max { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Min.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Min%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L37">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Min_" data-uid="SatStat.ObservableNumericValue`1.Min*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Min" data-uid="SatStat.ObservableNumericValue`1.Min">Min</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Min { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_type.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L17">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_type_" data-uid="SatStat.ObservableNumericValue`1.type*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_type" data-uid="SatStat.ObservableNumericValue`1.type">type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type type { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Value.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L21">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Value_" data-uid="SatStat.ObservableNumericValue`1.Value*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Value" data-uid="SatStat.ObservableNumericValue`1.Value">Value</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Value { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Diff.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Diff%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L75">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Diff_" data-uid="SatStat.ObservableNumericValue`1.Diff*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Diff" data-uid="SatStat.ObservableNumericValue`1.Diff">Diff()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract object Diff()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Equal__0_.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Equal(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L60">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Equal_" data-uid="SatStat.ObservableNumericValue`1.Equal*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Equal__0_" data-uid="SatStat.ObservableNumericValue`1.Equal(`0)">Equal(T)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equal(T testVal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">testVal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_EqualMax.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.EqualMax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L55">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_EqualMax_" data-uid="SatStat.ObservableNumericValue`1.EqualMax*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_EqualMax" data-uid="SatStat.ObservableNumericValue`1.EqualMax">EqualMax()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EqualMax()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_EqualMin.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.EqualMin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L50">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_EqualMin_" data-uid="SatStat.ObservableNumericValue`1.EqualMin*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_EqualMin" data-uid="SatStat.ObservableNumericValue`1.EqualMin">EqualMin()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EqualMin()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_OnUpdate_System_Action_SatStat_IObservableNumericValue__.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.OnUpdate(System.Action%7BSatStat.IObservableNumericValue%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L70">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_OnUpdate_" data-uid="SatStat.ObservableNumericValue`1.OnUpdate*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_OnUpdate_System_Action_SatStat_IObservableNumericValue__" data-uid="SatStat.ObservableNumericValue`1.OnUpdate(System.Action{SatStat.IObservableNumericValue})">OnUpdate(Action&lt;IObservableNumericValue&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnUpdate(Action&lt;IObservableNumericValue&gt; cb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="SatStat.IObservableNumericValue.html">IObservableNumericValue</a>&gt;</td>
+        <td><span class="parametername">cb</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Over.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Over%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L40">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Over_" data-uid="SatStat.ObservableNumericValue`1.Over*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Over" data-uid="SatStat.ObservableNumericValue`1.Over">Over()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Over()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Stable.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Stable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L65">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Stable_" data-uid="SatStat.ObservableNumericValue`1.Stable*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Stable" data-uid="SatStat.ObservableNumericValue`1.Stable">Stable()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Stable()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1_Under.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601.Under%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L45">View Source</a>
+  </span>
+  <a id="SatStat_ObservableNumericValue_1_Under_" data-uid="SatStat.ObservableNumericValue`1.Under*"></a>
+  <h4 id="SatStat_ObservableNumericValue_1_Under" data-uid="SatStat.ObservableNumericValue`1.Under">Under()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Under()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="SatStat.IObservableNumericValue.html">IObservableNumericValue</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableNumericValue_1.md&amp;value=---%0Auid%3A%20SatStat.ObservableNumericValue%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

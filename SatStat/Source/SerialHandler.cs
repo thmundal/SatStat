@@ -45,7 +45,7 @@ namespace SatStat
             static public Parity Parity = Parity.None;
             static public int DataBits = 8;
             static public StopBits StopBits = StopBits.One;
-            static public string NewLine = "\r\n";
+            static public string NewLine = @"\r\n";
         };
 
         /// <summary>

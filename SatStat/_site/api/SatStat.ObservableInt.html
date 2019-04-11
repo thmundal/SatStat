@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class StreamSimulator
+    <title>Class ObservableInt
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class StreamSimulator
+    <meta name="title" content="Class ObservableInt
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -68,35 +68,63 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SatStat.StreamSimulator">
+            <article class="content wrap" id="_content" data-uid="SatStat.ObservableInt">
   
   
-  <h1 id="SatStat_StreamSimulator" data-uid="SatStat.StreamSimulator" class="text-break">Class StreamSimulator
+  <h1 id="SatStat_ObservableInt" data-uid="SatStat.ObservableInt" class="text-break">Class ObservableInt
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="SatStat.DataStream.html">DataStream</a></div>
-    <div class="level2"><span class="xref">StreamSimulator</span></div>
+    <div class="level1"><a class="xref" href="SatStat.ObservableNumericValue-1.html">ObservableNumericValue</a>&lt;<span class="xref">System.Int32</span>&gt;</div>
+    <div class="level2"><span class="xref">ObservableInt</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="SatStat.IObservableNumericValue.html">IObservableNumericValue</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="SatStat.DataStream.html#SatStat_DataStream_DeliverSubscriptions">DataStream.DeliverSubscriptions()</a>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_value">ObservableNumericValue&lt;Int32&gt;.value</a>
     </div>
     <div>
-      <a class="xref" href="SatStat.DataStream.html#SatStat_DataStream_Parse_System_String_">DataStream.Parse(String)</a>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_type">ObservableNumericValue&lt;Int32&gt;.type</a>
     </div>
     <div>
-      <a class="xref" href="SatStat.DataStream.html#SatStat_DataStream_AddSubscriber_SatStat_DataSubscription_">DataStream.AddSubscriber(DataSubscription)</a>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Value">ObservableNumericValue&lt;Int32&gt;.Value</a>
     </div>
     <div>
-      <a class="xref" href="SatStat.DataStream.html#SatStat_DataStream_Output_System_Object_">DataStream.Output(Object)</a>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Max">ObservableNumericValue&lt;Int32&gt;.Max</a>
     </div>
     <div>
-      <a class="xref" href="SatStat.DataStream.html#SatStat_DataStream_OnOutputReceived_System_Action_System_String__">DataStream.OnOutputReceived(Action&lt;String&gt;)</a>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Min">ObservableNumericValue&lt;Int32&gt;.Min</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Label">ObservableNumericValue&lt;Int32&gt;.Label</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Over">ObservableNumericValue&lt;Int32&gt;.Over()</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Under">ObservableNumericValue&lt;Int32&gt;.Under()</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMin">ObservableNumericValue&lt;Int32&gt;.EqualMin()</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_EqualMax">ObservableNumericValue&lt;Int32&gt;.EqualMax()</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Equal__0_">ObservableNumericValue&lt;Int32&gt;.Equal(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Stable">ObservableNumericValue&lt;Int32&gt;.Stable()</a>
+    </div>
+    <div>
+      <a class="xref" href="SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_OnUpdate_System_Action_SatStat_IObservableNumericValue__">ObservableNumericValue&lt;Int32&gt;.OnUpdate(Action&lt;IObservableNumericValue&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -122,60 +150,48 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SatStat.html">SatStat</a></h6>
   <h6><strong>Assembly</strong>: SatStat.dll</h6>
-  <h5 id="SatStat_StreamSimulator_syntax">Syntax</h5>
+  <h5 id="SatStat_ObservableInt_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class StreamSimulator : DataStream</code></pre>
+    <pre><code class="lang-csharp hljs">public class ObservableInt : ObservableNumericValue&lt;int&gt;, IObservableNumericValue</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_StreamSimulator_Connect.md&amp;value=---%0Auid%3A%20SatStat.StreamSimulator.Connect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableInt_Diff.md&amp;value=---%0Auid%3A%20SatStat.ObservableInt.Diff%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/StreamSimulator.cs/#L18">View Source</a>
+    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L80">View Source</a>
   </span>
-  <a id="SatStat_StreamSimulator_Connect_" data-uid="SatStat.StreamSimulator.Connect*"></a>
-  <h4 id="SatStat_StreamSimulator_Connect" data-uid="SatStat.StreamSimulator.Connect">Connect()</h4>
+  <a id="SatStat_ObservableInt_Diff_" data-uid="SatStat.ObservableInt.Diff*"></a>
+  <h4 id="SatStat_ObservableInt_Diff" data-uid="SatStat.ObservableInt.Diff">Diff()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[STAThread]
-public void Connect()</code></pre>
+    <pre><code class="lang-csharp hljs">public override object Diff()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_StreamSimulator_Output_Newtonsoft_Json_Linq_JObject_.md&amp;value=---%0Auid%3A%20SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/StreamSimulator.cs/#L134">View Source</a>
-  </span>
-  <a id="SatStat_StreamSimulator_Output_" data-uid="SatStat.StreamSimulator.Output*"></a>
-  <h4 id="SatStat_StreamSimulator_Output_Newtonsoft_Json_Linq_JObject_" data-uid="SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)">Output(JObject)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Output(JObject data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Newtonsoft.Json.Linq.JObject</span></td>
-        <td><span class="parametername">data</span></td>
+        <td><span class="xref">System.Object</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">SatStat.ObservableNumericValue&lt;System.Int32&gt;.Diff()</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="SatStat.IObservableNumericValue.html">IObservableNumericValue</a>
+  </div>
 </article>
           </div>
           
@@ -184,10 +200,10 @@ public void Connect()</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_StreamSimulator.md&amp;value=---%0Auid%3A%20SatStat.StreamSimulator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/thmundal/SatStat/new/Beta1/apiSpec/new?filename=SatStat_ObservableInt.md&amp;value=---%0Auid%3A%20SatStat.ObservableInt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/StreamSimulator.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/thmundal/SatStat/blob/Beta1/SatStat/Source/ObservableValue.cs/#L78" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

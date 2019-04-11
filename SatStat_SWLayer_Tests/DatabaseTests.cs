@@ -44,6 +44,13 @@ namespace SatStatTests
                     Console.WriteLine("Settings document exists, updating values...");
                     Assert.IsTrue(updateSucess);
 
+                    foreach(char c in existing.NewLine)
+                    {
+                        Console.Write(c);
+                    }
+                    Console.WriteLine("");
+                    Console.WriteLine(existing.NewLine.Length);
+                    
                     Assert.AreEqual(store.baud_rate, existing.baud_rate);
                     Assert.AreEqual(store.Parity, existing.Parity);
                     Assert.AreEqual(store.DataBits, existing.DataBits);

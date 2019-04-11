@@ -30,10 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.oxPlot = new OxyPlot.WindowsForms.PlotView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.UImenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,8 +67,23 @@
             this.UIStatusStrip = new System.Windows.Forms.StatusStrip();
             this.UICOMConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.UINetworkConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.oxPlot = new OxyPlot.WindowsForms.PlotView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.UIObservedValuesOuputGrid = new System.Windows.Forms.DataGridView();
+            this.UIParameterControlInput = new System.Windows.Forms.DataGridView();
+            this.ParamKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParamMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParamMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attribute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UImenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -80,53 +93,15 @@
             this.diagnosticLiveOutputValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).BeginInit();
             this.UIStatusStrip.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UIParameterControlInput)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(436, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(984, 701);
-            this.tabControl1.TabIndex = 12;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.oxPlot);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(976, 675);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Plot 1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // oxPlot
-            // 
-            this.oxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.oxPlot.Location = new System.Drawing.Point(3, 3);
-            this.oxPlot.Name = "oxPlot";
-            this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.oxPlot.Size = new System.Drawing.Size(970, 669);
-            this.oxPlot.TabIndex = 1;
-            this.oxPlot.Text = "plotView1";
-            this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.oxPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.oxPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(957, 675);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Plot 2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // UImenuStrip1
             // 
@@ -224,10 +199,10 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.49895F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.50105F));
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.UIStatusStrip, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -250,7 +225,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.70934F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.29066F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(427, 437);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(428, 437);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // SadmControlsGroupPanel
@@ -269,7 +244,7 @@
             this.SadmControlsGroupPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SadmControlsGroupPanel.Location = new System.Drawing.Point(3, 3);
             this.SadmControlsGroupPanel.Name = "SadmControlsGroupPanel";
-            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(421, 237);
+            this.SadmControlsGroupPanel.Size = new System.Drawing.Size(422, 237);
             this.SadmControlsGroupPanel.TabIndex = 14;
             this.SadmControlsGroupPanel.TabStop = false;
             this.SadmControlsGroupPanel.Text = "SADM Controls";
@@ -378,21 +353,21 @@
             this.SensorDataListBoxGroupContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SensorDataListBoxGroupContainer.Location = new System.Drawing.Point(3, 246);
             this.SensorDataListBoxGroupContainer.Name = "SensorDataListBoxGroupContainer";
-            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(421, 188);
+            this.SensorDataListBoxGroupContainer.Size = new System.Drawing.Size(422, 188);
             this.SensorDataListBoxGroupContainer.TabIndex = 15;
             this.SensorDataListBoxGroupContainer.TabStop = false;
             this.SensorDataListBoxGroupContainer.Text = "Sensor data";
             // 
             // UISensorCheckboxList
             // 
+            this.UISensorCheckboxList.CheckOnClick = true;
             this.UISensorCheckboxList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UISensorCheckboxList.FormattingEnabled = true;
             this.UISensorCheckboxList.Location = new System.Drawing.Point(3, 16);
             this.UISensorCheckboxList.Name = "UISensorCheckboxList";
-            this.UISensorCheckboxList.Size = new System.Drawing.Size(415, 169);
+            this.UISensorCheckboxList.Size = new System.Drawing.Size(416, 169);
             this.UISensorCheckboxList.TabIndex = 14;
             this.UISensorCheckboxList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UISensorCheckboxList_ItemCheck);
-            this.UISensorCheckboxList.SelectedIndexChanged += new System.EventHandler(this.UISensorCheckboxList_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -405,7 +380,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.61654F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.383459F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(427, 258);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(428, 258);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // diagnosticLiveOutputValues
@@ -414,7 +389,7 @@
             this.diagnosticLiveOutputValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosticLiveOutputValues.Location = new System.Drawing.Point(3, 3);
             this.diagnosticLiveOutputValues.Name = "diagnosticLiveOutputValues";
-            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(421, 243);
+            this.diagnosticLiveOutputValues.Size = new System.Drawing.Size(422, 243);
             this.diagnosticLiveOutputValues.TabIndex = 0;
             this.diagnosticLiveOutputValues.TabStop = false;
             this.diagnosticLiveOutputValues.Text = "Live output values";
@@ -450,7 +425,7 @@
             this.UIliveOutputValuesList.ReadOnly = true;
             this.UIliveOutputValuesList.RowHeadersVisible = false;
             this.UIliveOutputValuesList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UIliveOutputValuesList.Size = new System.Drawing.Size(415, 224);
+            this.UIliveOutputValuesList.Size = new System.Drawing.Size(416, 224);
             this.UIliveOutputValuesList.TabIndex = 0;
             // 
             // Key
@@ -489,6 +464,199 @@
             this.UINetworkConnectionStatus.Size = new System.Drawing.Size(127, 16);
             this.UINetworkConnectionStatus.Text = "Network Disconnected";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(437, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(983, 701);
+            this.tabControl1.TabIndex = 16;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tabControl2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(975, 675);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Plot view";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(3, 3);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(969, 669);
+            this.tabControl2.TabIndex = 13;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.oxPlot);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(961, 643);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "Plot 1";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // oxPlot
+            // 
+            this.oxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.oxPlot.Location = new System.Drawing.Point(3, 3);
+            this.oxPlot.Name = "oxPlot";
+            this.oxPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.oxPlot.Size = new System.Drawing.Size(955, 637);
+            this.oxPlot.TabIndex = 1;
+            this.oxPlot.Text = "plotView1";
+            this.oxPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.oxPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.oxPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(961, 643);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "Plot 2";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(975, 675);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Parameter control";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5645F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.4355F));
+            this.tableLayoutPanel4.Controls.Add(this.UIObservedValuesOuputGrid, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.UIParameterControlInput, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(969, 669);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // UIObservedValuesOuputGrid
+            // 
+            this.UIObservedValuesOuputGrid.AllowUserToResizeColumns = false;
+            this.UIObservedValuesOuputGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            this.UIObservedValuesOuputGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.UIObservedValuesOuputGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UIObservedValuesOuputGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.UIObservedValuesOuputGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UIObservedValuesOuputGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.UIObservedValuesOuputGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UIObservedValuesOuputGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.attribute,
+            this.observedValue,
+            this.status,
+            this.difference});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIObservedValuesOuputGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            this.UIObservedValuesOuputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UIObservedValuesOuputGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.UIObservedValuesOuputGrid.Location = new System.Drawing.Point(366, 3);
+            this.UIObservedValuesOuputGrid.MultiSelect = false;
+            this.UIObservedValuesOuputGrid.Name = "UIObservedValuesOuputGrid";
+            this.UIObservedValuesOuputGrid.ReadOnly = true;
+            this.UIObservedValuesOuputGrid.RowHeadersVisible = false;
+            this.UIObservedValuesOuputGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.UIObservedValuesOuputGrid.Size = new System.Drawing.Size(600, 663);
+            this.UIObservedValuesOuputGrid.TabIndex = 1;
+            // 
+            // UIParameterControlInput
+            // 
+            this.UIParameterControlInput.AllowUserToAddRows = false;
+            this.UIParameterControlInput.AllowUserToResizeColumns = false;
+            this.UIParameterControlInput.AllowUserToResizeRows = false;
+            this.UIParameterControlInput.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UIParameterControlInput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UIParameterControlInput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ParamKey,
+            this.ParamMin,
+            this.ParamMax});
+            this.UIParameterControlInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UIParameterControlInput.Location = new System.Drawing.Point(3, 3);
+            this.UIParameterControlInput.MultiSelect = false;
+            this.UIParameterControlInput.Name = "UIParameterControlInput";
+            this.UIParameterControlInput.RowHeadersVisible = false;
+            this.UIParameterControlInput.Size = new System.Drawing.Size(357, 663);
+            this.UIParameterControlInput.TabIndex = 0;
+            this.UIParameterControlInput.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.UIParameterControlInput_CellValidated);
+            this.UIParameterControlInput.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.UIParameterControlInput_CellValidating);
+            // 
+            // ParamKey
+            // 
+            this.ParamKey.HeaderText = "Data attribute";
+            this.ParamKey.Name = "ParamKey";
+            this.ParamKey.ReadOnly = true;
+            this.ParamKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ParamMin
+            // 
+            this.ParamMin.HeaderText = "Minimum";
+            this.ParamMin.Name = "ParamMin";
+            this.ParamMin.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ParamMax
+            // 
+            this.ParamMax.HeaderText = "Maximum";
+            this.ParamMax.Name = "ParamMax";
+            this.ParamMax.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // attribute
+            // 
+            this.attribute.HeaderText = "Attribute";
+            this.attribute.Name = "attribute";
+            this.attribute.ReadOnly = true;
+            // 
+            // observedValue
+            // 
+            this.observedValue.HeaderText = "Value";
+            this.observedValue.Name = "observedValue";
+            this.observedValue.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // difference
+            // 
+            this.difference.HeaderText = "Difference";
+            this.difference.Name = "difference";
+            this.difference.ReadOnly = true;
+            // 
             // SatStatMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,8 +671,6 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SatStatMainForm_FormClosing);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.UImenuStrip1.ResumeLayout(false);
             this.UImenuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -518,6 +684,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).EndInit();
             this.UIStatusStrip.ResumeLayout(false);
             this.UIStatusStrip.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UIParameterControlInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,9 +701,6 @@
         private System.Windows.Forms.MenuStrip UImenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMSettingsToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -559,10 +730,26 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem displayDatabaseToolStripMenuItem;
-        private OxyPlot.WindowsForms.PlotView oxPlot;
         private System.Windows.Forms.StatusStrip UIStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel UICOMConnectionStatus;
         private System.Windows.Forms.ToolStripStatusLabel UINetworkConnectionStatus;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private OxyPlot.WindowsForms.PlotView oxPlot;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.DataGridView UIParameterControlInput;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParamKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParamMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParamMax;
+        private System.Windows.Forms.DataGridView UIObservedValuesOuputGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attribute;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observedValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn difference;
     }
 }
 

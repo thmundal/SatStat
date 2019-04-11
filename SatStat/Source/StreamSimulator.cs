@@ -31,6 +31,7 @@ namespace SatStat
             Random rand = new Random();
 
             ClientInitializeHandshake();
+            double count = 0;
 
             while (running)
             {
@@ -69,7 +70,7 @@ namespace SatStat
                     double temp = (double) (rand.Next(0, 10));
                     int humidity = rand.Next(0, 10);
 
-                    input_buffer.Enqueue("{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + "}");
+                    input_buffer.Enqueue("{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + ", \"sine\":"+ Math.Sin(count).ToString().Replace(",",".") +"}");
 
                     while(input_buffer.Count > 0)
                     {
@@ -81,9 +82,11 @@ namespace SatStat
                             DeliverSubscriptions();
                         }
                     }
+                    count += 0.1;
                 }
 
-                await Task.Delay(10);
+
+                await Task.Delay(100);
             }
         }
 
@@ -111,7 +114,7 @@ namespace SatStat
                     }
                 }
             });
-            input_buffer.Enqueue("{\"available_data\":{\"temperature\":\"double\", \"humidity\":\"int\"}}");
+            input_buffer.Enqueue("{\"available_data\":{\"temperature\":\"double\", \"humidity\":\"int\", \"sine\":\"double\"}}");
         }
 
         //private void OnDataReceived(string input)

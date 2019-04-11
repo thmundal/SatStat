@@ -23,11 +23,44 @@ namespace SatStat
         /// A list of strings referring to active subscriptions, to more easily/cheaply identify what subscriptions this receiver has active
         /// </summary>
         private List<string> active_subscriptions;
-        
+
+        /// <summary>
+        /// A flag to tell if this datareceiver should observe its values and act when the value is changed
+        /// </summary>
+        private bool observe_values = false;
+
+        /// <summary>
+        /// Getter and setter for observe_values. If this is set to true, instantiate the observedValues collection if it is not instantiated yet.
+        /// </summary>
+        public bool Observe
+        {
+            get
+            {
+                return observe_values;
+            }
+            set
+            {
+                observe_values = value;
+            }
+        }
+
+        /// <summary>
+        /// The collection of observed values registered on this receiver
+        /// </summary>
+        private ObservableNumericValueCollection observedValues;
+
+        public ObservableNumericValueCollection ObservedValues { get { return observedValues; } }
+
+        /// <summary>
+        /// A callback to be invoked when an observed value has changed its value
+        /// </summary>
+        private Action<IObservableNumericValue> onObservableValueChanged_cb;
+
         public DataReceiver()
         {
             subscriptions = new List<DataSubscription>();
             active_subscriptions = new List<string>();
+            observedValues = new ObservableNumericValueCollection();
         }
 
         /// <summary>
@@ -73,6 +106,11 @@ namespace SatStat
             OnPayloadReceived_Callback = cb;
         }
 
+        public void OnObservedvalueChanged(Action<IObservableNumericValue> cb)
+        {
+            onObservableValueChanged_cb = cb;
+        }
+
         /// <summary>
         /// Procedure to run when payload is received from stream. Data is cast to the appropriate data type, and the OnPayloadReceived_Callback is invoked on all subscriptions that involves the given attribute
         /// </summary>
@@ -87,35 +125,68 @@ namespace SatStat
                 {
                     if(subscription.attribute == attribute)
                     {
+                        IObservableNumericValue observedAttribute = new ObservableInt();
+                        bool observe_invalid = false;
+                        string observe_error = "";
+
+                        switch (data_type)
+                        {
+                            case "float":
+                                payload = Convert.ToSingle(payload);
+                                observedAttribute = new ObservableFloat { Value = payload };
+                                break;
+                            case "double":
+                                payload = Convert.ToDouble(payload);
+                                observedAttribute = new ObservableDouble { Value = payload };
+                                break;
+                            case "int":
+                                payload = Convert.ToInt32(payload);
+                                observedAttribute = new ObservableInt { Value = payload };
+                                break;
+                            case "long":
+                                payload = Convert.ToInt64(payload);
+                                observedAttribute = new ObservableLong { Value = payload };
+                                break;
+                            case "string":
+                                payload = Convert.ToString(payload);
+                                observe_invalid = true;
+                                observe_error = "A string value cannot be observed";
+                                break;
+                            case "JObject":
+                                payload = (JObject)payload;
+                                observe_invalid = true;
+                                observe_error = "A JObject cannot be observed";
+                                break;
+                            case "JArray":
+                                payload = (JArray)payload;
+                                observe_invalid = true;
+                                observe_error = "A JArray cannot be observed";
+                                break;
+                        }
+
                         if (OnPayloadReceived_Callback != null)
                         {
                             try
                             {
-                                switch (data_type)
-                                {
-                                    case "float":
-                                        payload = Convert.ToSingle(payload);
-                                        break;
-                                    case "double":
-                                        payload = Convert.ToDouble(payload);
-                                        break;
-                                    case "int":
-                                        payload = Convert.ToInt32(payload);
-                                        break;
-                                    case "long":
-                                        payload = Convert.ToInt64(payload);
-                                        break;
-                                    case "string":
-                                        payload = Convert.ToString(payload);
-                                        break;
-                                    case "JObject":
-                                        payload = (JObject)payload;
-                                        break;
-                                    case "JArray":
-                                        payload = (JArray)payload;
-                                        break;
-                                }
                                 OnPayloadReceived_Callback.Invoke(payload, attribute);
+
+                                if(observe_values)
+                                {
+                                    if(!observe_invalid)
+                                    {
+                                        if(!observedValues.ContainsLabel(attribute))
+                                        {
+                                            observedAttribute.Label = attribute;
+                                            observedAttribute.OnUpdate(onObservableValueChanged_cb);
+                                            observedValues.Add(observedAttribute);
+                                        }
+                                        observedAttribute = observedValues[attribute];
+                                        observedAttribute.Value = payload;
+                                    } else
+                                    {
+                                        Console.WriteLine("Error: {0}", observe_error);
+                                    }
+                                }
                             }
                             catch (InvalidCastException e)
                             {
