@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.AppSettings.html",
-          "hash": "WoqnV6Ehq9M6mPHkS147Dg=="
+          "hash": "WiqnTTh6sxjMccnObD5Eig=="
         }
       },
       "is_incremental": true,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.COMSettings.html",
-          "hash": "NycohcMuJpWVEX46nuYLCg=="
+          "hash": "yrHIeqbTgXKIjwaGYVGx4g=="
         }
       },
       "is_incremental": true,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.IObservableNumericValue.html",
-          "hash": "Z9ql0H1bRmpIQOC4j2argw=="
+          "hash": "GB41q6q7Keuu4prSSNiqHg=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableDouble.html",
-          "hash": "PfGo6dvjSCp+jAQD4nuK3w=="
+          "hash": "c1Tsnl00ltscNwu9icYDdw=="
         }
       },
       "is_incremental": true,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableFloat.html",
-          "hash": "OPzUu8m693Nj+psoXJ9/nA=="
+          "hash": "xnFvmZjfv9OH9unOBk5zUw=="
         }
       },
       "is_incremental": true,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableInt.html",
-          "hash": "e1xfS1aVXiBlZkTEvV1lRQ=="
+          "hash": "x53vtcTXsVBbTGqD0kOVGA=="
         }
       },
       "is_incremental": true,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableLong.html",
-          "hash": "inKnts07jfc3guptOkuljw=="
+          "hash": "qR1YiZWjRnAlovq1omMY8w=="
         }
       },
       "is_incremental": true,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableNumericValue-1.html",
-          "hash": "gSxSIDJSW95TRL5RkKT4EQ=="
+          "hash": "d6qq5VIzCbeUbok3hkO6lQ=="
         }
       },
       "is_incremental": true,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableNumericValueCollection.html",
-          "hash": "cpExgvrkUV7KfOsAwXPobA=="
+          "hash": "7Sdw2TZVAYvfIHnYVxlq2g=="
         }
       },
       "is_incremental": true,
@@ -273,7 +273,19 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.ObservableNumericValueCollectionEnum.html",
-          "hash": "0868dwRjIVSOMiTbC8njQw=="
+          "hash": "kbb2lNBz4Ic9/AjZAbVFNA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.ParameterControlTemplateDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.ParameterControlTemplateDialog.html",
+          "hash": "m1e6cg75rzWJyjZaqB4UnQ=="
         }
       },
       "is_incremental": true,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "YtnxEA8MRMhVCJD0PcOjeg=="
+          "hash": "lQWcd2/535pVgxNC6rPDOw=="
         }
       },
       "is_incremental": true,
@@ -381,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "qhRUtYaaejHyp5seNg6NxA=="
+          "hash": "tde+qRnA8W7yzdH4EAPzFw=="
         }
       },
       "is_incremental": false,
@@ -416,17 +428,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 28,
+          "skipped_file_count": 28
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 27,
-          "skipped_file_count": 27
         }
       }
     },
