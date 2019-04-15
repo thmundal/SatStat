@@ -1,5 +1,5 @@
 #pragma once
-#include "Arduino.h"
+#include "Node.h"
 
 template <class KEY, class VALUE>
 class LinkedList
@@ -22,56 +22,61 @@ public:
 	int count() const;	
 
 private:
-	int count(int& current) const;
-	LinkedList *m_next;
-	KEY m_key;
-	VALUE m_value;
+	Node<KEY, VALUE> *m_next;
 	VALUE m_default;
-	bool m_set;
+	int m_count;
 };
 
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList()
 {
 	m_next = 0;
-	m_set = false;
+	m_count = 0;
 }
 
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList(const LinkedList<KEY, VALUE>& other)
-{
-	m_next = 0;
+{	
 	*this = other;
 }
 
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::~LinkedList()
 {
-	delete m_next;
+	if (m_next != 0)
+	{
+		delete m_next;
+	}
 }
 
+// Jon later som han skjønner
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>& LinkedList<KEY, VALUE>::operator=(const LinkedList<KEY, VALUE>& other)
 {
-	delete m_next;
-	m_key = other.m_key;
-	m_value = other.m_value;
-	m_set = other.m_set;
-	m_next = new LinkedList<KEY, VALUE>;
-	*m_next = *other.m_next;
+	if (m_next != 0)
+	{
+		delete m_next;
+	}
+
+	m_default = other.m_default;
+	m_count = other.m_count;
+
+	if (other.m_next != 0)
+	{
+		m_next = new Node<KEY, VALUE>;
+		*m_next = *other.m_next;
+	}
+
+	return *this;
 }
 
 // Jon tester
 template<class KEY, class VALUE>
 inline VALUE& LinkedList<KEY, VALUE>::operator[](int index)
 {
-	if (index == 0)
+	if (m_next != 0)
 	{
-		return m_value;
-	}
-	else if (m_next != 0)
-	{
-		return m_next->operator[](--index);
+		return m_next->get_index(index, m_default);
 	}
 
 	return m_default;
@@ -81,67 +86,43 @@ inline VALUE& LinkedList<KEY, VALUE>::operator[](int index)
 template<class KEY, class VALUE>
 inline VALUE& LinkedList<KEY, VALUE>::operator[](const KEY& key)
 {
-	if (m_key == key)
-	{
-		return m_value;
-	}
-	else if (m_next != 0)
-	{
-		return m_next->get(key);
-	}
-
-	return m_default;
+	return get(key);
 }
 
 // Jon tester
 template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::add(const KEY &key)
 {
-	if (!m_set)
+	if (m_next == 0)
 	{
-		m_key = key;
-		m_set = true;
-	}
-	else if (m_next == 0)
-	{
-		m_next = new LinkedList;
-		m_next->add(key);
-		m_next->setDefault(m_default);
+		m_next = new Node<KEY, VALUE>(key);
 	}
 	else
 	{
 		m_next->add(key);
 	}
+	m_count++;
 }
 
 template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
 {
-	if (!m_set)
+	if (m_next == 0)
 	{
-		m_key = key;
-		m_value = value;
-		m_set = true;
-	}
-	else if (m_next == 0)
-	{
-		m_next = new LinkedList;
-		m_next->append(key, value);
-		m_next->setDefault(m_default);
+		m_next = new Node<KEY,VALUE>(key, value);
 	}
 	else
 	{
 		m_next->append(key, value);
 	}
+	m_count++;
 }
 
 template<class KEY, class VALUE>
 inline VALUE &LinkedList<KEY, VALUE>::get(const KEY &key)
 {
-	if (m_key == key)
-		return m_value;
 	if (m_next != 0)
-		return m_next->get(key);
+		return m_next->get(key, m_default);
 	return m_default;
 }
 
@@ -149,28 +130,25 @@ inline VALUE &LinkedList<KEY, VALUE>::get(const KEY &key)
 template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::set(const KEY &key, const VALUE& value)
 {
-	if (m_key == key)
+	if (m_next != 0)
 	{
-		m_value = value;
-	}
-	else if (m_next != 0)
-	{
-		m_next->set(key, value);
+		if (m_next->set(key, value))
+		{
+			m_count++;
+		}
 	}
 }
 
 // Jon tester
 template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::erase(const KEY &key)
-{
-	if (m_key == key)
+{	
+	if (m_next != 0)
 	{
-		LinkedList* tmp = m_next;
-		*this = *tmp;
-	}
-	else if (m_next != 0)
-	{
-		m_next->erase(key);
+		if (m_next->erase(key, m_next))
+		{
+			m_count--;
+		}
 	}
 }
 
@@ -178,36 +156,11 @@ template<class KEY, class VALUE>
 inline void LinkedList<KEY, VALUE>::setDefault(const VALUE & value)
 {
 	m_default = value;
-	if (m_next != 0)
-		m_next->setDefault(value);
 }
 
 // Jon tester
 template<class KEY, class VALUE>
 inline int LinkedList<KEY, VALUE>::count() const
 {
-	if (m_next != 0)
-	{
-		int i = 1;
-		m_next->count(i);
-		return i;
-	}
-	else if (m_set)
-	{
-		return 1;
-	}
-
-	return 0;
-}
-
-// Jon tester
-template<class KEY, class VALUE>
-inline int LinkedList<KEY, VALUE>::count(int& current) const
-{
-	if (m_next != 0)
-	{
-		return m_next->count(++current);
-	}
-
-	return ++current;
+	return m_count;
 }

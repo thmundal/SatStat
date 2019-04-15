@@ -1,8 +1,9 @@
 #pragma once
 #include "Json_handler.h"
 #include "../../libraries/QueueArray.h"
-#include "../../libraries/LinkedList.h"
+#include "../../libraries/LinkedList/LinkedList.h"
 #include "../containers/SADM_functions.h"
+#include "../containers/Subscriber_functions.h"
 
 /**
 *	The Instruction_handler class holds the instructions received through the serial port in the instruction_queue member.

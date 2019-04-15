@@ -20,6 +20,7 @@ public:
 	void append_data(Json_container<JsonObject>* dest, sstl::Subscribable* src);
 	Json_container<JsonObject>* get_data(const String& name);
 	Json_container<JsonObject>* get_all_data();
+	Json_container<JsonObject>* get_sub_data();
 	void append_available_data(Json_container<JsonObject>* dest);
 
 	LinkedList<String, Sensor*>& get_available_sensors();

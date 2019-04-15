@@ -52,6 +52,9 @@
     <Filter Include="Source Files\libraries\SSTL">
       <UniqueIdentifier>{eb924eb1-0f3a-425e-a6f1-035aa315461e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\libraries\LinkedList">
+      <UniqueIdentifier>{77df2edf-f048-4908-aeb6-e5f6ff1ed8b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -85,9 +88,6 @@
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
     <ClInclude Include="libraries\DS1302.h">
-      <Filter>Header Files\libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\LinkedList.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
     <ClInclude Include="libraries\QueueArray.h">
@@ -366,6 +366,15 @@
     <ClInclude Include="srcs\HWLayer.h">
       <Filter>Header Files\srcs</Filter>
     </ClInclude>
+    <ClInclude Include="srcs\containers\Subscriber_functions.h">
+      <Filter>Header Files\srcs\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\LinkedList\LinkedList.h">
+      <Filter>Header Files\libraries\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\LinkedList\Node.h">
+      <Filter>Header Files\libraries\LinkedList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libraries\DHT.cpp">
@@ -406,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="srcs\HWLayer.cpp">
       <Filter>Source Files\srcs</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\containers\Subscriber_functions.cpp">
+      <Filter>Source Files\srcs\containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

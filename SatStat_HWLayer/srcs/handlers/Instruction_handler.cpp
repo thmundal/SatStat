@@ -12,6 +12,8 @@ Instruction_handler::Instruction_handler()
 	SADM_functions::init_stepper();
 	instruction_interpreter.append("auto_rotate", SADM_functions::set_auto_rotate);
 	instruction_interpreter.append("rotate", SADM_functions::rotate);
+	instruction_interpreter.append("subscribe", Subscriber_functions::subscribe);
+	instruction_interpreter.append("unsubscribe", Subscriber_functions::unsubscribe);
 }
 
 /**
@@ -88,37 +90,38 @@ void Instruction_handler::sadm_auto_rotate()
 */
 void Instruction_handler::interpret_instruction()
 {	
-	Json_container<JsonObject>* obj = instruction_queue.dequeue();
-	String instruction = obj->get().get<String>("instruction");	
+	Json_container<JsonObject>* obj_container = instruction_queue.dequeue();
+	JsonObject& obj = obj_container->get();
 
-	if (instruction != NULL)
+	if (obj.containsKey("request"))
 	{
-		void(*ptr)(Json_container<JsonObject>*);	
-		ptr = instruction_interpreter.get(instruction);
+		String request = obj.get<String>("request");
+
+		void(*ptr)(Json_container<JsonObject>*);
+		ptr = instruction_interpreter.get(request);
 
 		if (ptr != NULL)
 		{
-			ptr(obj);
+			ptr(obj_container);
 		}
 		else
 		{
-			delete obj;
+			delete obj_container;
 
-			obj = new Json_object_container();
-			JsonObject& tmp = obj->get();
-			tmp.set("error", instruction + " is not a valid instruction!");
+			obj_container = new Json_object_container();
+			JsonObject& tmp = obj_container->get();
+			tmp.set("error", request + " is not a valid request!");
 			tmp.printTo(Serial);
 		}
 	}
 	else
 	{
-		delete obj;
+		delete obj_container;
 
-		obj = new Json_object_container();
-		JsonObject& tmp = obj->get();
+		obj_container = new Json_object_container();
+		JsonObject& tmp = obj_container->get();
 		tmp.set("error", "Invalid argument!");
 		tmp.printTo(Serial);
-	}
-	
-	delete obj;
+	}	
+	delete obj_container;
 }

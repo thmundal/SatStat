@@ -76,15 +76,41 @@ Json_container<JsonObject>* Sensor_container::get_data(const String& name)
 Json_container<JsonObject>* Sensor_container::get_all_data()
 {
 	auto& list = sstl::Lists::get_data_list();
+	int count = list.count();
 
-	Json_container<JsonObject>* obj = json_handler.create_object();
-
-	for (int i = 0; i < list.count(); i++)
+	if (count != 0)
 	{
-		append_data(obj, list[i]);
+		Json_container<JsonObject>* obj = json_handler.create_object();
+
+		for (int i = 0; i < count; i++)
+		{
+			append_data(obj, list[i]);
+		}
+
+		return obj;
+	}
+	
+	return nullptr;
+}
+
+Json_container<JsonObject>* Sensor_container::get_sub_data()
+{
+	auto& list = sstl::Lists::get_sub_list();
+	int count = list.count();
+
+	if (count != 0)
+	{
+		Json_container<JsonObject>* obj = json_handler.create_object();
+
+		for (int i = 0; i < count; i++)
+		{
+			append_data(obj, list[i]);
+		}
+
+		return obj;
 	}
 
-	return obj;
+	return nullptr;
 }
 
 void Sensor_container::append_available_data(Json_container<JsonObject>* dest)

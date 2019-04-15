@@ -62,7 +62,12 @@ void HWLayer::loop()
 		sensor_container.read_all_sensors();
 
 		// Prints sensor data
-		serial_handler.print_to_serial(sensor_container.get_all_data());
+		auto sub_data = sensor_container.get_sub_data();
+		
+		if (sub_data != nullptr)
+		{
+			serial_handler.print_to_serial(sub_data);
+		}
 		
 		// Update start time to current time
 		sensor_interval_start_time = millis();

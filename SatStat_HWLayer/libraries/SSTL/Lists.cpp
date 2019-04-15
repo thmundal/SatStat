@@ -17,7 +17,7 @@ namespace sstl
 	}
 
 	void Lists::unsubscribe(const String& key)
-	{
+	{		
 		sub_list.erase(key);
 	}
 

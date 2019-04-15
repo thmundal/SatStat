@@ -187,6 +187,7 @@ bool Serial_handler::connection_init_approved()
 					return true;
 				}
 			}
+			send_nack();
 			delete tmp;
 		}
 	}	
