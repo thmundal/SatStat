@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    /// <summary>
+    /// A class to encapsulate a database item for saved com settings required for LiteDB. Use this class when saving or retrieving COM settings to/from database
+    /// </summary>
     public class DB_ComSettingsItem
     {
+        /// <summary>
+        /// UID of the object required for saving to a LiteDatabase
+        /// </summary>
         public ObjectId Id { get; set; }
         public int baud_rate { get; set; }
         public string Config { get; set; }

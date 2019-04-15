@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    /// <summary>
+    /// A class to encapsulate plot data so that it can be saved to a LiteDatabase. Use this class when saving or loading plot data to/from database.
+    /// </summary>
     class DB_SensorDataItem
     {
         public ObjectId Id { get; set; }

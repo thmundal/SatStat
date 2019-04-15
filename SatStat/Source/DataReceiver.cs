@@ -49,6 +49,9 @@ namespace SatStat
         /// </summary>
         private ObservableNumericValueCollection observedValues;
 
+        /// <summary>
+        /// Public getter for the observed values collection
+        /// </summary>
         public ObservableNumericValueCollection ObservedValues { get { return observedValues; } }
 
         /// <summary>
@@ -106,6 +109,10 @@ namespace SatStat
             OnPayloadReceived_Callback = cb;
         }
 
+        /// <summary>
+        /// Register a callback function to run when an observed value has changed.
+        /// </summary>
+        /// <param name="cb">The callback function to invoke passing the observable value as parameter</param>
         public void OnObservedvalueChanged(Action<IObservableNumericValue> cb)
         {
             onObservableValueChanged_cb = cb;

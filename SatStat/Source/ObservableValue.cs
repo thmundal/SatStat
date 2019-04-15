@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    /// <summary>
+    /// Describes a value that can be observed. When the value is changed, a callback method is invoked passing the Observed value as parameter
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class ObservableNumericValue<T> : IObservableNumericValue where T : IComparable
     {
         protected T value;
@@ -145,22 +149,82 @@ namespace SatStat
         }
     }
 
+    /// <summary>
+    /// An interface for ObservableNumericValue so that we can create lists without worrying about different generics in the same list
+    /// </summary>
     public interface IObservableNumericValue
     {
+        /// <summary>
+        /// Check if the value is above the defined max value
+        /// </summary>
+        /// <returns>Returns true if the value is above max value, false otherwise</returns>
         bool Over();
+
+        /// <summary>
+        /// Check if the value is below the defined min value
+        /// </summary>
+        /// <returns>Returns true if the value is below min value, false otherwise</returns>
         bool Under();
+
+        /// <summary>
+        /// Check if the value is between or equal to min or max
+        /// </summary>
+        /// <returns>Returns true if the value is equal or between min or max, false otherwise</returns>
         bool Stable();
+
+        /// <summary>
+        /// Check if the value is equal to min
+        /// </summary>
+        /// <returns>True is equal to min, false otherwise</returns>
         bool EqualMin();
+
+        /// <summary>
+        /// Check if the value is equal to max
+        /// </summary>
+        /// <returns>True if equal to max, false otherwise</returns>
         bool EqualMax();
+
+        /// <summary>
+        /// The value contained in the object
+        /// </summary>
         object Value { get; set; }
+
+        /// <summary>
+        /// A minimum value accepted for this object
+        /// </summary>
         object Min { get; set; }
+
+        /// <summary>
+        /// A maximum value accepted for this object
+        /// </summary>
         object Max { get; set; }
+
+        /// <summary>
+        /// Register a callback function to invoke when the value changes
+        /// </summary>
+        /// <param name="cb">An action passing an IObservableNumericvalue as parameter</param>
         void OnUpdate(Action<IObservableNumericValue> cb);
+
+        /// <summary>
+        /// A label for this object
+        /// </summary>
         string Label { get; set; }
+
+        /// <summary>
+        /// Should return the generic type that this object was initialized with
+        /// </summary>
         Type type { get; }
+
+        /// <summary>
+        /// Returns the offset between the current value and the min or max value, which ever is violated
+        /// </summary>
+        /// <returns>The different between the current violated max or min</returns>
         object Diff();
     }
 
+    /// <summary>
+    /// A collection of observable numeric values
+    /// </summary>
     public class ObservableNumericValueCollection : IEnumerable, IList<IObservableNumericValue>
     {
         private IObservableNumericValue[] valueCollection;
@@ -174,7 +238,6 @@ namespace SatStat
         {
             valueCollection = new IObservableNumericValue[0];
         }
-        
 
         public IObservableNumericValue this[int index] {
             get {
