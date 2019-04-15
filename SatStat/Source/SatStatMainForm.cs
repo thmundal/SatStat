@@ -20,6 +20,11 @@ namespace SatStat
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
 
+        public DataReceiver DataReceiver
+        {
+            get { return dataReceiver; }
+        }
+
         private Hashtable lineSeriesTable = new Hashtable();
 
         private PlotModel plotModel;
@@ -29,13 +34,9 @@ namespace SatStat
 
         private DB_ComSettingsItem savedComSettings;
 
-        private ObservableNumericValueCollection observedValues;
-
         public SatStatMainForm()
         {
             InitializeComponent();
-
-            observedValues = new ObservableNumericValueCollection();
 
             using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
             {
@@ -190,26 +191,29 @@ namespace SatStat
             // Add/update data in live view
             ThreadHelperClass.UI_TaskInvoke(this, null, UIliveOutputValuesList, (a) =>
             {
-                LiveDataRow row;
-
-                if (!liveDataList.ContainsKey(attribute))
+                LiveDataRow row = new LiveDataRow
                 {
-                    row = new LiveDataRow
-                    {
-                        name = attribute,
-                        value = payload.ToString()
-                    };
+                    name = attribute,
+                    value = payload.ToString()
+                };
 
-                    row.index = UIliveOutputValuesList.Rows.Add(new string[]{ row.name, row.value });
+                ObservedDataRow observedRow = new ObservedDataRow
+                {
+                    name = attribute,
+                    value = payload.ToString()
+                };
+
+                if (!liveDataList.ContainsKey(row.name))
+                {
+                    row.index = UIliveOutputValuesList.Rows.Add(new string[] { row.name, row.value });
                     liveDataList.Add(attribute, row);
+                }
 
+                if(!observedDataRows.ContainsKey(row.name))
+                {
                     if(dataReceiver.Observe)
                     {
-                        int rowIndex = UIParameterControlInput.Rows.Add(new string[] { row.name, row.value, row.value });
-                        UIParameterControlInput.Rows[rowIndex].Tag = attribute;
-
-                        rowIndex = UIObservedValuesOuputGrid.Rows.Add(new string[] { row.name, row.value, "Not configured", "Not configured" });
-                        UIObservedValuesOuputGrid.Rows[rowIndex].Tag = attribute;
+                        AddParameterControlRow(observedRow);
                     }
                 }
 
@@ -219,12 +223,43 @@ namespace SatStat
             }, null);
         }
 
+        private void AddParameterControlRow(ObservedDataRow row)
+        {
+            int rowIndex = UIParameterControlInput.Rows.Add(new string[] { row.name, row.min, row.max });
+            UIParameterControlInput.Rows[rowIndex].Tag = row.name;
+            row.input_index = rowIndex;
+
+            rowIndex = UIObservedValuesOuputGrid.Rows.Add(new string[] { row.name, row.value, "Not configured", "Not configured" });
+            UIObservedValuesOuputGrid.Rows[rowIndex].Tag = row.name;
+            row.output_index = rowIndex;
+
+            if(observedDataRows.ContainsKey(row.name))
+            {
+                observedDataRows[row.name] = row;
+            } else
+            {
+                observedDataRows.Add(row.name, row);
+            }
+        }
+
         private struct LiveDataRow
         {
             public int index;
             public string value;
             public string name;
         }
+
+        private struct ObservedDataRow
+        {
+            public int input_index;
+            public int output_index;
+            public string value;
+            public string name;
+            public string min;
+            public string max;
+        }
+
+        private Hashtable observedDataRows = new Hashtable();
 
         private Hashtable liveDataList = new Hashtable();
 
@@ -265,6 +300,26 @@ namespace SatStat
         public Control GetConnectionStatusControl()
         {
             return UIStatusStrip;
+        }
+
+        public void LoadParameterControlTemplate(ParameterControlTemplate template)
+        {
+            UIParameterControlInput.Rows.Clear();
+            UIObservedValuesOuputGrid.Rows.Clear();
+            DataReceiver.ObservedValues.Clear();
+
+            foreach (IObservableNumericValue v in template.Collection)
+            {
+                DataReceiver.ObservedValues.Add(v);
+                ObservedDataRow row = new ObservedDataRow
+                {
+                    name = v.Label,
+                    value = v.Value.ToString(),
+                    min = v.Min.ToString(),
+                    max = v.Max.ToString()
+                };
+                AddParameterControlRow(row);
+            }
         }
 
         #region event listeners
@@ -490,10 +545,18 @@ namespace SatStat
                 }
             }
         }
-        #endregion
 
-        private void UIParameterControlInput_CellValidated(object sender, DataGridViewCellEventArgs e)
+        private void saveParameterControlTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ParameterControlTemplateDialog parameterControlTemplateDialog = new ParameterControlTemplateDialog(false);
+            parameterControlTemplateDialog.ShowDialog();
         }
+
+        private void loadTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ParameterControlTemplateDialog parameterControlTemplateDialog = new ParameterControlTemplateDialog(true);
+            parameterControlTemplateDialog.ShowDialog();
+        }
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SatStat
         private T maxVal;
         private string label;
 
+        [BsonIgnore]
         public Type type { get{ return typeof(T); } }
 
         private Action<IObservableNumericValue> onUpdate_callback;
@@ -37,6 +39,7 @@ namespace SatStat
         public object Min { get { return minVal; } set { this.minVal = (T) value; } }
         public string Label { get { return label; } set { this.label = value; } }
         
+    
         public bool Over()
         {
             return value.CompareTo(maxVal) > 0;
@@ -161,15 +164,10 @@ namespace SatStat
     public class ObservableNumericValueCollection : IEnumerable, IList<IObservableNumericValue>
     {
         private IObservableNumericValue[] valueCollection;
-
         public bool IsReadOnly => false;
-
         public bool IsFixedSize => false;
-
         public int Count => valueCollection.Length;
-
         public object SyncRoot => this;
-
         public bool IsSynchronized => false;
 
         public ObservableNumericValueCollection()

@@ -177,10 +177,10 @@ namespace SatStat
                                         if(!observedValues.ContainsLabel(attribute))
                                         {
                                             observedAttribute.Label = attribute;
-                                            observedAttribute.OnUpdate(onObservableValueChanged_cb);
                                             observedValues.Add(observedAttribute);
                                         }
                                         observedAttribute = observedValues[attribute];
+                                        observedAttribute.OnUpdate(onObservableValueChanged_cb);
                                         observedAttribute.Value = payload;
                                     } else
                                     {

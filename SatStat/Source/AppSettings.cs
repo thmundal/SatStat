@@ -18,6 +18,7 @@ namespace SatStat
         public string DatabasePath { get { return Directory.GetCurrentDirectory() + @"\Database.db"; } }
         public string COMSettingsDB { get { return "ComSettings"; } }
         public string PlotDatabase { get { return "ChartData"; } }
+        public string ParameterControlDatabase { get { return "ParamControlDB"; } }
     }
 
     public struct COMSettings

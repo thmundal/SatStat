@@ -42,6 +42,9 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.displayDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parameterControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveParameterControlTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,14 +79,14 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.UIObservedValuesOuputGrid = new System.Windows.Forms.DataGridView();
-            this.UIParameterControlInput = new System.Windows.Forms.DataGridView();
-            this.ParamKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParamMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParamMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attribute = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UIParameterControlInput = new System.Windows.Forms.DataGridView();
+            this.ParamKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParamMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParamMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UImenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -107,7 +110,8 @@
             // 
             this.UImenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
-            this.dataToolStripMenuItem});
+            this.dataToolStripMenuItem,
+            this.parameterControlToolStripMenuItem});
             this.UImenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.UImenuStrip1.Name = "UImenuStrip1";
             this.UImenuStrip1.Size = new System.Drawing.Size(1423, 24);
@@ -181,6 +185,29 @@
             this.displayDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.displayDatabaseToolStripMenuItem.Text = "Display Database";
             this.displayDatabaseToolStripMenuItem.Click += new System.EventHandler(this.displayDatabaseToolStripMenuItem_Click);
+            // 
+            // parameterControlToolStripMenuItem
+            // 
+            this.parameterControlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveParameterControlTemplateToolStripMenuItem,
+            this.loadTemplateToolStripMenuItem});
+            this.parameterControlToolStripMenuItem.Name = "parameterControlToolStripMenuItem";
+            this.parameterControlToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
+            this.parameterControlToolStripMenuItem.Text = "Parameter control";
+            // 
+            // saveParameterControlTemplateToolStripMenuItem
+            // 
+            this.saveParameterControlTemplateToolStripMenuItem.Name = "saveParameterControlTemplateToolStripMenuItem";
+            this.saveParameterControlTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveParameterControlTemplateToolStripMenuItem.Text = "Save template";
+            this.saveParameterControlTemplateToolStripMenuItem.Click += new System.EventHandler(this.saveParameterControlTemplateToolStripMenuItem_Click);
+            // 
+            // loadTemplateToolStripMenuItem
+            // 
+            this.loadTemplateToolStripMenuItem.Name = "loadTemplateToolStripMenuItem";
+            this.loadTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadTemplateToolStripMenuItem.Text = "Load template";
+            this.loadTemplateToolStripMenuItem.Click += new System.EventHandler(this.loadTemplateToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -593,46 +620,6 @@
             this.UIObservedValuesOuputGrid.Size = new System.Drawing.Size(600, 663);
             this.UIObservedValuesOuputGrid.TabIndex = 1;
             // 
-            // UIParameterControlInput
-            // 
-            this.UIParameterControlInput.AllowUserToAddRows = false;
-            this.UIParameterControlInput.AllowUserToResizeColumns = false;
-            this.UIParameterControlInput.AllowUserToResizeRows = false;
-            this.UIParameterControlInput.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.UIParameterControlInput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UIParameterControlInput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ParamKey,
-            this.ParamMin,
-            this.ParamMax});
-            this.UIParameterControlInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UIParameterControlInput.Location = new System.Drawing.Point(3, 3);
-            this.UIParameterControlInput.MultiSelect = false;
-            this.UIParameterControlInput.Name = "UIParameterControlInput";
-            this.UIParameterControlInput.RowHeadersVisible = false;
-            this.UIParameterControlInput.Size = new System.Drawing.Size(357, 663);
-            this.UIParameterControlInput.TabIndex = 0;
-            this.UIParameterControlInput.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.UIParameterControlInput_CellValidated);
-            this.UIParameterControlInput.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.UIParameterControlInput_CellValidating);
-            // 
-            // ParamKey
-            // 
-            this.ParamKey.HeaderText = "Data attribute";
-            this.ParamKey.Name = "ParamKey";
-            this.ParamKey.ReadOnly = true;
-            this.ParamKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ParamMin
-            // 
-            this.ParamMin.HeaderText = "Minimum";
-            this.ParamMin.Name = "ParamMin";
-            this.ParamMin.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ParamMax
-            // 
-            this.ParamMax.HeaderText = "Maximum";
-            this.ParamMax.Name = "ParamMax";
-            this.ParamMax.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // attribute
             // 
             this.attribute.HeaderText = "Attribute";
@@ -656,6 +643,45 @@
             this.difference.HeaderText = "Difference";
             this.difference.Name = "difference";
             this.difference.ReadOnly = true;
+            // 
+            // UIParameterControlInput
+            // 
+            this.UIParameterControlInput.AllowUserToAddRows = false;
+            this.UIParameterControlInput.AllowUserToResizeColumns = false;
+            this.UIParameterControlInput.AllowUserToResizeRows = false;
+            this.UIParameterControlInput.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UIParameterControlInput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UIParameterControlInput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ParamKey,
+            this.ParamMin,
+            this.ParamMax});
+            this.UIParameterControlInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UIParameterControlInput.Location = new System.Drawing.Point(3, 3);
+            this.UIParameterControlInput.MultiSelect = false;
+            this.UIParameterControlInput.Name = "UIParameterControlInput";
+            this.UIParameterControlInput.RowHeadersVisible = false;
+            this.UIParameterControlInput.Size = new System.Drawing.Size(357, 663);
+            this.UIParameterControlInput.TabIndex = 0;
+            this.UIParameterControlInput.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.UIParameterControlInput_CellValidating);
+            // 
+            // ParamKey
+            // 
+            this.ParamKey.HeaderText = "Data attribute";
+            this.ParamKey.Name = "ParamKey";
+            this.ParamKey.ReadOnly = true;
+            this.ParamKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ParamMin
+            // 
+            this.ParamMin.HeaderText = "Minimum";
+            this.ParamMin.Name = "ParamMin";
+            this.ParamMin.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ParamMax
+            // 
+            this.ParamMax.HeaderText = "Maximum";
+            this.ParamMax.Name = "ParamMax";
+            this.ParamMax.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // SatStatMainForm
             // 
@@ -750,6 +776,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observedValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn difference;
+        private System.Windows.Forms.ToolStripMenuItem parameterControlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveParameterControlTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadTemplateToolStripMenuItem;
     }
 }
 
