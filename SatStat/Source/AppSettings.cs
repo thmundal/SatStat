@@ -70,5 +70,10 @@ namespace SatStat
         /// Defines the character(s) that denote the end of the data message send over COM connection
         /// </summary>
         public string newline;
+
+        /// <summary>
+        /// A text describing the unit connected to the selected COM port
+        /// </summary>
+        public string portDescription;
     }
 }

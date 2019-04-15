@@ -31,7 +31,8 @@ namespace SatStat
             {
                 baud_rate = baud_rate,
                 config = Config,
-                newline = "\r\n"    // Fix this hotfix hack
+                newline = "\r\n",    // Fix this hotfix hack
+                portDescription = PortDescription
             };
         }
     }

@@ -107,6 +107,12 @@ references:
   commentId: F:SatStat.COMSettings.newline
   fullName: SatStat.COMSettings.newline
   nameWithType: COMSettings.newline
+- uid: SatStat.COMSettings.portDescription
+  name: portDescription
+  href: api/SatStat.COMSettings.html#SatStat_COMSettings_portDescription
+  commentId: F:SatStat.COMSettings.portDescription
+  fullName: SatStat.COMSettings.portDescription
+  nameWithType: COMSettings.portDescription
 - uid: SatStat.ComSettingsForm
   name: ComSettingsForm
   href: api/SatStat.ComSettingsForm.html

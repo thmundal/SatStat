@@ -26,7 +26,7 @@ namespace SatStat
         public Instruction(string instr, params object[] arguments)
         {
             paramtable = new JObject();
-            paramtable["instruction"] = instr;
+            paramtable["request"] = instr;
 
             string param = "";
 
@@ -65,6 +65,22 @@ namespace SatStat
         {
             Instruction i = new Instruction(instr, arguments);
             return i.toJObject();
+        }
+
+        public static JObject Subscription(string type, params object[] subscriptions)
+        {
+            JArray list = new JArray();
+
+            foreach(object n in subscriptions)
+            {
+                list.Add(n);
+            }
+
+            JObject instruction = new JObject();
+            instruction["request"] = type;
+            instruction["parameters"] = list;
+
+            return instruction;
         }
     }
 }

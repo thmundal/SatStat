@@ -102,7 +102,7 @@ namespace SatStat
                         Parity = (int)SerialHandler.default_settings.Parity,
                         DataBits = (int)SerialHandler.default_settings.DataBits,
                         StopBits = (int)SerialHandler.default_settings.StopBits,
-                        NewLine = SerialHandler.default_settings.NewLine,
+                        NewLine = @SerialHandler.default_settings.NewLine,
                         Config = "8N1",
                         PortDescription = Program.settings.portDescription,
                         PortName = Program.settings.portName

@@ -60,7 +60,7 @@
           "hash": "kd3R6FBkvqB+Gz7hUEpuyA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.COMSettings.html",
-          "hash": "RJ50NIZN0awCDQ66qSq9Pw=="
+          "hash": "kE5DvYSRre4zl46d5MG2Kw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "JIosfYEJb/74CmmMX6GR5Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "kPwX0M1BVJoeGqXSXcJIjA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.DataStream.html",
-          "hash": "rytB2Ug2FLqbej/O4GFkrg=="
+          "hash": "YQrNVE2mZMAYgfYkjAWG2g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "SnCj6S8Q2uDeIjY8Tk/jAQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "I2vW7bzrcw5bbjbPw7aghw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "ybfbsCqI2ej2PaMPFJNurg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "kuwd1MbLq7+v2CTx2IuoCA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -228,7 +228,7 @@
           "hash": "IAKJDzfH0OfRuEskxeCyRQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -240,7 +240,7 @@
           "hash": "8RYEhgcQw1Ji/u5+w3PhKA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +252,7 @@
           "hash": "hc6695g8pp1Inu20ILebtw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,7 @@
           "hash": "SpegpmJr5yw+sg0JZE98Iw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "qyNWh+UF3kj+3snO+cKEzg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -336,7 +336,7 @@
           "hash": "/E72/PN0t9j8Y4ZtDdy6Vw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -360,7 +360,7 @@
           "hash": "iJMlnEX6ejwYpojMg+X0TQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -421,24 +421,24 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 28,
-          "skipped_file_count": 16
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 28,
+          "skipped_file_count": 27
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
         }
       }
     },

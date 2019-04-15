@@ -111,7 +111,7 @@ namespace SatStat
             
             sensorListReceiver = new DataReceiver();
             
-            sensorListReceiver.OnPayloadReceived((object payload, string attribue) =>
+            sensorListReceiver.OnPayloadReceived((object payload, string attribute) =>
             {
                 ReceiveSensorList((JObject)payload);
             });
@@ -383,6 +383,8 @@ namespace SatStat
                 if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
                 {
                     dataReceiver.Subscribe(Program.serial, attribute, type);
+
+                    Program.serial.Output(Instruction.Subscription("subscribe", attribute));
                 }
 
                 if(Program.socketHandler != null)
@@ -393,6 +395,13 @@ namespace SatStat
                 Debug.Log("Subscribed to " + attribute);
             } else
             {
+                Debug.Log("DO unsubscribe plx!");
+
+                if(Program.serial != null)
+                {
+                    Program.serial.Output(Instruction.Subscription("unsubscribe", attribute));
+                }
+
                 dataReceiver.Unsubscribe(attribute);
                 Debug.Log("Unsubscribed to " + attribute);
             }

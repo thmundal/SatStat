@@ -28,7 +28,7 @@ namespace SatStatTests
                     Parity = 1,
                     DataBits = 16,
                     StopBits = 1,
-                    NewLine = SerialHandler.default_settings.NewLine,
+                    NewLine = @SerialHandler.default_settings.NewLine,
                     Config = "8N1",
                     PortDescription = "DatabaseTest",
                     PortName = "DBT"
@@ -44,10 +44,7 @@ namespace SatStatTests
                     Console.WriteLine("Settings document exists, updating values...");
                     Assert.IsTrue(updateSucess);
 
-                    foreach(char c in existing.NewLine)
-                    {
-                        Console.Write(c);
-                    }
+                    
                     Console.WriteLine("");
                     Console.WriteLine(existing.NewLine.Length);
                     

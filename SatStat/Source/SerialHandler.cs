@@ -45,7 +45,7 @@ namespace SatStat
             static public Parity Parity = Parity.None;
             static public int DataBits = 8;
             static public StopBits StopBits = StopBits.One;
-            static public string NewLine = @"\r\n";
+            static public string NewLine = "\r\n";
         };
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace SatStat
                 DataBits = default_settings.DataBits,
                 StopBits = default_settings.StopBits,
                 NewLine = default_settings.NewLine,
-                ReadTimeout = 1000
+                ReadTimeout = 1500
             };
 
             connection.DataReceived += new SerialDataReceivedEventHandler(OnDataReceived);
@@ -100,10 +100,10 @@ namespace SatStat
 
             try
             {
-                Debug.Log("Receiving...");
+                //Debug.Log("Receiving...");
                 string input = connection.ReadLine();
 
-                Debug.Log(input);
+                //Debug.Log(input);
                 Debug.Log(ConnectionStatus);
 
                 JObject inputParsed = Parse(input);
@@ -120,8 +120,8 @@ namespace SatStat
                 if(ConnectionStatus == ConnectionStatus.WaitingConnectInit && inputParsed.ContainsKey("connect"))
                 {
                     string param = inputParsed["connect"].ToObject<string>();
-                    Debug.Log("Param received:");
-                    Debug.Log(param);
+                    //Debug.Log("Param received:");
+                    //Debug.Log(param);
                     if(param == "init")
                     {
                         Connect();
@@ -130,7 +130,7 @@ namespace SatStat
 
                 if(ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    Program.app.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
+                    ThreadHelperClass.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
                     DeliverSubscriptions();
                 }
             }

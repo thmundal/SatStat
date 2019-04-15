@@ -36,6 +36,8 @@ namespace SatStat
         /// </summary>
         public void DeliverSubscriptions()
         {
+            bool received = false;
+
             for(int i=0; i<inputBuffer.Count; i++)
             {
                 var input = inputBuffer[i];
@@ -50,14 +52,16 @@ namespace SatStat
                         string attribute = subscriber.attribute;
                         if (key == attribute)
                         {
-                            //Console.Write("Delivering to subscribers: ");
-                            //Debug.Log(value);
                             subscriber.receive(value);
+                            received = true;
                         }
                     }
                 }
 
-                inputBuffer.RemoveAt(i);
+                if(received)
+                {
+                    inputBuffer.RemoveAt(i);
+                }
             }
         }
 
@@ -67,7 +71,7 @@ namespace SatStat
         /// <param name="input">The json string data to be parsed</param>
         /// <returns>Returns a JObject containing parsed data</returns>
         public JObject Parse(string input)
-        {   
+        {
             if(input.Length > 0)
             {
                 try
