@@ -204,11 +204,18 @@ namespace SatStat
             connection.NewLine = default_settings.NewLine;
 
             connection.PortName = portName;
-            connection.Open();
 
-            connectionStatus = ConnectionStatus.Handshake;
+            try
+            {
+                connection.Open();
+                connectionStatus = ConnectionStatus.Handshake;
 
-            StartHandshake();
+                StartHandshake();
+            }
+            catch (System.IO.IOException e)
+            {
+                Debug.Log(e.ToString());
+            }            
         }
 
         /// <summary>

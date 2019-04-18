@@ -35,14 +35,15 @@ Instruction_handler::~Instruction_handler()
 */
 bool Instruction_handler::insert_instruction(const String& input_data)
 {
-	Json_container<JsonObject>* obj = new Json_object_container();
-	
+	Json_container<JsonObject>* obj = new Json_object_container();	
+
 	if (obj->parse(input_data))
 	{
 		instruction_queue.enqueue(obj);
 		return true;
 	}
 
+	delete obj;	
 	return false;
 }
 
