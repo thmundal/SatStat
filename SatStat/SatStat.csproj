@@ -150,7 +150,7 @@
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
     <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="docfx.json" />
     <None Include="index.md" />
     <None Include="packages.config" />

@@ -1,42 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="SatStat.DataProvider">
-    <Position X="11.25" Y="15.75" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Source\DataProvider.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SatStat.DataReceiver" BaseTypeListCollapsed="true">
-    <Position X="8.75" Y="2.75" Width="4.75" />
+    <Position X="10.75" Y="2.75" Width="4.75" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAACAAAgAEAAAAIACAAACAAUAQFAAAAgQAAA=</HashCode>
       <FileName>Source\DataReceiver.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.DataStream">
-    <Position X="3.75" Y="0.5" Width="3.5" />
+    <Position X="3.5" Y="0.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAEgAAAAAAAAAAAAAAAIAAEAgAAAAAQBAAAAAAEAAAA=</HashCode>
       <FileName>Source\DataStream.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.DataSubscription" BaseTypeListCollapsed="true">
-    <Position X="7.75" Y="0.5" Width="3.75" />
+    <Position X="5.75" Y="6.75" Width="3.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEABAAAEAAAAAA=</HashCode>
       <FileName>Source\DataSubscription.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.JSON">
-    <Position X="10.25" Y="10.5" Width="2.75" />
+    <Position X="9.75" Y="7.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAEAAAACAAAAAAAAAAAAIAAAAAAAAQAACAAAAAAAIAA=</HashCode>
       <FileName>Source\JSON.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.Program">
-    <Position X="5.75" Y="7.25" Width="4.75" />
+    <Position X="6" Y="4" Width="4.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAIEAgAAACAAAAAACAABAAAAAA=</HashCode>
       <FileName>Source\Program.cs</FileName>
@@ -66,12 +59,13 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.StreamSimulator">
-    <Position X="6" Y="3.75" Width="2.5" />
+    <Position X="7.25" Y="0.5" Width="2.5" />
     <InheritanceLine Type="SatStat.DataStream" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="2.875" />
-        <Point X="7.812" Y="2.875" />
-        <Point X="7.812" Y="3.75" />
+        <Point X="7" Y="2" />
+        <Point X="7.49" Y="2" />
+        <Point X="7.49" Y="2" />
+        <Point X="7.25" Y="2" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -80,7 +74,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ThreadHelperClass">
-    <Position X="0.5" Y="10.25" Width="5.5" />
+    <Position X="10" Y="0.5" Width="5.5" />
     <NestedTypes>
       <Delegate Name="SatStat.ThreadHelperClass.SetBaudrateCallback" Collapsed="true">
         <TypeIdentifier>
@@ -93,24 +87,17 @@
       <FileName>Source\ThreadHelperClass.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SatStat.DB_SensorDataItem">
-    <Position X="0.5" Y="12.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAADAAAAQAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>Source\DB_SensorDataItem.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SatStat.Debug">
-    <Position X="7.25" Y="15.75" Width="3.25" />
+    <Position X="9.75" Y="10" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Source\Debug.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.Instruction">
-    <Position X="6.25" Y="10.25" Width="3.75" />
+    <Position X="5.75" Y="9" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAAIAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Source\Instruction.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -122,108 +109,35 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.StateObject">
-    <Position X="11.75" Y="1" Width="1.75" />
+    <Position X="15.75" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACCAEAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Source\SocketHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SatStat.DB_ComSettingsItem">
-    <Position X="6.5" Y="12.25" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AIAGAAAgAgAAAAAAAAAAAAgAAAAAABAAAAAGAAAQAAA=</HashCode>
-      <FileName>Source\DB_ComSettingsItem.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SatStat.ObservableNumericValue&lt;T&gt;">
-    <Position X="3.25" Y="15.75" Width="3.75" />
-    <TypeIdentifier>
-      <HashCode>AQAAAAAAkBAAABCAkAIAAAAAAAABAGQAIBAgAAkAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SatStat.ObservableInt">
-    <Position X="0.5" Y="15.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SatStat.ObservableFloat">
-    <Position X="0.5" Y="16.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SatStat.ObservableDouble">
-    <Position X="0.5" Y="18.25" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SatStat.ObservableLong">
-    <Position X="0.5" Y="19.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SatStat.ObservableNumericValueCollection" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="21.5" Width="6.5" />
-    <TypeIdentifier>
-      <HashCode>AEIAAEAAAACABRBQCAQAFAQgAAAAIAAACAAAAABQIAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SatStat.ObservableNumericValueCollectionEnum" BaseTypeListCollapsed="true">
-    <Position X="7.25" Y="21.5" Width="5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAASAIAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SatStat.ParameterControlTemplate">
-    <Position X="9.25" Y="13" Width="5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAQAAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>Source\ParameterControlTemplate.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Struct Name="SatStat.AppSettings">
-    <Position X="3.25" Y="12.5" Width="3" />
+    <Position X="12.75" Y="7.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAIIAAAAAAAgAgAAAAAAAAAQAAAAAgA=</HashCode>
       <FileName>Source\AppSettings.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="SatStat.COMSettings">
-    <Position X="15" Y="7.5" Width="1.5" />
+    <Position X="15.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Source\AppSettings.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="SatStat.SerialSettingsCollection">
-    <Position X="10.75" Y="7.25" Width="2" />
+    <Position X="15.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAABAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Source\SerialHandler.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Interface Name="SatStat.IObservableNumericValue">
-    <Position X="7.25" Y="17.25" Width="3.75" />
-    <TypeIdentifier>
-      <HashCode>AQAAAAAAEBAAAAAAEAIAAAAAAAABAEQAIAAgAAkAAAA=</HashCode>
-      <FileName>Source\ObservableValue.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Enum Name="SatStat.ConnectionStatus">
-    <Position X="10.75" Y="9" Width="1.75" />
+    <Position X="15.75" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAIAgAAAAA=</HashCode>
       <FileName>Source\SerialHandler.cs</FileName>
