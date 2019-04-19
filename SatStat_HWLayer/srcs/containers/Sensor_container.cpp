@@ -6,7 +6,7 @@
 */
 Sensor_container::Sensor_container()
 {
-	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 6));
+	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 7));
 }
 
 /**

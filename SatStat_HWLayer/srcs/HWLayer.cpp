@@ -1,6 +1,29 @@
 #pragma once
 #include "HWLayer.h"
 
+struct Print_time
+{
+	Print_time()
+	{
+		start_time = millis();
+	}
+
+	~Print_time()
+	{
+		end_time = millis();
+		execution_time = end_time - start_time;
+		String str = "Execution time: " + String(execution_time) + "ms";			
+		Serial.println(str);
+	}
+
+private:
+	unsigned long start_time;
+	unsigned long end_time;
+	unsigned long execution_time;
+};
+
+#define scoped_timer Print_time timer
+
 /**
 *	Sets up Vcc and GND pins for DHT11 temperature and humidity sensor, and initializes the serial port.
 *	Also handles the handshake protocol as defined in SatStat communication protocol.
@@ -8,10 +31,10 @@
 void HWLayer::setup()
 {
 	// Temp and hum sensor gnd and 5V
-	pinMode(7, OUTPUT);
-	digitalWrite(7, LOW);
 	pinMode(5, OUTPUT);
-	digitalWrite(5, HIGH);
+	digitalWrite(5, LOW);
+	pinMode(6, OUTPUT);
+	digitalWrite(6, HIGH);
 
 	// Init serial
 	Serial.begin(9600);
@@ -59,7 +82,10 @@ void HWLayer::loop()
 	if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 	{
 		// Reads the sensors
-		sensor_container.read_all_sensors();
+		{
+			scoped_timer;
+			sensor_container.read_all_sensors();
+		}
 
 		// Prints sensor data
 		auto sub_data = sensor_container.get_sub_data();

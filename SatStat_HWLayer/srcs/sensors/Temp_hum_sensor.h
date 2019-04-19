@@ -1,6 +1,6 @@
 #pragma once
 #include "Sensor.h"
-#include "../../libraries/dht.h"
+#include "../../libraries/DHT/DHT_U.h"
 
 /**
 *	The Temp_hum_sensor is an example of a class for a specific sensor, in this case the DHT11 temperature and humidity sensor.
@@ -13,7 +13,9 @@ class Temp_hum_sensor : public Sensor
 {
 public:
 	Temp_hum_sensor(const String& name, const int& pin);	
+	~Temp_hum_sensor();
+
 	void read_sensor() override;	
 private:	
-	dht DHT;
+	DHT_Unified* dht;
 };

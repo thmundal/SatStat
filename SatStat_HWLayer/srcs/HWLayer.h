@@ -31,7 +31,7 @@ private:
 
 	// Timing constrains
 	unsigned long sensor_interval_start_time;
-	const unsigned long sensor_interval_duration = 1000;
+	const unsigned long sensor_interval_duration = 2000;
 
 	unsigned long outer_timeout_start_time;
 	const unsigned long outer_timeout_duration = 10000;

@@ -55,6 +55,21 @@
     <Filter Include="Header Files\libraries\LinkedList">
       <UniqueIdentifier>{77df2edf-f048-4908-aeb6-e5f6ff1ed8b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\libraries\Adafruit_sensor">
+      <UniqueIdentifier>{b196ecc2-1f6d-495b-8d25-450facb42583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libraries\DHT">
+      <UniqueIdentifier>{f3fd4c0b-1b8c-4c25-aa78-242236cdc87b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\DHT">
+      <UniqueIdentifier>{c074a723-c294-4985-9169-e73ab911f896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libraries\Stepper">
+      <UniqueIdentifier>{37e03a23-0029-4457-9ed7-a35a74d9b9a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\Stepper">
+      <UniqueIdentifier>{49f85e84-5987-419a-8052-c294dc7609b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -84,16 +99,7 @@
     <ClInclude Include="libraries\ArduinoJson.hpp">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\DHT.h">
-      <Filter>Header Files\libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\DS1302.h">
-      <Filter>Header Files\libraries</Filter>
-    </ClInclude>
     <ClInclude Include="libraries\QueueArray.h">
-      <Filter>Header Files\libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\Stepper.h">
       <Filter>Header Files\libraries</Filter>
     </ClInclude>
     <ClInclude Include="srcs\sensors\Sensor.h">
@@ -375,17 +381,20 @@
     <ClInclude Include="libraries\LinkedList\Node.h">
       <Filter>Header Files\libraries\LinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="libraries\Adafruit_Sensor\Adafruit_Sensor.h">
+      <Filter>Header Files\libraries\Adafruit_sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\DHT\DHT.h">
+      <Filter>Header Files\libraries\DHT</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\Stepper\Stepper.h">
+      <Filter>Header Files\libraries\Stepper</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries\DHT\DHT_U.h">
+      <Filter>Header Files\libraries\DHT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libraries\DHT.cpp">
-      <Filter>Source Files\libraries</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\DS1302.cpp">
-      <Filter>Source Files\libraries</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\Stepper.cpp">
-      <Filter>Source Files\libraries</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp">
       <Filter>Source Files\srcs\sensors</Filter>
     </ClCompile>
@@ -418,6 +427,15 @@
     </ClCompile>
     <ClCompile Include="srcs\containers\Subscriber_functions.cpp">
       <Filter>Source Files\srcs\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="libraries\DHT\DHT_U.cpp">
+      <Filter>Source Files\libraries\DHT</Filter>
+    </ClCompile>
+    <ClCompile Include="libraries\DHT\DHT.cpp">
+      <Filter>Source Files\libraries\DHT</Filter>
+    </ClCompile>
+    <ClCompile Include="libraries\Stepper\Stepper.cpp">
+      <Filter>Source Files\libraries\Stepper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

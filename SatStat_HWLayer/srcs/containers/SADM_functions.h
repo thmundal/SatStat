@@ -1,6 +1,6 @@
 #pragma once
 #include "Json_object_container.h"
-#include "../../libraries/Stepper.h"
+#include "../../libraries/Stepper/Stepper.h"
 
 /**
 *	Abstract class with all static members for the functions to be compatible with insertion into the instruction_interpreter list in the Instruction_handler.
