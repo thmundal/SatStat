@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.UImenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +87,31 @@
             this.ParamKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParamMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParamMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.UITestConfigOutputParamChecklist = new System.Windows.Forms.CheckedListBox();
+            this.UITestConfigAddInstructionBtn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.UITestConfigInstructionRunNumberInput = new System.Windows.Forms.NumericUpDown();
+            this.UITestConfigInstructionParameterInput = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.UITestConfigInstructionNameInput = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.UITestConfigSavedConfigsSelect = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.UITestConfigUseCurrentParamConfigCheck = new System.Windows.Forms.CheckBox();
+            this.UITestConfigParameterTemplateSelect = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.UITestConfigDescription = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.UITestConfigName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.UImenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -104,6 +129,13 @@
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UIParameterControlInput)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionRunNumberInput)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // UImenuStrip1
@@ -198,14 +230,14 @@
             // saveParameterControlTemplateToolStripMenuItem
             // 
             this.saveParameterControlTemplateToolStripMenuItem.Name = "saveParameterControlTemplateToolStripMenuItem";
-            this.saveParameterControlTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveParameterControlTemplateToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.saveParameterControlTemplateToolStripMenuItem.Text = "Save template";
             this.saveParameterControlTemplateToolStripMenuItem.Click += new System.EventHandler(this.saveParameterControlTemplateToolStripMenuItem_Click);
             // 
             // loadTemplateToolStripMenuItem
             // 
             this.loadTemplateToolStripMenuItem.Name = "loadTemplateToolStripMenuItem";
-            this.loadTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadTemplateToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.loadTemplateToolStripMenuItem.Text = "Load template";
             this.loadTemplateToolStripMenuItem.Click += new System.EventHandler(this.loadTemplateToolStripMenuItem_Click);
             // 
@@ -425,8 +457,8 @@
             // 
             this.UIliveOutputValuesList.AllowUserToResizeColumns = false;
             this.UIliveOutputValuesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            this.UIliveOutputValuesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            this.UIliveOutputValuesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.UIliveOutputValuesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UIliveOutputValuesList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.UIliveOutputValuesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -436,14 +468,14 @@
             this.UIliveOutputValuesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UIliveOutputValuesList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIliveOutputValuesList.DefaultCellStyle = dataGridViewCellStyle6;
             this.UIliveOutputValuesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UIliveOutputValuesList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.UIliveOutputValuesList.Location = new System.Drawing.Point(3, 16);
@@ -495,6 +527,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(437, 3);
             this.tabControl1.Name = "tabControl1";
@@ -589,8 +622,8 @@
             // 
             this.UIObservedValuesOuputGrid.AllowUserToResizeColumns = false;
             this.UIObservedValuesOuputGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            this.UIObservedValuesOuputGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            this.UIObservedValuesOuputGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.UIObservedValuesOuputGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UIObservedValuesOuputGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.UIObservedValuesOuputGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -601,14 +634,14 @@
             this.observedValue,
             this.status,
             this.difference});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UIObservedValuesOuputGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIObservedValuesOuputGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.UIObservedValuesOuputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UIObservedValuesOuputGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.UIObservedValuesOuputGrid.Location = new System.Drawing.Point(366, 3);
@@ -683,6 +716,257 @@
             this.ParamMax.Name = "ParamMax";
             this.ParamMax.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.tableLayoutPanel5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(975, 675);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "Test configuration";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox3, 0, 2);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(975, 675);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.UITestConfigOutputParamChecklist);
+            this.groupBox1.Controls.Add(this.UITestConfigAddInstructionBtn);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.UITestConfigInstructionRunNumberInput);
+            this.groupBox1.Controls.Add(this.UITestConfigInstructionParameterInput);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.UITestConfigInstructionNameInput);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 157);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(969, 166);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add Instruction";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(419, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Output parameters";
+            // 
+            // UITestConfigOutputParamChecklist
+            // 
+            this.UITestConfigOutputParamChecklist.CheckOnClick = true;
+            this.UITestConfigOutputParamChecklist.FormattingEnabled = true;
+            this.UITestConfigOutputParamChecklist.Location = new System.Drawing.Point(419, 35);
+            this.UITestConfigOutputParamChecklist.MultiColumn = true;
+            this.UITestConfigOutputParamChecklist.Name = "UITestConfigOutputParamChecklist";
+            this.UITestConfigOutputParamChecklist.Size = new System.Drawing.Size(544, 124);
+            this.UITestConfigOutputParamChecklist.TabIndex = 7;
+            // 
+            // UITestConfigAddInstructionBtn
+            // 
+            this.UITestConfigAddInstructionBtn.Location = new System.Drawing.Point(16, 137);
+            this.UITestConfigAddInstructionBtn.Name = "UITestConfigAddInstructionBtn";
+            this.UITestConfigAddInstructionBtn.Size = new System.Drawing.Size(111, 23);
+            this.UITestConfigAddInstructionBtn.TabIndex = 6;
+            this.UITestConfigAddInstructionBtn.Text = "Add instruction";
+            this.UITestConfigAddInstructionBtn.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(241, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Number of runs";
+            // 
+            // UITestConfigInstructionRunNumberInput
+            // 
+            this.UITestConfigInstructionRunNumberInput.Location = new System.Drawing.Point(244, 37);
+            this.UITestConfigInstructionRunNumberInput.Name = "UITestConfigInstructionRunNumberInput";
+            this.UITestConfigInstructionRunNumberInput.Size = new System.Drawing.Size(120, 20);
+            this.UITestConfigInstructionRunNumberInput.TabIndex = 4;
+            // 
+            // UITestConfigInstructionParameterInput
+            // 
+            this.UITestConfigInstructionParameterInput.Location = new System.Drawing.Point(16, 83);
+            this.UITestConfigInstructionParameterInput.Name = "UITestConfigInstructionParameterInput";
+            this.UITestConfigInstructionParameterInput.Size = new System.Drawing.Size(170, 20);
+            this.UITestConfigInstructionParameterInput.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Instruction parameter";
+            // 
+            // UITestConfigInstructionNameInput
+            // 
+            this.UITestConfigInstructionNameInput.Location = new System.Drawing.Point(16, 37);
+            this.UITestConfigInstructionNameInput.Name = "UITestConfigInstructionNameInput";
+            this.UITestConfigInstructionNameInput.Size = new System.Drawing.Size(170, 20);
+            this.UITestConfigInstructionNameInput.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Instruction name";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.UITestConfigSavedConfigsSelect);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.UITestConfigUseCurrentParamConfigCheck);
+            this.groupBox2.Controls.Add(this.UITestConfigParameterTemplateSelect);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.UITestConfigDescription);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.UITestConfigName);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(969, 148);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Test configuration";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(509, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(127, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Saved test configurations";
+            // 
+            // UITestConfigSavedConfigsSelect
+            // 
+            this.UITestConfigSavedConfigsSelect.FormattingEnabled = true;
+            this.UITestConfigSavedConfigsSelect.Location = new System.Drawing.Point(512, 36);
+            this.UITestConfigSavedConfigsSelect.Name = "UITestConfigSavedConfigsSelect";
+            this.UITestConfigSavedConfigsSelect.Size = new System.Drawing.Size(451, 95);
+            this.UITestConfigSavedConfigsSelect.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Save test configuration";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // UITestConfigUseCurrentParamConfigCheck
+            // 
+            this.UITestConfigUseCurrentParamConfigCheck.AutoSize = true;
+            this.UITestConfigUseCurrentParamConfigCheck.Location = new System.Drawing.Point(244, 65);
+            this.UITestConfigUseCurrentParamConfigCheck.Name = "UITestConfigUseCurrentParamConfigCheck";
+            this.UITestConfigUseCurrentParamConfigCheck.Size = new System.Drawing.Size(230, 17);
+            this.UITestConfigUseCurrentParamConfigCheck.TabIndex = 6;
+            this.UITestConfigUseCurrentParamConfigCheck.Text = "Use current parameter control configuration";
+            this.UITestConfigUseCurrentParamConfigCheck.UseVisualStyleBackColor = true;
+            // 
+            // UITestConfigParameterTemplateSelect
+            // 
+            this.UITestConfigParameterTemplateSelect.FormattingEnabled = true;
+            this.UITestConfigParameterTemplateSelect.Location = new System.Drawing.Point(244, 36);
+            this.UITestConfigParameterTemplateSelect.Name = "UITestConfigParameterTemplateSelect";
+            this.UITestConfigParameterTemplateSelect.Size = new System.Drawing.Size(163, 21);
+            this.UITestConfigParameterTemplateSelect.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(241, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(133, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Parameter control template";
+            // 
+            // UITestConfigDescription
+            // 
+            this.UITestConfigDescription.Location = new System.Drawing.Point(13, 81);
+            this.UITestConfigDescription.Multiline = true;
+            this.UITestConfigDescription.Name = "UITestConfigDescription";
+            this.UITestConfigDescription.Size = new System.Drawing.Size(173, 61);
+            this.UITestConfigDescription.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Test description";
+            // 
+            // UITestConfigName
+            // 
+            this.UITestConfigName.Location = new System.Drawing.Point(13, 37);
+            this.UITestConfigName.Name = "UITestConfigName";
+            this.UITestConfigName.Size = new System.Drawing.Size(176, 20);
+            this.UITestConfigName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Test name";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 329);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(969, 343);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Instruction list";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(963, 324);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // SatStatMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,6 +1002,15 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UIParameterControlInput)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionRunNumberInput)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -779,6 +1072,31 @@
         private System.Windows.Forms.ToolStripMenuItem parameterControlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveParameterControlTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadTemplateToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox UITestConfigDescription;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox UITestConfigName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox UITestConfigUseCurrentParamConfigCheck;
+        private System.Windows.Forms.ComboBox UITestConfigParameterTemplateSelect;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button UITestConfigAddInstructionBtn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown UITestConfigInstructionRunNumberInput;
+        private System.Windows.Forms.TextBox UITestConfigInstructionParameterInput;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox UITestConfigInstructionNameInput;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckedListBox UITestConfigOutputParamChecklist;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox UITestConfigSavedConfigsSelect;
+        private System.Windows.Forms.Button button1;
     }
 }
 

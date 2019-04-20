@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    class ParameterControlTemplate
+    public class ParameterControlTemplate
     {
         public ObjectId Id { get; set; }
         public IObservableNumericValue[] Collection { get; set; }

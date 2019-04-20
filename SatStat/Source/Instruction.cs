@@ -11,7 +11,7 @@ namespace SatStat
     /// <summary>
     /// Representing an instruction that can be run on the Hardware Layer
     /// </summary>
-    class Instruction
+    public class Instruction
     {
         /// <summary>
         /// An object containing the parameters for the instruction

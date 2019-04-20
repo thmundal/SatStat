@@ -122,6 +122,7 @@
     <Compile Include="Source\SerialHandler.cs" />
     <Compile Include="Source\SocketHandler.cs" />
     <Compile Include="Source\StreamSimulator.cs" />
+    <Compile Include="Source\TestConfiguration.cs" />
     <Compile Include="Source\ThreadHelperClass.cs" />
     <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
