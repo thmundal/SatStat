@@ -44,7 +44,6 @@ namespace SatStat
                 } else
                 {
                     paramtable[param] = new JValue(arguments[i]);
-                    
                 }
             }
 

@@ -2350,83 +2350,83 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.RunQueuedInstruction
   nameWithType: TestConfiguration.RunQueuedInstruction
-- uid: SatStat.ThreadHelperClass
-  name: ThreadHelperClass
-  href: api/SatStat.ThreadHelperClass.html
-  commentId: T:SatStat.ThreadHelperClass
-  fullName: SatStat.ThreadHelperClass
-  nameWithType: ThreadHelperClass
-- uid: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
+- uid: SatStat.ThreadHelper
+  name: ThreadHelper
+  href: api/SatStat.ThreadHelper.html
+  commentId: T:SatStat.ThreadHelper
+  fullName: SatStat.ThreadHelper
+  nameWithType: ThreadHelper
+- uid: SatStat.ThreadHelper.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
   name: SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_ListBox_SatStat_SerialSettingsCollection_
-  commentId: M:SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
-  fullName: SatStat.ThreadHelperClass.SetBaudrates(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.ListBox, SatStat.SerialSettingsCollection)
-  nameWithType: ThreadHelperClass.SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
-- uid: SatStat.ThreadHelperClass.SetBaudrates*
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetBaudrates_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_ListBox_SatStat_SerialSettingsCollection_
+  commentId: M:SatStat.ThreadHelper.SetBaudrates(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.ListBox,SatStat.SerialSettingsCollection)
+  fullName: SatStat.ThreadHelper.SetBaudrates(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.ListBox, SatStat.SerialSettingsCollection)
+  nameWithType: ThreadHelper.SetBaudrates(Form, Panel, ListBox, SerialSettingsCollection)
+- uid: SatStat.ThreadHelper.SetBaudrates*
   name: SetBaudrates
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetBaudrates_
-  commentId: Overload:SatStat.ThreadHelperClass.SetBaudrates
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetBaudrates_
+  commentId: Overload:SatStat.ThreadHelper.SetBaudrates
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.SetBaudrates
-  nameWithType: ThreadHelperClass.SetBaudrates
-- uid: SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelper.SetBaudrates
+  nameWithType: ThreadHelper.SetBaudrates
+- uid: SatStat.ThreadHelper.SetCOMConnectionStatus(System.String)
   name: SetCOMConnectionStatus(String)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetCOMConnectionStatus_System_String_
-  commentId: M:SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
-  fullName: SatStat.ThreadHelperClass.SetCOMConnectionStatus(System.String)
-  nameWithType: ThreadHelperClass.SetCOMConnectionStatus(String)
-- uid: SatStat.ThreadHelperClass.SetCOMConnectionStatus*
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetCOMConnectionStatus_System_String_
+  commentId: M:SatStat.ThreadHelper.SetCOMConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelper.SetCOMConnectionStatus(System.String)
+  nameWithType: ThreadHelper.SetCOMConnectionStatus(String)
+- uid: SatStat.ThreadHelper.SetCOMConnectionStatus*
   name: SetCOMConnectionStatus
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetCOMConnectionStatus_
-  commentId: Overload:SatStat.ThreadHelperClass.SetCOMConnectionStatus
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetCOMConnectionStatus_
+  commentId: Overload:SatStat.ThreadHelper.SetCOMConnectionStatus
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.SetCOMConnectionStatus
-  nameWithType: ThreadHelperClass.SetCOMConnectionStatus
-- uid: SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelper.SetCOMConnectionStatus
+  nameWithType: ThreadHelper.SetCOMConnectionStatus
+- uid: SatStat.ThreadHelper.SetNetworkConnectionStatus(System.String)
   name: SetNetworkConnectionStatus(String)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetNetworkConnectionStatus_System_String_
-  commentId: M:SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
-  fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus(System.String)
-  nameWithType: ThreadHelperClass.SetNetworkConnectionStatus(String)
-- uid: SatStat.ThreadHelperClass.SetNetworkConnectionStatus*
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetNetworkConnectionStatus_System_String_
+  commentId: M:SatStat.ThreadHelper.SetNetworkConnectionStatus(System.String)
+  fullName: SatStat.ThreadHelper.SetNetworkConnectionStatus(System.String)
+  nameWithType: ThreadHelper.SetNetworkConnectionStatus(String)
+- uid: SatStat.ThreadHelper.SetNetworkConnectionStatus*
   name: SetNetworkConnectionStatus
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_SetNetworkConnectionStatus_
-  commentId: Overload:SatStat.ThreadHelperClass.SetNetworkConnectionStatus
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_SetNetworkConnectionStatus_
+  commentId: Overload:SatStat.ThreadHelper.SetNetworkConnectionStatus
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.SetNetworkConnectionStatus
-  nameWithType: ThreadHelperClass.SetNetworkConnectionStatus
-- uid: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  fullName: SatStat.ThreadHelper.SetNetworkConnectionStatus
+  nameWithType: ThreadHelper.SetNetworkConnectionStatus
+- uid: SatStat.ThreadHelper.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
   name: UI_Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_Invoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
-  commentId: M:SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_UI_Invoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelper.UI_Invoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
   name.vb: UI_Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-  fullName: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
-  fullName.vb: SatStat.ThreadHelperClass.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
-  nameWithType: ThreadHelperClass.UI_Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  nameWithType.vb: ThreadHelperClass.UI_Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-- uid: SatStat.ThreadHelperClass.UI_Invoke*
+  fullName: SatStat.ThreadHelper.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelper.UI_Invoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelper.UI_Invoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelper.UI_Invoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelper.UI_Invoke*
   name: UI_Invoke
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_Invoke_
-  commentId: Overload:SatStat.ThreadHelperClass.UI_Invoke
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_UI_Invoke_
+  commentId: Overload:SatStat.ThreadHelper.UI_Invoke
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.UI_Invoke
-  nameWithType: ThreadHelperClass.UI_Invoke
-- uid: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  fullName: SatStat.ThreadHelper.UI_Invoke
+  nameWithType: ThreadHelper.UI_Invoke
+- uid: SatStat.ThreadHelper.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
   name: UI_TaskInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_TaskInvoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
-  commentId: M:SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_UI_TaskInvoke_System_Windows_Forms_Form_System_Windows_Forms_Panel_System_Windows_Forms_Control_System_Action_System_Collections_Hashtable__System_Collections_Hashtable_
+  commentId: M:SatStat.ThreadHelper.UI_TaskInvoke(System.Windows.Forms.Form,System.Windows.Forms.Panel,System.Windows.Forms.Control,System.Action{System.Collections.Hashtable},System.Collections.Hashtable)
   name.vb: UI_TaskInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-  fullName: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
-  fullName.vb: SatStat.ThreadHelperClass.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
-  nameWithType: ThreadHelperClass.UI_TaskInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
-  nameWithType.vb: ThreadHelperClass.UI_TaskInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
-- uid: SatStat.ThreadHelperClass.UI_TaskInvoke*
+  fullName: SatStat.ThreadHelper.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action<System.Collections.Hashtable>, System.Collections.Hashtable)
+  fullName.vb: SatStat.ThreadHelper.UI_TaskInvoke(System.Windows.Forms.Form, System.Windows.Forms.Panel, System.Windows.Forms.Control, System.Action(Of System.Collections.Hashtable), System.Collections.Hashtable)
+  nameWithType: ThreadHelper.UI_TaskInvoke(Form, Panel, Control, Action<Hashtable>, Hashtable)
+  nameWithType.vb: ThreadHelper.UI_TaskInvoke(Form, Panel, Control, Action(Of Hashtable), Hashtable)
+- uid: SatStat.ThreadHelper.UI_TaskInvoke*
   name: UI_TaskInvoke
-  href: api/SatStat.ThreadHelperClass.html#SatStat_ThreadHelperClass_UI_TaskInvoke_
-  commentId: Overload:SatStat.ThreadHelperClass.UI_TaskInvoke
+  href: api/SatStat.ThreadHelper.html#SatStat_ThreadHelper_UI_TaskInvoke_
+  commentId: Overload:SatStat.ThreadHelper.UI_TaskInvoke
   isSpec: "True"
-  fullName: SatStat.ThreadHelperClass.UI_TaskInvoke
-  nameWithType: ThreadHelperClass.UI_TaskInvoke
+  fullName: SatStat.ThreadHelper.UI_TaskInvoke
+  nameWithType: ThreadHelper.UI_TaskInvoke
 - uid: SatStat.Utils
   name: SatStat.Utils
   href: api/SatStat.Utils.html

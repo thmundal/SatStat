@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    /// <summary>
+    /// An object of this class holds a collection of observable numeric values and can be saved and loaded from a LiteDatabase collection
+    /// </summary>
     public class ParameterControlTemplate
     {
         public ObjectId Id { get; set; }

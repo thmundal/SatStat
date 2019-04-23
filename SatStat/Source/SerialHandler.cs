@@ -93,7 +93,7 @@ namespace SatStat
         {
             if (connectionStatus == ConnectionStatus.Disconnected || !connection.IsOpen)
             {
-                ThreadHelperClass.SetCOMConnectionStatus("Disconnected");
+                ThreadHelper.SetCOMConnectionStatus("Disconnected");
                 Debug.Log("Serial not connected");
                 return;
             }
@@ -130,7 +130,7 @@ namespace SatStat
 
                 if(ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    ThreadHelperClass.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
+                    ThreadHelper.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
                     DeliverSubscriptions();
                 }
             }
@@ -228,7 +228,7 @@ namespace SatStat
             Debug.Log("Initializing handshake...");
             Debug.Log(connectionStatus);
 
-            ThreadHelperClass.SetCOMConnectionStatus("Initializing handshake");
+            ThreadHelper.SetCOMConnectionStatus("Initializing handshake");
 
             WriteData(handshake);
         }
@@ -255,7 +255,7 @@ namespace SatStat
             WriteData("{\"connect\":\"ok\"}");
             WriteData("{\"request\":\"available_data\"}");
 
-            ThreadHelperClass.SetCOMConnectionStatus("Waiting for available data");
+            ThreadHelper.SetCOMConnectionStatus("Waiting for available data");
 
             connectionStatus = ConnectionStatus.Connected;
         }

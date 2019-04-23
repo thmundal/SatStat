@@ -133,7 +133,7 @@ namespace SatStat
 
             instructionListReceiver.OnPayloadReceived((object payload, string attribute) =>
             {
-                ThreadHelperClass.UI_Invoke(this, null, UITestConfigInstructionParameterGrid, (Hashtable d) =>
+                ThreadHelper.UI_Invoke(this, null, UITestConfigInstructionParameterGrid, (Hashtable d) =>
                     {
                         instruction_list = (JObject)payload;
                         
@@ -216,7 +216,7 @@ namespace SatStat
             }
 
             // Add/update data in live view
-            ThreadHelperClass.UI_TaskInvoke(this, null, UIliveOutputValuesList, (a) =>
+            ThreadHelper.UI_TaskInvoke(this, null, UIliveOutputValuesList, (a) =>
             {
                 LiveDataRow row = new LiveDataRow
                 {
@@ -272,7 +272,7 @@ namespace SatStat
         [STAThread]
         private void ReceiveSensorList(JObject sensor_list)
         {
-            ThreadHelperClass.UI_Invoke(this, null, UISensorCheckboxList, (data) =>
+            ThreadHelper.UI_Invoke(this, null, UISensorCheckboxList, (data) =>
             {   
                 foreach (var elem in (JObject) data["sensor_list"])
                 {

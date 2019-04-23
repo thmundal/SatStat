@@ -59,7 +59,7 @@ namespace SatStat
             // Bind socket
             try
             {
-                ThreadHelperClass.SetNetworkConnectionStatus("Listening on port " + listen_port.ToString());
+                ThreadHelper.SetNetworkConnectionStatus("Listening on port " + listen_port.ToString());
 
                 server = new TcpListener(IPAddress.Loopback, listen_port);
                 server.Start();
@@ -74,7 +74,7 @@ namespace SatStat
                     connected_clients.Add(client);
                     Debug.Log("A client connected");
 
-                    ThreadHelperClass.SetNetworkConnectionStatus("Client connected");
+                    ThreadHelper.SetNetworkConnectionStatus("Client connected");
 
                     data = null;
 
@@ -125,7 +125,7 @@ namespace SatStat
 
         public void Disconnect(TcpClient client)
         {
-            ThreadHelperClass.SetNetworkConnectionStatus("Disconnected");
+            ThreadHelper.SetNetworkConnectionStatus("Disconnected");
             connected_clients.Remove(client);
             client.Close();
         }

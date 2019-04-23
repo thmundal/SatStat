@@ -14,8 +14,6 @@ namespace SatStat
         private Queue<JObject> output_buffer;
         private Queue<string> input_buffer;
 
-        private PerlinNoise perlin;
-
         private double position = 0;
         private object _position_lock = new object();
 
@@ -28,7 +26,6 @@ namespace SatStat
 
             output_buffer = new Queue<JObject>();
             input_buffer = new Queue<string>();
-            perlin = new PerlinNoise(42);
 
             OnOutputReceived((data) =>
             {
@@ -111,9 +108,6 @@ namespace SatStat
                     double temp = (double)(rand.Next(0, 10));
                     int humidity = rand.Next(0, 10);
 
-                    //double temp = perlin.Noise(count, count, count);
-                    //int humidity = (int) perlin.Noise(count * count, 1, 1);
-
                     JObject data = new JObject()
                     {
                         { "temperature", temp },
@@ -190,21 +184,7 @@ namespace SatStat
             input_buffer.Enqueue(JSON.serialize(available_data));
             input_buffer.Enqueue(JSON.serialize(available_instructions));
         }
-
-        //private void OnDataReceived(string input)
-        //{
-        //    Dictionary<string, object> inputParsed = Parse(input);
-
-        //    if (inputParsed.ContainsKey("serial_handshake"))
-        //    {
-        //        Debug.Log(inputParsed);
-        //    }
-        //    else
-        //    {
-        //        DeliverSubscriptions();
-        //    }
-        //}
-
+        
         public new void Output(object data)
         {
             output_buffer.Enqueue((JObject) data);

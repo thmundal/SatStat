@@ -42,7 +42,7 @@ namespace SatStat
                 {
                     Program.serial.OnHandshakeResponse((available_settings) =>
                     {
-                        ThreadHelperClass.SetBaudrates(this, UIbaudRateSelectionList, UIbaudRateInputList, available_settings);
+                        ThreadHelper.SetBaudrates(this, UIbaudRateSelectionList, UIbaudRateInputList, available_settings);
                     });
                     UIComSettingsApplyBtn.Show();
                     UIComSettingsConnectBtn.Text = "Connect";
