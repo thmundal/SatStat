@@ -20,30 +20,44 @@ namespace SatStat
         private DataReceiver internalReceiver;
         private Instruction currentInstruction;
 
+        private int queue_position = -1;
+        private Action<Instruction> onQueueAdvanceCallback;
+        private Action<Instruction> onQueueCompleteCallback;
+
         public TestConfiguration()
         {
             internalReceiver = new DataReceiver();
             instructionQueue = new Queue<Instruction>();
+            Instructions = new List<Instruction>();
+            ParameterControlTemplate = new ParameterControlTemplate();
         }
 
-        public void AddInstruction(Instruction instr)
+        public void AddInstruction(Instruction instr, int uindex = -1)
         {
+            instr.UI_Index = uindex;
             Instructions.Add(instr);
+
         }
 
         public void Run(DataStream stream)
         {
+            queue_position = -1;
+            List<Instruction> sortedInstructions = Instructions.OrderBy(o => o.UI_Index).ToList();
+            Debug.Log("Starting test run");
             instructionQueue.Clear();
 
-            foreach(Instruction instr in Instructions)
+            foreach(Instruction instr in sortedInstructions)
             {
                 instructionQueue.Enqueue(instr);
             }
 
-            foreach(IObservableNumericValue value in ParameterControlTemplate.Collection)
+            if(ParameterControlTemplate.Collection != null)
             {
-                value.type.ToString();
-                internalReceiver.Subscribe(stream, value.Label, value.type.ToString());
+                foreach(IObservableNumericValue value in ParameterControlTemplate.Collection)
+                {
+                    value.type.ToString();
+                    internalReceiver.Subscribe(stream, value.Label, value.type.ToString());
+                }
             }
 
             internalReceiver.Observe = true;
@@ -62,6 +76,11 @@ namespace SatStat
                 OnObservedValueChange(val);
             });
 
+            if(!internalReceiver.HasSubscription("instruction_complete"))
+            {
+                internalReceiver.Subscribe(stream, "instruction_complete", "string");
+            }
+
             // Start instruction queue execution
             RunQueuedInstruction(stream);
         }
@@ -75,12 +94,24 @@ namespace SatStat
 
             if(instructionQueue.Count > 0)
             {
+                queue_position++;
                 currentInstruction = instructionQueue.Dequeue();
+
+                if(onQueueAdvanceCallback != null)
+                {
+                    onQueueAdvanceCallback.Invoke(currentInstruction);
+                }
 
                 stream.Output(currentInstruction.toJObject());
 
             } else
             {
+                if(onQueueCompleteCallback != null)
+                {
+                    onQueueCompleteCallback.Invoke(currentInstruction);
+                }
+                queue_position = -1;
+                Debug.Log("Instruction queue is empty");
                 // Queue is empty
             }
         }
@@ -93,6 +124,16 @@ namespace SatStat
         public void OnObservedValueChange(IObservableNumericValue val)
         {
 
+        }
+
+        public void OnQueueAdvance(Action<Instruction> callback)
+        {
+            onQueueAdvanceCallback = callback;
+        }
+
+        public void OnQueueComplete(Action<Instruction> callback)
+        {
+            onQueueCompleteCallback = callback;
         }
     }
 }

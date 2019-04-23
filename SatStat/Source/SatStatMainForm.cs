@@ -10,6 +10,7 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using System.Linq;
+using SatStat.Utils;
 
 namespace SatStat
 {
@@ -19,6 +20,7 @@ namespace SatStat
 
         private DataReceiver dataReceiver;
         private DataReceiver sensorListReceiver;
+        private DataReceiver instructionListReceiver;
 
         public DataReceiver DataReceiver
         {
@@ -33,10 +35,19 @@ namespace SatStat
         private DateTime startTime;
 
         private DB_ComSettingsItem savedComSettings;
+        private JObject instruction_list;
+
+        private TestConfiguration activeTestConfiguration;
+
+        private Hashtable observedDataRows = new Hashtable();
+        private Hashtable liveDataList = new Hashtable();
+        private Hashtable sensor_information = new Hashtable();
 
         public SatStatMainForm()
         {
             InitializeComponent();
+
+            instruction_list = new JObject();
 
             using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
             {
@@ -117,6 +128,22 @@ namespace SatStat
             });
 
             sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
+
+            instructionListReceiver = new DataReceiver();
+
+            instructionListReceiver.OnPayloadReceived((object payload, string attribute) =>
+            {
+                ThreadHelperClass.UI_Invoke(this, null, UITestConfigInstructionParameterGrid, (Hashtable d) =>
+                    {
+                        instruction_list = (JObject)payload;
+                        
+                        foreach(KeyValuePair<string, JToken> instruction in instruction_list)
+                        {
+                            UITestConfigInstructionSelect.Items.Add(instruction.Key);
+                        }
+                    },
+                null);
+            });
 
             startTime = DateTime.Now;
 
@@ -242,29 +269,6 @@ namespace SatStat
             }
         }
 
-        private struct LiveDataRow
-        {
-            public int index;
-            public string value;
-            public string name;
-        }
-
-        private struct ObservedDataRow
-        {
-            public int input_index;
-            public int output_index;
-            public string value;
-            public string name;
-            public string min;
-            public string max;
-        }
-
-        private Hashtable observedDataRows = new Hashtable();
-
-        private Hashtable liveDataList = new Hashtable();
-
-        private Hashtable sensor_information = new Hashtable();
-
         [STAThread]
         private void ReceiveSensorList(JObject sensor_list)
         {
@@ -277,6 +281,7 @@ namespace SatStat
                         sensor_information.Add(elem.Key, elem.Value.ToString());
 
                         UISensorCheckboxList.Items.Add(elem.Key);
+                        UITestConfigOutputParamChecklist.Items.Add(elem.Key);
                     }
                 }
             }, new Hashtable {
@@ -346,10 +351,10 @@ namespace SatStat
 
         private void connectToStreamSimulatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Program.streamSimulator = new StreamSimulator();
             
             sensorListReceiver.Subscribe(Program.streamSimulator, "available_data", "JObject");
+            instructionListReceiver.Subscribe(Program.streamSimulator, "available_instructions", "JObject");
 
             Program.streamSimulator.Connect();
         }
@@ -566,6 +571,191 @@ namespace SatStat
             ParameterControlTemplateDialog parameterControlTemplateDialog = new ParameterControlTemplateDialog(true);
             parameterControlTemplateDialog.ShowDialog();
         }
+
+        private void UITestConfigInstructionSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            object sel = UITestConfigInstructionSelect.SelectedItem;
+            UITestConfigInstructionParameterGrid.Rows.Clear();
+
+            foreach (KeyValuePair<string, JToken> instruction in instruction_list)
+            {
+                if(sel.ToString().Equals(instruction.Key))
+                {
+                    foreach (KeyValuePair<string, JToken> param in (JObject)instruction.Value)
+                    {
+                        UITestConfigInstructionParameterGrid.Rows.Add(new string[] { param.Key, "" });
+                    }
+                }
+            }
+        }
+
+        private void UITestConfigAddInstructionBtn_Click(object sender, EventArgs e)
+        {
+            if(UITestConfigInstructionSelect.SelectedItem == null)
+            {
+                return;
+            }
+
+            if(activeTestConfiguration == null)
+            {
+                activeTestConfiguration = new TestConfiguration();
+            }
+
+            string instruction_name = UITestConfigInstructionSelect.SelectedItem.ToString();
+            JObject paramTable = new JObject();
+
+            for(int row=0; row<UITestConfigInstructionParameterGrid.Rows.Count; row++)
+            {
+                string key = null;
+                object value = null;
+
+                for(int col=0; col<UITestConfigInstructionParameterGrid.ColumnCount; col++)
+                {
+                    var cell = UITestConfigInstructionParameterGrid.Rows[row].Cells[col].Value;
+                    if(col % 2 == 0)
+                    {
+                        // Key
+                        key = cell.ToString();
+                    } else
+                    {
+                        // Value
+                        string instruction_type = instruction_list[instruction_name][key].Value<string>();
+                        value = Cast.ToType(cell, instruction_type); // This casts, BUT only result we need here is that value is 0 if string is empty....
+                    }
+                }
+
+                if(key != null && value != null)
+                {
+                    paramTable.Add(key, JToken.Parse(value.ToString()));
+                }
+            }
+
+            if(paramTable.Count > 0)
+            {
+                int index = UITestConfigIntructionListGrid.Rows.Add(new string[] { instruction_name, paramTable.ToString(), "pending" });
+
+                activeTestConfiguration.AddInstruction(new Instruction(instruction_name, paramTable), index);
+            }
+        }
+
+        private void UITestConfigRunTestBtn_Click(object sender, EventArgs e)
+        {
+            if(activeTestConfiguration != null)
+            {
+                RunTestConfiguration(activeTestConfiguration);
+            } else
+            {
+                MessageBox.Show("There is no active test configuration");
+            }
+        }
         #endregion
+
+        private void RunTestConfiguration(TestConfiguration config)
+        {
+            config.OnQueueAdvance(OnTestQueueAdvance);
+            config.OnQueueComplete(OnTestQueueComplete);
+            config.Run(Program.streamSimulator);
+        }
+
+        private int last_instruction_index = -1;
+        private void OnTestQueueAdvance(Instruction instruction)
+        {
+            int index = instruction.UI_Index;
+
+            if (last_instruction_index > -1)
+            {
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
+            }
+
+            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running";
+            last_instruction_index = index;
+        }
+
+        private void OnTestQueueComplete(Instruction instruction)
+        {
+            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
+        }
+
+        private struct LiveDataRow
+        {
+            public int index;
+            public string value;
+            public string name;
+        }
+
+        private struct ObservedDataRow
+        {
+            public int input_index;
+            public int output_index;
+            public string value;
+            public string name;
+            public string min;
+            public string max;
+        }
+
+        private void UITestConfigInstructionMoveDownBtn_Click(object sender, EventArgs e)
+        {
+            return; // Disabled for now;
+            DataGridViewSelectedRowCollection selectedRows = UITestConfigIntructionListGrid.SelectedRows;
+
+            if(selectedRows.Count == 0)
+            {
+                return;
+            }
+
+            int oldIndex = UITestConfigIntructionListGrid.Rows.IndexOf(selectedRows[0]);
+            int newIndex = oldIndex + 1;
+
+            if(newIndex + selectedRows.Count <= UITestConfigIntructionListGrid.Rows.Count)
+            {
+                UITestConfigIntructionListGrid.ClearSelection();
+                foreach(DataGridViewRow row in selectedRows)
+                {
+                    UITestConfigIntructionListGrid.Rows.RemoveAt(row.Index);
+                }
+
+                for(int i=0; i<selectedRows.Count; i++)
+                {
+                    UITestConfigIntructionListGrid.Rows.Insert(newIndex, selectedRows[i]);
+                    UITestConfigIntructionListGrid.Rows[newIndex].Selected = true;
+                    newIndex++;
+                }
+            }
+        }
+
+        private void UITestConfigInstructionMoveUpBtn_Click(object sender, EventArgs e)
+        {
+            return; // Disabled for now
+            DataGridViewSelectedRowCollection selectedRows = UITestConfigIntructionListGrid.SelectedRows;
+
+            if (selectedRows.Count == 0)
+            {
+                return;
+            }
+
+            int oldIndex = UITestConfigIntructionListGrid.Rows.IndexOf(selectedRows[0]);
+            int newIndex = oldIndex - 1;
+
+            if (newIndex >= 0)
+            {
+                UITestConfigIntructionListGrid.ClearSelection();
+                foreach (DataGridViewRow row in selectedRows)
+                {
+                    UITestConfigIntructionListGrid.Rows.RemoveAt(row.Index);
+                }
+
+                for (int i = 0; i < selectedRows.Count; i++)
+                {
+                    UITestConfigIntructionListGrid.Rows.Insert(newIndex, selectedRows[i]);
+                    UITestConfigIntructionListGrid.Rows[newIndex].Selected = true;
+                    newIndex++;
+                }
+            }
+        }
+
+        private void UITestConfigInstructionDeleteBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

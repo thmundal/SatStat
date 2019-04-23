@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.UImenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,16 +90,19 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.UITestConfigInstructionParameterGrid = new System.Windows.Forms.DataGridView();
+            this.testParamKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testParamVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UITestConfigInstructionSelect = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.UITestConfigOutputParamChecklist = new System.Windows.Forms.CheckedListBox();
             this.UITestConfigAddInstructionBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.UITestConfigInstructionRunNumberInput = new System.Windows.Forms.NumericUpDown();
-            this.UITestConfigInstructionParameterInput = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.UITestConfigInstructionNameInput = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UITestConfigRunTestBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.UITestConfigSavedConfigsSelect = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -111,7 +114,15 @@
             this.UITestConfigName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.UITestConfigIntructionListGrid = new System.Windows.Forms.DataGridView();
+            this.instructionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instructionParams = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instructionStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.UITestConfigInstructionMoveUpBtn = new System.Windows.Forms.Button();
+            this.UITestConfigInstructionMoveDownBtn = new System.Windows.Forms.Button();
+            this.UITestConfigInstructionDeleteBtn = new System.Windows.Forms.Button();
             this.UImenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -132,10 +143,13 @@
             this.tabPage5.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionParameterGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionRunNumberInput)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigIntructionListGrid)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // UImenuStrip1
@@ -457,8 +471,8 @@
             // 
             this.UIliveOutputValuesList.AllowUserToResizeColumns = false;
             this.UIliveOutputValuesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            this.UIliveOutputValuesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            this.UIliveOutputValuesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.UIliveOutputValuesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UIliveOutputValuesList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.UIliveOutputValuesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -468,14 +482,14 @@
             this.UIliveOutputValuesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UIliveOutputValuesList.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIliveOutputValuesList.DefaultCellStyle = dataGridViewCellStyle2;
             this.UIliveOutputValuesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UIliveOutputValuesList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.UIliveOutputValuesList.Location = new System.Drawing.Point(3, 16);
@@ -622,8 +636,8 @@
             // 
             this.UIObservedValuesOuputGrid.AllowUserToResizeColumns = false;
             this.UIObservedValuesOuputGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            this.UIObservedValuesOuputGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            this.UIObservedValuesOuputGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.UIObservedValuesOuputGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UIObservedValuesOuputGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.UIObservedValuesOuputGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -634,14 +648,14 @@
             this.observedValue,
             this.status,
             this.difference});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UIObservedValuesOuputGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UIObservedValuesOuputGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.UIObservedValuesOuputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UIObservedValuesOuputGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.UIObservedValuesOuputGrid.Location = new System.Drawing.Point(366, 3);
@@ -731,7 +745,6 @@
             this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.groupBox3, 0, 2);
@@ -739,23 +752,23 @@
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 349F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.Size = new System.Drawing.Size(975, 675);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.UITestConfigInstructionParameterGrid);
+            this.groupBox1.Controls.Add(this.UITestConfigInstructionSelect);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.UITestConfigOutputParamChecklist);
             this.groupBox1.Controls.Add(this.UITestConfigAddInstructionBtn);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.UITestConfigInstructionRunNumberInput);
-            this.groupBox1.Controls.Add(this.UITestConfigInstructionParameterInput);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.UITestConfigInstructionNameInput);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 157);
@@ -765,10 +778,54 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Instruction";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(244, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Intruction parameters";
+            // 
+            // UITestConfigInstructionParameterGrid
+            // 
+            this.UITestConfigInstructionParameterGrid.AllowUserToAddRows = false;
+            this.UITestConfigInstructionParameterGrid.AllowUserToDeleteRows = false;
+            this.UITestConfigInstructionParameterGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UITestConfigInstructionParameterGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UITestConfigInstructionParameterGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.testParamKey,
+            this.testParamVal});
+            this.UITestConfigInstructionParameterGrid.Location = new System.Drawing.Point(244, 37);
+            this.UITestConfigInstructionParameterGrid.Name = "UITestConfigInstructionParameterGrid";
+            this.UITestConfigInstructionParameterGrid.RowHeadersVisible = false;
+            this.UITestConfigInstructionParameterGrid.Size = new System.Drawing.Size(392, 123);
+            this.UITestConfigInstructionParameterGrid.TabIndex = 10;
+            // 
+            // testParamKey
+            // 
+            this.testParamKey.HeaderText = "Parameter key";
+            this.testParamKey.Name = "testParamKey";
+            this.testParamKey.ReadOnly = true;
+            // 
+            // testParamVal
+            // 
+            this.testParamVal.HeaderText = "Parameter value";
+            this.testParamVal.Name = "testParamVal";
+            // 
+            // UITestConfigInstructionSelect
+            // 
+            this.UITestConfigInstructionSelect.FormattingEnabled = true;
+            this.UITestConfigInstructionSelect.Location = new System.Drawing.Point(16, 37);
+            this.UITestConfigInstructionSelect.Name = "UITestConfigInstructionSelect";
+            this.UITestConfigInstructionSelect.Size = new System.Drawing.Size(170, 21);
+            this.UITestConfigInstructionSelect.TabIndex = 9;
+            this.UITestConfigInstructionSelect.SelectedIndexChanged += new System.EventHandler(this.UITestConfigInstructionSelect_SelectedIndexChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(419, 19);
+            this.label7.Location = new System.Drawing.Point(673, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 13);
             this.label7.TabIndex = 8;
@@ -778,10 +835,9 @@
             // 
             this.UITestConfigOutputParamChecklist.CheckOnClick = true;
             this.UITestConfigOutputParamChecklist.FormattingEnabled = true;
-            this.UITestConfigOutputParamChecklist.Location = new System.Drawing.Point(419, 35);
-            this.UITestConfigOutputParamChecklist.MultiColumn = true;
+            this.UITestConfigOutputParamChecklist.Location = new System.Drawing.Point(676, 35);
             this.UITestConfigOutputParamChecklist.Name = "UITestConfigOutputParamChecklist";
-            this.UITestConfigOutputParamChecklist.Size = new System.Drawing.Size(544, 124);
+            this.UITestConfigOutputParamChecklist.Size = new System.Drawing.Size(287, 124);
             this.UITestConfigOutputParamChecklist.TabIndex = 7;
             // 
             // UITestConfigAddInstructionBtn
@@ -792,11 +848,12 @@
             this.UITestConfigAddInstructionBtn.TabIndex = 6;
             this.UITestConfigAddInstructionBtn.Text = "Add instruction";
             this.UITestConfigAddInstructionBtn.UseVisualStyleBackColor = true;
+            this.UITestConfigAddInstructionBtn.Click += new System.EventHandler(this.UITestConfigAddInstructionBtn_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(241, 20);
+            this.label6.Location = new System.Drawing.Point(13, 66);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 5;
@@ -804,38 +861,15 @@
             // 
             // UITestConfigInstructionRunNumberInput
             // 
-            this.UITestConfigInstructionRunNumberInput.Location = new System.Drawing.Point(244, 37);
+            this.UITestConfigInstructionRunNumberInput.Location = new System.Drawing.Point(16, 83);
             this.UITestConfigInstructionRunNumberInput.Name = "UITestConfigInstructionRunNumberInput";
             this.UITestConfigInstructionRunNumberInput.Size = new System.Drawing.Size(120, 20);
             this.UITestConfigInstructionRunNumberInput.TabIndex = 4;
             // 
-            // UITestConfigInstructionParameterInput
-            // 
-            this.UITestConfigInstructionParameterInput.Location = new System.Drawing.Point(16, 83);
-            this.UITestConfigInstructionParameterInput.Name = "UITestConfigInstructionParameterInput";
-            this.UITestConfigInstructionParameterInput.Size = new System.Drawing.Size(170, 20);
-            this.UITestConfigInstructionParameterInput.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 67);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Instruction parameter";
-            // 
-            // UITestConfigInstructionNameInput
-            // 
-            this.UITestConfigInstructionNameInput.Location = new System.Drawing.Point(16, 37);
-            this.UITestConfigInstructionNameInput.Name = "UITestConfigInstructionNameInput";
-            this.UITestConfigInstructionNameInput.Size = new System.Drawing.Size(170, 20);
-            this.UITestConfigInstructionNameInput.TabIndex = 1;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 20);
+            this.label4.Location = new System.Drawing.Point(13, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 0;
@@ -843,6 +877,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.UITestConfigRunTestBtn);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.UITestConfigSavedConfigsSelect);
             this.groupBox2.Controls.Add(this.button1);
@@ -860,6 +895,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test configuration";
+            // 
+            // UITestConfigRunTestBtn
+            // 
+            this.UITestConfigRunTestBtn.Location = new System.Drawing.Point(244, 118);
+            this.UITestConfigRunTestBtn.Name = "UITestConfigRunTestBtn";
+            this.UITestConfigRunTestBtn.Size = new System.Drawing.Size(130, 23);
+            this.UITestConfigRunTestBtn.TabIndex = 10;
+            this.UITestConfigRunTestBtn.Text = "Run test";
+            this.UITestConfigRunTestBtn.UseVisualStyleBackColor = true;
+            this.UITestConfigRunTestBtn.Click += new System.EventHandler(this.UITestConfigRunTestBtn_Click);
             // 
             // label8
             // 
@@ -880,7 +925,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(244, 109);
+            this.button1.Location = new System.Drawing.Point(244, 88);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 23);
             this.button1.TabIndex = 7;
@@ -949,7 +994,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Controls.Add(this.tableLayoutPanel6);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 329);
             this.groupBox3.Name = "groupBox3";
@@ -958,14 +1003,99 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Instruction list";
             // 
-            // dataGridView1
+            // tableLayoutPanel6
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(963, 324);
-            this.dataGridView1.TabIndex = 0;
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.UITestConfigIntructionListGrid, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(963, 324);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // UITestConfigIntructionListGrid
+            // 
+            this.UITestConfigIntructionListGrid.AllowUserToAddRows = false;
+            this.UITestConfigIntructionListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UITestConfigIntructionListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UITestConfigIntructionListGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.instructionName,
+            this.instructionParams,
+            this.instructionStatus});
+            this.UITestConfigIntructionListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UITestConfigIntructionListGrid.Location = new System.Drawing.Point(61, 3);
+            this.UITestConfigIntructionListGrid.Name = "UITestConfigIntructionListGrid";
+            this.UITestConfigIntructionListGrid.Size = new System.Drawing.Size(899, 318);
+            this.UITestConfigIntructionListGrid.TabIndex = 2;
+            // 
+            // instructionName
+            // 
+            this.instructionName.HeaderText = "Instruction name";
+            this.instructionName.Name = "instructionName";
+            this.instructionName.ReadOnly = true;
+            // 
+            // instructionParams
+            // 
+            this.instructionParams.HeaderText = "Parameters";
+            this.instructionParams.Name = "instructionParams";
+            this.instructionParams.ReadOnly = true;
+            // 
+            // instructionStatus
+            // 
+            this.instructionStatus.HeaderText = "Status";
+            this.instructionStatus.Name = "instructionStatus";
+            this.instructionStatus.ReadOnly = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.UITestConfigInstructionMoveUpBtn);
+            this.flowLayoutPanel1.Controls.Add(this.UITestConfigInstructionMoveDownBtn);
+            this.flowLayoutPanel1.Controls.Add(this.UITestConfigInstructionDeleteBtn);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(52, 318);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // UITestConfigInstructionMoveUpBtn
+            // 
+            this.UITestConfigInstructionMoveUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UITestConfigInstructionMoveUpBtn.Location = new System.Drawing.Point(3, 3);
+            this.UITestConfigInstructionMoveUpBtn.Name = "UITestConfigInstructionMoveUpBtn";
+            this.UITestConfigInstructionMoveUpBtn.Size = new System.Drawing.Size(46, 67);
+            this.UITestConfigInstructionMoveUpBtn.TabIndex = 4;
+            this.UITestConfigInstructionMoveUpBtn.Text = "↑";
+            this.UITestConfigInstructionMoveUpBtn.UseVisualStyleBackColor = true;
+            this.UITestConfigInstructionMoveUpBtn.Click += new System.EventHandler(this.UITestConfigInstructionMoveUpBtn_Click);
+            // 
+            // UITestConfigInstructionMoveDownBtn
+            // 
+            this.UITestConfigInstructionMoveDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UITestConfigInstructionMoveDownBtn.Location = new System.Drawing.Point(3, 76);
+            this.UITestConfigInstructionMoveDownBtn.Name = "UITestConfigInstructionMoveDownBtn";
+            this.UITestConfigInstructionMoveDownBtn.Size = new System.Drawing.Size(46, 67);
+            this.UITestConfigInstructionMoveDownBtn.TabIndex = 5;
+            this.UITestConfigInstructionMoveDownBtn.Text = "↓";
+            this.UITestConfigInstructionMoveDownBtn.UseVisualStyleBackColor = true;
+            this.UITestConfigInstructionMoveDownBtn.Click += new System.EventHandler(this.UITestConfigInstructionMoveDownBtn_Click);
+            // 
+            // UITestConfigInstructionDeleteBtn
+            // 
+            this.UITestConfigInstructionDeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UITestConfigInstructionDeleteBtn.Location = new System.Drawing.Point(3, 149);
+            this.UITestConfigInstructionDeleteBtn.Name = "UITestConfigInstructionDeleteBtn";
+            this.UITestConfigInstructionDeleteBtn.Size = new System.Drawing.Size(46, 67);
+            this.UITestConfigInstructionDeleteBtn.TabIndex = 6;
+            this.UITestConfigInstructionDeleteBtn.Text = "X";
+            this.UITestConfigInstructionDeleteBtn.UseVisualStyleBackColor = true;
+            this.UITestConfigInstructionDeleteBtn.Click += new System.EventHandler(this.UITestConfigInstructionDeleteBtn_Click);
             // 
             // SatStatMainForm
             // 
@@ -1006,11 +1136,14 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionParameterGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UITestConfigInstructionRunNumberInput)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UITestConfigIntructionListGrid)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1086,17 +1219,28 @@
         private System.Windows.Forms.Button UITestConfigAddInstructionBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown UITestConfigInstructionRunNumberInput;
-        private System.Windows.Forms.TextBox UITestConfigInstructionParameterInput;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox UITestConfigInstructionNameInput;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckedListBox UITestConfigOutputParamChecklist;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox UITestConfigSavedConfigsSelect;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView UITestConfigInstructionParameterGrid;
+        private System.Windows.Forms.ComboBox UITestConfigInstructionSelect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testParamKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testParamVal;
+        private System.Windows.Forms.Button UITestConfigRunTestBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.DataGridView UITestConfigIntructionListGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionParams;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionStatus;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button UITestConfigInstructionMoveUpBtn;
+        private System.Windows.Forms.Button UITestConfigInstructionMoveDownBtn;
+        private System.Windows.Forms.Button UITestConfigInstructionDeleteBtn;
     }
 }
 

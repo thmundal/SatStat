@@ -19,6 +19,11 @@ namespace SatStat
         private JObject paramtable;
 
         /// <summary>
+        /// Refers to the index in the list of queued instructions this instruction is placed at in the test planning UI
+        /// </summary>
+        public int UI_Index = -1;
+
+        /// <summary>
         /// Contructor
         /// </summary>
         /// <param name="instr">Instruction as a string</param>
@@ -47,6 +52,17 @@ namespace SatStat
         }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="instr">Instruction as a string</param>
+        /// <param name="paramTable">A JSON Object containing the parameters for the instruction as key/value pairs</param>
+        public Instruction(string instr, JObject paramTable)
+        {
+            paramtable = paramTable;
+            paramtable["request"] = instr;
+        }
+
+        /// <summary>
         /// Return the parameter table
         /// </summary>
         /// <returns>The parameter table</returns>
@@ -60,13 +76,31 @@ namespace SatStat
         /// </summary>
         /// <param name="instr">Instruction as string</param>
         /// <param name="arguments">Variable parameter list containing the parameters for the instruction</param>
-        /// <returns></returns>
+        /// <returns>A JSON object that can be sent on a datastream</returns>
         public static JObject Create(string instr, params object[] arguments)
         {
             Instruction i = new Instruction(instr, arguments);
             return i.toJObject();
         }
 
+        /// <summary>
+        /// Static function for creating and returning JSON compatible instruction data for sending trough DataStream
+        /// </summary>
+        /// <param name="instr">Name of the instruction</param>
+        /// <param name="paramTable">JSON Object containing the parameter names and values</param>
+        /// <returns>A JSON object that can be sent on a datastream</returns>
+        public static JObject Create(string instr, JObject paramTable)
+        {
+            Instruction i = new Instruction(instr, paramTable);
+            return i.toJObject();
+        }
+
+        /// <summary>
+        /// Create a special instruction that is compatible with subscribe and unsubscribe functionality on the hardware layer
+        /// </summary>
+        /// <param name="type">Type of subscription, can be "subscribe" or "unsubscribe"</param>
+        /// <param name="subscriptions">A list of attributes to subscribe to</param>
+        /// <returns>A JSON object that can be sent on a datastream</returns>
         public static JObject Subscription(string type, params object[] subscriptions)
         {
             JArray list = new JArray();

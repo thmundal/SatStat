@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using SatStat.Utils;
 
 namespace SatStat
 {
@@ -15,15 +14,30 @@ namespace SatStat
         private Queue<JObject> output_buffer;
         private Queue<string> input_buffer;
 
+        private PerlinNoise perlin;
+
+        private double position = 0;
+        private object _position_lock = new object();
+
+        private int taskdelay = 100;
+
         [STAThread]
-        public void Connect()
+        public async void Connect()
         {
             Debug.Log("Starting datastream");
 
             output_buffer = new Queue<JObject>();
             input_buffer = new Queue<string>();
+            perlin = new PerlinNoise(42);
 
-            Run();
+            OnOutputReceived((data) =>
+            {
+                JObject json_data = JSON.parse<JObject>(data);
+                output_buffer.Enqueue(json_data);
+                Debug.Log("Sending data to output endpoint " + data);
+            });
+
+            await Run();
         }
 
         private async Task Run()
@@ -67,10 +81,48 @@ namespace SatStat
                     }
                 } else
                 {
-                    double temp = (double) (rand.Next(0, 10));
+                    if (output != null)
+                    {
+                        if (output.ContainsKey("request"))
+                        {
+                            string instruction_name = output["request"].Value<string>();
+                            double deg_val = 0;
+                            double steps_val = 0;
+
+                            try
+                            {
+                                deg_val = output["degrees"].Value<double>();
+                            }
+                            catch (Exception) { }
+
+                            try
+                            {
+                                steps_val = output["steps"].Value<double>();
+                            }
+                            catch (Exception) { }
+
+                            if(instruction_name == "rotate")
+                            {
+                                RotateInstruction(deg_val, steps_val);
+                            }
+                        }
+                    }
+
+                    double temp = (double)(rand.Next(0, 10));
                     int humidity = rand.Next(0, 10);
 
-                    input_buffer.Enqueue("{\"temperature\": \"" + temp + "\", \"humidity\": " + humidity + ", \"sine\":"+ Math.Sin(count).ToString().Replace(",",".") +"}");
+                    //double temp = perlin.Noise(count, count, count);
+                    //int humidity = (int) perlin.Noise(count * count, 1, 1);
+
+                    JObject data = new JObject()
+                    {
+                        { "temperature", temp },
+                        { "humidity", humidity },
+                        { "sine", Math.Sin(count) },
+                        { "position", position }
+                    };
+
+                    input_buffer.Enqueue(JSON.serialize(data));
 
                     while(input_buffer.Count > 0)
                     {
@@ -86,7 +138,7 @@ namespace SatStat
                 }
 
 
-                await Task.Delay(100);
+                await Task.Delay(taskdelay);
             }
         }
 
@@ -114,7 +166,29 @@ namespace SatStat
                     }
                 }
             });
-            input_buffer.Enqueue("{\"available_data\":{\"temperature\":\"double\", \"humidity\":\"int\", \"sine\":\"double\"}}");
+
+            JObject available_data = new JObject()
+            {
+                {"available_data", new JObject()
+                    {
+                        { "temperature", "double" },
+                        { "humidity", "int" },
+                        { "sine", "double" },
+                        { "position", "double" }
+                    }
+                }
+            };
+
+            JObject available_instructions = new JObject()
+            {
+                { "available_instructions", new JObject()
+                    {
+                        { "rotate", new JObject() { { "degrees", "int" }, { "steps", "int" } } }
+                    }
+                }
+            };
+            input_buffer.Enqueue(JSON.serialize(available_data));
+            input_buffer.Enqueue(JSON.serialize(available_instructions));
         }
 
         //private void OnDataReceived(string input)
@@ -131,10 +205,37 @@ namespace SatStat
         //    }
         //}
 
-        public void Output(JObject data)
+        public new void Output(object data)
         {
-            output_buffer.Enqueue(data);
+            output_buffer.Enqueue((JObject) data);
             Debug.Log("Sending data to output endpoint " + data);
+        }
+
+        public void RotateInstruction(double degrees = 0, double steps = 0)
+        {
+            Debug.Log("Start rotating");
+            Task.Run(async () =>
+            {
+                for(int i=0; i< Math.Abs(degrees) + Math.Abs(steps); i++)
+                {
+                    lock(_position_lock)
+                    {
+                        if(degrees != 0)
+                        {
+                            position += 1 * Math.Sign(degrees);
+                        }
+
+                        if(steps != 0)
+                        {
+                            position += 1 * Math.Sign(steps);
+                        }
+                    }
+                    Console.WriteLine(position);
+                    await Task.Delay(taskdelay);
+                }
+
+                input_buffer.Enqueue(JSON.serialize(new JObject() { { "instruction_complete", "rotate" } }));
+            });
         }
     }
 }

@@ -660,6 +660,91 @@ references:
   isSpec: "True"
   fullName: SatStat.DB_ComSettingsItem.toComSettings
   nameWithType: DB_ComSettingsItem.toComSettings
+- uid: SatStat.Instruction
+  name: Instruction
+  href: api/SatStat.Instruction.html
+  commentId: T:SatStat.Instruction
+  fullName: SatStat.Instruction
+  nameWithType: Instruction
+- uid: SatStat.Instruction.#ctor(System.String,Newtonsoft.Json.Linq.JObject)
+  name: Instruction(String, JObject)
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ctor_System_String_Newtonsoft_Json_Linq_JObject_
+  commentId: M:SatStat.Instruction.#ctor(System.String,Newtonsoft.Json.Linq.JObject)
+  fullName: SatStat.Instruction.Instruction(System.String, Newtonsoft.Json.Linq.JObject)
+  nameWithType: Instruction.Instruction(String, JObject)
+- uid: SatStat.Instruction.#ctor(System.String,System.Object[])
+  name: Instruction(String, Object[])
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ctor_System_String_System_Object___
+  commentId: M:SatStat.Instruction.#ctor(System.String,System.Object[])
+  name.vb: Instruction(String, Object())
+  fullName: SatStat.Instruction.Instruction(System.String, System.Object[])
+  fullName.vb: SatStat.Instruction.Instruction(System.String, System.Object())
+  nameWithType: Instruction.Instruction(String, Object[])
+  nameWithType.vb: Instruction.Instruction(String, Object())
+- uid: SatStat.Instruction.#ctor*
+  name: Instruction
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ctor_
+  commentId: Overload:SatStat.Instruction.#ctor
+  isSpec: "True"
+  fullName: SatStat.Instruction.Instruction
+  nameWithType: Instruction.Instruction
+- uid: SatStat.Instruction.Create(System.String,Newtonsoft.Json.Linq.JObject)
+  name: Create(String, JObject)
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Create_System_String_Newtonsoft_Json_Linq_JObject_
+  commentId: M:SatStat.Instruction.Create(System.String,Newtonsoft.Json.Linq.JObject)
+  fullName: SatStat.Instruction.Create(System.String, Newtonsoft.Json.Linq.JObject)
+  nameWithType: Instruction.Create(String, JObject)
+- uid: SatStat.Instruction.Create(System.String,System.Object[])
+  name: Create(String, Object[])
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Create_System_String_System_Object___
+  commentId: M:SatStat.Instruction.Create(System.String,System.Object[])
+  name.vb: Create(String, Object())
+  fullName: SatStat.Instruction.Create(System.String, System.Object[])
+  fullName.vb: SatStat.Instruction.Create(System.String, System.Object())
+  nameWithType: Instruction.Create(String, Object[])
+  nameWithType.vb: Instruction.Create(String, Object())
+- uid: SatStat.Instruction.Create*
+  name: Create
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Create_
+  commentId: Overload:SatStat.Instruction.Create
+  isSpec: "True"
+  fullName: SatStat.Instruction.Create
+  nameWithType: Instruction.Create
+- uid: SatStat.Instruction.Subscription(System.String,System.Object[])
+  name: Subscription(String, Object[])
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Subscription_System_String_System_Object___
+  commentId: M:SatStat.Instruction.Subscription(System.String,System.Object[])
+  name.vb: Subscription(String, Object())
+  fullName: SatStat.Instruction.Subscription(System.String, System.Object[])
+  fullName.vb: SatStat.Instruction.Subscription(System.String, System.Object())
+  nameWithType: Instruction.Subscription(String, Object[])
+  nameWithType.vb: Instruction.Subscription(String, Object())
+- uid: SatStat.Instruction.Subscription*
+  name: Subscription
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Subscription_
+  commentId: Overload:SatStat.Instruction.Subscription
+  isSpec: "True"
+  fullName: SatStat.Instruction.Subscription
+  nameWithType: Instruction.Subscription
+- uid: SatStat.Instruction.toJObject
+  name: toJObject()
+  href: api/SatStat.Instruction.html#SatStat_Instruction_toJObject
+  commentId: M:SatStat.Instruction.toJObject
+  fullName: SatStat.Instruction.toJObject()
+  nameWithType: Instruction.toJObject()
+- uid: SatStat.Instruction.toJObject*
+  name: toJObject
+  href: api/SatStat.Instruction.html#SatStat_Instruction_toJObject_
+  commentId: Overload:SatStat.Instruction.toJObject
+  isSpec: "True"
+  fullName: SatStat.Instruction.toJObject
+  nameWithType: Instruction.toJObject
+- uid: SatStat.Instruction.UI_Index
+  name: UI_Index
+  href: api/SatStat.Instruction.html#SatStat_Instruction_UI_Index
+  commentId: F:SatStat.Instruction.UI_Index
+  fullName: SatStat.Instruction.UI_Index
+  nameWithType: Instruction.UI_Index
 - uid: SatStat.IObservableNumericValue
   name: IObservableNumericValue
   href: api/SatStat.IObservableNumericValue.html
@@ -1540,6 +1625,109 @@ references:
   isSpec: "True"
   fullName: SatStat.ObservableNumericValueCollectionEnum.Reset
   nameWithType: ObservableNumericValueCollectionEnum.Reset
+- uid: SatStat.ParameterControlTemplate
+  name: ParameterControlTemplate
+  href: api/SatStat.ParameterControlTemplate.html
+  commentId: T:SatStat.ParameterControlTemplate
+  fullName: SatStat.ParameterControlTemplate
+  nameWithType: ParameterControlTemplate
+- uid: SatStat.ParameterControlTemplate.#ctor
+  name: ParameterControlTemplate()
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate__ctor
+  commentId: M:SatStat.ParameterControlTemplate.#ctor
+  fullName: SatStat.ParameterControlTemplate.ParameterControlTemplate()
+  nameWithType: ParameterControlTemplate.ParameterControlTemplate()
+- uid: SatStat.ParameterControlTemplate.#ctor(SatStat.ObservableNumericValueCollection)
+  name: ParameterControlTemplate(ObservableNumericValueCollection)
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate__ctor_SatStat_ObservableNumericValueCollection_
+  commentId: M:SatStat.ParameterControlTemplate.#ctor(SatStat.ObservableNumericValueCollection)
+  fullName: SatStat.ParameterControlTemplate.ParameterControlTemplate(SatStat.ObservableNumericValueCollection)
+  nameWithType: ParameterControlTemplate.ParameterControlTemplate(ObservableNumericValueCollection)
+- uid: SatStat.ParameterControlTemplate.#ctor*
+  name: ParameterControlTemplate
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate__ctor_
+  commentId: Overload:SatStat.ParameterControlTemplate.#ctor
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.ParameterControlTemplate
+  nameWithType: ParameterControlTemplate.ParameterControlTemplate
+- uid: SatStat.ParameterControlTemplate.Collection
+  name: Collection
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Collection
+  commentId: P:SatStat.ParameterControlTemplate.Collection
+  fullName: SatStat.ParameterControlTemplate.Collection
+  nameWithType: ParameterControlTemplate.Collection
+- uid: SatStat.ParameterControlTemplate.Collection*
+  name: Collection
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Collection_
+  commentId: Overload:SatStat.ParameterControlTemplate.Collection
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.Collection
+  nameWithType: ParameterControlTemplate.Collection
+- uid: SatStat.ParameterControlTemplate.Date
+  name: Date
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Date
+  commentId: P:SatStat.ParameterControlTemplate.Date
+  fullName: SatStat.ParameterControlTemplate.Date
+  nameWithType: ParameterControlTemplate.Date
+- uid: SatStat.ParameterControlTemplate.Date*
+  name: Date
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Date_
+  commentId: Overload:SatStat.ParameterControlTemplate.Date
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.Date
+  nameWithType: ParameterControlTemplate.Date
+- uid: SatStat.ParameterControlTemplate.Description
+  name: Description
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Description
+  commentId: P:SatStat.ParameterControlTemplate.Description
+  fullName: SatStat.ParameterControlTemplate.Description
+  nameWithType: ParameterControlTemplate.Description
+- uid: SatStat.ParameterControlTemplate.Description*
+  name: Description
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Description_
+  commentId: Overload:SatStat.ParameterControlTemplate.Description
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.Description
+  nameWithType: ParameterControlTemplate.Description
+- uid: SatStat.ParameterControlTemplate.Id
+  name: Id
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Id
+  commentId: P:SatStat.ParameterControlTemplate.Id
+  fullName: SatStat.ParameterControlTemplate.Id
+  nameWithType: ParameterControlTemplate.Id
+- uid: SatStat.ParameterControlTemplate.Id*
+  name: Id
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Id_
+  commentId: Overload:SatStat.ParameterControlTemplate.Id
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.Id
+  nameWithType: ParameterControlTemplate.Id
+- uid: SatStat.ParameterControlTemplate.Name
+  name: Name
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Name
+  commentId: P:SatStat.ParameterControlTemplate.Name
+  fullName: SatStat.ParameterControlTemplate.Name
+  nameWithType: ParameterControlTemplate.Name
+- uid: SatStat.ParameterControlTemplate.Name*
+  name: Name
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Name_
+  commentId: Overload:SatStat.ParameterControlTemplate.Name
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.Name
+  nameWithType: ParameterControlTemplate.Name
+- uid: SatStat.ParameterControlTemplate.SetCollection(SatStat.ObservableNumericValueCollection)
+  name: SetCollection(ObservableNumericValueCollection)
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_SetCollection_SatStat_ObservableNumericValueCollection_
+  commentId: M:SatStat.ParameterControlTemplate.SetCollection(SatStat.ObservableNumericValueCollection)
+  fullName: SatStat.ParameterControlTemplate.SetCollection(SatStat.ObservableNumericValueCollection)
+  nameWithType: ParameterControlTemplate.SetCollection(ObservableNumericValueCollection)
+- uid: SatStat.ParameterControlTemplate.SetCollection*
+  name: SetCollection
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_SetCollection_
+  commentId: Overload:SatStat.ParameterControlTemplate.SetCollection
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.SetCollection
+  nameWithType: ParameterControlTemplate.SetCollection
 - uid: SatStat.ParameterControlTemplateDialog
   name: ParameterControlTemplateDialog
   href: api/SatStat.ParameterControlTemplateDialog.html
@@ -1955,12 +2143,12 @@ references:
   isSpec: "True"
   fullName: SatStat.StreamSimulator.Connect
   nameWithType: StreamSimulator.Connect
-- uid: SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
-  name: Output(JObject)
-  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_Newtonsoft_Json_Linq_JObject_
-  commentId: M:SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
-  fullName: SatStat.StreamSimulator.Output(Newtonsoft.Json.Linq.JObject)
-  nameWithType: StreamSimulator.Output(JObject)
+- uid: SatStat.StreamSimulator.Output(System.Object)
+  name: Output(Object)
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_System_Object_
+  commentId: M:SatStat.StreamSimulator.Output(System.Object)
+  fullName: SatStat.StreamSimulator.Output(System.Object)
+  nameWithType: StreamSimulator.Output(Object)
 - uid: SatStat.StreamSimulator.Output*
   name: Output
   href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_
@@ -1968,6 +2156,200 @@ references:
   isSpec: "True"
   fullName: SatStat.StreamSimulator.Output
   nameWithType: StreamSimulator.Output
+- uid: SatStat.StreamSimulator.RotateInstruction(System.Double,System.Double)
+  name: RotateInstruction(Double, Double)
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_RotateInstruction_System_Double_System_Double_
+  commentId: M:SatStat.StreamSimulator.RotateInstruction(System.Double,System.Double)
+  fullName: SatStat.StreamSimulator.RotateInstruction(System.Double, System.Double)
+  nameWithType: StreamSimulator.RotateInstruction(Double, Double)
+- uid: SatStat.StreamSimulator.RotateInstruction*
+  name: RotateInstruction
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_RotateInstruction_
+  commentId: Overload:SatStat.StreamSimulator.RotateInstruction
+  isSpec: "True"
+  fullName: SatStat.StreamSimulator.RotateInstruction
+  nameWithType: StreamSimulator.RotateInstruction
+- uid: SatStat.TestConfiguration
+  name: TestConfiguration
+  href: api/SatStat.TestConfiguration.html
+  commentId: T:SatStat.TestConfiguration
+  fullName: SatStat.TestConfiguration
+  nameWithType: TestConfiguration
+- uid: SatStat.TestConfiguration.#ctor
+  name: TestConfiguration()
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration__ctor
+  commentId: M:SatStat.TestConfiguration.#ctor
+  fullName: SatStat.TestConfiguration.TestConfiguration()
+  nameWithType: TestConfiguration.TestConfiguration()
+- uid: SatStat.TestConfiguration.#ctor*
+  name: TestConfiguration
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration__ctor_
+  commentId: Overload:SatStat.TestConfiguration.#ctor
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.TestConfiguration
+  nameWithType: TestConfiguration.TestConfiguration
+- uid: SatStat.TestConfiguration.AddInstruction(SatStat.Instruction,System.Int32)
+  name: AddInstruction(Instruction, Int32)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstruction_SatStat_Instruction_System_Int32_
+  commentId: M:SatStat.TestConfiguration.AddInstruction(SatStat.Instruction,System.Int32)
+  fullName: SatStat.TestConfiguration.AddInstruction(SatStat.Instruction, System.Int32)
+  nameWithType: TestConfiguration.AddInstruction(Instruction, Int32)
+- uid: SatStat.TestConfiguration.AddInstruction*
+  name: AddInstruction
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstruction_
+  commentId: Overload:SatStat.TestConfiguration.AddInstruction
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.AddInstruction
+  nameWithType: TestConfiguration.AddInstruction
+- uid: SatStat.TestConfiguration.Description
+  name: Description
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Description
+  commentId: P:SatStat.TestConfiguration.Description
+  fullName: SatStat.TestConfiguration.Description
+  nameWithType: TestConfiguration.Description
+- uid: SatStat.TestConfiguration.Description*
+  name: Description
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Description_
+  commentId: Overload:SatStat.TestConfiguration.Description
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Description
+  nameWithType: TestConfiguration.Description
+- uid: SatStat.TestConfiguration.Id
+  name: Id
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Id
+  commentId: P:SatStat.TestConfiguration.Id
+  fullName: SatStat.TestConfiguration.Id
+  nameWithType: TestConfiguration.Id
+- uid: SatStat.TestConfiguration.Id*
+  name: Id
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Id_
+  commentId: Overload:SatStat.TestConfiguration.Id
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Id
+  nameWithType: TestConfiguration.Id
+- uid: SatStat.TestConfiguration.Instructions
+  name: Instructions
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Instructions
+  commentId: P:SatStat.TestConfiguration.Instructions
+  fullName: SatStat.TestConfiguration.Instructions
+  nameWithType: TestConfiguration.Instructions
+- uid: SatStat.TestConfiguration.Instructions*
+  name: Instructions
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Instructions_
+  commentId: Overload:SatStat.TestConfiguration.Instructions
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Instructions
+  nameWithType: TestConfiguration.Instructions
+- uid: SatStat.TestConfiguration.Name
+  name: Name
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Name
+  commentId: P:SatStat.TestConfiguration.Name
+  fullName: SatStat.TestConfiguration.Name
+  nameWithType: TestConfiguration.Name
+- uid: SatStat.TestConfiguration.Name*
+  name: Name
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Name_
+  commentId: Overload:SatStat.TestConfiguration.Name
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Name
+  nameWithType: TestConfiguration.Name
+- uid: SatStat.TestConfiguration.OnObservedValueChange(SatStat.IObservableNumericValue)
+  name: OnObservedValueChange(IObservableNumericValue)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnObservedValueChange_SatStat_IObservableNumericValue_
+  commentId: M:SatStat.TestConfiguration.OnObservedValueChange(SatStat.IObservableNumericValue)
+  fullName: SatStat.TestConfiguration.OnObservedValueChange(SatStat.IObservableNumericValue)
+  nameWithType: TestConfiguration.OnObservedValueChange(IObservableNumericValue)
+- uid: SatStat.TestConfiguration.OnObservedValueChange*
+  name: OnObservedValueChange
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnObservedValueChange_
+  commentId: Overload:SatStat.TestConfiguration.OnObservedValueChange
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.OnObservedValueChange
+  nameWithType: TestConfiguration.OnObservedValueChange
+- uid: SatStat.TestConfiguration.OnPayloadReceive(System.Object)
+  name: OnPayloadReceive(Object)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnPayloadReceive_System_Object_
+  commentId: M:SatStat.TestConfiguration.OnPayloadReceive(System.Object)
+  fullName: SatStat.TestConfiguration.OnPayloadReceive(System.Object)
+  nameWithType: TestConfiguration.OnPayloadReceive(Object)
+- uid: SatStat.TestConfiguration.OnPayloadReceive*
+  name: OnPayloadReceive
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnPayloadReceive_
+  commentId: Overload:SatStat.TestConfiguration.OnPayloadReceive
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.OnPayloadReceive
+  nameWithType: TestConfiguration.OnPayloadReceive
+- uid: SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.Instruction})
+  name: OnQueueAdvance(Action<Instruction>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_System_Action_SatStat_Instruction__
+  commentId: M:SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.Instruction})
+  name.vb: OnQueueAdvance(Action(Of Instruction))
+  fullName: SatStat.TestConfiguration.OnQueueAdvance(System.Action<SatStat.Instruction>)
+  fullName.vb: SatStat.TestConfiguration.OnQueueAdvance(System.Action(Of SatStat.Instruction))
+  nameWithType: TestConfiguration.OnQueueAdvance(Action<Instruction>)
+  nameWithType.vb: TestConfiguration.OnQueueAdvance(Action(Of Instruction))
+- uid: SatStat.TestConfiguration.OnQueueAdvance*
+  name: OnQueueAdvance
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_
+  commentId: Overload:SatStat.TestConfiguration.OnQueueAdvance
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.OnQueueAdvance
+  nameWithType: TestConfiguration.OnQueueAdvance
+- uid: SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.Instruction})
+  name: OnQueueComplete(Action<Instruction>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueComplete_System_Action_SatStat_Instruction__
+  commentId: M:SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.Instruction})
+  name.vb: OnQueueComplete(Action(Of Instruction))
+  fullName: SatStat.TestConfiguration.OnQueueComplete(System.Action<SatStat.Instruction>)
+  fullName.vb: SatStat.TestConfiguration.OnQueueComplete(System.Action(Of SatStat.Instruction))
+  nameWithType: TestConfiguration.OnQueueComplete(Action<Instruction>)
+  nameWithType.vb: TestConfiguration.OnQueueComplete(Action(Of Instruction))
+- uid: SatStat.TestConfiguration.OnQueueComplete*
+  name: OnQueueComplete
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueComplete_
+  commentId: Overload:SatStat.TestConfiguration.OnQueueComplete
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.OnQueueComplete
+  nameWithType: TestConfiguration.OnQueueComplete
+- uid: SatStat.TestConfiguration.ParameterControlTemplate
+  name: ParameterControlTemplate
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_ParameterControlTemplate
+  commentId: P:SatStat.TestConfiguration.ParameterControlTemplate
+  fullName: SatStat.TestConfiguration.ParameterControlTemplate
+  nameWithType: TestConfiguration.ParameterControlTemplate
+- uid: SatStat.TestConfiguration.ParameterControlTemplate*
+  name: ParameterControlTemplate
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_ParameterControlTemplate_
+  commentId: Overload:SatStat.TestConfiguration.ParameterControlTemplate
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.ParameterControlTemplate
+  nameWithType: TestConfiguration.ParameterControlTemplate
+- uid: SatStat.TestConfiguration.Run(SatStat.DataStream)
+  name: Run(DataStream)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Run_SatStat_DataStream_
+  commentId: M:SatStat.TestConfiguration.Run(SatStat.DataStream)
+  fullName: SatStat.TestConfiguration.Run(SatStat.DataStream)
+  nameWithType: TestConfiguration.Run(DataStream)
+- uid: SatStat.TestConfiguration.Run*
+  name: Run
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Run_
+  commentId: Overload:SatStat.TestConfiguration.Run
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Run
+  nameWithType: TestConfiguration.Run
+- uid: SatStat.TestConfiguration.RunQueuedInstruction(SatStat.DataStream)
+  name: RunQueuedInstruction(DataStream)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_RunQueuedInstruction_SatStat_DataStream_
+  commentId: M:SatStat.TestConfiguration.RunQueuedInstruction(SatStat.DataStream)
+  fullName: SatStat.TestConfiguration.RunQueuedInstruction(SatStat.DataStream)
+  nameWithType: TestConfiguration.RunQueuedInstruction(DataStream)
+- uid: SatStat.TestConfiguration.RunQueuedInstruction*
+  name: RunQueuedInstruction
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_RunQueuedInstruction_
+  commentId: Overload:SatStat.TestConfiguration.RunQueuedInstruction
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.RunQueuedInstruction
+  nameWithType: TestConfiguration.RunQueuedInstruction
 - uid: SatStat.ThreadHelperClass
   name: ThreadHelperClass
   href: api/SatStat.ThreadHelperClass.html
@@ -2045,3 +2427,60 @@ references:
   isSpec: "True"
   fullName: SatStat.ThreadHelperClass.UI_TaskInvoke
   nameWithType: ThreadHelperClass.UI_TaskInvoke
+- uid: SatStat.Utils
+  name: SatStat.Utils
+  href: api/SatStat.Utils.html
+  commentId: N:SatStat.Utils
+  fullName: SatStat.Utils
+  nameWithType: SatStat.Utils
+- uid: SatStat.Utils.Cast
+  name: Cast
+  href: api/SatStat.Utils.Cast.html
+  commentId: T:SatStat.Utils.Cast
+  fullName: SatStat.Utils.Cast
+  nameWithType: Cast
+- uid: SatStat.Utils.Cast.ToType(System.Object,System.String)
+  name: ToType(Object, String)
+  href: api/SatStat.Utils.Cast.html#SatStat_Utils_Cast_ToType_System_Object_System_String_
+  commentId: M:SatStat.Utils.Cast.ToType(System.Object,System.String)
+  fullName: SatStat.Utils.Cast.ToType(System.Object, System.String)
+  nameWithType: Cast.ToType(Object, String)
+- uid: SatStat.Utils.Cast.ToType*
+  name: ToType
+  href: api/SatStat.Utils.Cast.html#SatStat_Utils_Cast_ToType_
+  commentId: Overload:SatStat.Utils.Cast.ToType
+  isSpec: "True"
+  fullName: SatStat.Utils.Cast.ToType
+  nameWithType: Cast.ToType
+- uid: SatStat.Utils.PerlinNoise
+  name: PerlinNoise
+  href: api/SatStat.Utils.PerlinNoise.html
+  commentId: T:SatStat.Utils.PerlinNoise
+  fullName: SatStat.Utils.PerlinNoise
+  nameWithType: PerlinNoise
+- uid: SatStat.Utils.PerlinNoise.#ctor(System.Int32)
+  name: PerlinNoise(Int32)
+  href: api/SatStat.Utils.PerlinNoise.html#SatStat_Utils_PerlinNoise__ctor_System_Int32_
+  commentId: M:SatStat.Utils.PerlinNoise.#ctor(System.Int32)
+  fullName: SatStat.Utils.PerlinNoise.PerlinNoise(System.Int32)
+  nameWithType: PerlinNoise.PerlinNoise(Int32)
+- uid: SatStat.Utils.PerlinNoise.#ctor*
+  name: PerlinNoise
+  href: api/SatStat.Utils.PerlinNoise.html#SatStat_Utils_PerlinNoise__ctor_
+  commentId: Overload:SatStat.Utils.PerlinNoise.#ctor
+  isSpec: "True"
+  fullName: SatStat.Utils.PerlinNoise.PerlinNoise
+  nameWithType: PerlinNoise.PerlinNoise
+- uid: SatStat.Utils.PerlinNoise.Noise(System.Double,System.Double,System.Double)
+  name: Noise(Double, Double, Double)
+  href: api/SatStat.Utils.PerlinNoise.html#SatStat_Utils_PerlinNoise_Noise_System_Double_System_Double_System_Double_
+  commentId: M:SatStat.Utils.PerlinNoise.Noise(System.Double,System.Double,System.Double)
+  fullName: SatStat.Utils.PerlinNoise.Noise(System.Double, System.Double, System.Double)
+  nameWithType: PerlinNoise.Noise(Double, Double, Double)
+- uid: SatStat.Utils.PerlinNoise.Noise*
+  name: Noise
+  href: api/SatStat.Utils.PerlinNoise.html#SatStat_Utils_PerlinNoise_Noise_
+  commentId: Overload:SatStat.Utils.PerlinNoise.Noise
+  isSpec: "True"
+  fullName: SatStat.Utils.PerlinNoise.Noise
+  nameWithType: PerlinNoise.Noise

@@ -17,7 +17,6 @@ namespace SatStat
 
         public ParameterControlTemplate()
         {
-
         }
 
         public ParameterControlTemplate(ObservableNumericValueCollection c)
