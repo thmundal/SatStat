@@ -1,8 +1,8 @@
 #pragma once
 #include "SADM_functions.h"
 
-int SADM_functions::steps = 0;
-bool SADM_functions::dir = false;
+int SADM_functions::m_steps = 0;
+bool SADM_functions::m_dir = false;
 bool SADM_functions::auto_rotate_en = false;
 const int SADM_functions::stepsPerRev = 32;
 const float SADM_functions::factor = 3.25;
@@ -22,6 +22,7 @@ void SADM_functions::init_stepper()
 /**
 *	Set's the auto_rotate_en member either true or false depending on the instruction parameter.
 */
+#define auto_rotate_params bool enable
 void SADM_functions::set_auto_rotate(Json_container<JsonObject>* instruction)
 {
 	JsonObject& ins_obj = instruction->get();
@@ -54,17 +55,17 @@ void SADM_functions::set_auto_rotate(Json_container<JsonObject>* instruction)
 */
 void SADM_functions::auto_rotate()
 {
-	if (steps < step_limit)
+	if (m_steps < step_limit)
 	{
-		steps++;
+		m_steps++;
 	}
 	else
 	{
-		dir = !dir;
-		steps = 0;
+		m_dir = !m_dir;
+		m_steps = 0;
 	}
 
-	if (!dir)
+	if (m_dir)
 	{
 		stepper->step(1);
 	}
@@ -72,23 +73,6 @@ void SADM_functions::auto_rotate()
 	{
 		stepper->step(-1);
 	}
-}
-
-/**
-*	Rotates the SADM the passed number of steps.
-*/
-void SADM_functions::rotate(int steps)
-{
-	stepper->step(steps);
-}
-
-/**
-*	Converts from degrees to steps, and rotates the SADM.
-*/
-void SADM_functions::rotate(float degrees)
-{
-	// 1 deg = 2048steps/360deg = 5.69 step/deg
-	stepper->step((int)(degrees * ((float)2048 / (float)360)));
 }
 
 /**
@@ -135,6 +119,68 @@ void SADM_functions::rotate(Json_container<JsonObject>* instruction)
 		tmp_obj.set("error", "Invalid argument!");
 		tmp_obj.printTo(Serial);
 	}
+}
+
+/**
+*	Rotates the SADM the passed number of steps.
+*/
+#define rotate_steps_params int steps
+void SADM_functions::rotate(rotate_steps_params)
+{
+	if (Function_control::is_available())
+	{
+		if (steps > 0)
+		{
+			m_dir = true;
+		}
+		else if (steps < 0)
+		{
+			m_dir = false;
+		}
+
+		m_steps = steps;
+		Function_control::reserve(rotate);
+	}
+}
+/**
+*	Converts from degrees to steps, and rotates the SADM.
+*/
+#define rotate_deg_params float degrees
+void SADM_functions::rotate(rotate_deg_params)
+{
+	if (Function_control::is_available())
+	{
+		if (degrees > 0)
+		{
+			m_dir = true;
+		}
+		else if (degrees < 0)
+		{
+			m_dir = false;
+		}
+
+		// 1 deg = 2048steps/360deg = 5.69 step/deg
+		m_steps = (int)(degrees * ((float)2048 / (float)360));
+		Function_control::reserve(rotate);
+	}
+}
+
+void SADM_functions::rotate()
+{	
+	if (m_steps == 0)
+	{
+		release();
+	}
+	else if (m_dir)
+	{
+		stepper->step(1);
+		m_steps--;
+	}
+	else
+	{
+		stepper->step(-1);
+		m_steps++;
+	}	
 }
 
 /**

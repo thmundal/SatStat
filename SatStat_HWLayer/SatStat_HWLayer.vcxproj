@@ -215,6 +215,7 @@
     <ClInclude Include="srcs\containers\SADM_functions.h" />
     <ClInclude Include="srcs\containers\Sensor_container.h" />
     <ClInclude Include="srcs\containers\Subscriber_functions.h" />
+    <ClInclude Include="srcs\handlers\Function_control.h" />
     <ClInclude Include="srcs\handlers\Instruction_handler.h" />
     <ClInclude Include="srcs\handlers\Json_handler.h" />
     <ClInclude Include="srcs\handlers\Serial_handler.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="srcs\containers\SADM_functions.cpp" />
     <ClCompile Include="srcs\containers\Sensor_container.cpp" />
     <ClCompile Include="srcs\containers\Subscriber_functions.cpp" />
+    <ClCompile Include="srcs\handlers\Function_control.cpp" />
     <ClCompile Include="srcs\handlers\Instruction_handler.cpp" />
     <ClCompile Include="srcs\handlers\Json_handler.cpp" />
     <ClCompile Include="srcs\handlers\Serial_handler.cpp" />

@@ -393,6 +393,9 @@
     <ClInclude Include="libraries\DHT\DHT_U.h">
       <Filter>Header Files\libraries\DHT</Filter>
     </ClInclude>
+    <ClInclude Include="srcs\handlers\Function_control.h">
+      <Filter>Header Files\srcs\handlers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp">
@@ -436,6 +439,9 @@
     </ClCompile>
     <ClCompile Include="libraries\Stepper\Stepper.cpp">
       <Filter>Source Files\libraries\Stepper</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\handlers\Function_control.cpp">
+      <Filter>Source Files\srcs\handlers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

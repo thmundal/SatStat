@@ -31,10 +31,10 @@ private:
 void HWLayer::setup()
 {
 	// Temp and hum sensor gnd and 5V
-	pinMode(5, OUTPUT);
-	digitalWrite(5, LOW);
-	pinMode(6, OUTPUT);
-	digitalWrite(6, HIGH);
+	pinMode(2, OUTPUT);
+	digitalWrite(2, LOW);
+	pinMode(3, OUTPUT);
+	digitalWrite(3, HIGH);
 
 	// Init serial
 	Serial.begin(9600);
@@ -68,11 +68,18 @@ void HWLayer::loop()
 {
 	serial_handler.serial_listener();
 
-	if (!instruction_handler.queue_is_empty())
+	if (Function_control::is_available())
 	{
-		instruction_handler.interpret_instruction();
+		if (!instruction_handler.queue_is_empty())
+		{
+			instruction_handler.interpret_instruction();
+		}
 	}
-
+	else
+	{
+		Function_control::run();
+	}
+	
 	if (instruction_handler.sadm_auto_rotate_en())
 	{
 		instruction_handler.sadm_auto_rotate();
@@ -82,8 +89,7 @@ void HWLayer::loop()
 	if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 	{
 		// Reads the sensors
-		{
-			scoped_timer;
+		{			
 			sensor_container.read_all_sensors();
 		}
 
