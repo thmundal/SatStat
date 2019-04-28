@@ -1,6 +1,6 @@
 #pragma once
-#include "Json_object_container.h"
-#include "../../libraries/Stepper/Stepper.h"
+#include "Json_container.h"
+#include "../../lib/Stepper/Stepper.h"
 #include "../handlers/Function_control.h"
 /**
 *	Abstract class with all static members for the functions to be compatible with insertion into the instruction_interpreter list in the Instruction_handler.
@@ -17,9 +17,9 @@ public:
 	virtual ~SADM_functions() = 0;
 
 	static void init_stepper();
-	static void set_auto_rotate(Json_container<JsonObject>* instruction);
+	static void set_auto_rotate(Json_container<JsonObject>& ins);
 	static void auto_rotate();
-	static void rotate(Json_container<JsonObject>* instruction);
+	static void rotate(Json_container<JsonObject>& ins);
 	static void rotate(int steps);
 	static void rotate(float degrees);
 	static void rotate();

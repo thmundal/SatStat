@@ -10,7 +10,10 @@ bool Function_control::is_available()
 
 void Function_control::run()
 {
-	m_func();
+	if (!m_available)
+	{
+		m_func();
+	}
 }
 
 void Function_control::reserve(void(*func)(void))

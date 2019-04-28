@@ -1,5 +1,5 @@
 #pragma once
-#include "../../libraries/SSTL/sstl.h"
+#include "../../lib/SSTL/sstl.h"
 
 /**
 *	The Sensor class is the parent class of every specific sensor added to the system.

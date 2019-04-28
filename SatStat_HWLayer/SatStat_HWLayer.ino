@@ -1,15 +1,19 @@
-#pragma once
-#include "./srcs/HWLayer.h"
+/*
+ Name:		Instruction_test_proj.ino
+ Created:	25-Apr-19 14:08:10
+ Author:	skjel
+*/
 
-HWLayer hw;
+#include "./src/HWLayer.h"
 
-void setup()
-{
-	Serial.begin(9600);
-	hw.setup();
+HWLayer hwlayer;
+
+void setup() 
+{	
+	hwlayer.setup();
 }
 
-void loop()
-{	
-	hw.loop();
+void loop() 
+{
+	hwlayer.loop();
 }

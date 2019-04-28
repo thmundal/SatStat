@@ -1,9 +1,6 @@
 #pragma once
-#include "Json_handler.h"
-#include "../../libraries/QueueArray.h"
-#include "../../libraries/LinkedList/LinkedList.h"
-#include "../containers/SADM_functions.h"
-#include "../containers/Subscriber_functions.h"
+#include "../containers/Instruction_container.h"
+#include "../../lib/QueueArray.h"
 
 /**
 *	The Instruction_handler class holds the instructions received through the serial port in the instruction_queue member.
@@ -15,19 +12,13 @@
 class Instruction_handler
 {
 public:
-	Instruction_handler();
-	~Instruction_handler();
-	
 	bool insert_instruction(const String& input_data);
-	Json_container<JsonObject>* fetch_instruction();
+	Json_container<JsonObject> fetch_instruction();
 	bool queue_is_empty() const;
-
-	bool sadm_auto_rotate_en();
-	void sadm_auto_rotate();
 
 	void interpret_instruction();
 
 private:	
-	static QueueArray<Json_container<JsonObject>*> instruction_queue;
-	LinkedList<String, void(*)(Json_container<JsonObject>*)> instruction_interpreter;
+	Instruction_container container;
+	static QueueArray<Json_container<JsonObject>> instruction_queue;
 };

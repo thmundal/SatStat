@@ -13,62 +13,65 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\srcs">
-      <UniqueIdentifier>{19279d9b-e9d3-4e8d-ae65-3f1e26d6a35a}</UniqueIdentifier>
+    <Filter Include="Header Files\src">
+      <UniqueIdentifier>{e3c8424f-1dab-4b45-84b3-7ec7c8c27075}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries">
-      <UniqueIdentifier>{2b6a3215-92d4-4ef8-b9ff-48dae806448b}</UniqueIdentifier>
+    <Filter Include="Header Files\lib">
+      <UniqueIdentifier>{638cbe33-5092-4eb4-a96c-c67837dfdf69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\SSTL">
-      <UniqueIdentifier>{e20466bd-855b-4650-81f9-78055cdcb7f6}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\ArduinoJson">
+      <UniqueIdentifier>{adfc37a9-b7b5-49dd-9ac1-38293bf1a19b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\srcs\containers">
-      <UniqueIdentifier>{72fa5744-adea-47f5-9daf-ea87f1aacea1}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\ArduinoJson\ArduinoJson">
+      <UniqueIdentifier>{f2d03339-0b7c-454f-9cf7-844b2ea685b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\srcs\handlers">
-      <UniqueIdentifier>{29c35d83-cbf0-46e9-ba9b-f8d51a573836}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\Adafruit_Sensor">
+      <UniqueIdentifier>{aaa35506-4406-45c4-8897-f528dfbe5e3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\srcs\sensors">
-      <UniqueIdentifier>{683357b1-5774-4520-88be-0ea557b9d164}</UniqueIdentifier>
+    <Filter Include="Source Files\lib">
+      <UniqueIdentifier>{6b67d934-1a9b-4622-9068-86a380cbf1dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\libraries">
-      <UniqueIdentifier>{c3cfec22-b206-4d0c-90c1-11940b56e109}</UniqueIdentifier>
+    <Filter Include="Source Files\lib\DHT">
+      <UniqueIdentifier>{584c49fe-5d11-4792-8260-e02de8bc2b21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\srcs">
-      <UniqueIdentifier>{2e43d1c9-fb16-4b73-8221-510a739c8e95}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\DHT">
+      <UniqueIdentifier>{498e2b01-a23a-4172-9a9e-b6b26be57ebb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\srcs\containers">
-      <UniqueIdentifier>{ba50545a-ae1e-4089-9437-59fe6afb4721}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\LinkedList">
+      <UniqueIdentifier>{f318fe88-07f0-4df1-b706-a2f5124b09e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\srcs\handlers">
-      <UniqueIdentifier>{4dc705a1-ad13-4473-897a-5c2f65b537ac}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\SSTL">
+      <UniqueIdentifier>{e3036930-b4b2-4995-8a0e-90377a1351fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\srcs\sensors">
-      <UniqueIdentifier>{4680b180-8f1b-4733-ad00-a22b85ad0889}</UniqueIdentifier>
+    <Filter Include="Source Files\lib\SSTL">
+      <UniqueIdentifier>{71fb0f1b-f9a8-4e3d-8c89-9c52ac491cd4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\ArduinoJson">
-      <UniqueIdentifier>{e566588c-9f70-483e-945f-55b4ccf077a4}</UniqueIdentifier>
+    <Filter Include="Header Files\lib\Stepper">
+      <UniqueIdentifier>{be9fcbbd-8fc2-4e10-a214-344fd8639d0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\libraries\SSTL">
-      <UniqueIdentifier>{eb924eb1-0f3a-425e-a6f1-035aa315461e}</UniqueIdentifier>
+    <Filter Include="Source Files\lib\Stepper">
+      <UniqueIdentifier>{d9a47e99-e9f2-45ef-bb5e-7fdce9a0d904}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\LinkedList">
-      <UniqueIdentifier>{77df2edf-f048-4908-aeb6-e5f6ff1ed8b5}</UniqueIdentifier>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{8f0c462c-e474-4e31-860f-6d5ba102cbe0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\Adafruit_sensor">
-      <UniqueIdentifier>{b196ecc2-1f6d-495b-8d25-450facb42583}</UniqueIdentifier>
+    <Filter Include="Source Files\src\containers">
+      <UniqueIdentifier>{88b929fd-8d1a-4e3f-9f06-82e1aafbf29d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\DHT">
-      <UniqueIdentifier>{f3fd4c0b-1b8c-4c25-aa78-242236cdc87b}</UniqueIdentifier>
+    <Filter Include="Source Files\src\handlers">
+      <UniqueIdentifier>{d1567cb6-ec8d-409b-ab3c-047031310e4e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\libraries\DHT">
-      <UniqueIdentifier>{c074a723-c294-4985-9169-e73ab911f896}</UniqueIdentifier>
+    <Filter Include="Source Files\src\sensors">
+      <UniqueIdentifier>{5a94de15-7adc-44a0-bd89-78f41e2938ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\libraries\Stepper">
-      <UniqueIdentifier>{37e03a23-0029-4457-9ed7-a35a74d9b9a9}</UniqueIdentifier>
+    <Filter Include="Header Files\src\containers">
+      <UniqueIdentifier>{c7e83da0-b918-48a4-918e-0b8d608d6f18}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\libraries\Stepper">
-      <UniqueIdentifier>{49f85e84-5987-419a-8052-c294dc7609b3}</UniqueIdentifier>
+    <Filter Include="Header Files\src\handlers">
+      <UniqueIdentifier>{b4620914-dcdc-4f9a-b5f7-9e9512d123f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\sensors">
+      <UniqueIdentifier>{10e82eaf-aa02-42d7-823f-496f60a5cd22}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,370 +81,358 @@
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\SSTL\Lists.h">
-      <Filter>Header Files\libraries\SSTL</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson.h">
+      <Filter>Header Files\lib\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\SSTL\sstl.h">
-      <Filter>Header Files\libraries\SSTL</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson.hpp">
+      <Filter>Header Files\lib\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\SSTL\Subscribable.h">
-      <Filter>Header Files\libraries\SSTL</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\ArduinoStream.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\SSTL\Data_types.h">
-      <Filter>Header Files\libraries\SSTL</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\attributes.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\SSTL\Data_container.h">
-      <Filter>Header Files\libraries\SSTL</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\CharPointer.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson.h">
-      <Filter>Header Files\libraries</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Deserialization\Comments.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson.hpp">
-      <Filter>Header Files\libraries</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Configuration.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\QueueArray.h">
-      <Filter>Header Files\libraries</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\ctype.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\sensors\Sensor.h">
-      <Filter>Header Files\srcs\sensors</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\DummyPrint.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\sensors\Temp_hum_sensor.h">
-      <Filter>Header Files\srcs\sensors</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\DynamicJsonBuffer.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\Sensor_container.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\DynamicStringBuilder.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\ArduinoStream.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\EnableIf.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\attributes.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\Encoding.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\CharPointer.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\FlashString.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Deserialization\Comments.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\FloatParts.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Configuration.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\FloatTraits.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\ctype.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\IndentedPrint.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\DummyPrint.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsArray.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\DynamicJsonBuffer.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsBaseOf.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\DynamicStringBuilder.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsChar.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\EnableIf.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsConst.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\Encoding.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\isFloat.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\FlashString.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsFloatingPoint.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\FloatParts.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\isInteger.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\FloatTraits.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsIntegral.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\IndentedPrint.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsSame.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsArray.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsSignedIntegral.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsBaseOf.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsUnsignedIntegral.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsChar.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\IsVariant.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsConst.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonArray.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\isFloat.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonArrayImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsFloatingPoint.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonArraySubscript.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\isInteger.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonBuffer.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsIntegral.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonBufferAllocated.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsSame.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonBufferBase.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsSignedIntegral.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonBufferImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsUnsignedIntegral.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonFloat.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\IsVariant.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonInteger.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonArray.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonObject.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonArrayImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonObjectImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonArraySubscript.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonObjectSubscript.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonBuffer.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonPair.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonBufferAllocated.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Deserialization\JsonParser.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonBufferBase.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Deserialization\JsonParserImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonBufferImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\JsonPrintable.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonFloat.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\JsonSerializer.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonInteger.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\JsonSerializerImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonObject.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariant.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonObjectImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonVariantAs.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonObjectSubscript.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantBase.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonPair.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantCasts.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Deserialization\JsonParser.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantComparisons.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Deserialization\JsonParserImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonVariantContent.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\JsonPrintable.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonVariantDefault.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\JsonSerializer.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantImpl.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\JsonSerializerImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantOr.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariant.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\JsonVariantSubscripts.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonVariantAs.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\JsonVariantType.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantBase.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\JsonWriter.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantCasts.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\List.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantComparisons.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\ListConstIterator.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonVariantContent.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\ListIterator.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonVariantDefault.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\ListNode.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantImpl.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\math.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantOr.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\NonCopyable.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\JsonVariantSubscripts.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\parseFloat.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\JsonVariantType.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Polyfills\parseInteger.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\JsonWriter.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\Prettyfier.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\List.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\RawJson.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\ListConstIterator.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\ReferenceType.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\ListIterator.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\RemoveConst.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\ListNode.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\TypeTraits\RemoveReference.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\math.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StaticJsonBuffer.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\NonCopyable.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\StaticStringBuilder.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\parseFloat.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\StdStream.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Polyfills\parseInteger.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\StdString.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\Prettyfier.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Serialization\StreamPrintAdapter.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\RawJson.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\StringTraits\StringTraits.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\ReferenceType.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Deserialization\StringWriter.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveConst.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\Data\ValueSaver.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\TypeTraits\RemoveReference.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\ArduinoJson\ArduinoJson\version.hpp">
+      <Filter>Header Files\lib\ArduinoJson\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StaticJsonBuffer.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\Adafruit_Sensor\Adafruit_Sensor.h">
+      <Filter>Header Files\lib\Adafruit_Sensor</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\StaticStringBuilder.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\DHT\DHT.h">
+      <Filter>Header Files\lib\DHT</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\StdStream.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\DHT\DHT_U.h">
+      <Filter>Header Files\lib\DHT</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\StdString.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\LinkedList\LinkedList.h">
+      <Filter>Header Files\lib\LinkedList</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Serialization\StreamPrintAdapter.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\LinkedList\Node.h">
+      <Filter>Header Files\lib\LinkedList</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\StringTraits\StringTraits.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\SSTL\Data_container.h">
+      <Filter>Header Files\lib\SSTL</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Deserialization\StringWriter.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\SSTL\Data_types.h">
+      <Filter>Header Files\lib\SSTL</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\Data\ValueSaver.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\SSTL\Lists.h">
+      <Filter>Header Files\lib\SSTL</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\ArduinoJson\version.hpp">
-      <Filter>Header Files\libraries\ArduinoJson</Filter>
+    <ClInclude Include="lib\SSTL\sstl.h">
+      <Filter>Header Files\lib\SSTL</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\Json_array_container.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="lib\SSTL\Subscribable.h">
+      <Filter>Header Files\lib\SSTL</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\Json_container.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="lib\Stepper\Stepper.h">
+      <Filter>Header Files\lib\Stepper</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\Json_object_container.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="lib\QueueArray.h">
+      <Filter>Header Files\lib</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\handlers\Json_handler.h">
-      <Filter>Header Files\srcs\handlers</Filter>
+    <ClInclude Include="src\containers\Instruction_container.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\handlers\Instruction_handler.h">
-      <Filter>Header Files\srcs\handlers</Filter>
+    <ClInclude Include="src\containers\Json_container.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\SADM_functions.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="src\containers\SADM_functions.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\handlers\Serial_handler.h">
-      <Filter>Header Files\srcs\handlers</Filter>
+    <ClInclude Include="src\containers\Sensor_container.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\HWLayer.h">
-      <Filter>Header Files\srcs</Filter>
+    <ClInclude Include="src\containers\Subscriber_functions.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="srcs\containers\Subscriber_functions.h">
-      <Filter>Header Files\srcs\containers</Filter>
+    <ClInclude Include="src\handlers\Function_control.h">
+      <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\LinkedList\LinkedList.h">
-      <Filter>Header Files\libraries\LinkedList</Filter>
+    <ClInclude Include="src\handlers\Instruction_handler.h">
+      <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\LinkedList\Node.h">
-      <Filter>Header Files\libraries\LinkedList</Filter>
+    <ClInclude Include="src\handlers\Serial_handler.h">
+      <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\Adafruit_Sensor\Adafruit_Sensor.h">
-      <Filter>Header Files\libraries\Adafruit_sensor</Filter>
+    <ClInclude Include="src\sensors\Sensor.h">
+      <Filter>Header Files\src\sensors</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\DHT\DHT.h">
-      <Filter>Header Files\libraries\DHT</Filter>
+    <ClInclude Include="src\sensors\Temp_hum_sensor.h">
+      <Filter>Header Files\src\sensors</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\Stepper\Stepper.h">
-      <Filter>Header Files\libraries\Stepper</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\DHT\DHT_U.h">
-      <Filter>Header Files\libraries\DHT</Filter>
-    </ClInclude>
-    <ClInclude Include="srcs\handlers\Function_control.h">
-      <Filter>Header Files\srcs\handlers</Filter>
+    <ClInclude Include="src\HWLayer.h">
+      <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="srcs\sensors\Temp_hum_sensor.cpp">
-      <Filter>Source Files\srcs\sensors</Filter>
+    <ClCompile Include="lib\DHT\DHT.cpp">
+      <Filter>Source Files\lib\DHT</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\containers\Sensor_container.cpp">
-      <Filter>Source Files\srcs\containers</Filter>
+    <ClCompile Include="lib\DHT\DHT_U.cpp">
+      <Filter>Source Files\lib\DHT</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\containers\Json_array_container.cpp">
-      <Filter>Source Files\srcs\containers</Filter>
+    <ClCompile Include="lib\SSTL\Lists.cpp">
+      <Filter>Source Files\lib\SSTL</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\containers\Json_object_container.cpp">
-      <Filter>Source Files\srcs\containers</Filter>
+    <ClCompile Include="lib\Stepper\Stepper.cpp">
+      <Filter>Source Files\lib\Stepper</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\handlers\Json_handler.cpp">
-      <Filter>Source Files\srcs\handlers</Filter>
+    <ClCompile Include="src\containers\Instruction_container.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\SSTL\Lists.cpp">
-      <Filter>Source Files\libraries\SSTL</Filter>
+    <ClCompile Include="src\containers\SADM_functions.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\handlers\Instruction_handler.cpp">
-      <Filter>Source Files\srcs\handlers</Filter>
+    <ClCompile Include="src\containers\Sensor_container.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\containers\SADM_functions.cpp">
-      <Filter>Source Files\srcs\containers</Filter>
+    <ClCompile Include="src\containers\Subscriber_functions.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\handlers\Serial_handler.cpp">
-      <Filter>Source Files\srcs\handlers</Filter>
+    <ClCompile Include="src\handlers\Function_control.cpp">
+      <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\HWLayer.cpp">
-      <Filter>Source Files\srcs</Filter>
+    <ClCompile Include="src\handlers\Instruction_handler.cpp">
+      <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\containers\Subscriber_functions.cpp">
-      <Filter>Source Files\srcs\containers</Filter>
+    <ClCompile Include="src\handlers\Serial_handler.cpp">
+      <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\DHT\DHT_U.cpp">
-      <Filter>Source Files\libraries\DHT</Filter>
+    <ClCompile Include="src\sensors\Temp_hum_sensor.cpp">
+      <Filter>Source Files\src\sensors</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\DHT\DHT.cpp">
-      <Filter>Source Files\libraries\DHT</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\Stepper\Stepper.cpp">
-      <Filter>Source Files\libraries\Stepper</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\handlers\Function_control.cpp">
-      <Filter>Source Files\srcs\handlers</Filter>
+    <ClCompile Include="src\HWLayer.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

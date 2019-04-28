@@ -134,7 +134,7 @@ QueueArray<T>::QueueArray () {
   printer = NULL; // set the printer of queue to point nowhere.
 
   // allocate enough memory for the array.
-  contents = (T *) malloc (sizeof (T) * initialSize);
+  contents = new T[initialSize];
 
   // if there is a memory allocation error.
   if (contents == NULL)
@@ -147,7 +147,7 @@ QueueArray<T>::QueueArray () {
 // clear the queue (destructor).
 template<typename T>
 QueueArray<T>::~QueueArray () {
-  free (contents); // deallocate the array of the queue.
+ delete[] contents; // deallocate the array of the queue.
 
   contents = NULL; // set queue's array pointer to nowhere.
   printer = NULL;  // set the printer of queue to point nowhere.
@@ -167,7 +167,7 @@ void QueueArray<T>::resize (const int s) {
     exit ("QUEUE: error due to undesirable size for queue size.");
 
   // allocate enough memory for the temporary array.
-  T * temp = (T *) malloc (sizeof (T) * s);
+  T * temp = new T[s];
 
   // if there is a memory allocation error.
   if (temp == NULL)
@@ -178,7 +178,7 @@ void QueueArray<T>::resize (const int s) {
     temp[i] = contents[(head + i) % size];
 
   // deallocate the old array of the queue.
-  free (contents);
+  delete[] contents;
 
   // copy the pointer of the new queue.
   contents = temp;

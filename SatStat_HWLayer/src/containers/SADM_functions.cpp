@@ -22,31 +22,28 @@ void SADM_functions::init_stepper()
 /**
 *	Set's the auto_rotate_en member either true or false depending on the instruction parameter.
 */
-#define auto_rotate_params bool enable
-void SADM_functions::set_auto_rotate(Json_container<JsonObject>* instruction)
+void SADM_functions::set_auto_rotate(Json_container<JsonObject>& ins)
 {
-	JsonObject& ins_obj = instruction->get();
+	//Json_container<JsonObject> ins = instruction;	
 
-	if (ins_obj.containsKey("enable"))
+	if (ins->containsKey("enable"))
 	{
-		if (ins_obj.is<bool>("enable"))
+		if (ins->is<bool>("enable"))
 		{
-			auto_rotate_en = ins_obj.get<bool>("enable");
+			auto_rotate_en = ins->get<bool>("enable");
 		}
 		else
 		{
-			instruction->create();
-			JsonObject& tmp_obj = instruction->get();
-			tmp_obj.set("error", "Invalid value!");
-			tmp_obj.printTo(Serial);
+			Json_container<JsonObject> tmp;
+			tmp->set("error", "Invalid value!");
+			tmp->printTo(Serial);
 		}
 	}
 	else
 	{
-		instruction->create();
-		JsonObject& tmp_obj = instruction->get();
-		tmp_obj.set("error", "Invalid argument!");
-		tmp_obj.printTo(Serial);
+		Json_container<JsonObject> tmp;
+		tmp->set("error", "Invalid argument!!");
+		tmp->printTo(Serial);
 	}
 }
 
@@ -78,55 +75,50 @@ void SADM_functions::auto_rotate()
 /**
 *	Calls the rotate function matching the instruction parameter type.
 */
-void SADM_functions::rotate(Json_container<JsonObject>* instruction)
+void SADM_functions::rotate(Json_container<JsonObject>& ins)
 {
-	JsonObject& ins_obj = instruction->get();
-
-	if (ins_obj.containsKey("deg"))
+	//Json_container<JsonObject> ins = instruction;
+	if (ins->containsKey("deg"))
 	{
-		if (ins_obj.is<float>("deg"))
+		if (ins->is<float>("deg"))
 		{
-			float deg = ins_obj.get<float>("deg");
+			float deg = ins->get<float>("deg");
 			rotate(deg);
 		}
 		else
 		{
-			instruction->create();
-			JsonObject& tmp_obj = instruction->get();
-			tmp_obj.set("error", "Invalid value!");
-			tmp_obj.printTo(Serial);
+			Json_container<JsonObject> tmp;
+			tmp->set("error", "Invalid value!");
+			tmp->printTo(Serial);
 		}
 	}
-	else if (ins_obj.containsKey("steps"))
+	else if (ins->containsKey("steps"))
 	{
-		if (ins_obj.is<int>("steps"))
+		if (ins->is<int>("steps"))
 		{
-			int steps = ins_obj.get<int>("steps");
-			rotate(steps);
+			int steps = ins->get<int>("steps");
+			rotate(steps);		
 		}
 		else
 		{
-			instruction->create();
-			JsonObject& tmp_obj = instruction->get();
-			tmp_obj.set("error", "Invalid value!");
-			tmp_obj.printTo(Serial);
+			Json_container<JsonObject> tmp;
+			tmp->set("error", "Invalid value!");
+			tmp->printTo(Serial);
 		}
 	}
 	else
 	{
-		instruction->create();
-		JsonObject& tmp_obj = instruction->get();
-		tmp_obj.set("error", "Invalid argument!");
-		tmp_obj.printTo(Serial);
+		Json_container<JsonObject> tmp;
+		tmp->set("error", "Invalid argument!");
+		tmp->printTo(Serial);
 	}
 }
 
 /**
 *	Rotates the SADM the passed number of steps.
 */
-#define rotate_steps_params int steps
-void SADM_functions::rotate(rotate_steps_params)
-{
+void SADM_functions::rotate(int steps)
+{	
 	if (Function_control::is_available())
 	{
 		if (steps > 0)
@@ -145,8 +137,7 @@ void SADM_functions::rotate(rotate_steps_params)
 /**
 *	Converts from degrees to steps, and rotates the SADM.
 */
-#define rotate_deg_params float degrees
-void SADM_functions::rotate(rotate_deg_params)
+void SADM_functions::rotate(float degrees)
 {
 	if (Function_control::is_available())
 	{

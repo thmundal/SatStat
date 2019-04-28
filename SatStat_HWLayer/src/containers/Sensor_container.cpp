@@ -40,7 +40,7 @@ void Sensor_container::read_all_sensors()
 	}
 }
 
-void Sensor_container::append_data(Json_container<JsonObject>* dest, sstl::Subscribable* src)
+void Sensor_container::append_data(Json_container<JsonObject>& dest, sstl::Subscribable* src)
 {
 	sstl::types type = src->get_type();
 
@@ -48,74 +48,71 @@ void Sensor_container::append_data(Json_container<JsonObject>* dest, sstl::Subsc
 	{
 		auto data_obj = sstl::downcast<int>(src);
 		data_obj->get_name();
-		json_handler.append_to(dest, data_obj->get_name(), data_obj->get_data());
+		dest->set(data_obj->get_name(), data_obj->get_data());
 	}
 	else if (type == sstl::types::t_float)
 	{
 		auto data_obj = sstl::downcast<float>(src);
 		data_obj->get_name();
-		json_handler.append_to(dest, data_obj->get_name(), data_obj->get_data());
+		dest->set(data_obj->get_name(), data_obj->get_data());
 	}
 	else if (type == sstl::types::t_double)
 	{
 		auto data_obj = sstl::downcast<double>(src);
 		data_obj->get_name();
-		json_handler.append_to(dest, data_obj->get_name(), data_obj->get_data());
+		dest->set(data_obj->get_name(), data_obj->get_data());
 	}
 }
 
-Json_container<JsonObject>* Sensor_container::get_data(const String& name)
+Json_container<JsonObject> Sensor_container::get_data(const String& name)
 {
-	Json_container<JsonObject>* obj = json_handler.create_object();
+	Json_container<JsonObject> obj;
 	auto sub_obj = sstl::Lists::get_data(name);		
 
 	append_data(obj, sub_obj);
 	return obj;
 }
 
-Json_container<JsonObject>* Sensor_container::get_all_data()
+Json_container<JsonObject> Sensor_container::get_all_data()
 {
 	auto& list = sstl::Lists::get_data_list();
 	int count = list.count();
+	
+	Json_container<JsonObject> obj;
 
 	if (count != 0)
 	{
-		Json_container<JsonObject>* obj = json_handler.create_object();
-
 		for (int i = 0; i < count; i++)
 		{
 			append_data(obj, list[i]);
 		}
-
-		return obj;
 	}
 	
-	return nullptr;
+	return obj;
 }
 
-Json_container<JsonObject>* Sensor_container::get_sub_data()
+Json_container<JsonObject> Sensor_container::get_sub_data()
 {
 	auto& list = sstl::Lists::get_sub_list();
 	int count = list.count();
 
+	Json_container<JsonObject> obj;
+	
 	if (count != 0)
 	{
-		Json_container<JsonObject>* obj = json_handler.create_object();
 
 		for (int i = 0; i < count; i++)
 		{
 			append_data(obj, list[i]);
 		}
-
-		return obj;
 	}
 
-	return nullptr;
+	return obj;
 }
 
-void Sensor_container::append_available_data(Json_container<JsonObject>* dest)
+void Sensor_container::append_available_data(Json_container<JsonObject>& dest)
 {
-	JsonObject& tmp = dest->get().createNestedObject("available_data");
+	JsonObject& tmp = dest->createNestedObject("available_data");
 
 	auto& data_list = sstl::Lists::get_data_list();
 

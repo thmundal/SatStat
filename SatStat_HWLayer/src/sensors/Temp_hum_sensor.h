@@ -1,6 +1,6 @@
 #pragma once
 #include "Sensor.h"
-#include "../../libraries/DHT/DHT_U.h"
+#include "../../lib/DHT/DHT_U.h"
 
 /**
 *	The Temp_hum_sensor is an example of a class for a specific sensor, in this case the DHT11 temperature and humidity sensor.

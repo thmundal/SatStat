@@ -55,11 +55,9 @@ void Serial_handler::serial_listener()
 		{
 			if (!instruction_handler.insert_instruction(input))
 			{
-				Json_container<JsonObject>* tmp_obj = new Json_object_container();
-				JsonObject& tmp_ref = tmp_obj->get();
-				tmp_ref.set("Error", "Could not parse received data!");
-				tmp_ref.printTo(Serial);
-				delete tmp_obj;
+				Json_container<JsonObject> tmp;
+				tmp->set("Error", "Could not parse received data!");
+				tmp->printTo(Serial);
 			}
 		}
 	}
@@ -70,12 +68,10 @@ void Serial_handler::serial_listener()
 */
 void Serial_handler::send_nack()
 {
-	Json_container<JsonObject>* nack = json_handler.create_object("serial_handshake", "failed");
-
-	nack->get().printTo(Serial);
+	Json_container<JsonObject> nack;
+	nack->set("serial_handshake", "failed");
+	nack->printTo(Serial);
 	Serial.print(newline_format);
-
-	delete nack;
 }
 
 /**
@@ -85,7 +81,7 @@ void Serial_handler::send_nack()
 */
 bool Serial_handler::handshake_approved()
 {
-	Json_container<JsonObject>* tmp;
+	Json_container<JsonObject> tmp;
 
 	unsigned long start_time = millis();
 	unsigned long timeout = 2000;
@@ -98,17 +94,15 @@ bool Serial_handler::handshake_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get().containsKey("serial_handshake"))
+			if (tmp->containsKey("serial_handshake"))
 			{
-				if (tmp->get().get<String>("serial_handshake") == "init")
+				if (tmp->get<String>("serial_handshake") == "init")
 				{
 					send_handshake_response();
-					delete tmp;
 					return true;
 				}
 			}
 			send_nack();
-			delete tmp;
 		}
 	}
 
@@ -122,8 +116,7 @@ bool Serial_handler::handshake_approved()
 */
 bool Serial_handler::connection_request_approved()
 {
-	Json_container<JsonObject>* tmp;
-	JsonObject* nested_obj;
+	Json_container<JsonObject> tmp;	
 
 	unsigned long start_time = millis();
 	unsigned long timeout = 2000;
@@ -136,21 +129,19 @@ bool Serial_handler::connection_request_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get().containsKey("connection_request"))
+			if (tmp->containsKey("connection_request"))
 			{
-				nested_obj = &tmp->get().get<JsonVariant>("connection_request").asObject();
+				JsonObject& nested_obj = tmp->get<JsonVariant>("connection_request").asObject();
 
-				if (config_approved(nested_obj->get<unsigned long>("baud_rate"), nested_obj->get<String>("config")))
+				if (config_approved(nested_obj.get<unsigned long>("baud_rate"), nested_obj.get<String>("config")))
 				{
-					newline_format = nested_obj->get<String>("newline");
+					newline_format = nested_obj.get<String>("newline");
 
 					serial_init();
-					delete tmp;
 					return true;
 				}
 			}
 			send_nack();
-			delete tmp;
 		}
 	}
 
@@ -164,7 +155,7 @@ bool Serial_handler::connection_request_approved()
 */
 bool Serial_handler::connection_init_approved()
 {
-	Json_container<JsonObject>* tmp;
+	Json_container<JsonObject> tmp;
 	unsigned long start_time = millis();
 	unsigned long timeout = 2000;
 
@@ -178,17 +169,15 @@ bool Serial_handler::connection_init_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get().containsKey("connect"))
+			if (tmp->containsKey("connect"))
 			{
 
-				if (tmp->get().get<String>("connect") == "ok")
+				if (tmp->get<String>("connect") == "ok")
 				{
-					delete tmp;
 					return true;
 				}
 			}
 			send_nack();
-			delete tmp;
 		}
 	}	
 	return false;
@@ -201,7 +190,7 @@ bool Serial_handler::connection_init_approved()
 */
 bool Serial_handler::available_data_request_approved()
 {
-	Json_container<JsonObject>* tmp;
+	Json_container<JsonObject> tmp;
 	unsigned long start_time = millis();
 	unsigned long timeout = 2000;
 
@@ -213,17 +202,15 @@ bool Serial_handler::available_data_request_approved()
 		{
 			tmp = instruction_handler.fetch_instruction();
 
-			if (tmp->get().containsKey("request"))
+			if (tmp->containsKey("request"))
 			{
 
-				if (tmp->get().get<String>("request") == "available_data")
-				{					
-					delete tmp;
+				if (tmp->get<String>("request") == "available_data")
+				{				
 					return true;
 				}
 			}
 			send_nack();
-			delete tmp;
 		}
 	}
 
@@ -233,12 +220,10 @@ bool Serial_handler::available_data_request_approved()
 /**
 *	Prints the Json_container<JsonObject> pointer passed as argument to the serial.
 */
-void Serial_handler::print_to_serial(Json_container<JsonObject>* json)
+void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
 {
-	json->get().printTo(Serial);
+	json->printTo(Serial);
 	Serial.print(newline_format);
-
-	delete json;
 }
 
 /**
@@ -276,8 +261,8 @@ bool Serial_handler::config_approved(const unsigned long & baud_rate, const Stri
 */
 void Serial_handler::send_handshake_response()
 {
-	Json_container<JsonObject>* handshake_response = json_handler.create_object();
-	JsonObject& serial_handshake = handshake_response->get().createNestedObject("serial_handshake");
+	Json_container<JsonObject> handshake_response;
+	JsonObject& serial_handshake = handshake_response->createNestedObject("serial_handshake");
 	JsonArray& baud_rates = serial_handshake.createNestedArray("baud_rates");
 	JsonArray& configs = serial_handshake.createNestedArray("configs");
 	JsonArray& newlines = serial_handshake.createNestedArray("newlines");
@@ -328,10 +313,8 @@ void Serial_handler::send_handshake_response()
 	newlines.add("\r\n");
 	newlines.add("\n");
 
-	handshake_response->get().printTo(Serial);
+	handshake_response->printTo(Serial);
 	Serial.print(newline_format);
-
-	delete handshake_response;
 }
 
 /**
@@ -339,14 +322,12 @@ void Serial_handler::send_handshake_response()
 */
 void Serial_handler::send_available_data(Sensor_container& sc)
 {
-	Json_container<JsonObject>* ack = json_handler.create_object();	
+	Json_container<JsonObject> ack;	
 
 	sc.append_available_data(ack);
 
-	ack->get().printTo(Serial);
+	ack->printTo(Serial);
 	Serial.print(newline_format);
-
-	delete ack;
 }
 
 /**
@@ -354,10 +335,9 @@ void Serial_handler::send_available_data(Sensor_container& sc)
 */
 void Serial_handler::send_ack()
 {
-	Json_container<JsonObject>* ack = json_handler.create_object("connect", "init");
+	Json_container<JsonObject> ack;
+	ack->set("connect", "init");
 
-	ack->get().printTo(Serial);
+	ack->printTo(Serial);
 	Serial.print(newline_format);
-
-	delete ack;
 }

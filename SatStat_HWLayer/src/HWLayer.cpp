@@ -66,43 +66,41 @@ void HWLayer::setup()
 */
 void HWLayer::loop()
 {
-	serial_handler.serial_listener();
-
-	if (Function_control::is_available())
+	while (true)
 	{
-		if (!instruction_handler.queue_is_empty())
+		serial_handler.serial_listener();
+
+		if (Function_control::is_available() && !instruction_handler.queue_is_empty())
 		{
 			instruction_handler.interpret_instruction();
 		}
-	}
-	else
-	{
-		Function_control::run();
-	}
 	
-	if (instruction_handler.sadm_auto_rotate_en())
-	{
-		instruction_handler.sadm_auto_rotate();
-	}
-
-	// Runs with an interval equal to the duration
-	if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
-	{
-		// Reads the sensors
-		{			
-			sensor_container.read_all_sensors();
-		}
-
-		// Prints sensor data
-		auto sub_data = sensor_container.get_sub_data();
-		
-		if (sub_data != nullptr)
+		Function_control::run();	
+	
+		if (SADM_functions::get_auto_rotate_en())
 		{
-			serial_handler.print_to_serial(sub_data);
+			SADM_functions::auto_rotate();
 		}
+
+		// Runs with an interval equal to the duration
+		if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
+		{
+			// Reads the sensors
+			{			
+				sensor_container.read_all_sensors();
+			}
+
+			// Prints sensor data
+			auto sub_data = sensor_container.get_sub_data();
+
+			if (sub_data->size() > 0)
+			{
+				serial_handler.print_to_serial(sub_data);
+			}
 		
-		// Update start time to current time
-		sensor_interval_start_time = millis();
+			// Update start time to current time
+			sensor_interval_start_time = millis();
+		}
 	}
 }
 
