@@ -73,6 +73,9 @@
     <Filter Include="Header Files\src\sensors">
       <UniqueIdentifier>{10e82eaf-aa02-42d7-823f-496f60a5cd22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\dbg">
+      <UniqueIdentifier>{1e70dbcd-7624-49ae-91a4-01d61b2074d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -392,6 +395,9 @@
     </ClInclude>
     <ClInclude Include="src\HWLayer.h">
       <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dbg\Log.h">
+      <Filter>Header Files\dbg</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

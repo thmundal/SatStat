@@ -1,36 +1,29 @@
 #pragma once
 #include "HWLayer.h"
 
-struct Print_time
+/**
+*	Constructor instantiating the serial_handler member.
+*/
+HWLayer::HWLayer()
 {
-	Print_time()
-	{
-		start_time = millis();
-	}
-
-	~Print_time()
-	{
-		end_time = millis();
-		execution_time = end_time - start_time;
-		String str = "Execution time: " + String(execution_time) + "ms";			
-		Serial.println(str);
-	}
-
-private:
-	unsigned long start_time;
-	unsigned long end_time;
-	unsigned long execution_time;
-};
-
-#define scoped_timer Print_time timer
+	serial_handler = new Serial_handler(sensor_container, instruction_handler);
+}
 
 /**
-*	Sets up Vcc and GND pins for DHT11 temperature and humidity sensor, and initializes the serial port.
+*	Destructor deleting the serial_handler member.
+*/
+HWLayer::~HWLayer()
+{
+	delete serial_handler;
+}
+
+/**
+*	Sets up Vcc and GND pins for DHT22 temperature and humidity sensor, and initializes the serial port.
 *	Also handles the handshake protocol as defined in SatStat communication protocol.
 */
 void HWLayer::setup()
 {
-	// Temp and hum sensor gnd and 5V
+	// DHT22 GND and Vcc
 	pinMode(2, OUTPUT);
 	digitalWrite(2, LOW);
 	pinMode(3, OUTPUT);
@@ -39,6 +32,7 @@ void HWLayer::setup()
 	// Init serial
 	Serial.begin(9600);
 
+	// Execute handshake protocol
 	while (true)
 	{
 		handshake();
@@ -47,17 +41,21 @@ void HWLayer::setup()
 		{
 			if (connection_init())
 			{
-				if (provide_sensor_data())
+				if (provide_available_data())
 				{
-					break;
+					if (provide_available_instructions())
+					{
+						break;
+					}
 				}
 			}
 		}
-		serial_handler.send_nack();
+		serial_handler->send_nack();
 		delay(30);
 		Serial.begin(9600);
 	}
 
+	// Init sensor interval start time
 	sensor_interval_start_time = millis();
 }
 
@@ -66,17 +64,23 @@ void HWLayer::setup()
 */
 void HWLayer::loop()
 {
+	// Infinite while loop to prevent continuous calls to this methods from the loop function in SatStat_HWLayer.ino
 	while (true)
 	{
-		serial_handler.serial_listener();
+		// Listen for input on serial port
+		serial_handler->serial_listener();
 
+		// Checks if there is no function currently executing and if the queue currently holds instructions
 		if (Function_control::is_available() && !instruction_handler.queue_is_empty())
 		{
+			// Executes the first instruction in the queue
 			instruction_handler.interpret_instruction();
 		}
-	
+		
+		// Continuously executes the currently loaded instruction
 		Function_control::run();	
 	
+		// Calls auto rotate if it's enabled
 		if (SADM_functions::get_auto_rotate_en())
 		{
 			SADM_functions::auto_rotate();
@@ -86,19 +90,18 @@ void HWLayer::loop()
 		if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 		{
 			// Reads the sensors
-			{			
-				sensor_container.read_all_sensors();
-			}
-
-			// Prints sensor data
+			sensor_container.read_all_sensors();
+						
+			// Fetches subscribed sensor data
 			auto sub_data = sensor_container.get_sub_data();
 
+			// Prints subscribed sensor data
 			if (sub_data->size() > 0)
 			{
-				serial_handler.print_to_serial(sub_data);
+				serial_handler->print_to_serial(sub_data);
 			}
 		
-			// Update start time to current time
+			// Update sensor interval start time to current time
 			sensor_interval_start_time = millis();
 		}
 	}
@@ -113,7 +116,7 @@ void HWLayer::handshake()
 {
 	while (true)
 	{
-		if (serial_handler.handshake_approved())
+		if (serial_handler->handshake_approved())
 		{
 			break;
 		}
@@ -129,7 +132,7 @@ bool HWLayer::connection()
 
 	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{
-		if (serial_handler.connection_request_approved())
+		if (serial_handler->connection_request_approved())
 		{
 			return true;
 		}
@@ -147,7 +150,7 @@ bool HWLayer::connection_init()
 
 	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{
-		if (serial_handler.connection_init_approved())
+		if (serial_handler->connection_init_approved())
 		{
 			return true;
 		}
@@ -157,17 +160,36 @@ bool HWLayer::connection_init()
 }
 
 /**
-*	Loops until available sensor data request is received, or a timeout occur.
+*	Loops until available data request is received, or a timeout occur.
 */
-bool HWLayer::provide_sensor_data()
+bool HWLayer::provide_available_data()
 {
 	outer_timeout_start_time = millis();
 
 	while (millis() - outer_timeout_start_time < outer_timeout_duration)
 	{
-		if (serial_handler.available_data_request_approved())
+		if (serial_handler->request_approved("available_data"))
 		{
-			serial_handler.send_available_data(sensor_container);
+			serial_handler->send_available_data();
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+*	Loops until available instructions request is received, or a timeout occur.
+*/
+bool HWLayer::provide_available_instructions()
+{
+	outer_timeout_start_time = millis();
+
+	while (millis() - outer_timeout_start_time < outer_timeout_duration)
+	{
+		if (serial_handler->request_approved("available_instructions"))
+		{
+			serial_handler->send_available_instructions();
 			return true;
 		}
 	}

@@ -7,9 +7,9 @@ Instruction_container::Instruction_container()
 	m_available_instructions.append("auto_rotate",
 		new Instruction
 		(
-			parse_signature
-			(
-				"auto_rotate",
+			"auto_rotate",
+			parse_params
+			(				
 				Uf_param("enable", "bool")
 			),
 			SADM_functions::set_auto_rotate
@@ -19,9 +19,9 @@ Instruction_container::Instruction_container()
 	m_available_instructions.append("rotate_steps",
 		new Instruction
 		(
-			parse_signature
-			(
-				"rotate_steps",
+			"rotate_steps",
+			parse_params
+			(				
 				Uf_param("steps", "int")
 			),
 			SADM_functions::rotate
@@ -31,9 +31,9 @@ Instruction_container::Instruction_container()
 	m_available_instructions.append("rotate_deg", 
 		new Instruction
 		(
-			parse_signature
-			(
-				"rotate_deg",
+			"rotate_deg",
+			parse_params
+			(				
 				Uf_param("deg", "float")
 			),
 			SADM_functions::rotate
@@ -43,9 +43,9 @@ Instruction_container::Instruction_container()
 	m_available_instructions.append("subscribe",
 		new Instruction
 		(
-			parse_signature
-			(
-				"subscribe",
+			"subscribe",
+			parse_params
+			(				
 				Uf_param("data_list", "JsonArray")
 			),
 			Subscriber_functions::subscribe
@@ -55,9 +55,9 @@ Instruction_container::Instruction_container()
 	m_available_instructions.append("unsubscribe",
 		new Instruction
 		(
-			parse_signature
+			"unsubscribe",
+			parse_params
 			(
-				"unsubscribe",
 				Uf_param("data_list", "JsonArray")
 			),
 			Subscriber_functions::unsubscribe

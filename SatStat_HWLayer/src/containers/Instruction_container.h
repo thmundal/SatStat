@@ -20,24 +20,29 @@ struct Uf_param
 };
 
 /**
-*	Struct holding a function and it's signature.
-*	Here the signature is JSON formatted.
+*	Struct holding a function, it's name and it's signature.
 */
 struct Instruction
 {
 	/**
-	*	Constructor setting the signature and function pointer.
+	*	Constructor setting the identifier, signature and function pointer.
 	*/
-	Instruction(const Json_container<JsonObject>& signature, void(*func)(Json_container<JsonObject>&))
+	Instruction(const String& identifier, const Json_container<JsonObject>& signature, void(*func)(Json_container<JsonObject>&))
 	{
+		m_identifier = identifier;
 		m_signature = signature;
 		m_func = func;
 	}
 
 	/**
-	*	Calls the the function the fcuntion pointer holds.
+	*	Calls the the function the function pointer holds.
 	*/
 	void run(Json_container<JsonObject>& doc) { m_func(doc); }
+
+	/**
+	*	Returns the identifier of the instruction as String.
+	*/
+	String& get_identifier() { return m_identifier; }
 
 	/**
 	*	Returns the signature of the instruction as Json_container<JsonObject>.
@@ -45,6 +50,7 @@ struct Instruction
 	Json_container<JsonObject>& get_signature() { return m_signature; }
 
 private:
+	String m_identifier;
 	Json_container<JsonObject> m_signature;
 	void(*m_func)(Json_container<JsonObject>&);
 };
@@ -69,53 +75,52 @@ public:
 	*	Returns the entire list of available instructions.
 	*/
 	LinkedList<String, Instruction*>& get_available_instructions();
+
 private:
 	/**
-	*	Returns JSON formatted signature of a function.
-	*	Called in the constructor to when creating the Instruction object which will be added to the list.
-	*	First argument has to be a string, and represents the name of the function.
-	*	Consecutive arguments has to be of type Uf_param.
+	*	Returns JSON formatted parameters of a function.
+	*	Called in the constructor when creating the Instruction object which will be added to the list.
+	*	Arguments has to be of type Uf_param.
 	*/
 	template<typename TFirst, typename... TParams>
-	Json_container<JsonObject> parse_signature(const String& ins_name, TFirst t, TParams... args) const;
+	Json_container<JsonObject> parse_params(TFirst t, TParams... args) const;
 
 	/**
-	*	Called by parse_signature or itself when the parameter pack is not empty.	
+	*	Called by parse_params or itself when the parameter pack is not empty.	
 	*/
 	template<typename TFirst, typename... TParams>
-	void format_params(JsonObject& dest, TFirst t, TParams... args) const;
+	void format_params(Json_container<JsonObject>& dest, TFirst t, TParams... args) const;
 
 	/**
 	*	Base format method.
-	*	Called by parse_signature or the other format_params method when the parameter pack is empty.
+	*	Called by parse_params or the other format_params method when the parameter pack is empty.
 	*/
 	template<typename TFirst>
-	void format_params(JsonObject& dest, TFirst t) const;
+	void format_params(Json_container<JsonObject>& dest, TFirst t) const;
 	
 	LinkedList<String, Instruction*> m_available_instructions;
 };
 
 // Initial
 template<typename TFirst, typename ...TParams>
-inline Json_container<JsonObject> Instruction_container::parse_signature(const String& ins_name, TFirst t, TParams ...args) const
+inline Json_container<JsonObject> Instruction_container::parse_params(TFirst t, TParams ...args) const
 {	
 	Json_container<JsonObject> obj;
-	JsonObject& nested = obj->createNestedObject(ins_name);	
-	format_params(nested, t, args...);
+	format_params(obj, t, args...);
 	return obj;
 }
 
 // Consecutive
 template<typename TFirst, typename... TParams>
-inline void Instruction_container::format_params(JsonObject& dest, TFirst t, TParams... args) const
+inline void Instruction_container::format_params(Json_container<JsonObject>& dest, TFirst t, TParams... args) const
 {
-	dest.set(t.identifier, t.type);
+	dest->set(t.identifier, t.type);
 	format_params(dest, args...);
 }
 
 // Last
 template<typename TFirst>
-inline void Instruction_container::format_params(JsonObject& dest, TFirst t) const
+inline void Instruction_container::format_params(Json_container<JsonObject>& dest, TFirst t) const
 {		
-	dest.set(t.identifier, t.type);
+	dest->set(t.identifier, t.type);
 }

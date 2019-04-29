@@ -2,13 +2,17 @@
 #include "Serial_handler.h"
 
 /**
-*	Sets defualt baud rate, configuration and newline format.
+*	Constructor taking a reference to a Sensor_container and an Instruction_handler.
+*	Sets all the members.
 */
-Serial_handler::Serial_handler()
+Serial_handler::Serial_handler(Sensor_container& sc, Instruction_handler& ih)
 {
 	baud_rate = 9600;
 	config = "8N1";
 	newline_format = "\r\n";
+
+	sensor_container = &sc;
+	instruction_handler = &ih;
 }
 
 /**
@@ -53,7 +57,7 @@ void Serial_handler::serial_listener()
 
 		if (input)
 		{
-			if (!instruction_handler.insert_instruction(input))
+			if (!instruction_handler->insert_instruction(input))
 			{
 				Json_container<JsonObject> tmp;
 				tmp->set("Error", "Could not parse received data!");
@@ -64,7 +68,7 @@ void Serial_handler::serial_listener()
 }
 
 /**
-*	Prints JSON formatted negative acknowledgement to serial. Output looks as follows: {"serial_handshake":"failed"}.
+*	Prints JSON formatted negative acknowledgement to serial.
 */
 void Serial_handler::send_nack()
 {
@@ -90,9 +94,9 @@ bool Serial_handler::handshake_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler.queue_is_empty())
+		if (!instruction_handler->queue_is_empty())
 		{
-			tmp = instruction_handler.fetch_instruction();
+			tmp = instruction_handler->fetch_instruction();
 
 			if (tmp->containsKey("serial_handshake"))
 			{
@@ -110,7 +114,7 @@ bool Serial_handler::handshake_approved()
 }
 
 /**
-*	Reads serial until connection request received, and initializes serial with the received configuration when it is.
+*	Reads serial until connection request received, and initializes serial with the received configuration.
 *	Sends NACK and returns false if what's received is not a proper request.
 *	If no input is received before timeout occurs, it returns false without sending NACK.
 */
@@ -125,9 +129,9 @@ bool Serial_handler::connection_request_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler.queue_is_empty())
+		if (!instruction_handler->queue_is_empty())
 		{
-			tmp = instruction_handler.fetch_instruction();
+			tmp = instruction_handler->fetch_instruction();
 
 			if (tmp->containsKey("connection_request"))
 			{
@@ -165,9 +169,9 @@ bool Serial_handler::connection_init_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler.queue_is_empty())
+		if (!instruction_handler->queue_is_empty())
 		{
-			tmp = instruction_handler.fetch_instruction();
+			tmp = instruction_handler->fetch_instruction();
 
 			if (tmp->containsKey("connect"))
 			{
@@ -184,11 +188,11 @@ bool Serial_handler::connection_init_approved()
 }
 
 /**
-*	Reads serial until request for available data is received, and responds by sending a list of available sensors when it is.
+*	Reads serial until the given request is received.
 *	Sends NACK and returns false if what's received is not a proper request.
 *	If no input is received before timeout occurs, it returns false without sending NACK.
 */
-bool Serial_handler::available_data_request_approved()
+bool Serial_handler::request_approved(const String& req)
 {
 	Json_container<JsonObject> tmp;
 	unsigned long start_time = millis();
@@ -198,14 +202,14 @@ bool Serial_handler::available_data_request_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler.queue_is_empty())
+		if (!instruction_handler->queue_is_empty())
 		{
-			tmp = instruction_handler.fetch_instruction();
+			tmp = instruction_handler->fetch_instruction();
 
 			if (tmp->containsKey("request"))
 			{
 
-				if (tmp->get<String>("request") == "available_data")
+				if (tmp->get<String>("request") == req)
 				{				
 					return true;
 				}
@@ -218,7 +222,7 @@ bool Serial_handler::available_data_request_approved()
 }
 
 /**
-*	Prints the Json_container<JsonObject> pointer passed as argument to the serial.
+*	Prints the given Json_container<JsonObject> to the serial.
 */
 void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
 {
@@ -227,8 +231,7 @@ void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
 }
 
 /**
-*	Checks if the configuration passed as arguments are valid.
-*	Returns true if they are, false if one or more of them are not.
+*	Checks if the given configuration is valid.
 */
 bool Serial_handler::config_approved(const unsigned long & baud_rate, const String& config)
 {
@@ -257,7 +260,7 @@ bool Serial_handler::config_approved(const unsigned long & baud_rate, const Stri
 }
 
 /**
-*	Creates a Json_container<JsonObject> pointer, appends the available baud rates, configurations and newline formats and print it to the serial.
+*	Creates a Json_container<JsonObject>, appends the available baud rates, configurations and newline formats and print it to the serial.
 */
 void Serial_handler::send_handshake_response()
 {
@@ -318,20 +321,33 @@ void Serial_handler::send_handshake_response()
 }
 
 /**
-*	Creates a Json_container<JsonObject> pointer, appends the name and data type of the sensors in the sensor collection and prints it to the serial.
+*	Creates a Json_container<JsonObject>, appends the available data and prints it to the serial.
 */
-void Serial_handler::send_available_data(Sensor_container& sc)
+void Serial_handler::send_available_data()
 {
 	Json_container<JsonObject> ack;	
 
-	sc.append_available_data(ack);
+	sensor_container->append_available_data(ack);
 
 	ack->printTo(Serial);
 	Serial.print(newline_format);
 }
 
 /**
-*	Creates a Json_container<JsonObject> pointer, appends the acknowledgement message and prints it to the serial.
+*	Creates a Json_container<JsonObject>, appends the available instructions and prints it to the serial.
+*/
+void Serial_handler::send_available_instructions()
+{
+	Json_container<JsonObject> ack;
+
+	instruction_handler->append_available_instructions(ack);
+
+	ack->printTo(Serial);
+	Serial.print(newline_format);
+}
+
+/**
+*	Creates a Json_container<JsonObject>, appends the acknowledgement message and prints it to the serial.
 */
 void Serial_handler::send_ack()
 {

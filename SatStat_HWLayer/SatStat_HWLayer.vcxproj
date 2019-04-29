@@ -116,6 +116,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dbg\Log.h" />
     <ClInclude Include="lib\Adafruit_Sensor\Adafruit_Sensor.h" />
     <ClInclude Include="lib\ArduinoJson\ArduinoJson.h" />
     <ClInclude Include="lib\ArduinoJson\ArduinoJson.hpp" />

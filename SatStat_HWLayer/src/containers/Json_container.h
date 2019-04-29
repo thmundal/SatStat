@@ -3,30 +3,40 @@
 #include "../../lib/ArduinoJson/ArduinoJson.h"
 
 /**
-*	Parent class of Json_object_container and Json_array_container. This class is abstract, and forces every child class to override the create and parse metods.
 *	The ArduinoJson library requires JsonObjects and JsonArrays to be created within a JsonBuffer. When a JsonObject or JsonArray is retreived from a buffer, it's returned as a reference. 
-*	This means that neither of those can live outside of the buffer, so this class makes sure that a JsonBuffer only contains one JsonObject or JsonArray for it to be easy to keep track
-*	of which buffer is related to what object or array when passed around.
+*	This means that neither of those can live outside of the buffer, so this class encapsulates the JsonBuffer together with a JsonObject or JsonArray to simplify object creation and passing.
 *	This class is generic for it to be specified upon instantiation if it's to hold a JsonObject or JsonArray.
 */
 template <typename T>
 class Json_container
 {
 public:	
+	// Default constructor.
 	Json_container();	
+
+	// Copy constructor.
 	Json_container(const Json_container& src);
+
+	// Assignment operator overload.
 	Json_container& operator=(const Json_container& src);
 	
+	// Destructor.
 	virtual ~Json_container();
 	
+	// Arrow operator overload.
 	T* operator->();
 
+	// Parse and get methods.
 	bool parse(const String& str);
+	T& get();
+
 private:
+	// Copy method used in copy constructor and assignment operator.
 	void copy(const Json_container& src);
 
-	mutable DynamicJsonBuffer* buffer;
-	mutable T* json;
+	// Member variables.
+	DynamicJsonBuffer* m_buffer;
+	T* m_json;
 };
 
 /**
@@ -35,8 +45,8 @@ private:
 template <>
 inline Json_container<JsonObject>::Json_container()
 {
-	buffer = new DynamicJsonBuffer();
-	json = &buffer->createObject();
+	m_buffer = new DynamicJsonBuffer();
+	m_json = &m_buffer->createObject();
 }
 
 /**
@@ -45,37 +55,32 @@ inline Json_container<JsonObject>::Json_container()
 template <>
 inline Json_container<JsonArray>::Json_container()
 {
-	buffer = new DynamicJsonBuffer();
-	json = &buffer->createArray();
-}
-
-template <>
-inline void Json_container<JsonObject>::copy(const Json_container& src)
-{
-	buffer = new DynamicJsonBuffer();
-	String tmp;
-	src.json->printTo(tmp);
-	json = &buffer->parseObject(tmp);
-}
-
-template <>
-inline void Json_container<JsonArray>::copy(const Json_container& src)
-{
-	buffer = new DynamicJsonBuffer();
-	String tmp;
-	src.json->printTo(tmp);
-	json = &buffer->parseArray(tmp);
+	m_buffer = new DynamicJsonBuffer();
+	m_json = &m_buffer->createArray();
 }
 
 /**
-*	Equals operator overload.
+*	Performes a deep copy from the source object to this object.
 */
-template<typename T>
-inline Json_container<T>& Json_container<T>::operator=(const Json_container& src)
-{	
-	delete buffer;		
-	copy(src);
-	return *this;
+template <>
+inline void Json_container<JsonObject>::copy(const Json_container& src)
+{
+	m_buffer = new DynamicJsonBuffer();
+	String tmp;
+	src.m_json->printTo(tmp);
+	m_json = &m_buffer->parseObject(tmp);
+}
+
+/**
+*	Performes a deep copy from the source object to this object.
+*/
+template <>
+inline void Json_container<JsonArray>::copy(const Json_container& src)
+{
+	m_buffer = new DynamicJsonBuffer();
+	String tmp;
+	src.m_json->printTo(tmp);
+	m_json = &m_buffer->parseArray(tmp);
 }
 
 /**
@@ -88,49 +93,76 @@ inline Json_container<T>::Json_container(const Json_container& src)
 }
 
 /**
-*	Deletes the DynamicJsonBuffer.
+*	Equals operator overload.
+*/
+template<typename T>
+inline Json_container<T>& Json_container<T>::operator=(const Json_container& src)
+{	
+	m_buffer->clear();
+	delete m_buffer;		
+	copy(src);
+	return *this;
+}
+
+/**
+*	Destructor. Deletes the DynamicJsonBuffer.
 */
 template <typename T>
 inline Json_container<T>::~Json_container()
 {
-	delete buffer;
+	m_buffer->clear();
+	delete m_buffer;
 }
 
 /**
-*	Returns the generic json data, either a JsonObject or JsonArray depending what the object was instantiated as.
+*	Returns a pointer to the JSON data.
+*	Allow the user to access the public members of m_json directly without a getter.
 */
 template<typename T>
 inline T* Json_container<T>::operator->()
 {
-	return json;
+	return m_json;
 }
 
+/**
+*	Parses a string to the JsonObject.
+*/
 template<>
-inline bool Json_container<JsonObject>::parse(const String & str)
-{	
-	delete buffer;
-	buffer = new DynamicJsonBuffer();
-	json = &buffer->parseObject(str);
-
-	if (json->success())
-	{
-		return true;
-	}
-
-	return false;
-}
-
-template<>
-inline bool Json_container<JsonArray>::parse(const String & str)
+inline bool Json_container<JsonObject>::parse(const String& str)
 {
-	delete buffer;
-	buffer = new DynamicJsonBuffer();
-	json = &buffer->parseArray(str);
+	m_buffer->clear();
+	m_json = &m_buffer->parseObject(str);
 
-	if (json->success())
+	if (m_json->success())
 	{
 		return true;
 	}
 
 	return false;
+}
+
+/**
+*	Parses a string to the JsonArray.
+*/
+template<>
+inline bool Json_container<JsonArray>::parse(const String& str)
+{
+	m_buffer->clear();
+	m_json = &m_buffer->parseArray(str);
+
+	if (m_json->success())
+	{
+		return true;
+	}
+
+	return false;
+}
+
+/**
+*	Returns a reference to the JSON data.
+*/
+template<typename T>
+inline T& Json_container<T>::get()
+{
+	return *m_json;
 }

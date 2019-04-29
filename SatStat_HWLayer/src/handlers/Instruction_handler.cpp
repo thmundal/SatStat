@@ -74,3 +74,20 @@ void Instruction_handler::interpret_instruction()
 		tmp->printTo(Serial);
 	}	
 }
+
+void Instruction_handler::append_available_instructions(Json_container<JsonObject>& dest)
+{
+	JsonObject& nested = dest->createNestedObject("available_instructions");
+
+	auto& list = container.get_available_instructions();
+
+	for (int i = 0; i < list.count(); i++)
+	{
+		String identifier = list[i]->get_identifier();		
+				
+		Json_container<JsonObject>& signature_container = list[i]->get_signature();
+		JsonObject& signature = signature_container.get();
+
+		nested.set(identifier, signature);
+	}		
+}
