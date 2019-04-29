@@ -16,34 +16,52 @@ Serial_handler::Serial_handler(Sensor_container& sc, Instruction_handler& ih)
 }
 
 /**
-*	Initializes serial with configuration stored in the member variables baud_rate and config.
+*	Executes handshake protocol according to SatStat communication protocol.
 */
-void Serial_handler::serial_init()
+void Serial_handler::handshake()
 {
-	if (config == "5N1") { Serial.begin(baud_rate, SERIAL_5N1); }
-	else if (config == "6N1") { Serial.begin(baud_rate, SERIAL_6N1); }
-	else if (config == "7N1") { Serial.begin(baud_rate, SERIAL_7N1); }
-	else if (config == "8N1") { Serial.begin(baud_rate, SERIAL_8N1); }
-	else if (config == "5N2") { Serial.begin(baud_rate, SERIAL_5N2); }
-	else if (config == "6N2") { Serial.begin(baud_rate, SERIAL_6N2); }
-	else if (config == "7N2") { Serial.begin(baud_rate, SERIAL_7N2); }
-	else if (config == "8N2") { Serial.begin(baud_rate, SERIAL_8N2); }
-	else if (config == "5E1") { Serial.begin(baud_rate, SERIAL_5E1); }
-	else if (config == "6E1") { Serial.begin(baud_rate, SERIAL_6E1); }
-	else if (config == "7E1") { Serial.begin(baud_rate, SERIAL_7E1); }
-	else if (config == "8E1") { Serial.begin(baud_rate, SERIAL_8E1); }
-	else if (config == "5E2") { Serial.begin(baud_rate, SERIAL_5E2); }
-	else if (config == "6E2") { Serial.begin(baud_rate, SERIAL_6E2); }
-	else if (config == "7E2") { Serial.begin(baud_rate, SERIAL_7E2); }
-	else if (config == "8E2") { Serial.begin(baud_rate, SERIAL_8E2); }
-	else if (config == "5O1") { Serial.begin(baud_rate, SERIAL_5O1); }
-	else if (config == "6O1") { Serial.begin(baud_rate, SERIAL_6O1); }
-	else if (config == "7O1") { Serial.begin(baud_rate, SERIAL_7O1); }
-	else if (config == "8O1") { Serial.begin(baud_rate, SERIAL_8O1); }
-	else if (config == "5O2") { Serial.begin(baud_rate, SERIAL_5O2); }
-	else if (config == "6O2") { Serial.begin(baud_rate, SERIAL_6O2); }
-	else if (config == "7O2") { Serial.begin(baud_rate, SERIAL_7O2); }
-	else if (config == "8O2") { Serial.begin(baud_rate, SERIAL_8O2); }
+	while (true)
+	{
+		handshake_approved();
+
+		if (connection_request_approved())
+		{
+			if (connection_init_approved())
+			{
+				break;
+			}
+		}
+
+		send_nack();
+		delay(30);
+		Serial.begin(9600);
+	}
+}
+
+/**
+*	Creates a Json_container<JsonObject>, appends the available data and prints it to the serial.
+*/
+void Serial_handler::send_available_data()
+{
+	Json_container<JsonObject> ack;
+
+	sensor_container->append_available_data(ack);
+
+	ack->printTo(Serial);
+	Serial.print(newline_format);
+}
+
+/**
+*	Creates a Json_container<JsonObject>, appends the available instructions and prints it to the serial.
+*/
+void Serial_handler::send_available_instructions()
+{
+	Json_container<JsonObject> ack;
+
+	instruction_handler->append_available_instructions(ack);
+
+	ack->printTo(Serial);
+	Serial.print(newline_format);
 }
 
 /**
@@ -68,35 +86,41 @@ void Serial_handler::serial_listener()
 }
 
 /**
-*	Prints JSON formatted negative acknowledgement to serial.
+*	Sends a ping to the client.
 */
-void Serial_handler::send_nack()
+void Serial_handler::send_ping()
 {
-	Json_container<JsonObject> nack;
-	nack->set("serial_handshake", "failed");
-	nack->printTo(Serial);
+	Json_container<JsonObject> ping;
+	ping->set("device_type", "SADM");
+	ping->printTo(Serial);
 	Serial.print(newline_format);
 }
 
 /**
-*	Reads serial until handshake received, and sends handshake response according to SatStat communication protocol when it is.
-*	Sends NACK and returns false if what's received is not a proper handshake.
-*	If no input is received before timeout occurs, it returns false without sending NACK.
+*	Prints the given Json_container<JsonObject> to the serial.
+*/
+void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
+{
+	json->printTo(Serial);
+	Serial.print(newline_format);
+}
+
+/**
+*	Reads serial until handshake received. Sends handshake response according to SatStat communication protocol when it is.
+*	Sends NACK if what's received is not a proper handshake.
+*	If no input is received before timeout occurs, a ping is sent to notify the client we're still here.
 */
 bool Serial_handler::handshake_approved()
 {
-	Json_container<JsonObject> tmp;
+	m_start_time = millis();
 
-	unsigned long start_time = millis();
-	unsigned long timeout = 2000;
-
-	while (millis() - start_time < timeout)
+	while (true)
 	{
 		serial_listener();
 
 		if (!instruction_handler->queue_is_empty())
 		{
-			tmp = instruction_handler->fetch_instruction();
+			Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
 
 			if (tmp->containsKey("serial_handshake"))
 			{
@@ -108,9 +132,12 @@ bool Serial_handler::handshake_approved()
 			}
 			send_nack();
 		}
+		else if (millis() - m_start_time > m_timeout_duration)
+		{
+			send_ping();
+			m_start_time = millis();
+		}
 	}
-
-	return false;
 }
 
 /**
@@ -120,35 +147,37 @@ bool Serial_handler::handshake_approved()
 */
 bool Serial_handler::connection_request_approved()
 {
-	Json_container<JsonObject> tmp;	
+	m_timeout_counter = 0;
 
-	unsigned long start_time = millis();
-	unsigned long timeout = 2000;
-
-	while (millis() - start_time < timeout)
+	while (m_timeout_counter < 10)
 	{
-		serial_listener();
+		m_start_time = millis();
 
-		if (!instruction_handler->queue_is_empty())
+		while (millis() - m_start_time < m_timeout_duration)
 		{
-			tmp = instruction_handler->fetch_instruction();
+			serial_listener();
 
-			if (tmp->containsKey("connection_request"))
+			if (!instruction_handler->queue_is_empty())
 			{
-				JsonObject& nested_obj = tmp->get<JsonVariant>("connection_request").asObject();
+				Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
 
-				if (config_approved(nested_obj.get<unsigned long>("baud_rate"), nested_obj.get<String>("config")))
+				if (tmp->containsKey("connection_request"))
 				{
-					newline_format = nested_obj.get<String>("newline");
+					JsonObject& nested_obj = tmp->get<JsonVariant>("connection_request").asObject();
 
-					serial_init();
-					return true;
+					if (config_approved(nested_obj.get<unsigned long>("baud_rate"), nested_obj.get<String>("config")))
+					{
+						newline_format = nested_obj.get<String>("newline");
+
+						serial_init();
+						return true;
+					}
 				}
+				send_nack();
 			}
-			send_nack();
 		}
+		m_timeout_counter++;
 	}
-
 	return false;
 }
 
@@ -159,75 +188,36 @@ bool Serial_handler::connection_request_approved()
 */
 bool Serial_handler::connection_init_approved()
 {
-	Json_container<JsonObject> tmp;
-	unsigned long start_time = millis();
-	unsigned long timeout = 2000;
+	m_timeout_counter = 0;
 
-	send_ack();
-
-	while (millis() - start_time < timeout)
+	while (m_timeout_counter < 10)
 	{
-		serial_listener();
+		m_start_time = millis();
 
-		if (!instruction_handler->queue_is_empty())
+		send_ack();
+
+		while (millis() - m_start_time < m_timeout_duration)
 		{
-			tmp = instruction_handler->fetch_instruction();
+			serial_listener();
 
-			if (tmp->containsKey("connect"))
+			if (!instruction_handler->queue_is_empty())
 			{
+				Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
 
-				if (tmp->get<String>("connect") == "ok")
+				if (tmp->containsKey("connect"))
 				{
-					return true;
+
+					if (tmp->get<String>("connect") == "ok")
+					{
+						return true;
+					}
 				}
+				send_nack();
 			}
-			send_nack();
-		}
-	}	
-	return false;
-}
-
-/**
-*	Reads serial until the given request is received.
-*	Sends NACK and returns false if what's received is not a proper request.
-*	If no input is received before timeout occurs, it returns false without sending NACK.
-*/
-bool Serial_handler::request_approved(const String& req)
-{
-	Json_container<JsonObject> tmp;
-	unsigned long start_time = millis();
-	unsigned long timeout = 2000;
-
-	while (millis() - start_time < timeout)
-	{
-		serial_listener();
-
-		if (!instruction_handler->queue_is_empty())
-		{
-			tmp = instruction_handler->fetch_instruction();
-
-			if (tmp->containsKey("request"))
-			{
-
-				if (tmp->get<String>("request") == req)
-				{				
-					return true;
-				}
-			}
-			send_nack();
-		}
+		}	
+		m_timeout_counter++;
 	}
-
 	return false;
-}
-
-/**
-*	Prints the given Json_container<JsonObject> to the serial.
-*/
-void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
-{
-	json->printTo(Serial);
-	Serial.print(newline_format);
 }
 
 /**
@@ -257,6 +247,37 @@ bool Serial_handler::config_approved(const unsigned long & baud_rate, const Stri
 	}
 
 	return false;
+}
+
+/**
+*	Initializes serial with configuration stored in the member variables baud_rate and config.
+*/
+void Serial_handler::serial_init()
+{
+	if (config == "5N1") { Serial.begin(baud_rate, SERIAL_5N1); }
+	else if (config == "6N1") { Serial.begin(baud_rate, SERIAL_6N1); }
+	else if (config == "7N1") { Serial.begin(baud_rate, SERIAL_7N1); }
+	else if (config == "8N1") { Serial.begin(baud_rate, SERIAL_8N1); }
+	else if (config == "5N2") { Serial.begin(baud_rate, SERIAL_5N2); }
+	else if (config == "6N2") { Serial.begin(baud_rate, SERIAL_6N2); }
+	else if (config == "7N2") { Serial.begin(baud_rate, SERIAL_7N2); }
+	else if (config == "8N2") { Serial.begin(baud_rate, SERIAL_8N2); }
+	else if (config == "5E1") { Serial.begin(baud_rate, SERIAL_5E1); }
+	else if (config == "6E1") { Serial.begin(baud_rate, SERIAL_6E1); }
+	else if (config == "7E1") { Serial.begin(baud_rate, SERIAL_7E1); }
+	else if (config == "8E1") { Serial.begin(baud_rate, SERIAL_8E1); }
+	else if (config == "5E2") { Serial.begin(baud_rate, SERIAL_5E2); }
+	else if (config == "6E2") { Serial.begin(baud_rate, SERIAL_6E2); }
+	else if (config == "7E2") { Serial.begin(baud_rate, SERIAL_7E2); }
+	else if (config == "8E2") { Serial.begin(baud_rate, SERIAL_8E2); }
+	else if (config == "5O1") { Serial.begin(baud_rate, SERIAL_5O1); }
+	else if (config == "6O1") { Serial.begin(baud_rate, SERIAL_6O1); }
+	else if (config == "7O1") { Serial.begin(baud_rate, SERIAL_7O1); }
+	else if (config == "8O1") { Serial.begin(baud_rate, SERIAL_8O1); }
+	else if (config == "5O2") { Serial.begin(baud_rate, SERIAL_5O2); }
+	else if (config == "6O2") { Serial.begin(baud_rate, SERIAL_6O2); }
+	else if (config == "7O2") { Serial.begin(baud_rate, SERIAL_7O2); }
+	else if (config == "8O2") { Serial.begin(baud_rate, SERIAL_8O2); }
 }
 
 /**
@@ -321,32 +342,6 @@ void Serial_handler::send_handshake_response()
 }
 
 /**
-*	Creates a Json_container<JsonObject>, appends the available data and prints it to the serial.
-*/
-void Serial_handler::send_available_data()
-{
-	Json_container<JsonObject> ack;	
-
-	sensor_container->append_available_data(ack);
-
-	ack->printTo(Serial);
-	Serial.print(newline_format);
-}
-
-/**
-*	Creates a Json_container<JsonObject>, appends the available instructions and prints it to the serial.
-*/
-void Serial_handler::send_available_instructions()
-{
-	Json_container<JsonObject> ack;
-
-	instruction_handler->append_available_instructions(ack);
-
-	ack->printTo(Serial);
-	Serial.print(newline_format);
-}
-
-/**
 *	Creates a Json_container<JsonObject>, appends the acknowledgement message and prints it to the serial.
 */
 void Serial_handler::send_ack()
@@ -355,5 +350,16 @@ void Serial_handler::send_ack()
 	ack->set("connect", "init");
 
 	ack->printTo(Serial);
+	Serial.print(newline_format);
+}
+
+/**
+*	Prints JSON formatted negative acknowledgement to serial.
+*/
+void Serial_handler::send_nack()
+{
+	Json_container<JsonObject> nack;
+	nack->set("serial_handshake", "failed");
+	nack->printTo(Serial);
 	Serial.print(newline_format);
 }

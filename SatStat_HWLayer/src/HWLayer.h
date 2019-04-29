@@ -15,6 +15,8 @@ class HWLayer
 public:
 	// Constructor
 	HWLayer();
+	
+	// Destructor
 	~HWLayer();
 
 	// Main methods
@@ -22,13 +24,6 @@ public:
 	void loop();
 
 private:
-	// Handshake protocol methods
-	void handshake();
-	bool connection();
-	bool connection_init();
-	bool provide_available_data();
-	bool provide_available_instructions();
-
 	// Containers and handlers
 	Sensor_container sensor_container;
 	Instruction_handler instruction_handler;
@@ -37,7 +32,4 @@ private:
 	// Timing constrains
 	unsigned long sensor_interval_start_time;
 	const unsigned long sensor_interval_duration = 2000;
-
-	unsigned long outer_timeout_start_time;
-	const unsigned long outer_timeout_duration = 10000;
 };

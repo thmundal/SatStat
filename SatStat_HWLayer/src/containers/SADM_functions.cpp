@@ -77,7 +77,6 @@ void SADM_functions::auto_rotate()
 */
 void SADM_functions::rotate(Json_container<JsonObject>& ins)
 {
-	//Json_container<JsonObject> ins = instruction;
 	if (ins->containsKey("deg"))
 	{
 		if (ins->is<float>("deg"))
@@ -131,9 +130,10 @@ void SADM_functions::rotate(int steps)
 		}
 
 		m_steps = steps;
-		Function_control::reserve(rotate);
+		Function_control::reserve("rotate_steps", rotate);
 	}
 }
+
 /**
 *	Converts from degrees to steps, and rotates the SADM.
 */
@@ -152,7 +152,7 @@ void SADM_functions::rotate(float degrees)
 
 		// 1 deg = 2048steps/360deg = 5.69 step/deg
 		m_steps = (int)(degrees * ((float)2048 / (float)360));
-		Function_control::reserve(rotate);
+		Function_control::reserve("rotate_deg", rotate);
 	}
 }
 

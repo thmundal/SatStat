@@ -33,27 +33,11 @@ void HWLayer::setup()
 	Serial.begin(9600);
 
 	// Execute handshake protocol
-	while (true)
-	{
-		handshake();
+	serial_handler->handshake();
 
-		if (connection())
-		{
-			if (connection_init())
-			{
-				if (provide_available_data())
-				{
-					if (provide_available_instructions())
-					{
-						break;
-					}
-				}
-			}
-		}
-		serial_handler->send_nack();
-		delay(30);
-		Serial.begin(9600);
-	}
+	// Send available
+	serial_handler->send_available_data();
+	serial_handler->send_available_instructions();
 
 	// Init sensor interval start time
 	sensor_interval_start_time = millis();
@@ -95,104 +79,18 @@ void HWLayer::loop()
 			// Fetches subscribed sensor data
 			auto sub_data = sensor_container.get_sub_data();
 
-			// Prints subscribed sensor data
+			// Prints subscribed sensor data if any, else send ping
 			if (sub_data->size() > 0)
 			{
 				serial_handler->print_to_serial(sub_data);
 			}
-		
+			else
+			{
+				serial_handler->send_ping();
+			}
+
 			// Update sensor interval start time to current time
 			sensor_interval_start_time = millis();
 		}
 	}
-}
-
-/**
-*	Loops until serial handshake is received.
-*	No timeout for this method as this is the root of the handshake protocol.
-*	If an error occur at any other phase in the procol, it will reset to this point and wait for client to try again.
-*/
-void HWLayer::handshake()
-{
-	while (true)
-	{
-		if (serial_handler->handshake_approved())
-		{
-			break;
-		}
-	}
-}
-
-/**
-*	Loops until connection request is received, or a timeout occur.
-*/
-bool HWLayer::connection()
-{
-	outer_timeout_start_time = millis();
-
-	while (millis() - outer_timeout_start_time < outer_timeout_duration)
-	{
-		if (serial_handler->connection_request_approved())
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/**
-*	Loops until connection acknowledgement is received, or a timeout occur.
-*/
-bool HWLayer::connection_init()
-{
-	outer_timeout_start_time = millis();
-
-	while (millis() - outer_timeout_start_time < outer_timeout_duration)
-	{
-		if (serial_handler->connection_init_approved())
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/**
-*	Loops until available data request is received, or a timeout occur.
-*/
-bool HWLayer::provide_available_data()
-{
-	outer_timeout_start_time = millis();
-
-	while (millis() - outer_timeout_start_time < outer_timeout_duration)
-	{
-		if (serial_handler->request_approved("available_data"))
-		{
-			serial_handler->send_available_data();
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/**
-*	Loops until available instructions request is received, or a timeout occur.
-*/
-bool HWLayer::provide_available_instructions()
-{
-	outer_timeout_start_time = millis();
-
-	while (millis() - outer_timeout_start_time < outer_timeout_duration)
-	{
-		if (serial_handler->request_approved("available_instructions"))
-		{
-			serial_handler->send_available_instructions();
-			return true;
-		}
-	}
-
-	return false;
 }

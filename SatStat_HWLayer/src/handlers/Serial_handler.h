@@ -9,36 +9,41 @@
 */
 class Serial_handler
 {
-public:
-	// Constructor
+public:	
 	Serial_handler(Sensor_container& sc, Instruction_handler& ih);
+	
+	void handshake();
 
-	// Init methods
-	void serial_init();
-	void serial_listener();
-
-	void send_nack();
-
-	// Handshake methods
-	bool handshake_approved();
-	bool connection_request_approved();
-	bool connection_init_approved();
-	bool request_approved(const String& req);	
 	void send_available_data();
 	void send_available_instructions();
 
+	void serial_listener();
+
+	void send_ping();	
+
 	void print_to_serial(Json_container<JsonObject>& json);
 
-private:	
+private:		
+	bool handshake_approved();
+	bool connection_request_approved();
+	bool connection_init_approved();	
+
 	bool config_approved(const unsigned long& baud_rate, const String& config);
+	void serial_init();
 
 	void send_handshake_response();
 	void send_ack();
+	void send_nack();
+
+	Sensor_container* sensor_container;
+	Instruction_handler* instruction_handler;
+	
+	unsigned long m_start_time;
+	const unsigned long m_timeout_duration = 1000;
+	int m_timeout_counter;
 
 	unsigned long baud_rate;
 	String config;
 	String newline_format;
-
-	Sensor_container* sensor_container;
-	Instruction_handler* instruction_handler;
+	
 };
