@@ -48,7 +48,7 @@ Instruction_container::Instruction_container()
 			(				
 				Uf_param("data_list", "JsonArray")
 			),
-			Subscriber_functions::subscribe
+			Request_functions::subscribe
 		)
 	);
 
@@ -60,7 +60,19 @@ Instruction_container::Instruction_container()
 			(
 				Uf_param("data_list", "JsonArray")
 			),
-			Subscriber_functions::unsubscribe
+			Request_functions::unsubscribe
+		)
+	);
+
+	m_available_instructions.append("reset",
+		new Instruction
+		(
+			"reset",
+			parse_params
+			(
+				Uf_param("none", "none")
+			),
+			Request_functions::reset
 		)
 	);
 }

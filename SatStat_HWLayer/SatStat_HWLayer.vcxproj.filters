@@ -375,9 +375,6 @@
     <ClInclude Include="src\containers\Sensor_container.h">
       <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="src\containers\Subscriber_functions.h">
-      <Filter>Header Files\src\containers</Filter>
-    </ClInclude>
     <ClInclude Include="src\handlers\Function_control.h">
       <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
@@ -398,6 +395,9 @@
     </ClInclude>
     <ClInclude Include="dbg\Log.h">
       <Filter>Header Files\dbg</Filter>
+    </ClInclude>
+    <ClInclude Include="src\containers\Request_functions.h">
+      <Filter>Header Files\src\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -422,9 +422,6 @@
     <ClCompile Include="src\containers\Sensor_container.cpp">
       <Filter>Source Files\src\containers</Filter>
     </ClCompile>
-    <ClCompile Include="src\containers\Subscriber_functions.cpp">
-      <Filter>Source Files\src\containers</Filter>
-    </ClCompile>
     <ClCompile Include="src\handlers\Function_control.cpp">
       <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
@@ -439,6 +436,9 @@
     </ClCompile>
     <ClCompile Include="src\HWLayer.cpp">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\containers\Request_functions.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

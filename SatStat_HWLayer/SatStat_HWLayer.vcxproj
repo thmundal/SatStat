@@ -222,7 +222,7 @@
     <ClInclude Include="src\containers\Json_container.h" />
     <ClInclude Include="src\containers\SADM_functions.h" />
     <ClInclude Include="src\containers\Sensor_container.h" />
-    <ClInclude Include="src\containers\Subscriber_functions.h" />
+    <ClInclude Include="src\containers\Request_functions.h" />
     <ClInclude Include="src\handlers\Function_control.h" />
     <ClInclude Include="src\handlers\Instruction_handler.h" />
     <ClInclude Include="src\handlers\Serial_handler.h" />
@@ -239,7 +239,7 @@
     <ClCompile Include="src\containers\Instruction_container.cpp" />
     <ClCompile Include="src\containers\SADM_functions.cpp" />
     <ClCompile Include="src\containers\Sensor_container.cpp" />
-    <ClCompile Include="src\containers\Subscriber_functions.cpp" />
+    <ClCompile Include="src\containers\Request_functions.cpp" />
     <ClCompile Include="src\handlers\Function_control.cpp" />
     <ClCompile Include="src\handlers\Instruction_handler.cpp" />
     <ClCompile Include="src\handlers\Serial_handler.cpp" />
@@ -249,4 +249,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM3" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

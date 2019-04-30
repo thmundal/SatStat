@@ -1,7 +1,7 @@
 #pragma once
-#include "Subscriber_functions.h"
+#include "Request_functions.h"
 
-void Subscriber_functions::subscribe(Json_container<JsonObject>& request)
+void Request_functions::subscribe(Json_container<JsonObject>& request)
 {
 	if (request->containsKey("parameters"))
 	{
@@ -31,7 +31,7 @@ void Subscriber_functions::subscribe(Json_container<JsonObject>& request)
 	}
 }
 
-void Subscriber_functions::unsubscribe(Json_container<JsonObject>& request)
+void Request_functions::unsubscribe(Json_container<JsonObject>& request)
 {
 	if (request->containsKey("parameters"))
 	{
@@ -59,4 +59,10 @@ void Subscriber_functions::unsubscribe(Json_container<JsonObject>& request)
 		tmp->set("error", "Invalid argument!");
 		tmp->printTo(Serial);
 	}
+}
+
+void Request_functions::reset(Json_container<JsonObject>& request)
+{
+	void(*reset)() = 0;
+	reset();
 }
