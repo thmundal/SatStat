@@ -35,15 +35,17 @@ void SADM_functions::set_auto_rotate(Json_container<JsonObject>& ins)
 		else
 		{
 			Json_container<JsonObject> tmp;
-			tmp->set("error", "Invalid value!");
+			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
+			Serial.println("\r\n");
 		}
 	}
 	else
 	{
 		Json_container<JsonObject> tmp;
-		tmp->set("error", "Invalid argument!!");
+		tmp->set("error", "Invalid argument.");
 		tmp->printTo(Serial);
+		Serial.println("\r\n");
 	}
 }
 
@@ -77,18 +79,19 @@ void SADM_functions::auto_rotate()
 */
 void SADM_functions::rotate(Json_container<JsonObject>& ins)
 {
-	if (ins->containsKey("deg"))
+	if (ins->containsKey("degrees"))
 	{
-		if (ins->is<float>("deg"))
+		if (ins->is<float>("degrees"))
 		{
-			float deg = ins->get<float>("deg");
+			float deg = ins->get<float>("degrees");
 			rotate(deg);
 		}
 		else
 		{
 			Json_container<JsonObject> tmp;
-			tmp->set("error", "Invalid value!");
+			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
+			Serial.println("\r\n");
 		}
 	}
 	else if (ins->containsKey("steps"))
@@ -96,20 +99,22 @@ void SADM_functions::rotate(Json_container<JsonObject>& ins)
 		if (ins->is<int>("steps"))
 		{
 			int steps = ins->get<int>("steps");
-			rotate(steps);		
+			rotate(steps);	
 		}
 		else
 		{
 			Json_container<JsonObject> tmp;
-			tmp->set("error", "Invalid value!");
+			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
+			Serial.println("\r\n");
 		}
 	}
 	else
 	{
 		Json_container<JsonObject> tmp;
-		tmp->set("error", "Invalid argument!");
+		tmp->set("error", "Invalid argument.");
 		tmp->printTo(Serial);
+		Serial.println("\r\n");
 	}
 }
 
@@ -152,7 +157,7 @@ void SADM_functions::rotate(float degrees)
 
 		// 1 deg = 2048steps/360deg = 5.69 step/deg
 		m_steps = (int)(degrees * ((float)2048 / (float)360));
-		Function_control::reserve("rotate_deg", rotate);
+		Function_control::reserve("rotate_degrees", rotate);
 	}
 }
 

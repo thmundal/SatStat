@@ -1,7 +1,6 @@
 #pragma once
 #include "../../lib/LinkedList/LinkedList.h"
 #include "SADM_functions.h"
-#include "Request_functions.h"
 
 /*
 *	Struct holding the identifier and type of a parameter.

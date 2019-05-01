@@ -5,14 +5,14 @@
 *	Constructor taking a reference to a Sensor_container and an Instruction_handler.
 *	Sets all the members.
 */
-Serial_handler::Serial_handler(Sensor_container& sc, Instruction_handler& ih)
+Serial_handler::Serial_handler(Sensor_container& sc, Message_handler& ih)
 {
 	baud_rate = 9600;
 	config = "8N1";
 	newline_format = "\r\n";
 
 	sensor_container = &sc;
-	instruction_handler = &ih;
+	message_handler = &ih;
 }
 
 /**
@@ -30,11 +30,14 @@ void Serial_handler::handshake()
 			{
 				break;
 			}
+			send_error_message("Handshake failed. Reinitialization required.");
+			Serial.end();
+			Serial.begin(9600);
 		}
-
-		send_nack();
-		delay(30);
-		Serial.begin(9600);
+		else
+		{
+			send_error_message("Timeout encountered. Reinitialization required.");
+		}
 	}
 }
 
@@ -58,7 +61,7 @@ void Serial_handler::send_available_instructions()
 {
 	Json_container<JsonObject> ack;
 
-	instruction_handler->append_available_instructions(ack);
+	message_handler->append_available_instructions(ack);
 
 	ack->printTo(Serial);
 	Serial.print(newline_format);
@@ -75,11 +78,9 @@ void Serial_handler::serial_listener()
 
 		if (input)
 		{
-			if (!instruction_handler->insert_instruction(input))
+			if (!message_handler->insert_message(input))
 			{
-				Json_container<JsonObject> tmp;
-				tmp->set("Error", "Could not parse received data!");
-				tmp->printTo(Serial);
+				send_error_message("Could not parse received data.");
 			}
 		}
 	}
@@ -118,9 +119,9 @@ bool Serial_handler::handshake_approved()
 	{
 		serial_listener();
 
-		if (!instruction_handler->queue_is_empty())
+		if (message_handler->has_requests())
 		{
-			Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
+			Json_container<JsonObject> tmp = message_handler->fetch_message();
 
 			if (tmp->containsKey("serial_handshake"))
 			{
@@ -130,7 +131,7 @@ bool Serial_handler::handshake_approved()
 					return true;
 				}
 			}
-			send_nack();
+			send_error_message("Unexpected input received. Expected: {\"serial_handshake\":\"init\"}.");
 		}
 		else if (millis() - m_start_time > m_timeout_duration)
 		{
@@ -157,9 +158,9 @@ bool Serial_handler::connection_request_approved()
 		{
 			serial_listener();
 
-			if (!instruction_handler->queue_is_empty())
+			if (message_handler->has_requests())
 			{
-				Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
+				Json_container<JsonObject> tmp = message_handler->fetch_message();
 
 				if (tmp->containsKey("connection_request"))
 				{
@@ -172,8 +173,13 @@ bool Serial_handler::connection_request_approved()
 						serial_init();
 						return true;
 					}
+
+					send_error_message("Invalid configuration received.");
 				}
-				send_nack();
+				else
+				{
+					send_error_message("Unexpected input received. Expected: conntection_request.");
+				}
 			}
 		}
 		m_timeout_counter++;
@@ -200,9 +206,9 @@ bool Serial_handler::connection_init_approved()
 		{
 			serial_listener();
 
-			if (!instruction_handler->queue_is_empty())
+			if (message_handler->has_requests())
 			{
-				Json_container<JsonObject> tmp = instruction_handler->fetch_instruction();
+				Json_container<JsonObject> tmp = message_handler->fetch_message();
 
 				if (tmp->containsKey("connect"))
 				{
@@ -211,8 +217,12 @@ bool Serial_handler::connection_init_approved()
 					{
 						return true;
 					}
+					send_error_message("Invalid argument received.");
 				}
-				send_nack();
+				else
+				{
+					send_error_message("Unexpected input received. Expected: {\"conntect\":\"ok\"}");
+				}
 			}
 		}	
 		m_timeout_counter++;
@@ -356,10 +366,10 @@ void Serial_handler::send_ack()
 /**
 *	Prints JSON formatted negative acknowledgement to serial.
 */
-void Serial_handler::send_nack()
+void Serial_handler::send_error_message(const String& msg)
 {
-	Json_container<JsonObject> nack;
-	nack->set("serial_handshake", "failed");
-	nack->printTo(Serial);
+	Json_container<JsonObject> msg_obj;
+	msg_obj->set("error", msg);
+	msg_obj->printTo(Serial);
 	Serial.print(newline_format);
 }

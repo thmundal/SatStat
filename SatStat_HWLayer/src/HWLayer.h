@@ -26,7 +26,7 @@ public:
 private:
 	// Containers and handlers
 	Sensor_container sensor_container;
-	Instruction_handler instruction_handler;
+	Message_handler message_handler;
 	Serial_handler* serial_handler;
 
 	// Timing constrains

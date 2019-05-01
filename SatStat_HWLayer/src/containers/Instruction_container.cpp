@@ -28,51 +28,15 @@ Instruction_container::Instruction_container()
 		)
 	);
 
-	m_available_instructions.append("rotate_deg", 
+	m_available_instructions.append("rotate_degrees", 
 		new Instruction
 		(
-			"rotate_deg",
+			"rotate_degrees",
 			parse_params
 			(				
-				Uf_param("deg", "float")
+				Uf_param("degrees", "float")
 			),
 			SADM_functions::rotate
-		)
-	);	
-
-	m_available_instructions.append("subscribe",
-		new Instruction
-		(
-			"subscribe",
-			parse_params
-			(				
-				Uf_param("data_list", "JsonArray")
-			),
-			Request_functions::subscribe
-		)
-	);
-
-	m_available_instructions.append("unsubscribe",
-		new Instruction
-		(
-			"unsubscribe",
-			parse_params
-			(
-				Uf_param("data_list", "JsonArray")
-			),
-			Request_functions::unsubscribe
-		)
-	);
-
-	m_available_instructions.append("reset",
-		new Instruction
-		(
-			"reset",
-			parse_params
-			(
-				Uf_param("none", "none")
-			),
-			Request_functions::reset
 		)
 	);
 }

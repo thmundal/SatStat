@@ -20,6 +20,7 @@ public:
 	void erase(const KEY &key);
 	void setDefault(const VALUE &value);
 	int count() const;	
+	bool contains(const KEY &key) const;
 
 private:
 	Node<KEY, VALUE> *m_next;
@@ -163,4 +164,12 @@ template<class KEY, class VALUE>
 inline int LinkedList<KEY, VALUE>::count() const
 {
 	return m_count;
+}
+
+template<class KEY, class VALUE>
+inline bool LinkedList<KEY, VALUE>::contains(const KEY &key) const
+{
+	if (m_next != 0)
+		return m_next->contains(key);
+	return false;
 }

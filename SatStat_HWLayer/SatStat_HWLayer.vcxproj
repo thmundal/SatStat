@@ -218,13 +218,15 @@
     <ClInclude Include="lib\SSTL\sstl.h" />
     <ClInclude Include="lib\SSTL\Subscribable.h" />
     <ClInclude Include="lib\Stepper\Stepper.h" />
+    <ClInclude Include="src\containers\Request_container.h" />
+    <ClInclude Include="src\containers\Func_ptr.h" />
     <ClInclude Include="src\containers\Instruction_container.h" />
     <ClInclude Include="src\containers\Json_container.h" />
     <ClInclude Include="src\containers\SADM_functions.h" />
     <ClInclude Include="src\containers\Sensor_container.h" />
     <ClInclude Include="src\containers\Request_functions.h" />
     <ClInclude Include="src\handlers\Function_control.h" />
-    <ClInclude Include="src\handlers\Instruction_handler.h" />
+    <ClInclude Include="src\handlers\Message_handler.h" />
     <ClInclude Include="src\handlers\Serial_handler.h" />
     <ClInclude Include="src\HWLayer.h" />
     <ClInclude Include="src\sensors\Sensor.h" />
@@ -236,12 +238,13 @@
     <ClCompile Include="lib\DHT\DHT_U.cpp" />
     <ClCompile Include="lib\SSTL\Lists.cpp" />
     <ClCompile Include="lib\Stepper\Stepper.cpp" />
+    <ClCompile Include="src\containers\Request_container.cpp" />
     <ClCompile Include="src\containers\Instruction_container.cpp" />
     <ClCompile Include="src\containers\SADM_functions.cpp" />
     <ClCompile Include="src\containers\Sensor_container.cpp" />
     <ClCompile Include="src\containers\Request_functions.cpp" />
     <ClCompile Include="src\handlers\Function_control.cpp" />
-    <ClCompile Include="src\handlers\Instruction_handler.cpp" />
+    <ClCompile Include="src\handlers\Message_handler.cpp" />
     <ClCompile Include="src\handlers\Serial_handler.cpp" />
     <ClCompile Include="src\HWLayer.cpp" />
     <ClCompile Include="src\sensors\Temp_hum_sensor.cpp" />
@@ -251,7 +254,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM3" />
+      <UserProperties arduino.upload.port="COM9" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

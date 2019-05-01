@@ -21,6 +21,7 @@ void Request_functions::subscribe(Json_container<JsonObject>& request)
 			Json_container<JsonObject> tmp;
 			tmp->set("error", "Invalid parameters!");
 			tmp->printTo(Serial);
+			Serial.println("\r\n");
 		}
 	}
 	else
@@ -28,6 +29,7 @@ void Request_functions::subscribe(Json_container<JsonObject>& request)
 		Json_container<JsonObject> tmp;
 		tmp->set("error", "Invalid argument!");
 		tmp->printTo(Serial);
+		Serial.println("\r\n");
 	}
 }
 
@@ -51,6 +53,7 @@ void Request_functions::unsubscribe(Json_container<JsonObject>& request)
 			Json_container<JsonObject> tmp;
 			tmp->set("error", "Invalid parameters!");
 			tmp->printTo(Serial);
+			Serial.println("\r\n");
 		}
 	}
 	else
@@ -58,10 +61,11 @@ void Request_functions::unsubscribe(Json_container<JsonObject>& request)
 		Json_container<JsonObject> tmp;
 		tmp->set("error", "Invalid argument!");
 		tmp->printTo(Serial);
+		Serial.println("\r\n");
 	}
 }
 
-void Request_functions::reset(Json_container<JsonObject>& request)
+void Request_functions::reset()
 {
 	void(*reset)() = 0;
 	reset();

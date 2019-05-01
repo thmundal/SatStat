@@ -6,7 +6,7 @@
 */
 HWLayer::HWLayer()
 {
-	serial_handler = new Serial_handler(sensor_container, instruction_handler);
+	serial_handler = new Serial_handler(sensor_container, message_handler);
 }
 
 /**
@@ -55,10 +55,17 @@ void HWLayer::loop()
 		serial_handler->serial_listener();
 
 		// Checks if there is no function currently executing and if the queue currently holds instructions
-		if (Function_control::is_available() && !instruction_handler.queue_is_empty())
+		if (Function_control::is_available() && message_handler.has_instructions())
 		{
 			// Executes the first instruction in the queue
-			instruction_handler.interpret_instruction();
+			message_handler.interpret_instruction();
+		}
+
+		// Checks if the queue currently holds requests
+		if (message_handler.has_requests())
+		{
+			// Executes the first request in the queue
+			message_handler.interpret_request();
 		}
 		
 		// Continuously executes the currently loaded instruction

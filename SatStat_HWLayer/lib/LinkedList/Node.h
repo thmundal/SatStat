@@ -1,3 +1,5 @@
+#pragma once
+
 template <class KEY, class VALUE>
 class Node
 {
@@ -16,6 +18,7 @@ public:
 	VALUE &get(const KEY &key, VALUE &default_value);
 	bool set(const KEY &key, const VALUE& value);
 	bool erase(const KEY &key, Node*& parent_m_next);
+	bool contains(const KEY &key) const;
 
 private:
 	Node *m_next;
@@ -167,5 +170,15 @@ inline bool Node<KEY, VALUE>::erase(const KEY & key, Node *& parent_m_next)
 	{
 		return m_next->erase(key, m_next);
 	}
+	return false;
+}
+
+template<class KEY, class VALUE>
+inline bool Node<KEY, VALUE>::contains(const KEY &key) const
+{
+	if (m_key == key)
+		return true;
+	if (m_next != 0)
+		return m_next->contains(key);
 	return false;
 }

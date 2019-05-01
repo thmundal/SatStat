@@ -1,5 +1,5 @@
 #pragma once
-#include "Instruction_handler.h"
+#include "Message_handler.h"
 #include "../containers/Sensor_container.h"
 
 /**
@@ -10,7 +10,7 @@
 class Serial_handler
 {
 public:	
-	Serial_handler(Sensor_container& sc, Instruction_handler& ih);
+	Serial_handler(Sensor_container& sc, Message_handler& ih);
 	
 	void handshake();
 
@@ -33,10 +33,10 @@ private:
 
 	void send_handshake_response();
 	void send_ack();
-	void send_nack();
+	void send_error_message(const String& msg);
 
 	Sensor_container* sensor_container;
-	Instruction_handler* instruction_handler;
+	Message_handler* message_handler;
 	
 	unsigned long m_start_time;
 	const unsigned long m_timeout_duration = 1000;

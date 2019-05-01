@@ -378,9 +378,6 @@
     <ClInclude Include="src\handlers\Function_control.h">
       <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
-    <ClInclude Include="src\handlers\Instruction_handler.h">
-      <Filter>Header Files\src\handlers</Filter>
-    </ClInclude>
     <ClInclude Include="src\handlers\Serial_handler.h">
       <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
@@ -398,6 +395,15 @@
     </ClInclude>
     <ClInclude Include="src\containers\Request_functions.h">
       <Filter>Header Files\src\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\containers\Request_container.h">
+      <Filter>Header Files\src\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\containers\Func_ptr.h">
+      <Filter>Header Files\src\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handlers\Message_handler.h">
+      <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -425,9 +431,6 @@
     <ClCompile Include="src\handlers\Function_control.cpp">
       <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
-    <ClCompile Include="src\handlers\Instruction_handler.cpp">
-      <Filter>Source Files\src\handlers</Filter>
-    </ClCompile>
     <ClCompile Include="src\handlers\Serial_handler.cpp">
       <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
@@ -439,6 +442,12 @@
     </ClCompile>
     <ClCompile Include="src\containers\Request_functions.cpp">
       <Filter>Source Files\src\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\containers\Request_container.cpp">
+      <Filter>Source Files\src\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\handlers\Message_handler.cpp">
+      <Filter>Source Files\src\handlers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
