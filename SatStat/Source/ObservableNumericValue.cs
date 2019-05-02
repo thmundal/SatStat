@@ -8,6 +8,15 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    public enum ObservableNumericValueStatus
+    {
+        Unknown,
+        Under,
+        Over,
+        Stable,
+        Unstable
+    }
+
     /// <summary>
     /// Describes a value that can be observed. When the value is changed, a callback method is invoked passing the Observed value as parameter
     /// </summary>
@@ -72,6 +81,27 @@ namespace SatStat
         public bool Stable()
         {
             return (!Over() || EqualMax()) && (!Under() || EqualMin());
+        }
+
+        public ObservableNumericValueStatus Status()
+        {
+            ObservableNumericValueStatus status = ObservableNumericValueStatus.Unknown;
+            if (Over())
+            {
+                status = ObservableNumericValueStatus.Over;
+            }
+
+            if (Under())
+            {
+                status = ObservableNumericValueStatus.Under;
+            }
+
+            if (Stable())
+            {
+                status = ObservableNumericValueStatus.Stable;
+            }
+
+            return status;
         }
 
         public void OnUpdate(Action<IObservableNumericValue> cb)
@@ -220,220 +250,7 @@ namespace SatStat
         /// </summary>
         /// <returns>The different between the current violated max or min</returns>
         object Diff();
-    }
 
-    /// <summary>
-    /// A collection of observable numeric values
-    /// </summary>
-    public class ObservableNumericValueCollection : IEnumerable, IList<IObservableNumericValue>
-    {
-        private IObservableNumericValue[] valueCollection;
-        public bool IsReadOnly => false;
-        public bool IsFixedSize => false;
-        public int Count => valueCollection.Length;
-        public object SyncRoot => this;
-        public bool IsSynchronized => false;
-
-        public ObservableNumericValueCollection()
-        {
-            valueCollection = new IObservableNumericValue[0];
-        }
-
-        public IObservableNumericValue this[int index] {
-            get {
-                return valueCollection[index];
-            }
-            set {
-                valueCollection[index] = (IObservableNumericValue) value;
-            }
-        }
-
-        public IObservableNumericValue this[string label]
-        {
-            get
-            {
-                return Get(label);
-            }
-            set
-            {
-                Set(label, value);
-            }
-        }
-
-        public IObservableNumericValue Get(int index)
-        {
-            return valueCollection[index];
-        }
-
-        public IObservableNumericValue Get(string label)
-        {
-            IObservableNumericValue val;
-            foreach(IObservableNumericValue o in this)
-            {
-                if(o.Label == label)
-                {
-                    return o;
-                }
-            }
-
-            throw new ArgumentOutOfRangeException();
-        }
-
-        public void Set(string label, IObservableNumericValue value)
-        {
-            IObservableNumericValue val;
-            foreach (IObservableNumericValue o in this)
-            {
-                if (o.Label == label)
-                {
-                    o.Value = value;
-                    return;
-                }
-            }
-
-            throw new ArgumentOutOfRangeException();
-        }
-
-        public void Add(IObservableNumericValue val)
-        {
-            int oldLength = valueCollection.Length;
-            int newLength = oldLength + 1;
-
-            IObservableNumericValue[] oldList = valueCollection;
-            IObservableNumericValue[] newList = new IObservableNumericValue[newLength];
-
-            int i;
-            for(i=0; i<oldLength; i++)
-            {
-                newList[i] = oldList[i];
-            }
-
-            newList[i] = val;
-            valueCollection = newList;
-
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return new ObservableNumericValueCollectionEnum(valueCollection);
-        }
-
-        public bool Contains(IObservableNumericValue value)
-        {
-            return IndexOf(value) > -1;
-        }
-
-        public void Clear()
-        {
-            valueCollection = new IObservableNumericValue[0];
-        }
-
-        public int IndexOf(IObservableNumericValue value)
-        {
-            for(int i=0; i<valueCollection.Length; i++)
-            {
-                IObservableNumericValue o = valueCollection[i];
-
-                bool a = value.Value.Equals(o.Value);
-                bool b = value.Label == o.Label;
-                bool c = value.Value.GetType() == o.Value.GetType();
-                bool d = value == o;
-
-                if((a && b && c) || d)
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        public bool ContainsLabel(string label)
-        {
-            foreach(IObservableNumericValue n in this)
-            {
-                if(n.Label == label)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public void Insert(int index, IObservableNumericValue value)
-        {
-            IObservableNumericValue[] newList = new IObservableNumericValue[valueCollection.Length + 1];
-
-            for(int i=0; i<newList.Length; i++)
-            {
-                if(i < index)
-                {
-                    newList[i] = valueCollection[i];
-                }
-
-                if(i == index)
-                {
-                    newList[i] = value;
-                }
-
-                if (i > index)
-                {
-                    newList[i] = valueCollection[i - 1];
-                }
-            }
-
-            valueCollection = newList;
-        }
-
-        public bool Remove(IObservableNumericValue value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CopyTo(IObservableNumericValue[] array, int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator<IObservableNumericValue> IEnumerable<IObservableNumericValue>.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class ObservableNumericValueCollectionEnum : IEnumerator
-    {
-        private int position = -1;
-        private IObservableNumericValue[] valueCollection;
-
-        public ObservableNumericValueCollectionEnum(IObservableNumericValue[] values)
-        {
-            valueCollection = values;
-        }
-
-        public object Current
-        {
-            get
-            {
-                return valueCollection[position];
-            }
-        }
-
-        public bool MoveNext()
-        {
-            position++;
-            return (position < valueCollection.Length);
-        }
-
-        public void Reset()
-        {
-            position = -1;
-        }
+        ObservableNumericValueStatus Status();
     }
 }
