@@ -3,7 +3,7 @@
 #include "Json_container.h"
 
 /**
-*	The Sensor_container class holds every available sensor in a linked list, and has methods for retreiving a list of available sensors, as well as reading the different sensors.
+*	The Sensor_container class holds every available sensor in a list, and has methods for retreiving a list of available sensors, as well as reading the different sensors.
 */
 class Sensor_container
 {

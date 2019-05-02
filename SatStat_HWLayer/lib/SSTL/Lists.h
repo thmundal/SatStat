@@ -5,13 +5,17 @@
 namespace sstl
 {
 	/**
-	*	Encapsulating class in anonymous namespace to prevent
-	*	multiple definitions of static members.
+	*	This class holds two lists, both containing pointers to a Subscribable object.
+	*	Upon creation of a specific sensor object, the data it's able to read is added to the data_list.
+	*	When data is subscribed to, it get's copied from the data_list into the sub_list.
+	*	When unsubscribing to data, it get's erased from the sub_list, but remains in the data_list to allow resubscription.
 	*/			
 	class Lists
 	{
 	public:
-		// Pure virtual destructor to make the class abstract.
+		/**
+		*	Pure virtual destructor to make the class abstract.
+		*/
 		virtual ~Lists() = 0;
 
 		// Subscription
@@ -32,19 +36,24 @@ namespace sstl
 		static LinkedList<String, Subscribable*>& get_sub_list();
 		static LinkedList<String, Subscribable*>& get_data_list();
 
-
 	private:
 		// Maps
 		static LinkedList<String, Subscribable*> sub_list;
 		static LinkedList<String, Subscribable*> data_list;
 	};
 
+	/**
+	*	Adds an empty Data_container of the given type to the data_list with the given key.
+	*/
 	template<typename T>
 	inline void Lists::add_entry(const String & key)
 	{
 		data_list.append(key, new Data_container<T>(key));
 	}
 
+	/**
+	*	Sets the value of an existing entry in the list to the given value of generic type.
+	*/
 	template<typename T>
 	inline bool Lists::set_data(const String& key, const T& val)
 	{		

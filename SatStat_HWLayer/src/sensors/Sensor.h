@@ -11,8 +11,16 @@ class Sensor
 {
 public:
 	Sensor(const String& name, const int& pin);
+
+	/**
+	*	As other classes will inherit this one, we need a virtual destructor to let the compiler know that
+	*	a polymorphic object instantiated through a Subscribable type might have it's own destructor that has to be called upon deletion.
+	*/
 	virtual ~Sensor() {};
 
+	/**
+	*	Pure virtual read_sensor method to enforce inheriting classes to override this method.
+	*/
 	virtual void read_sensor() = 0;
 
 	const String& get_name() const;

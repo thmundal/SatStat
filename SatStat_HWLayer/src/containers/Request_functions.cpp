@@ -1,6 +1,9 @@
 #pragma once
 #include "Request_functions.h"
 
+/**
+*	Handles subscription to various data.
+*/
 void Request_functions::subscribe(Json_container<JsonObject>& request)
 {
 	if (request->containsKey("parameters"))
@@ -33,6 +36,9 @@ void Request_functions::subscribe(Json_container<JsonObject>& request)
 	}
 }
 
+/**
+*	Handles unsubscription of data.
+*/
 void Request_functions::unsubscribe(Json_container<JsonObject>& request)
 {
 	if (request->containsKey("parameters"))
@@ -65,8 +71,11 @@ void Request_functions::unsubscribe(Json_container<JsonObject>& request)
 	}
 }
 
+/**
+*	Resets the Arduino.
+*/
 void Request_functions::reset()
 {
-	void(*reset)() = 0;
+	void(*reset)() = nullptr;
 	reset();
 }

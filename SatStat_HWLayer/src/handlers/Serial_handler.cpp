@@ -92,7 +92,7 @@ void Serial_handler::serial_listener()
 void Serial_handler::send_ping()
 {
 	Json_container<JsonObject> ping;
-	ping->set("device_type", "SADM");
+	ping->set("device_name", "SatLight SADM V1.0");
 	ping->printTo(Serial);
 	Serial.print(newline_format);
 }
@@ -108,7 +108,7 @@ void Serial_handler::print_to_serial(Json_container<JsonObject>& json)
 
 /**
 *	Reads serial until handshake received. Sends handshake response according to SatStat communication protocol when it is.
-*	Sends NACK if what's received is not a proper handshake.
+*	Sends error message if what's received is not a proper handshake.
 *	If no input is received before timeout occurs, a ping is sent to notify the client we're still here.
 */
 bool Serial_handler::handshake_approved()
@@ -143,8 +143,8 @@ bool Serial_handler::handshake_approved()
 
 /**
 *	Reads serial until connection request received, and initializes serial with the received configuration.
-*	Sends NACK and returns false if what's received is not a proper request.
-*	If no input is received before timeout occurs, it returns false without sending NACK.
+*	Sends error message and returns false if what's received is not a proper request.
+*	If no input is received before timeout occurs, it returns false without sending error message.
 */
 bool Serial_handler::connection_request_approved()
 {
@@ -189,8 +189,8 @@ bool Serial_handler::connection_request_approved()
 
 /**
 *	Reads serial until connection acknowledgement received.
-*	Sends NACK and returns false if what's received is not a proper acknowledgement.
-*	If no input is received before timeout occurs, it returns false without sending NACK.
+*	Sends error message and returns false if what's received is not a proper acknowledgement.
+*	If no input is received before timeout occurs, it returns false without sending error message.
 */
 bool Serial_handler::connection_init_approved()
 {
@@ -364,7 +364,7 @@ void Serial_handler::send_ack()
 }
 
 /**
-*	Prints JSON formatted negative acknowledgement to serial.
+*	Converts the given error message into a JSON formatted error message and prints to serial.
 */
 void Serial_handler::send_error_message(const String& msg)
 {

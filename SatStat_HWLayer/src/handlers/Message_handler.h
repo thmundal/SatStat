@@ -4,8 +4,8 @@
 #include "../../lib/QueueArray.h"
 
 /**
-*	The Instruction_handler class holds the instructions received through the serial port in the instruction_queue member.
-*	The main responsibility of this class is to insert, fetch and execute instructions.
+*	The Message_handler class holds the messages received through the serial port.
+*	The main responsibility of this class is to insert, fetch and execute instructions and requests.
 */
 class Message_handler
 {

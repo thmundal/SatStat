@@ -5,8 +5,9 @@ int SADM_functions::m_steps = 0;
 bool SADM_functions::m_dir = false;
 bool SADM_functions::auto_rotate_en = false;
 const int SADM_functions::stepsPerRev = 32;
-const float SADM_functions::factor = 3.25;
-const int SADM_functions::step_limit = (int)(1024 * factor);
+float SADM_functions::ratio = 1;
+float SADM_functions::factor = ratio;
+int SADM_functions::step_limit = 1024 * factor;
 Stepper* SADM_functions::stepper = new Stepper(stepsPerRev, 8, 10, 9, 11);
 
 /**
@@ -20,12 +21,46 @@ void SADM_functions::init_stepper()
 }
 
 /**
-*	Set's the auto_rotate_en member either true or false depending on the instruction parameter.
+*	Sets the gear_ratio. Used when converting from degrees to number of steps before rotating.
+*/
+void SADM_functions::set_ratio(Json_container<JsonObject>& ins)
+{
+	if (ins->containsKey("ratio"))
+	{
+		if (ins->is<float>("ratio"))
+		{
+			ratio = ins->get<float>("ratio");		
+			Function_control::reserve("set_ratio", set_ratio);
+		}
+		else
+		{
+			Json_container<JsonObject> tmp;
+			tmp->set("error", "Invalid value.");
+			tmp->printTo(Serial);
+			Serial.print("\r\n");
+		}
+	}
+	else
+	{
+		Json_container<JsonObject> tmp;
+		tmp->set("error", "Invalid argument.");
+		tmp->printTo(Serial);
+		Serial.print("\r\n");
+	}
+}
+
+void SADM_functions::set_ratio()
+{
+	factor = ratio;
+	step_limit = 1024 * factor;
+	Function_control::release();
+}
+
+/**
+*	Set's the auto_rotate_en member true or false depending on the instruction parameter.
 */
 void SADM_functions::set_auto_rotate(Json_container<JsonObject>& ins)
 {
-	//Json_container<JsonObject> ins = instruction;	
-
 	if (ins->containsKey("enable"))
 	{
 		if (ins->is<bool>("enable"))
@@ -37,7 +72,7 @@ void SADM_functions::set_auto_rotate(Json_container<JsonObject>& ins)
 			Json_container<JsonObject> tmp;
 			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
-			Serial.println("\r\n");
+			Serial.print("\r\n");
 		}
 	}
 	else
@@ -45,7 +80,7 @@ void SADM_functions::set_auto_rotate(Json_container<JsonObject>& ins)
 		Json_container<JsonObject> tmp;
 		tmp->set("error", "Invalid argument.");
 		tmp->printTo(Serial);
-		Serial.println("\r\n");
+		Serial.print("\r\n");
 	}
 }
 
@@ -91,7 +126,7 @@ void SADM_functions::rotate(Json_container<JsonObject>& ins)
 			Json_container<JsonObject> tmp;
 			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
-			Serial.println("\r\n");
+			Serial.print("\r\n");
 		}
 	}
 	else if (ins->containsKey("steps"))
@@ -106,7 +141,7 @@ void SADM_functions::rotate(Json_container<JsonObject>& ins)
 			Json_container<JsonObject> tmp;
 			tmp->set("error", "Invalid value.");
 			tmp->printTo(Serial);
-			Serial.println("\r\n");
+			Serial.print("\r\n");
 		}
 	}
 	else
@@ -114,12 +149,12 @@ void SADM_functions::rotate(Json_container<JsonObject>& ins)
 		Json_container<JsonObject> tmp;
 		tmp->set("error", "Invalid argument.");
 		tmp->printTo(Serial);
-		Serial.println("\r\n");
+		Serial.print("\r\n");
 	}
 }
 
 /**
-*	Rotates the SADM the passed number of steps.
+*	Rotates the SADM the given number of steps.
 */
 void SADM_functions::rotate(int steps)
 {	
@@ -156,11 +191,17 @@ void SADM_functions::rotate(float degrees)
 		}
 
 		// 1 deg = 2048steps/360deg = 5.69 step/deg
-		m_steps = (int)(degrees * ((float)2048 / (float)360));
+		m_steps = (int)((degrees * (2048.0f / 360.0f)) * ratio);
 		Function_control::reserve("rotate_degrees", rotate);
 	}
 }
 
+/**
+*	The other rotate methods will pass this one into Function_control.
+*	This means that when calling Function_control::run() in the loop function,
+*	This method will be called until it releases itself from Function_control.
+*	This rotate method is the one actually doning the rotation.
+*/
 void SADM_functions::rotate()
 {	
 	if (m_steps == 0)

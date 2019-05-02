@@ -3,35 +3,37 @@
 #include "../../lib/ArduinoJson/ArduinoJson.h"
 
 /**
-*	The ArduinoJson library requires JsonObjects and JsonArrays to be created within a JsonBuffer. When a JsonObject or JsonArray is retreived from a buffer, it's returned as a reference. 
-*	This means that neither of those can live outside of the buffer, so this class encapsulates the JsonBuffer together with a JsonObject or JsonArray to simplify object creation and passing.
+*	The ArduinoJson library requires JsonObjects and JsonArrays to be created within a JsonBuffer.
+*	When a JsonObject or JsonArray is retreived from a buffer, it's returned as a reference. 
+*	This means that neither of those can live outside of the buffer,
+*	so this class encapsulates the JsonBuffer together with a JsonObject or JsonArray to simplify object creation and passing.
 *	This class is generic for it to be specified upon instantiation if it's to hold a JsonObject or JsonArray.
 */
 template <typename T>
 class Json_container
 {
 public:	
-	// Default constructor.
+	// Default constructor
 	Json_container();	
 
-	// Copy constructor.
+	// Copy constructor
 	Json_container(const Json_container& src);
 
-	// Assignment operator overload.
+	// Assignment operator overload
 	Json_container& operator=(const Json_container& src);
 	
-	// Destructor.
-	virtual ~Json_container();
+	// Destructor
+	~Json_container();
 	
-	// Arrow operator overload.
+	// Arrow operator overload
 	T* operator->();
 
-	// Parse and get methods.
+	// Parse and get methods
 	bool parse(const String& str);
 	T& get();
 
 private:
-	// Copy method used in copy constructor and assignment operator.
+	// Copy method used in copy constructor and assignment operator
 	void copy(const Json_container& src);
 
 	// Member variables.
@@ -84,7 +86,7 @@ inline void Json_container<JsonArray>::copy(const Json_container& src)
 }
 
 /**
-*	Copy constructor.
+*	Copy constructor. Calls the copy method to perform a deep copy.
 */
 template<typename T>
 inline Json_container<T>::Json_container(const Json_container& src)
@@ -93,7 +95,7 @@ inline Json_container<T>::Json_container(const Json_container& src)
 }
 
 /**
-*	Equals operator overload.
+*	Assignment operator overload. Utilizes the copy method to perform a deep copy.
 */
 template<typename T>
 inline Json_container<T>& Json_container<T>::operator=(const Json_container& src)
@@ -105,7 +107,7 @@ inline Json_container<T>& Json_container<T>::operator=(const Json_container& src
 }
 
 /**
-*	Destructor. Deletes the DynamicJsonBuffer.
+*	Destructor. Clears and deletes the DynamicJsonBuffer.
 */
 template <typename T>
 inline Json_container<T>::~Json_container()

@@ -1,6 +1,7 @@
 #pragma once
 #include "../../lib/LinkedList/LinkedList.h"
 #include "SADM_functions.h"
+#include "Func_ptr.h"
 
 /*
 *	Struct holding the identifier and type of a parameter.
@@ -9,7 +10,7 @@
 struct Uf_param
 {
 	/**
-	*	Constructor setting identifier and type of the parameter.
+	*	Constructor setting the member variables.
 	*/
 	Uf_param(const String& identifier, const String& type)
 		: identifier(identifier), type(type) {}
@@ -26,7 +27,7 @@ struct Instruction
 	/**
 	*	Constructor setting the identifier, signature and function pointer.
 	*/
-	Instruction(const String& identifier, const Json_container<JsonObject>& signature, void(*func)(Json_container<JsonObject>&))
+	Instruction(const String& identifier, const Json_container<JsonObject>& signature, const Func_ptr<void, Json_container<JsonObject>&>& func)
 	{
 		m_identifier = identifier;
 		m_signature = signature;
@@ -51,7 +52,7 @@ struct Instruction
 private:
 	String m_identifier;
 	Json_container<JsonObject> m_signature;
-	void(*m_func)(Json_container<JsonObject>&);
+	Func_ptr<void, Json_container<JsonObject>&> m_func;
 };
 
 /**
@@ -60,19 +61,11 @@ private:
 class Instruction_container
 {
 public:
-	/**
-	*	Constructor appending every available instruction to the list.
-	*/
+	// Constructor
 	Instruction_container();	
-
-	/**
-	*	Returns a spesific instruction in the list.
-	*/
+	
+	// Getters
 	Instruction* get(const String& ins);
-
-	/**
-	*	Returns the entire list of available instructions.
-	*/
 	LinkedList<String, Instruction*>& get_available_instructions();
 
 private:

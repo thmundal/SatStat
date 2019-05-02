@@ -55,9 +55,8 @@ bool Message_handler::has_instructions() const
 }
 
 /**
-*	Fetches the first instruction in the instruction_queue, getting the corresponding function from the instruction_interpreter
-*	and calling the retreived function passing the instruction as argument.
-*	Returns true if success, false if not.
+*	Fetches the first request in the message_queue, gets the corresponding function from the request_container
+*	and calls the retreived function.
 */
 void Message_handler::interpret_request()
 {	
@@ -106,6 +105,10 @@ void Message_handler::interpret_request()
 	}	
 }
 
+/**
+*	Fetches the first instruction in the instruction_queue, gets the corresponding function from the instruction_container
+*	and calls the retreived function.
+*/
 void Message_handler::interpret_instruction()
 {
 	Json_container<JsonObject> obj = instruction_queue.dequeue();
@@ -126,6 +129,9 @@ void Message_handler::interpret_instruction()
 	}
 }
 
+/**
+*	Appends all available instructions to the destination Json_container<JsonObject>.
+*/
 void Message_handler::append_available_instructions(Json_container<JsonObject>& dest)
 {
 	JsonObject& nested = dest->createNestedObject("available_instructions");

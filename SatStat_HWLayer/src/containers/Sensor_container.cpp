@@ -40,6 +40,9 @@ void Sensor_container::read_all_sensors()
 	}
 }
 
+/**
+*	Appends data from a Subscribable object to the destination Json_container<JsonObject>.
+*/
 void Sensor_container::append_data(Json_container<JsonObject>& dest, sstl::Subscribable* src)
 {
 	sstl::types type = src->get_type();
@@ -64,6 +67,9 @@ void Sensor_container::append_data(Json_container<JsonObject>& dest, sstl::Subsc
 	}
 }
 
+/**
+*	Returns the given sensor data as Json_container<JsonObject>.
+*/
 Json_container<JsonObject> Sensor_container::get_data(const String& name)
 {
 	Json_container<JsonObject> obj;
@@ -73,6 +79,9 @@ Json_container<JsonObject> Sensor_container::get_data(const String& name)
 	return obj;
 }
 
+/**
+*	Returns a Json_container<JsonObject> containing all sensor data.
+*/
 Json_container<JsonObject> Sensor_container::get_all_data()
 {
 	auto& list = sstl::Lists::get_data_list();
@@ -91,6 +100,9 @@ Json_container<JsonObject> Sensor_container::get_all_data()
 	return obj;
 }
 
+/**
+*	Returns a Json_container<JsonObject> containing sensor data that has been subscribed to.
+*/
 Json_container<JsonObject> Sensor_container::get_sub_data()
 {
 	auto& list = sstl::Lists::get_sub_list();
@@ -110,6 +122,9 @@ Json_container<JsonObject> Sensor_container::get_sub_data()
 	return obj;
 }
 
+/**
+*	Appends the available data to the destination Json_container<JsonObject>.
+*/
 void Sensor_container::append_available_data(Json_container<JsonObject>& dest)
 {
 	JsonObject& tmp = dest->createNestedObject("available_data");

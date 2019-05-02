@@ -1,60 +1,104 @@
 #pragma once
 #include "Node.h"
 
+/**
+*	LinkedList is a generic linked list class implementation.
+*	It contains the first Node in the list, and has methods to access and modify theese nodes.
+*/
 template <class KEY, class VALUE>
 class LinkedList
 {
 public:
+	// Default constructor
 	LinkedList();
-	LinkedList(const LinkedList<KEY, VALUE> &other);
+
+	// Copy constructor
+	LinkedList(const LinkedList<KEY, VALUE>& other);
+
+	// Destructor
 	~LinkedList();
 
-	LinkedList<KEY, VALUE> &operator=(const LinkedList<KEY, VALUE> &other);
-	VALUE &operator[](int index);
+	// Assignment operator overload
+	LinkedList<KEY, VALUE>& operator=(const LinkedList<KEY, VALUE>& other);
+
+	// Subscript member access operator overloads	
+	VALUE& operator[](int index);
 	VALUE& operator[](const KEY& key);
 
-	void add(const KEY &key);
-	void append(const KEY &key, const VALUE &value);
-	VALUE &get(const KEY &key);
-	void set(const KEY &key, const VALUE& value);
-	void erase(const KEY &key);
-	void setDefault(const VALUE &value);
-	int count() const;	
-	bool contains(const KEY &key) const;
+	// Add empty
+	void add(const KEY& key);
+
+	// Append value
+	void append(const KEY& key, const VALUE& value);
+
+	// Get value
+	VALUE& get(const KEY& key);
+
+	// Set value of existing
+	void set(const KEY& key, const VALUE& value);
+
+	// Erase object
+	void erase(const KEY& key);
+
+	// Set default value
+	void setDefault(const VALUE& value);
+
+	// Number of objects
+	const int& count() const;	
+
+	// Contains key
+	bool contains(const KEY& key) const;
 
 private:
-	Node<KEY, VALUE> *m_next;
+	// First node
+	Node<KEY, VALUE>* m_next;
+
+	// Default value
 	VALUE m_default;
+
+	// Number of objects
 	int m_count;
 };
 
+/**
+*	Default constructor. Setting m_next to nullptr and m_count to zero.
+*/
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList()
 {
-	m_next = 0;
+	m_next = nullptr;
 	m_count = 0;
 }
 
+/**
+*	Copy constructor. Using assignment operator to perform a deep copy from other to this.
+*/
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::LinkedList(const LinkedList<KEY, VALUE>& other)
 {	
 	*this = other;
 }
 
+/**
+*	Destructor. Deleting m_next which will call Node's destructor recursively deleting every Node in the list.
+*/
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>::~LinkedList()
 {
-	if (m_next != 0)
+	if (m_next != nullptr)
 	{
 		delete m_next;
 	}
 }
 
-// Jon later som han skjønner
+/**
+*	Assignment operator overload. Deletes m_next if not nullptr, and performes a deep copy from other to this.
+*	Returns a reference to this to allow chaining.
+*/
 template<class KEY, class VALUE>
 inline LinkedList<KEY, VALUE>& LinkedList<KEY, VALUE>::operator=(const LinkedList<KEY, VALUE>& other)
 {
-	if (m_next != 0)
+	if (m_next != nullptr)
 	{
 		delete m_next;
 	}
@@ -62,7 +106,7 @@ inline LinkedList<KEY, VALUE>& LinkedList<KEY, VALUE>::operator=(const LinkedLis
 	m_default = other.m_default;
 	m_count = other.m_count;
 
-	if (other.m_next != 0)
+	if (other.m_next != nullptr)
 	{
 		m_next = new Node<KEY, VALUE>;
 		*m_next = *other.m_next;
@@ -71,30 +115,37 @@ inline LinkedList<KEY, VALUE>& LinkedList<KEY, VALUE>::operator=(const LinkedLis
 	return *this;
 }
 
-// Jon tester
+/**
+*	Subscript member access operator overload. Returns the value at the given index.
+*	Returns default value if index out of bounds.
+*/
 template<class KEY, class VALUE>
 inline VALUE& LinkedList<KEY, VALUE>::operator[](int index)
 {
-	if (m_next != 0)
+	if (m_count > 0 && index < m_count)
 	{
-		return m_next->get_index(index, m_default);
+		return m_next->get_at_index(index);
 	}
 
 	return m_default;
 }
 
-// Jon tester
+/**
+*	Subscript member access operator overload. Returns the result of the get method.
+*/
 template<class KEY, class VALUE>
 inline VALUE& LinkedList<KEY, VALUE>::operator[](const KEY& key)
 {
 	return get(key);
 }
 
-// Jon tester
+/**
+*	Adds an entry to the list with no predefined value.
+*/
 template<class KEY, class VALUE>
-inline void LinkedList<KEY, VALUE>::add(const KEY &key)
+inline void LinkedList<KEY, VALUE>::add(const KEY& key)
 {
-	if (m_next == 0)
+	if (m_next == nullptr)
 	{
 		m_next = new Node<KEY, VALUE>(key);
 	}
@@ -105,10 +156,13 @@ inline void LinkedList<KEY, VALUE>::add(const KEY &key)
 	m_count++;
 }
 
+/**
+*	Appends an entry to the list with predefined value.
+*/
 template<class KEY, class VALUE>
-inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
+inline void LinkedList<KEY, VALUE>::append(const KEY& key, const VALUE& value)
 {
-	if (m_next == 0)
+	if (m_next == nullptr)
 	{
 		m_next = new Node<KEY,VALUE>(key, value);
 	}
@@ -119,19 +173,26 @@ inline void LinkedList<KEY, VALUE>::append(const KEY &key, const VALUE &value)
 	m_count++;
 }
 
+/**
+*	Looks for an object with the given key, returns it's value if found, returns default value if not.
+*/
 template<class KEY, class VALUE>
-inline VALUE &LinkedList<KEY, VALUE>::get(const KEY &key)
+inline VALUE& LinkedList<KEY, VALUE>::get(const KEY& key)
 {
-	if (m_next != 0)
+	if (m_next != nullptr)
+	{
 		return m_next->get(key, m_default);
+	}
 	return m_default;
 }
 
-// Jon tester
+/**
+*	Sets the value of an existing object. Appends a new object if no object with the given already key exists.
+*/
 template<class KEY, class VALUE>
-inline void LinkedList<KEY, VALUE>::set(const KEY &key, const VALUE& value)
+inline void LinkedList<KEY, VALUE>::set(const KEY& key, const VALUE& value)
 {
-	if (m_next != 0)
+	if (m_next != nullptr)
 	{
 		if (m_next->set(key, value))
 		{
@@ -140,11 +201,13 @@ inline void LinkedList<KEY, VALUE>::set(const KEY &key, const VALUE& value)
 	}
 }
 
-// Jon tester
+/**
+*	Erases an object from the list.
+*/
 template<class KEY, class VALUE>
-inline void LinkedList<KEY, VALUE>::erase(const KEY &key)
+inline void LinkedList<KEY, VALUE>::erase(const KEY& key)
 {	
-	if (m_next != 0)
+	if (m_next != nullptr)
 	{
 		if (m_next->erase(key, m_next))
 		{
@@ -153,23 +216,33 @@ inline void LinkedList<KEY, VALUE>::erase(const KEY &key)
 	}
 }
 
+/**
+*	Sets the default value.
+*/
 template<class KEY, class VALUE>
-inline void LinkedList<KEY, VALUE>::setDefault(const VALUE & value)
+inline void LinkedList<KEY, VALUE>::setDefault(const VALUE& value)
 {
 	m_default = value;
 }
 
-// Jon tester
+/**
+*	Returns the number of objects in the list.
+*/
 template<class KEY, class VALUE>
-inline int LinkedList<KEY, VALUE>::count() const
+inline const int& LinkedList<KEY, VALUE>::count() const
 {
 	return m_count;
 }
 
+/**
+*	Checks if an object with the given key is present in the list. Returns true if it is, false if not.
+*/
 template<class KEY, class VALUE>
-inline bool LinkedList<KEY, VALUE>::contains(const KEY &key) const
+inline bool LinkedList<KEY, VALUE>::contains(const KEY& key) const
 {
-	if (m_next != 0)
+	if (m_next != nullptr)
+	{
 		return m_next->contains(key);
+	}
 	return false;
 }

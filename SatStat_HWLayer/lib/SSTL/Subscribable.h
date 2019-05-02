@@ -4,7 +4,7 @@
 namespace sstl
 {
 	/**
-	*	Subscribable is a sort of interface that allow us to store objects of generic type that inherits this interface in e.g. lists.
+	*	Subscribable is a sort of interface that allow us to store objects of generic type that inherits/extends this interface in e.g. lists.
 	*/
 	class Subscribable
 	{
@@ -19,6 +19,10 @@ namespace sstl
 		*	Returns the type of the polymorphed object to be able to downcast to the correct type when needed.
 		*/
 		virtual const data_types::Types& get_type() const = 0;
+
+		/**
+		*	Returns the name of the polymorphed object.
+		*/
 		virtual const String& get_name() const = 0;
 	};
 }

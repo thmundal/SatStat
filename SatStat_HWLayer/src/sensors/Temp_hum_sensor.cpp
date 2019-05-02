@@ -2,7 +2,7 @@
 #include "Temp_hum_sensor.h"
 
 /**
-*	Pass parameter inputs to parent constructor arguments.
+*	Constructor. Passes the parameter inputs to parent constructor arguments.
 */
 Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin)
 {		
@@ -13,13 +13,16 @@ Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(na
 	sstl::Lists::add_entry<float>("humidity");
 }
 
+/**
+*	Destructor. Deletes dht.
+*/
 Temp_hum_sensor::~Temp_hum_sensor()
 {
 	delete dht;
 }
 
 /**
-*	Read all data the sensor can provide, and return as a Result pointer.
+*	Read all data the sensor can provide, and update the SSTL list with the new readings.
 */
 void Temp_hum_sensor::read_sensor()
 {		
