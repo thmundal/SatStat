@@ -46,6 +46,11 @@ namespace SatStat
         /// Defines the name of the database collection to hold saved parameter control templates
         /// </summary>
         public string ParameterControlDatabase { get { return "ParamControlDB"; } }
+
+        /// <summary>
+        /// Defines the name of the database collection to hold save test configurations
+        /// </summary>
+        public string TestConfigDatabase { get { return "TestConfigDB"; } }
     }
 
     /// <summary>

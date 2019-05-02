@@ -35,8 +35,14 @@
             this.UImenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOMSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectFromSerialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.connectToStreamSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectFromStreamSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopSocketServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,10 +76,10 @@
             this.UIStatusStrip = new System.Windows.Forms.StatusStrip();
             this.UICOMConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.UINetworkConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.UIPlotViewTabContainer = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.UIPlotViewTab = new System.Windows.Forms.TabPage();
             this.oxPlot = new OxyPlot.WindowsForms.PlotView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -102,10 +108,12 @@
             this.UITestConfigInstructionRunNumberInput = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UITestDeviceSelect = new System.Windows.Forms.ListBox();
+            this.UITestDeviceLabel = new System.Windows.Forms.Label();
             this.UITestConfigRunTestBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.UITestConfigSavedConfigsSelect = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UITestConfigSaveButton = new System.Windows.Forms.Button();
             this.UITestConfigUseCurrentParamConfigCheck = new System.Windows.Forms.CheckBox();
             this.UITestConfigParameterTemplateSelect = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -118,6 +126,7 @@
             this.UITestConfigIntructionListGrid = new System.Windows.Forms.DataGridView();
             this.instructionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructionParams = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instructionState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructionStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.UITestConfigInstructionMoveUpBtn = new System.Windows.Forms.Button();
@@ -132,10 +141,10 @@
             this.diagnosticLiveOutputValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).BeginInit();
             this.UIStatusStrip.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.MainTabControl.SuspendLayout();
+            this.UIPlotViewTabContainer.SuspendLayout();
             this.tabControl2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.UIPlotViewTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).BeginInit();
@@ -168,8 +177,14 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cOMSettingsToolStripMenuItem,
+            this.disconnectFromSerialDeviceToolStripMenuItem,
+            this.toolStripSeparator3,
             this.connectToStreamSimulatorToolStripMenuItem,
-            this.startSocketServerToolStripMenuItem});
+            this.disconnectFromStreamSimulatorToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.startSocketServerToolStripMenuItem,
+            this.stopSocketServerToolStripMenuItem,
+            this.toolStripSeparator1});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -177,23 +192,59 @@
             // cOMSettingsToolStripMenuItem
             // 
             this.cOMSettingsToolStripMenuItem.Name = "cOMSettingsToolStripMenuItem";
-            this.cOMSettingsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.cOMSettingsToolStripMenuItem.Text = "COM Settings";
+            this.cOMSettingsToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.cOMSettingsToolStripMenuItem.Text = "Connect to serial device...";
             this.cOMSettingsToolStripMenuItem.Click += new System.EventHandler(this.cOMSettingsToolStripMenuItem_Click);
+            // 
+            // disconnectFromSerialDeviceToolStripMenuItem
+            // 
+            this.disconnectFromSerialDeviceToolStripMenuItem.Name = "disconnectFromSerialDeviceToolStripMenuItem";
+            this.disconnectFromSerialDeviceToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.disconnectFromSerialDeviceToolStripMenuItem.Text = "Disconnect from serial device";
+            this.disconnectFromSerialDeviceToolStripMenuItem.Click += new System.EventHandler(this.disconnectFromSerialDeviceToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(251, 6);
             // 
             // connectToStreamSimulatorToolStripMenuItem
             // 
             this.connectToStreamSimulatorToolStripMenuItem.Name = "connectToStreamSimulatorToolStripMenuItem";
-            this.connectToStreamSimulatorToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.connectToStreamSimulatorToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.connectToStreamSimulatorToolStripMenuItem.Text = "Connect to stream simulator";
             this.connectToStreamSimulatorToolStripMenuItem.Click += new System.EventHandler(this.connectToStreamSimulatorToolStripMenuItem_Click);
+            // 
+            // disconnectFromStreamSimulatorToolStripMenuItem
+            // 
+            this.disconnectFromStreamSimulatorToolStripMenuItem.Name = "disconnectFromStreamSimulatorToolStripMenuItem";
+            this.disconnectFromStreamSimulatorToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.disconnectFromStreamSimulatorToolStripMenuItem.Text = "Disconnect from stream simulator";
+            this.disconnectFromStreamSimulatorToolStripMenuItem.Click += new System.EventHandler(this.disconnectFromStreamSimulatorToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(251, 6);
             // 
             // startSocketServerToolStripMenuItem
             // 
             this.startSocketServerToolStripMenuItem.Name = "startSocketServerToolStripMenuItem";
-            this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.startSocketServerToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.startSocketServerToolStripMenuItem.Text = "Start socket server";
             this.startSocketServerToolStripMenuItem.Click += new System.EventHandler(this.startSocketServerToolStripMenuItem_Click);
+            // 
+            // stopSocketServerToolStripMenuItem
+            // 
+            this.stopSocketServerToolStripMenuItem.Name = "stopSocketServerToolStripMenuItem";
+            this.stopSocketServerToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.stopSocketServerToolStripMenuItem.Text = "Stop socket server";
+            this.stopSocketServerToolStripMenuItem.Click += new System.EventHandler(this.stopSocketServerToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
             // 
             // dataToolStripMenuItem
             // 
@@ -275,7 +326,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.UIStatusStrip, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.MainTabControl, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -537,33 +588,35 @@
             this.UINetworkConnectionStatus.Size = new System.Drawing.Size(127, 16);
             this.UINetworkConnectionStatus.Text = "Network Disconnected";
             // 
-            // tabControl1
+            // MainTabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(437, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tableLayoutPanel1.SetRowSpan(this.tabControl1, 2);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(983, 701);
-            this.tabControl1.TabIndex = 16;
+            this.MainTabControl.Controls.Add(this.UIPlotViewTabContainer);
+            this.MainTabControl.Controls.Add(this.tabPage2);
+            this.MainTabControl.Controls.Add(this.tabPage5);
+            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTabControl.Location = new System.Drawing.Point(437, 3);
+            this.MainTabControl.Name = "MainTabControl";
+            this.tableLayoutPanel1.SetRowSpan(this.MainTabControl, 2);
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(983, 701);
+            this.MainTabControl.TabIndex = 16;
+            this.MainTabControl.SelectedIndexChanged += new System.EventHandler(this.MainTabControl_SelectedIndexChanged);
             // 
-            // tabPage1
+            // UIPlotViewTabContainer
             // 
-            this.tabPage1.Controls.Add(this.tabControl2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(975, 675);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Plot view";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.UIPlotViewTabContainer.Controls.Add(this.tabControl2);
+            this.UIPlotViewTabContainer.Location = new System.Drawing.Point(4, 22);
+            this.UIPlotViewTabContainer.Name = "UIPlotViewTabContainer";
+            this.UIPlotViewTabContainer.Padding = new System.Windows.Forms.Padding(3);
+            this.UIPlotViewTabContainer.Size = new System.Drawing.Size(975, 675);
+            this.UIPlotViewTabContainer.TabIndex = 0;
+            this.UIPlotViewTabContainer.Tag = "plotViewTab";
+            this.UIPlotViewTabContainer.Text = "Plot view";
+            this.UIPlotViewTabContainer.UseVisualStyleBackColor = true;
             // 
             // tabControl2
             // 
-            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.UIPlotViewTab);
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(3, 3);
@@ -572,16 +625,16 @@
             this.tabControl2.Size = new System.Drawing.Size(969, 669);
             this.tabControl2.TabIndex = 13;
             // 
-            // tabPage3
+            // UIPlotViewTab
             // 
-            this.tabPage3.Controls.Add(this.oxPlot);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(961, 643);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "Plot 1";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.UIPlotViewTab.Controls.Add(this.oxPlot);
+            this.UIPlotViewTab.Location = new System.Drawing.Point(4, 22);
+            this.UIPlotViewTab.Name = "UIPlotViewTab";
+            this.UIPlotViewTab.Padding = new System.Windows.Forms.Padding(3);
+            this.UIPlotViewTab.Size = new System.Drawing.Size(961, 643);
+            this.UIPlotViewTab.TabIndex = 0;
+            this.UIPlotViewTab.Text = "Plot 1";
+            this.UIPlotViewTab.UseVisualStyleBackColor = true;
             // 
             // oxPlot
             // 
@@ -737,6 +790,7 @@
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(975, 675);
             this.tabPage5.TabIndex = 2;
+            this.tabPage5.Tag = "testConfigTab";
             this.tabPage5.Text = "Test configuration";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
@@ -815,6 +869,7 @@
             // 
             // UITestConfigInstructionSelect
             // 
+            this.UITestConfigInstructionSelect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.UITestConfigInstructionSelect.FormattingEnabled = true;
             this.UITestConfigInstructionSelect.Location = new System.Drawing.Point(16, 37);
             this.UITestConfigInstructionSelect.Name = "UITestConfigInstructionSelect";
@@ -839,6 +894,7 @@
             this.UITestConfigOutputParamChecklist.Name = "UITestConfigOutputParamChecklist";
             this.UITestConfigOutputParamChecklist.Size = new System.Drawing.Size(287, 124);
             this.UITestConfigOutputParamChecklist.TabIndex = 7;
+            this.UITestConfigOutputParamChecklist.SelectedIndexChanged += new System.EventHandler(this.UITestConfigOutputParamChecklist_SelectedIndexChanged);
             // 
             // UITestConfigAddInstructionBtn
             // 
@@ -877,10 +933,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.UITestDeviceSelect);
+            this.groupBox2.Controls.Add(this.UITestDeviceLabel);
             this.groupBox2.Controls.Add(this.UITestConfigRunTestBtn);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.UITestConfigSavedConfigsSelect);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.UITestConfigSaveButton);
             this.groupBox2.Controls.Add(this.UITestConfigUseCurrentParamConfigCheck);
             this.groupBox2.Controls.Add(this.UITestConfigParameterTemplateSelect);
             this.groupBox2.Controls.Add(this.label3);
@@ -896,6 +954,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test configuration";
             // 
+            // UITestDeviceSelect
+            // 
+            this.UITestDeviceSelect.FormattingEnabled = true;
+            this.UITestDeviceSelect.Location = new System.Drawing.Point(480, 37);
+            this.UITestDeviceSelect.Name = "UITestDeviceSelect";
+            this.UITestDeviceSelect.Size = new System.Drawing.Size(190, 95);
+            this.UITestDeviceSelect.TabIndex = 12;
+            // 
+            // UITestDeviceLabel
+            // 
+            this.UITestDeviceLabel.AutoSize = true;
+            this.UITestDeviceLabel.Location = new System.Drawing.Point(477, 16);
+            this.UITestDeviceLabel.Name = "UITestDeviceLabel";
+            this.UITestDeviceLabel.Size = new System.Drawing.Size(63, 13);
+            this.UITestDeviceLabel.TabIndex = 11;
+            this.UITestDeviceLabel.Text = "Test device";
+            // 
             // UITestConfigRunTestBtn
             // 
             this.UITestConfigRunTestBtn.Location = new System.Drawing.Point(244, 118);
@@ -909,7 +984,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(509, 20);
+            this.label8.Location = new System.Drawing.Point(673, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 13);
             this.label8.TabIndex = 9;
@@ -918,19 +993,20 @@
             // UITestConfigSavedConfigsSelect
             // 
             this.UITestConfigSavedConfigsSelect.FormattingEnabled = true;
-            this.UITestConfigSavedConfigsSelect.Location = new System.Drawing.Point(512, 36);
+            this.UITestConfigSavedConfigsSelect.Location = new System.Drawing.Point(676, 36);
             this.UITestConfigSavedConfigsSelect.Name = "UITestConfigSavedConfigsSelect";
-            this.UITestConfigSavedConfigsSelect.Size = new System.Drawing.Size(451, 95);
+            this.UITestConfigSavedConfigsSelect.Size = new System.Drawing.Size(287, 95);
             this.UITestConfigSavedConfigsSelect.TabIndex = 8;
             // 
-            // button1
+            // UITestConfigSaveButton
             // 
-            this.button1.Location = new System.Drawing.Point(244, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Save test configuration";
-            this.button1.UseVisualStyleBackColor = true;
+            this.UITestConfigSaveButton.Location = new System.Drawing.Point(244, 88);
+            this.UITestConfigSaveButton.Name = "UITestConfigSaveButton";
+            this.UITestConfigSaveButton.Size = new System.Drawing.Size(130, 23);
+            this.UITestConfigSaveButton.TabIndex = 7;
+            this.UITestConfigSaveButton.Text = "Save test configuration";
+            this.UITestConfigSaveButton.UseVisualStyleBackColor = true;
+            this.UITestConfigSaveButton.Click += new System.EventHandler(this.UITestConfigSaveButton_Click);
             // 
             // UITestConfigUseCurrentParamConfigCheck
             // 
@@ -944,11 +1020,13 @@
             // 
             // UITestConfigParameterTemplateSelect
             // 
+            this.UITestConfigParameterTemplateSelect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.UITestConfigParameterTemplateSelect.FormattingEnabled = true;
             this.UITestConfigParameterTemplateSelect.Location = new System.Drawing.Point(244, 36);
             this.UITestConfigParameterTemplateSelect.Name = "UITestConfigParameterTemplateSelect";
             this.UITestConfigParameterTemplateSelect.Size = new System.Drawing.Size(163, 21);
             this.UITestConfigParameterTemplateSelect.TabIndex = 5;
+            this.UITestConfigParameterTemplateSelect.SelectedIndexChanged += new System.EventHandler(this.UITestConfigParameterTemplateSelect_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -1027,6 +1105,7 @@
             this.UITestConfigIntructionListGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.instructionName,
             this.instructionParams,
+            this.instructionState,
             this.instructionStatus});
             this.UITestConfigIntructionListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UITestConfigIntructionListGrid.Location = new System.Drawing.Point(61, 3);
@@ -1046,9 +1125,15 @@
             this.instructionParams.Name = "instructionParams";
             this.instructionParams.ReadOnly = true;
             // 
+            // instructionState
+            // 
+            this.instructionState.HeaderText = "State";
+            this.instructionState.Name = "instructionState";
+            this.instructionState.ReadOnly = true;
+            // 
             // instructionStatus
             // 
-            this.instructionStatus.HeaderText = "Status";
+            this.instructionStatus.HeaderText = "Feedback status";
             this.instructionStatus.Name = "instructionStatus";
             this.instructionStatus.ReadOnly = true;
             // 
@@ -1124,10 +1209,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.UIliveOutputValuesList)).EndInit();
             this.UIStatusStrip.ResumeLayout(false);
             this.UIStatusStrip.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.MainTabControl.ResumeLayout(false);
+            this.UIPlotViewTabContainer.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.UIPlotViewTab.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UIObservedValuesOuputGrid)).EndInit();
@@ -1185,10 +1270,10 @@
         private System.Windows.Forms.StatusStrip UIStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel UICOMConnectionStatus;
         private System.Windows.Forms.ToolStripStatusLabel UINetworkConnectionStatus;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl MainTabControl;
+        private System.Windows.Forms.TabPage UIPlotViewTabContainer;
         private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage UIPlotViewTab;
         private OxyPlot.WindowsForms.PlotView oxPlot;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1225,7 +1310,7 @@
         private System.Windows.Forms.CheckedListBox UITestConfigOutputParamChecklist;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox UITestConfigSavedConfigsSelect;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UITestConfigSaveButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView UITestConfigInstructionParameterGrid;
         private System.Windows.Forms.ComboBox UITestConfigInstructionSelect;
@@ -1234,13 +1319,22 @@
         private System.Windows.Forms.Button UITestConfigRunTestBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.DataGridView UITestConfigIntructionListGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instructionName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instructionParams;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instructionStatus;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button UITestConfigInstructionMoveUpBtn;
         private System.Windows.Forms.Button UITestConfigInstructionMoveDownBtn;
         private System.Windows.Forms.Button UITestConfigInstructionDeleteBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionParams;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionState;
+        private System.Windows.Forms.DataGridViewTextBoxColumn instructionStatus;
+        private System.Windows.Forms.ListBox UITestDeviceSelect;
+        private System.Windows.Forms.Label UITestDeviceLabel;
+        private System.Windows.Forms.ToolStripMenuItem disconnectFromSerialDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disconnectFromStreamSimulatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem stopSocketServerToolStripMenuItem;
     }
 }
 

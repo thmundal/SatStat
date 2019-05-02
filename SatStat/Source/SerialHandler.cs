@@ -9,13 +9,6 @@ using System.Windows.Controls;
 
 namespace SatStat
 {
-    public enum ConnectionStatus
-    {
-        Disconnected,
-        Handshake,
-        WaitingConnectInit,
-        Connected,
-    }
 
     /// <summary>
     /// A class that is responsible for communicating on a serial port connection, and at the same time act as a data stream object
@@ -26,19 +19,13 @@ namespace SatStat
         private static Hashtable availableCOMPorts;
         private SerialSettingsCollection available_settings;
         private Action<SerialSettingsCollection> HandshakeResponse_callback;
-
+        private static bool sadm_discovered = false;
 
         public SerialSettingsCollection AvailableSettings
         {
             get { return available_settings; }
         }
-
-        private ConnectionStatus connectionStatus = ConnectionStatus.Disconnected;
-        public ConnectionStatus ConnectionStatus
-        {
-            get { return connectionStatus;  }
-        }
-
+        
         public struct default_settings 
         {
             static public int BaudRate = 9600;
@@ -67,6 +54,7 @@ namespace SatStat
             connection.DataReceived += new SerialDataReceivedEventHandler(OnDataReceived);
 
             availableCOMPorts = new Hashtable();
+            GetPortListInformation();
         }
 
         /// <summary>
@@ -83,7 +71,7 @@ namespace SatStat
                 throw new ArgumentException("Port name cannot be empty or null");
             }
         }
-
+        
         /// <summary>
         /// The method to invoke when data is received on the serial port communication channel
         /// </summary>
@@ -91,6 +79,7 @@ namespace SatStat
         /// <param name="e"></param>
         private void OnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            string input = String.Empty;
             if (connectionStatus == ConnectionStatus.Disconnected || !connection.IsOpen)
             {
                 ThreadHelper.SetCOMConnectionStatus("Disconnected");
@@ -101,37 +90,45 @@ namespace SatStat
             try
             {
                 //Debug.Log("Receiving...");
-                string input = connection.ReadLine();
+                input = connection.ReadLine();
 
-                //Debug.Log(input);
-                Debug.Log(ConnectionStatus);
+                Debug.Log(input);
+                //Debug.Log(ConnectionStatus);
 
                 JObject inputParsed = Parse(input);
 
-                if (connectionStatus == ConnectionStatus.Handshake && inputParsed.ContainsKey("serial_handshake"))
+                if(inputParsed != null)
                 {
-                    available_settings = inputParsed["serial_handshake"].ToObject<SerialSettingsCollection>();
-                    if(HandshakeResponse_callback != null)
+                    if (connectionStatus == ConnectionStatus.Handshake && inputParsed.ContainsKey("serial_handshake"))
                     {
-                        InvokeHandshakeResponseCallback(available_settings);
+                        //if (inputParsed["serial_handshake"].ToObject<string>() != "failed")
+                        if(true)
+                        {
+                            available_settings = inputParsed["serial_handshake"].ToObject<SerialSettingsCollection>();
+                            if(HandshakeResponse_callback != null)
+                            {
+                                InvokeHandshakeResponseCallback(available_settings);
+                            }
+                        } else
+                        {
+                            // Handshake failed
+                        }
                     }
-                }
 
-                if(ConnectionStatus == ConnectionStatus.WaitingConnectInit && inputParsed.ContainsKey("connect"))
-                {
-                    string param = inputParsed["connect"].ToObject<string>();
-                    //Debug.Log("Param received:");
-                    //Debug.Log(param);
-                    if(param == "init")
+                    if(ConnectionStatus == ConnectionStatus.WaitingConnectInit && inputParsed.ContainsKey("connect"))
                     {
-                        Connect();
+                        string param = inputParsed["connect"].ToObject<string>();
+                        if(param == "init")
+                        {
+                            ConnectAcceptResponse();
+                        }
                     }
-                }
 
-                if(ConnectionStatus == ConnectionStatus.Connected)
-                {
-                    ThreadHelper.SetCOMConnectionStatus("Connected to " + Program.settings.portDescription);
-                    DeliverSubscriptions();
+                    if(ConnectionStatus == ConnectionStatus.Connected)
+                    {
+                        ThreadHelper.SetCOMConnectionStatus("Connected to " + stream_label);
+                        DeliverSubscriptions();
+                    }
                 }
             }
             catch(Newtonsoft.Json.JsonReaderException ex)
@@ -154,6 +151,7 @@ namespace SatStat
             catch (Exception ex)
             {
                 Debug.Log("Exception caught in SerialHandler.OnDataReceived()");
+                Debug.Log(input);
                 Debug.Log(ex);
             }
 
@@ -215,7 +213,7 @@ namespace SatStat
             catch (System.IO.IOException e)
             {
                 Debug.Log(e.ToString());
-            }            
+            }
         }
 
         /// <summary>
@@ -249,11 +247,22 @@ namespace SatStat
         /// Send connection ok confirmation command to HW Layer
         /// </summary>
         /// <returns></returns>
-        public void Connect()
+        protected override bool ConnectProcedure(ConnectionParameters prm)
         {
-            Debug.Log("Running connect method");
+            stream_label = availableCOMPorts[prm.com_port].ToString();
+            DefaultConnect(prm.com_port);
+            return false; // Do not invoke connected callback at this point
+        }
+
+        private void ConnectAcceptResponse()
+        {
+            Debug.Log("Accepting connect response");
             WriteData("{\"connect\":\"ok\"}");
-            WriteData("{\"request\":\"available_data\"}");
+
+            if(OnConnected_cb != null)
+            {
+                OnConnected_cb.Invoke(this);
+            }
 
             ThreadHelper.SetCOMConnectionStatus("Waiting for available data");
 
@@ -299,7 +308,7 @@ namespace SatStat
             }
         }
 
-        public new void Output(object data)
+        public override void Output(object data)
         {
             string data_serialized = JSON.serialize(data);
             WriteData(data_serialized);
@@ -308,16 +317,58 @@ namespace SatStat
         /// <summary>
         /// Disconnect the serial port
         /// </summary>
-        public void Disconnect()
+        protected override bool DisconnectProcedure()
         {
             if(connectionStatus != ConnectionStatus.Disconnected)
             {
                 Debug.Log("Stopping serial reader");
+                Output(Request.Create("reset"));
                 connectionStatus = ConnectionStatus.Disconnected;
                 connection.Close();
+                return true;
             } else
             {
                 Debug.Log("Cannot disconnect");
+                return false;
+            }
+        }
+
+
+        public static void Discover()
+        {
+            if(sadm_discovered)
+            {
+                return;
+            }
+
+            string target = "SADM";
+
+            foreach (DictionaryEntry device in availableCOMPorts)
+            {
+                Debug.Log(device.Key + " " + device.Value);
+                SerialPort localSerial = new SerialPort(device.Key.ToString(), 9600);
+                localSerial.ReadTimeout = 3000;
+                localSerial.Open();
+
+                string data = localSerial.ReadLine();
+                Debug.Log(data);
+                try
+                {
+                    JObject jsonData = JSON.parse<JObject>(data);
+                    if(jsonData.ContainsKey("device_name"))
+                    {
+                        Debug.Log("Found device: " + jsonData["device_name"]);
+                        availableCOMPorts[device.Key] = jsonData["device_name"];
+
+                        if(jsonData["device_type"].Equals(target))
+                        {
+                            sadm_discovered = true;
+                            break;
+                        }
+                    }
+                } catch {}
+
+                localSerial.Close();
             }
         }
     }

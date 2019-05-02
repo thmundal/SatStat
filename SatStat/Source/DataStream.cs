@@ -5,6 +5,20 @@ using Newtonsoft.Json.Linq;
 
 namespace SatStat
 {
+    public struct ConnectionParameters
+    {
+        public string com_port;
+        public string listen_addr;
+    }
+
+    public enum ConnectionStatus
+    {
+        Disconnected,
+        Handshake,
+        WaitingConnectInit,
+        Connected,
+    }
+
     /// <summary>
     /// A datastream that can be subscibed to trough a DataSubscription
     /// </summary>
@@ -16,19 +30,53 @@ namespace SatStat
         private List<JObject> inputBuffer;
 
         /// <summary>
-        /// A list of all subscribers on this datastream
+        /// A list of receivers that should receive data on this stream
         /// </summary>
-        private List<DataSubscription> subscriptions;
+        private List<DataReceiver> receivers;
+
+        protected static int num_active_streams = 0;
+        public static int NumActiveStreams
+        {
+            get
+            {
+                return num_active_streams;
+            }
+        }
+
+        protected string stream_label = "DataStream_" + num_active_streams;
+        public string Label
+        {
+            get
+            {
+                return stream_label;
+            }
+        }
 
         /// <summary>
         /// An action to invoke when output is received on this stream
         /// </summary>
         private Action<string> OutputReceivedCallback;
+        protected Action<DataStream> OnConnected_cb;
+        protected Action<DataStream> OnDisconnected_cb;
+        protected ConnectionStatus connectionStatus = ConnectionStatus.Disconnected;
+
+        public ConnectionStatus ConnectionStatus {
+            get
+            {
+                return connectionStatus;
+            }
+        }
 
         public DataStream()
         {
-            subscriptions = new List<DataSubscription>();
             inputBuffer = new List<JObject>();
+            receivers = new List<DataReceiver>();
+            num_active_streams++;
+        }
+
+        ~DataStream()
+        {
+            num_active_streams--;
         }
 
         /// <summary>
@@ -36,8 +84,6 @@ namespace SatStat
         /// </summary>
         public void DeliverSubscriptions()
         {
-            bool received = false;
-
             for(int i=0; i<inputBuffer.Count; i++)
             {
                 var input = inputBuffer[i];
@@ -46,22 +92,17 @@ namespace SatStat
                 {
                     string key = item.Key;
                     object value = item.Value;
-
-                    foreach (DataSubscription subscriber in subscriptions)
+                    
+                    foreach(DataReceiver receiver in receivers)
                     {
-                        string attribute = subscriber.attribute;
-                        if (key == attribute)
+                        if(receiver.HasSubscription(key))
                         {
-                            subscriber.receive(value);
-                            received = true;
-                        }
+                            receiver.GetSubscription(key).receive(value, stream_label);
+                        } 
                     }
                 }
 
-                if(received)
-                {
-                    inputBuffer.RemoveAt(i);
-                }
+                inputBuffer.RemoveAt(i);
             }
         }
 
@@ -105,31 +146,62 @@ namespace SatStat
             }
             return null;
         }
-
+        
         /// <summary>
-        /// Add a subscriber to this data stream
+        /// Add a receiver on this data stream
         /// </summary>
-        /// <param name="subscription">The subscriber to add to the list</param>
-        public void AddSubscriber(DataSubscription subscription)
+        /// <param name="r">A data receiver that should receive data on this stream</param>
+        public void AddReceiver(DataReceiver r)
         {
-            subscriptions.Add(subscription);
+            if(!receivers.Contains(r))
+            {
+                receivers.Add(r);
+            }
         }
 
         /// <summary>
         /// Send data trough the output channel of this data stream as a JSON serialized string
         /// </summary>
         /// <param name="data">Data object to serialize and send as JSON</param>
-        public void Output(object data)
-        {
-            string json_serialized = JSON.serialize(data);
-            //outputBuffer.Add(json_serialized);
+        public virtual void Output(object data) { }
 
-            if(OutputReceivedCallback != null)
+        protected virtual bool ConnectProcedure(ConnectionParameters prm) { return false; }
+        protected virtual bool DisconnectProcedure() { return false; }
+
+        public void Connect(ConnectionParameters prm = new ConnectionParameters())
+        {
+            if(ConnectProcedure(prm))
             {
-                OutputReceivedCallback.Invoke(json_serialized);
+                if(OnConnected_cb != null)
+                {
+                    OnConnected_cb.Invoke(this);
+                }
+                Debug.Log("Connected");
+            }
+
+        }
+
+        public void Disconnect()
+        {
+            if(DisconnectProcedure())
+            {
+                if(OnDisconnected_cb != null)
+                {
+                    OnDisconnected_cb.Invoke(this);
+                }
             }
         }
 
+        public void OnConnected(Action<DataStream> cb)
+        {
+            OnConnected_cb = cb;
+        }
+
+        public void OnDisconnected(Action<DataStream> cb)
+        {
+            OnDisconnected_cb = cb;
+        }
+        
         /// <summary>
         /// Register a callback function to invoke whenever this stream receives data for output
         /// </summary>
@@ -137,6 +209,11 @@ namespace SatStat
         public void OnOutputReceived(Action<string> cb)
         {
             OutputReceivedCallback = cb;
+        }
+
+        public override string ToString()
+        {
+            return stream_label;
         }
     }
 }

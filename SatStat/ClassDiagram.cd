@@ -3,40 +3,40 @@
   <Class Name="SatStat.DataReceiver" BaseTypeListCollapsed="true">
     <Position X="10.75" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAACAAAgAEAAAAIACAAACAAUAQFAAAAgQAAA=</HashCode>
+      <HashCode>AAAAACCAAACAAAgAEAAAAAACAAACAAUAQFAAAAiQAAA=</HashCode>
       <FileName>Source\DataReceiver.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.DataStream">
     <Position X="3.5" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAEgAAAAAAAAAAAAAAAIAAEAgAAAAAQBAAAAAAEAAAA=</HashCode>
+      <HashCode>AAUgAAIAAAAAQAAAAAAIAIEAgAAAAAIIBgBACEEAAAA=</HashCode>
       <FileName>Source\DataStream.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.DataSubscription" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="6.75" Width="3.75" />
+    <Position X="0.5" Y="10.25" Width="3.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEABAAAEAAAAAA=</HashCode>
       <FileName>Source\DataSubscription.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.JSON">
-    <Position X="9.75" Y="7.25" Width="2.75" />
+    <Position X="9.75" Y="7.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAEAAAACAAAAAAAAAAAAIAAAAAAAAQAACAAAAAAAIAA=</HashCode>
       <FileName>Source\JSON.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.Program">
-    <Position X="6" Y="4" Width="4.5" />
+    <Position X="6" Y="4.75" Width="4.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAIEAgAAACAAAAAACAABAAAAAA=</HashCode>
       <FileName>Source\Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.SerialHandler">
-    <Position X="0.5" Y="4.25" Width="5" />
+    <Position X="0.5" Y="4.5" Width="5" />
     <NestedTypes>
       <Struct Name="SatStat.SerialHandler.default_settings" Collapsed="true">
         <TypeIdentifier>
@@ -46,15 +46,13 @@
     </NestedTypes>
     <InheritanceLine Type="SatStat.DataStream" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="5.688" Y="3.401" />
-        <Point X="5.688" Y="3.572" />
-        <Point X="5.69" Y="3.572" />
-        <Point X="5.69" Y="7.049" />
-        <Point X="5.5" Y="7.049" />
+        <Point X="5.688" Y="5.583" />
+        <Point X="5.688" Y="7.778" />
+        <Point X="5.5" Y="7.778" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAQAAQAAAAAkCAAAAAALAIAAAAAwABAIMAAgCAAAgAA=</HashCode>
+      <HashCode>AAAAAQAAAAAkCAAAAAALAIAAAAAwABAAMgFgAAAAgAA=</HashCode>
       <FileName>Source\SerialHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -62,49 +60,49 @@
     <Position X="7.25" Y="0.5" Width="2.5" />
     <InheritanceLine Type="SatStat.DataStream" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7" Y="2" />
-        <Point X="7.49" Y="2" />
-        <Point X="7.49" Y="2" />
+        <Point X="7" Y="3.128" />
+        <Point X="7.123" Y="3.128" />
+        <Point X="7.123" Y="2" />
         <Point X="7.25" Y="2" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAgAQAAAAAIAIAEAAkAAAAAAAAAAgAAAAI=</HashCode>
+      <HashCode>AAAAAAFAAAAgAQCAAAAIIAAEAAkgAAAAAgAAAgAAAAI=</HashCode>
       <FileName>Source\StreamSimulator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SatStat.ThreadHelperClass">
+  <Class Name="SatStat.ThreadHelper">
     <Position X="10" Y="0.5" Width="5.5" />
     <NestedTypes>
-      <Delegate Name="SatStat.ThreadHelperClass.SetBaudrateCallback" Collapsed="true">
+      <Delegate Name="SatStat.ThreadHelper.SetBaudrateCallback" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>Source\ThreadHelperClass.cs</NewMemberFileName>
+          <NewMemberFileName>Source\ThreadHelper.cs</NewMemberFileName>
         </TypeIdentifier>
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAABAI=</HashCode>
-      <FileName>Source\ThreadHelperClass.cs</FileName>
+      <FileName>Source\ThreadHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.Debug">
-    <Position X="9.75" Y="10" Width="3.25" />
+    <Position X="5.75" Y="10.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Source\Debug.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.Instruction">
-    <Position X="5.75" Y="9" Width="3.75" />
+    <Position X="5.75" Y="7.5" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAIAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAAIAAAAAAAAAQAABAAEAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Source\Instruction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.SocketHandler">
     <Position X="0.5" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAIAAAgAEAAAAAAAgAAEAABAAAAAgAIAII=</HashCode>
+      <HashCode>AAAAAAAAAAAIAAAgAEAIAAAAAgAAEIABAgBAAgAIAII=</HashCode>
       <FileName>Source\SocketHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -116,9 +114,9 @@
     </TypeIdentifier>
   </Class>
   <Struct Name="SatStat.AppSettings">
-    <Position X="12.75" Y="7.25" Width="3" />
+    <Position X="12.75" Y="7.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAIIAAAAAAAgAgAAAAAAAAAQAAAAAgA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAIIAAAAAAAgAgAAAAAAAAEQAAAAAgA=</HashCode>
       <FileName>Source\AppSettings.cs</FileName>
     </TypeIdentifier>
   </Struct>
@@ -140,7 +138,7 @@
     <Position X="15.75" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAIAgAAAAA=</HashCode>
-      <FileName>Source\SerialHandler.cs</FileName>
+      <FileName>Source\DataStream.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

@@ -18,7 +18,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(2.0, payload);
                 Assert.AreEqual(typeof(double), payload.GetType());
@@ -38,7 +38,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual("this is a string", payload);
                 Assert.AreEqual(typeof(string), payload.GetType());
@@ -59,7 +59,7 @@ namespace SatStatTests
             DataReceiver receiver = new DataReceiver();
 
 
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(3.2f, payload);
                 Assert.AreEqual(typeof(float), payload.GetType());
@@ -78,7 +78,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
@@ -98,7 +98,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(5L, payload);
                 Assert.AreEqual(typeof(long), payload.GetType());
@@ -118,7 +118,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object payload, string attribute) => {
+            receiver.OnPayloadReceived((object payload, string attribute, string label) => {
 
                 JArray expected = new JArray { "one", "two", "three" };
                 JArray actual = (JArray) payload;
@@ -143,7 +143,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
 
-            receiver.OnPayloadReceived((object p, string attribute) =>
+            receiver.OnPayloadReceived((object p, string attribute, string label) =>
             {
                 JObject payload = (JObject)p;
                 JObject actual = new JObject
@@ -173,7 +173,7 @@ namespace SatStatTests
             DataReceiver receiver = new DataReceiver();
             DataReceiver receiver2 = new DataReceiver();
             
-            receiver.OnPayloadReceived((object p, string attribute) =>
+            receiver.OnPayloadReceived((object p, string attribute, string label) =>
             {
                 JObject payload = (JObject)p;
                 JObject actual = new JObject();
@@ -188,7 +188,7 @@ namespace SatStatTests
                 Console.WriteLine(payload.GetType());
             });
 
-            receiver2.OnPayloadReceived((object payload, string attribute) =>
+            receiver2.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
@@ -209,14 +209,14 @@ namespace SatStatTests
             DataReceiver receiver = new DataReceiver();
             DataReceiver receiver2 = new DataReceiver();
             
-            receiver.OnPayloadReceived((object payload, string attribute) =>
+            receiver.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
                 Console.WriteLine(payload.GetType());
             });
 
-            receiver2.OnPayloadReceived((object payload, string attribute) =>
+            receiver2.OnPayloadReceived((object payload, string attribute, string label) =>
             {
                 Assert.AreEqual(5, payload);
                 Assert.AreEqual(typeof(int), payload.GetType());
@@ -237,7 +237,7 @@ namespace SatStatTests
             DataStream stream = new DataStream();
             DataReceiver receiver = new DataReceiver();
             
-            receiver.OnPayloadReceived((object received_payload, string attribute) =>
+            receiver.OnPayloadReceived((object received_payload, string attribute, string label) =>
             {
                 JArray received = (JArray)received_payload;
                 foreach(JObject obj in received)
@@ -275,7 +275,7 @@ namespace SatStatTests
             receiver.Subscribe(stream, "a", "int");
             receiver.Subscribe(stream, "b", "int");
 
-            receiver.OnPayloadReceived((object actual, string attribute) =>
+            receiver.OnPayloadReceived((object actual, string attribute, string label) =>
             {
                 if(attribute == "a")
                 {

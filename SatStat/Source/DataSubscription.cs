@@ -41,9 +41,9 @@ namespace SatStat
         /// </summary>
         /// <param name="data">Returns the data received</param>
         /// <returns></returns>
-        public object receive(object data)
+        public object receive(object data, string stream_label)
         {   
-            receiver.ReceivePayload(data, attribute, data_type);
+            receiver.ReceivePayload(data, attribute, data_type, stream_label);
             return data;
         }
     }

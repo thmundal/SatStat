@@ -46,7 +46,7 @@ namespace SatStat
                     });
                     UIComSettingsApplyBtn.Show();
                     UIComSettingsConnectBtn.Text = "Connect";
-                    Program.serial.DefaultConnect(Program.settings.portName);
+                    Program.serial.Connect(new ConnectionParameters { com_port = Program.settings.portName });
                 }
             }
             // If we are in the middle of a handshake, then send the connection request with selected settings

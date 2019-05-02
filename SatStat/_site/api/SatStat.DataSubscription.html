@@ -255,19 +255,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Beta2/apiSpec/new?filename=SatStat_DataSubscription_receive_System_Object_.md&amp;value=---%0Auid%3A%20SatStat.DataSubscription.receive(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/thmundal/SatStat/new/Beta2/apiSpec/new?filename=SatStat_DataSubscription_receive_System_Object_System_String_.md&amp;value=---%0Auid%3A%20SatStat.DataSubscription.receive(System.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/thmundal/SatStat/blob/Beta2/SatStat/Source/DataSubscription.cs/#L44">View Source</a>
   </span>
   <a id="SatStat_DataSubscription_receive_" data-uid="SatStat.DataSubscription.receive*"></a>
-  <h4 id="SatStat_DataSubscription_receive_System_Object_" data-uid="SatStat.DataSubscription.receive(System.Object)">receive(Object)</h4>
+  <h4 id="SatStat_DataSubscription_receive_System_Object_System_String_" data-uid="SatStat.DataSubscription.receive(System.Object,System.String)">receive(Object, String)</h4>
   <div class="markdown level1 summary"><p>Defines procedure to follow when delivering data trough this subscription</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public object receive(object data)</code></pre>
+    <pre><code class="lang-csharp hljs">public object receive(object data, string stream_label)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -284,6 +284,11 @@
         <td><span class="parametername">data</span></td>
         <td><p>Returns the data received</p>
 </td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stream_label</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

@@ -11,6 +11,7 @@ using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using System.Linq;
 using SatStat.Utils;
+using System.Threading.Tasks;
 
 namespace SatStat
 {
@@ -37,11 +38,37 @@ namespace SatStat
         private DB_ComSettingsItem savedComSettings;
         private JObject instruction_list;
 
-        private TestConfiguration activeTestConfiguration;
+        private TestConfiguration activeTestConfiguration = new TestConfiguration();
+        private int last_instruction_index = -1;
 
         private Hashtable observedDataRows = new Hashtable();
         private Hashtable liveDataList = new Hashtable();
-        private Hashtable sensor_information = new Hashtable();
+        private Dictionary<string, string> sensor_information = new Dictionary<string, string>();
+
+        private bool hasMovedPlotFromMainControl = false;
+
+        public List<ParameterControlTemplate> parameterControlTemplates;
+        private ParameterControlTemplate activeParameterControlTemplate;
+        private ParameterControlTemplate autoParamControlTemplate;
+        private ObservableNumericValueCollection autoObservableValues;
+        private List<string> observedValueLabels = new List<string>();
+
+        private struct LiveDataRow
+        {
+            public int index;
+            public string value;
+            public string name;
+        }
+
+        private struct ObservedDataRow
+        {
+            public int input_index;
+            public int output_index;
+            public string value;
+            public string name;
+            public string min;
+            public string max;
+        }
 
         public SatStatMainForm()
         {
@@ -49,110 +76,43 @@ namespace SatStat
 
             instruction_list = new JObject();
 
-            using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
+            PopulateRecentConnect();
+
+            parameterControlTemplates = ParameterControlTemplate.GetListFromDb();
+            autoParamControlTemplate = new ParameterControlTemplate
             {
-                LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>(Program.settings.COMSettingsDB);
-                IEnumerable<DB_ComSettingsItem> result = collection.FindAll();
+                Name = "Auto generated parameter control template"
+            };
 
+            Program.serial = new SerialHandler();
+            Program.streamSimulator = new StreamSimulator();
+            Program.socketHandler = new SocketHandler();
 
-                if(result.Count() > 0)
-                {
-                    savedComSettings = result.First();
-                    ToolStripMenuItem recentConnect = new ToolStripMenuItem
-                    {
-                        Name = "UICOMRecentConnect",
-                        Text = "Connect to " + result.First().PortDescription,
-                    };
+            Program.serial.OnConnected(OnStreamConnected);
+            Program.streamSimulator.OnConnected(OnStreamConnected);
+            Program.socketHandler.OnConnected(OnStreamConnected);
 
-                    recentConnect.Click += new EventHandler(ConnectToRecent);
+            Program.serial.OnDisconnected(OnStreamDisconnected);
+            Program.streamSimulator.OnDisconnected(OnStreamDisconnected);
+            Program.socketHandler.OnDisconnected(OnStreamDisconnected);
 
-                    settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                            recentConnect
-                        }
-                    );
-                }
-            }
-
-            dataReceiver = new DataReceiver();
-            dataReceiver.Observe = true;
-            dataReceiver.OnPayloadReceived((object payload, string attribute) =>
-            {
-                 ReceivePayload(Convert.ToDouble(payload), attribute);
-            });
-
-            dataReceiver.OnObservedvalueChanged((IObservableNumericValue val) =>
-            {
-                DataGridViewRow row = null;
-
-                foreach (DataGridViewRow r in UIObservedValuesOuputGrid.Rows)
-                {
-                    if(r.Tag == val.Label)
-                    {
-                        row = r;
-                        break;
-                    }
-                }
-
-                if(row != null)
-                {
-                    string status = "Unknown";
-                    if (val.Over())
-                    {
-                        status = "Over";
-                    }
-
-                    if(val.Under())
-                    {
-                        status = "Under";
-                    }
-
-                    if(val.Stable())
-                    {
-                        status = "Stable";
-                    }
-
-                    int diff = 0;
-
-                    row.Cells["observedValue"].Value = val.Value;
-                    row.Cells["status"].Value = status;
-                    row.Cells["difference"].Value = val.Diff().ToString();
-
-                }
-            });
+            dataReceiver = new DataReceiver { Observe = true };
+            dataReceiver.OnPayloadReceived(ReceivePayload);
+            dataReceiver.OnObservedvalueChanged(ObservedValueChanged);
             
             sensorListReceiver = new DataReceiver();
-            
-            sensorListReceiver.OnPayloadReceived((object payload, string attribute) =>
-            {
-                ReceiveSensorList((JObject)payload);
-            });
-
+            sensorListReceiver.OnPayloadReceived(ReceiveSensorList);
             sensorListReceiver.Subscribe(Program.serial, "available_data", "JObject");
 
             instructionListReceiver = new DataReceiver();
-
-            instructionListReceiver.OnPayloadReceived((object payload, string attribute) =>
-            {
-                ThreadHelper.UI_Invoke(this, null, UITestConfigInstructionParameterGrid, (Hashtable d) =>
-                    {
-                        instruction_list = (JObject)payload;
-                        
-                        foreach(KeyValuePair<string, JToken> instruction in instruction_list)
-                        {
-                            UITestConfigInstructionSelect.Items.Add(instruction.Key);
-                        }
-                    },
-                null);
-            });
+            instructionListReceiver.OnPayloadReceived(ReceiveInstructionList);
+            instructionListReceiver.Subscribe(Program.serial, "available_instructions", "JObject");
 
             startTime = DateTime.Now;
-
             xAxis = new DateTimeAxis {
-                Key ="xAxis",
+                Key = "xAxis",
                 Position = AxisPosition.Bottom,
                 Title = "Time",
-                //Maximum = xMaxVal,
-                //Minimum = xMinVal
                 Minimum = DateTimeAxis.ToDouble(startTime),
                 Maximum = DateTimeAxis.ToDouble(DateTime.Now.AddMinutes(1)),
                 MinorIntervalType = DateTimeIntervalType.Minutes
@@ -170,24 +130,130 @@ namespace SatStat
             plotModel.Axes.Add(xAxis);
             plotModel.Axes.Add(yAxis);
             oxPlot.Model = plotModel;
+
+            SetUpTestConfigurationPanel();
+            DiscoverComDevices();
         }
         
+        private void DiscoverComDevices()
+        {
+            Task.Run(() => {
+                while(Program.serial.ConnectionStatus == ConnectionStatus.Disconnected)
+                {
+                    SerialHandler.Discover();
+                }
+            });
+        }
+
         private void CreateDataSeries(PlotModel model, string title)
         {
             if (!lineSeriesTable.ContainsKey(title))
             {
-                LineSeries ls = new LineSeries { Title=title, MarkerType = MarkerType.None };
+                LineSeries ls = new LineSeries { Title = title, MarkerType = MarkerType.None };
 
                 model.Series.Add(ls);
 
                 oxPlot.Invalidate();
                 lineSeriesTable.Add(title, ls);
-                PngExporter.Export(plotModel, "test.png", 100, 100);
+                plotModel.InvalidatePlot(true);
             }
         }
 
-        public void ReceivePayload(double payload, string attribute)
+        public void ReceiveInstructionList(object payload, string attribute, string label)
         {
+            ThreadHelper.UI_Invoke(this, null, UITestConfigInstructionParameterGrid, (Hashtable d) =>
+            {
+                instruction_list = (JObject)payload;
+
+                foreach (KeyValuePair<string, JToken> instruction in instruction_list)
+                {
+                    if(!UITestConfigInstructionSelect.Items.Contains(instruction.Key))
+                    {
+                        UITestConfigInstructionSelect.Items.Add(instruction.Key);
+                    }
+                }
+            },
+            null);
+        }
+
+        void PopulateRecentConnect()
+        {
+            using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
+            {
+                LiteCollection<DB_ComSettingsItem> collection = db.GetCollection<DB_ComSettingsItem>(Program.settings.COMSettingsDB);
+                IEnumerable<DB_ComSettingsItem> result = collection.FindAll();
+
+                if (result.Count() > 0)
+                {
+                    savedComSettings = result.First();
+                    ToolStripMenuItem recentConnect = new ToolStripMenuItem
+                    {
+                        Name = "UICOMRecentConnect",
+                        Text = "Connect to " + result.First().PortDescription,
+                    };
+
+                    recentConnect.Click += new EventHandler(ConnectToRecent);
+
+                    settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
+                            recentConnect
+                        }
+                    );
+                }
+            }
+        }
+
+        public void SetCOMConnectionStatus(string status)
+        {
+            UICOMConnectionStatus.Text = status;
+        }
+
+        public void SetNetworkConnectionStatus(string status)
+        {
+            UINetworkConnectionStatus.Text = status;
+        }
+
+        public Control GetConnectionStatusControl()
+        {
+            return UIStatusStrip;
+        }
+
+        #region Callbacks
+        public void OnStreamConnected(DataStream stream)
+        {
+            ThreadHelper.UI_Invoke(this, null, UITestDeviceSelect, (data) =>
+            {
+                if(!UITestDeviceSelect.Items.Contains(stream))
+                {
+                    int index = UITestDeviceSelect.Items.Add(stream);
+                }
+            }, null);
+
+        }
+
+        public void OnStreamDisconnected(DataStream stream)
+        {
+            ThreadHelper.UI_Invoke(this, null, UITestDeviceSelect, (data) =>
+            {
+                if (UITestDeviceSelect.Items.Contains(stream))
+                {
+                    UITestDeviceSelect.Items.Remove(stream);
+                }
+
+                if (stream == Program.serial)
+                {
+                    SetCOMConnectionStatus("Serial disconnected");
+                }
+
+                if(stream == Program.socketHandler)
+                {
+                    SetNetworkConnectionStatus("Network disconnected");
+                }
+            }, null);
+        }
+
+        public void ReceivePayload(object _payload, string attribute, string label)
+        {
+            double payload = Convert.ToDouble(_payload);
             lock(plotModel.SyncRoot)
             {
                 // Add data in plot
@@ -224,24 +290,10 @@ namespace SatStat
                     value = payload.ToString()
                 };
 
-                ObservedDataRow observedRow = new ObservedDataRow
-                {
-                    name = attribute,
-                    value = payload.ToString()
-                };
-
                 if (!liveDataList.ContainsKey(row.name))
                 {
                     row.index = UIliveOutputValuesList.Rows.Add(new string[] { row.name, row.value });
                     liveDataList.Add(attribute, row);
-                }
-
-                if(!observedDataRows.ContainsKey(row.name))
-                {
-                    if(dataReceiver.Observe)
-                    {
-                        AddParameterControlRow(observedRow);
-                    }
                 }
 
                 row = (LiveDataRow) liveDataList[attribute];
@@ -250,6 +302,73 @@ namespace SatStat
             }, null);
         }
 
+        public void ObservedValueChanged(IObservableNumericValue val)
+        {
+            DataGridViewRow row = null;
+
+            foreach (DataGridViewRow r in UIObservedValuesOuputGrid.Rows)
+            {
+                if (r.Tag.Equals(val.Label))
+                {
+                    row = r;
+                    break;
+                }
+            }
+
+            if (row != null)
+            {
+                row.Cells["observedValue"].Value = val.Value;
+                row.Cells["status"].Value = val.Status().ToString();
+                row.Cells["difference"].Value = val.Diff().ToString();
+            }
+        }
+
+        private void ReceiveSensorList(object _sensor_list, string attribute, string label)
+        {
+            Debug.Log("Receive sensor list " + attribute);
+            JObject sensor_list = (JObject)_sensor_list;
+            ThreadHelper.UI_Invoke(this, null, UISensorCheckboxList, (data) =>
+            {
+                autoObservableValues = new ObservableNumericValueCollection();
+                foreach (var elem in (JObject) data["sensor_list"])
+                {
+                    if(!sensor_information.ContainsKey(elem.Key))
+                    {
+                        //string sensor_name = label + ": " + elem.Key;
+                        string sensor_name = elem.Key;
+
+                        sensor_information.Add(sensor_name, elem.Value.ToString());
+
+                        UISensorCheckboxList.Items.Add(sensor_name);
+                        int checkboxIndex = UITestConfigOutputParamChecklist.Items.Add(sensor_name);
+
+                        if (DataReceiver.Observe)
+                        {
+                            AddParameterControlRow(new ObservedDataRow
+                                {
+                                    name = elem.Key,
+                                    value = ""
+                                }
+                            );
+
+                            autoObservableValues.AddWithType(elem.Key, elem.Value.ToString());
+                        }
+                    }
+                }
+                if(autoObservableValues.Count > 0)
+                {
+                    DataReceiver.SetObservableNumericValues(autoObservableValues);
+                }
+            }, new Hashtable {
+                { "form", this },
+                { "panel", null },
+                { "control", UISensorCheckboxList },
+                { "sensor_list", sensor_list }
+            });
+        }
+        #endregion
+
+        #region ParameterControl methods
         private void AddParameterControlRow(ObservedDataRow row)
         {
             int rowIndex = UIParameterControlInput.Rows.Add(new string[] { row.name, row.min, row.max });
@@ -260,55 +379,20 @@ namespace SatStat
             UIObservedValuesOuputGrid.Rows[rowIndex].Tag = row.name;
             row.output_index = rowIndex;
 
-            if(observedDataRows.ContainsKey(row.name))
+            if (observedDataRows.ContainsKey(row.name))
             {
                 observedDataRows[row.name] = row;
-            } else
+            }
+            else
             {
                 observedDataRows.Add(row.name, row);
             }
         }
 
-        [STAThread]
-        private void ReceiveSensorList(JObject sensor_list)
-        {
-            ThreadHelper.UI_Invoke(this, null, UISensorCheckboxList, (data) =>
-            {   
-                foreach (var elem in (JObject) data["sensor_list"])
-                {
-                    if(!sensor_information.ContainsKey(elem.Key))
-                    {
-                        sensor_information.Add(elem.Key, elem.Value.ToString());
-
-                        UISensorCheckboxList.Items.Add(elem.Key);
-                        UITestConfigOutputParamChecklist.Items.Add(elem.Key);
-                    }
-                }
-            }, new Hashtable {
-                { "form", this },
-                { "panel", null },
-                { "control", UISensorCheckboxList },
-                { "sensor_list", sensor_list }
-            });
-        }
-
-        public void SetCOMConnectionStatus(string status)
-        {
-            UICOMConnectionStatus.Text = status;
-        }
-
-        public void SetNetworkConnectionStatus(string status)
-        {
-            UINetworkConnectionStatus.Text = status;
-        }
-
-        public Control GetConnectionStatusControl()
-        {
-            return UIStatusStrip;
-        }
-
         public void LoadParameterControlTemplate(ParameterControlTemplate template)
         {
+            activeParameterControlTemplate = template;
+
             UIParameterControlInput.Rows.Clear();
             UIObservedValuesOuputGrid.Rows.Clear();
             DataReceiver.ObservedValues.Clear();
@@ -327,7 +411,58 @@ namespace SatStat
             }
         }
 
-        #region event listeners
+        #endregion
+
+        #region TestConfiguration methods
+        public void SetUpTestConfigurationPanel()
+        {
+            foreach(ParameterControlTemplate template in parameterControlTemplates)
+            {
+                UITestConfigParameterTemplateSelect.Items.Add(template.Name);
+            }
+        }
+
+        private void RunTestConfiguration(TestConfiguration config, DataStream stream)
+        {
+            if (config.HasInstructionEntries())
+            {
+                // Disable UI elements
+                UITestConfigParameterTemplateSelect.Enabled = true;
+
+                last_instruction_index = -1;
+                config.OnQueueAdvance(OnTestQueueAdvance);
+                config.OnQueueComplete(OnTestQueueComplete);
+                config.Run(stream);
+            }
+            else
+            {
+                MessageBox.Show("There are no instructions in the queue");
+                return;
+            }
+        }
+
+        private void SelectConfigParameterTemplate()
+        {
+            if(activeTestConfiguration.IsRunning)
+            {
+                MessageBox.Show("Cannot modify control parameters when test is running");
+                return;
+            }
+
+            object selectedItem = UITestConfigParameterTemplateSelect.SelectedItem;
+
+            activeParameterControlTemplate = null;
+            activeTestConfiguration.ParameterControlTemplate = null;
+
+            if (selectedItem != null)
+            {
+                activeParameterControlTemplate = parameterControlTemplates[UITestConfigParameterTemplateSelect.SelectedIndex];
+                activeTestConfiguration.ParameterControlTemplate = activeParameterControlTemplate;
+            }
+        }
+        #endregion
+
+        #region event handler callbacks
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.serial.Disconnect();
@@ -351,8 +486,6 @@ namespace SatStat
 
         private void connectToStreamSimulatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.streamSimulator = new StreamSimulator();
-            
             sensorListReceiver.Subscribe(Program.streamSimulator, "available_data", "JObject");
             instructionListReceiver.Subscribe(Program.streamSimulator, "available_instructions", "JObject");
 
@@ -389,7 +522,7 @@ namespace SatStat
                 {
                     dataReceiver.Subscribe(Program.serial, attribute, type);
 
-                    Program.serial.Output(Instruction.Subscription("subscribe", attribute));
+                    Program.serial.Output(Request.Subscription("subscribe", attribute));
                 }
 
                 if(Program.socketHandler != null)
@@ -400,11 +533,9 @@ namespace SatStat
                 Debug.Log("Subscribed to " + attribute);
             } else
             {
-                Debug.Log("DO unsubscribe plx!");
-
                 if(Program.serial != null)
                 {
-                    Program.serial.Output(Instruction.Subscription("unsubscribe", attribute));
+                    Program.serial.Output(Request.Subscription("unsubscribe", attribute));
                 }
 
                 dataReceiver.Unsubscribe(attribute);
@@ -415,9 +546,9 @@ namespace SatStat
 
         private void startSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.socketHandler = new SocketHandler();
-
             sensorListReceiver.Subscribe(Program.socketHandler, "available_data", "JObject");
+            instructionListReceiver.Subscribe(Program.socketHandler, "available_instructions", "JObject");
+            Program.socketHandler.Connect();
         }
 
         private void UIautoRotateOnBtn_Click(object sender, EventArgs e)
@@ -448,7 +579,7 @@ namespace SatStat
         {
             if(Single.TryParse(UIrotateAngleInput.Text, out float angle))
             {
-                Program.serial.Output(Instruction.Create("rotate", "deg", 3.25 * angle));
+                Program.serial.Output(Instruction.Create("rotate_degrees", "degrees", 3.25 * angle));
             }
             else
             {
@@ -460,7 +591,7 @@ namespace SatStat
         {
             if (int.TryParse(UIrotateStepsInput.Text, out int steps))
             {
-                Program.serial.Output(Instruction.Create("rotate", "steps", steps));
+                Program.serial.Output(Instruction.Create("rotate_steps", "steps", steps));
             }
             else
             {
@@ -520,7 +651,7 @@ namespace SatStat
                     Program.serial.ConnectionRequest(savedComSettings.toComSettings());
                 });
 
-                Program.serial.DefaultConnect(savedComSettings.PortName);
+                Program.serial.Connect(new ConnectionParameters { com_port = savedComSettings.PortName });
             }
         }
 
@@ -528,6 +659,11 @@ namespace SatStat
         {
             // Implement better UI response to error handling so that user understands when an invalid input is entered
             UIParameterControlInput.CurrentCell.ErrorText = "";
+
+            if(activeParameterControlTemplate == null)
+            {
+                activeParameterControlTemplate = new ParameterControlTemplate();
+            }
 
             if (UIParameterControlInput.Rows[e.RowIndex].IsNewRow)
             {
@@ -591,18 +727,14 @@ namespace SatStat
 
         private void UITestConfigAddInstructionBtn_Click(object sender, EventArgs e)
         {
-            if(UITestConfigInstructionSelect.SelectedItem == null)
+            if(UITestConfigInstructionSelect.SelectedItem == null || activeTestConfiguration.IsRunning)
             {
                 return;
             }
 
-            if(activeTestConfiguration == null)
-            {
-                activeTestConfiguration = new TestConfiguration();
-            }
-
             string instruction_name = UITestConfigInstructionSelect.SelectedItem.ToString();
             JObject paramTable = new JObject();
+            //paramTable["instruction"] = instruction_name;
 
             for(int row=0; row<UITestConfigInstructionParameterGrid.Rows.Count; row++)
             {
@@ -626,15 +758,22 @@ namespace SatStat
 
                 if(key != null && value != null)
                 {
-                    paramTable.Add(key, JToken.Parse(value.ToString()));
+                    // Does not support decimals
+                    //paramTable.Add(key, JToken.Parse(value.ToString()));
+                    paramTable[key] = JToken.FromObject(value);
                 }
             }
 
             if(paramTable.Count > 0)
             {
+                Instruction thatInstruction = new Instruction(instruction_name, paramTable);
                 int index = UITestConfigIntructionListGrid.Rows.Add(new string[] { instruction_name, paramTable.ToString(), "pending" });
+                InstructionEntry entry = activeTestConfiguration.AddInstructionEntry(thatInstruction, observedValueLabels, index);
 
-                activeTestConfiguration.AddInstruction(new Instruction(instruction_name, paramTable), index);
+                UITestConfigIntructionListGrid.Rows[index].Tag = entry;
+
+                observedValueLabels.Clear();
+                UITestConfigOutputParamChecklist.ClearSelected();
             }
         }
 
@@ -642,63 +781,25 @@ namespace SatStat
         {
             if(activeTestConfiguration != null)
             {
-                RunTestConfiguration(activeTestConfiguration);
+                if(UITestDeviceSelect.SelectedIndex > -1)
+                {
+                    DataStream stream = (DataStream)UITestDeviceSelect.SelectedItem;
+                    RunTestConfiguration(activeTestConfiguration, stream);
+                } else
+                {
+                    MessageBox.Show("You have to select a device to test on");
+                }
             } else
             {
                 MessageBox.Show("There is no active test configuration");
             }
         }
-        #endregion
-
-        private void RunTestConfiguration(TestConfiguration config)
-        {
-            config.OnQueueAdvance(OnTestQueueAdvance);
-            config.OnQueueComplete(OnTestQueueComplete);
-            config.Run(Program.streamSimulator);
-        }
-
-        private int last_instruction_index = -1;
-        private void OnTestQueueAdvance(Instruction instruction)
-        {
-            int index = instruction.UI_Index;
-
-            if (last_instruction_index > -1)
-            {
-                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
-            }
-
-            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running";
-            last_instruction_index = index;
-        }
-
-        private void OnTestQueueComplete(Instruction instruction)
-        {
-            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
-        }
-
-        private struct LiveDataRow
-        {
-            public int index;
-            public string value;
-            public string name;
-        }
-
-        private struct ObservedDataRow
-        {
-            public int input_index;
-            public int output_index;
-            public string value;
-            public string name;
-            public string min;
-            public string max;
-        }
 
         private void UITestConfigInstructionMoveDownBtn_Click(object sender, EventArgs e)
         {
-            return; // Disabled for now;
             DataGridViewSelectedRowCollection selectedRows = UITestConfigIntructionListGrid.SelectedRows;
 
-            if(selectedRows.Count == 0)
+            if (selectedRows.Count == 0 || activeTestConfiguration.IsRunning)
             {
                 return;
             }
@@ -706,15 +807,15 @@ namespace SatStat
             int oldIndex = UITestConfigIntructionListGrid.Rows.IndexOf(selectedRows[0]);
             int newIndex = oldIndex + 1;
 
-            if(newIndex + selectedRows.Count <= UITestConfigIntructionListGrid.Rows.Count)
+            if (newIndex + selectedRows.Count <= UITestConfigIntructionListGrid.Rows.Count)
             {
                 UITestConfigIntructionListGrid.ClearSelection();
-                foreach(DataGridViewRow row in selectedRows)
+                foreach (DataGridViewRow row in selectedRows)
                 {
                     UITestConfigIntructionListGrid.Rows.RemoveAt(row.Index);
                 }
 
-                for(int i=0; i<selectedRows.Count; i++)
+                for (int i = 0; i < selectedRows.Count; i++)
                 {
                     UITestConfigIntructionListGrid.Rows.Insert(newIndex, selectedRows[i]);
                     UITestConfigIntructionListGrid.Rows[newIndex].Selected = true;
@@ -725,10 +826,9 @@ namespace SatStat
 
         private void UITestConfigInstructionMoveUpBtn_Click(object sender, EventArgs e)
         {
-            return; // Disabled for now
             DataGridViewSelectedRowCollection selectedRows = UITestConfigIntructionListGrid.SelectedRows;
 
-            if (selectedRows.Count == 0)
+            if (selectedRows.Count == 0 || activeTestConfiguration.IsRunning)
             {
                 return;
             }
@@ -755,7 +855,153 @@ namespace SatStat
 
         private void UITestConfigInstructionDeleteBtn_Click(object sender, EventArgs e)
         {
+            DataGridViewSelectedRowCollection selectedRows = UITestConfigIntructionListGrid.SelectedRows;
+
+            int[] selectedIndices = new int[selectedRows.Count];
+
+            if(selectedRows.Count == 0 || activeTestConfiguration.IsRunning)
+            {
+                return;
+            }
+
+            int i = 0;
+            foreach(DataGridViewRow row in selectedRows)
+            {
+                selectedIndices[i++] = row.Index;
+                InstructionEntry instr = (InstructionEntry)row.Tag;
+                int instructionIndex = activeTestConfiguration.InstructionEntryIndex(instr);
+                UITestConfigIntructionListGrid.Rows.RemoveAt(instructionIndex);
+                activeTestConfiguration.RemoveInstructionEntry(instr);
+            }
+
+            foreach(int index in selectedIndices)
+            {
+                if(index < UITestConfigIntructionListGrid.Rows.Count)
+                {
+                    UITestConfigIntructionListGrid.Rows[index].Selected = true;
+                }
+            }
+        }
+        
+        private void UITestConfigParameterTemplateSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectConfigParameterTemplate();
+        }
+
+        private void UITestConfigSaveButton_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void UITestConfigUseCurrentParamConfigCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            if(activeTestConfiguration.IsRunning)
+            {
+                return;
+            }
+
+            if(cb.Checked)
+            {
+                activeParameterControlTemplate = autoParamControlTemplate;
+                activeParameterControlTemplate.SetCollection(dataReceiver.ObservedValues);
+                
+                activeTestConfiguration.ParameterControlTemplate = activeParameterControlTemplate;
+            } else
+            {
+                SelectConfigParameterTemplate();
+            }
+        }
+        private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isPlotTab = false;
+
+            if (MainTabControl.SelectedTab.Tag != null && MainTabControl.SelectedTab.Tag.Equals("plotViewTab"))
+            {
+                isPlotTab = true;
+            }
+
+            if (!isPlotTab && !hasMovedPlotFromMainControl)
+            {
+                oxPlot.Parent.Controls.Remove(oxPlot);
+                UIliveOutputValuesList.Parent.Controls.Remove(UIliveOutputValuesList);
+                diagnosticLiveOutputValues.Controls.Add(oxPlot);
+                hasMovedPlotFromMainControl = true;
+            }
+
+            else if (isPlotTab && hasMovedPlotFromMainControl)
+            {
+                diagnosticLiveOutputValues.Controls.Remove(oxPlot);
+                diagnosticLiveOutputValues.Controls.Add(UIliveOutputValuesList);
+                UIPlotViewTab.Controls.Add(oxPlot);
+                hasMovedPlotFromMainControl = false;
+            }
+        }
+
+        private void OnTestQueueAdvance(InstructionEntry instructionEntry)
+        {
+            UITestConfigIntructionListGrid.ClearSelection();
+            Instruction instruction = instructionEntry.instruction;
+
+            int index = instructionEntry.instruction.UI_Index; // activeTestConfiguration.InstructionEntryIndex(instructionEntry);
+
+            if (last_instruction_index > -1)
+            {
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished ";
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
+            }
+
+            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running ";
+            UITestConfigIntructionListGrid.Rows[index].Selected = true;
+            last_instruction_index = index;
+        }
+
+        private void OnTestQueueComplete(InstructionEntry instructionEntry)
+        {
+            Instruction instruction = instructionEntry.instruction;
+            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
+            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
+
+            UITestConfigParameterTemplateSelect.Enabled = true;
+        }
+
+        private void UITestConfigOutputParamChecklist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(UITestConfigOutputParamChecklist.SelectedItem != null)
+            {
+                string label = UITestConfigOutputParamChecklist.SelectedItem.ToString();
+                bool is_checked = UITestConfigOutputParamChecklist.CheckedItems.IndexOf(label) > -1;
+
+                if(is_checked)
+                {
+                    if(!observedValueLabels.Contains(label))
+                    {
+                        observedValueLabels.Add(label);
+                    }
+                } else
+                {
+                    if (observedValueLabels.Contains(label))
+                    {
+                        observedValueLabels.Remove(label);
+                    }
+                }
+            }
+        }
+
+        private void disconnectFromSerialDeviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.serial.Disconnect();
+        }
+
+        private void disconnectFromStreamSimulatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.streamSimulator.Disconnect();
+        }
+
+        private void stopSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.socketHandler.Disconnect();
+        }
+        #endregion
     }
 }

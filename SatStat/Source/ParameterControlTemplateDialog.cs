@@ -34,19 +34,11 @@ namespace SatStat
                 AcceptButton = UITemplateSaveButton;
             }
 
-            templateList = new List<ParameterControlTemplate>();
-
-            using (LiteDatabase db = new LiteDatabase(db_path))
+            templateList = Program.app.parameterControlTemplates;
+            
+            foreach(ParameterControlTemplate template in templateList)
             {
-                LiteCollection<ParameterControlTemplate> collection = db.GetCollection<ParameterControlTemplate>(collection_name);
-
-                IEnumerable<ParameterControlTemplate> result = collection.FindAll();
-
-                foreach(ParameterControlTemplate template in result)
-                {
-                    int add_index = UIParameterControlTemplateList.Items.Add(template.Name);
-                    templateList.Insert(add_index, template);
-                }
+                int add_index = UIParameterControlTemplateList.Items.Add(template.Name);
             }
         }
 

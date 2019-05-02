@@ -19,10 +19,11 @@ namespace SatStat
 
         private int taskdelay = 100;
 
-        [STAThread]
-        public async void Connect()
+        protected override bool ConnectProcedure(ConnectionParameters prm)
         {
             Debug.Log("Starting datastream");
+
+            stream_label = "Internal SADM simulator";
 
             output_buffer = new Queue<JObject>();
             input_buffer = new Queue<string>();
@@ -34,7 +35,8 @@ namespace SatStat
                 Debug.Log("Sending data to output endpoint " + data);
             });
 
-            await Run();
+            Task.Run(Run);
+            return true;
         }
 
         private async Task Run()
@@ -185,7 +187,7 @@ namespace SatStat
             input_buffer.Enqueue(JSON.serialize(available_instructions));
         }
         
-        public new void Output(object data)
+        public override void Output(object data)
         {
             output_buffer.Enqueue((JObject) data);
             Debug.Log("Sending data to output endpoint " + data);

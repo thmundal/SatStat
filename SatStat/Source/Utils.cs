@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,20 +25,43 @@ namespace SatStat.Utils
                 o = 0;
             }
 
-            switch(type)
+            try
             {
-                case "string":
-                    return Convert.ToString(o);
-                case "int":
-                    return Convert.ToInt32(o);
-                case "float":
-                    return Convert.ToSingle(o);
-                case "double":
-                    return Convert.ToDouble(o);
-                case "long":
-                    return Convert.ToInt64(0);
+                switch (type)
+                {
+                    case "System.Single":
+                    case "float":
+                        o = Convert.ToSingle(o);
+                        break;
+                    case "System.Double":
+                    case "double":
+                        o = Convert.ToDouble(o);
+                        break;
+                    case "System.Int32":
+                    case "int":
+                        o = Convert.ToInt32(o);
+                        break;
+                    case "System.Int64":
+                    case "long":
+                        o = Convert.ToInt64(o);
+                        break;
+                    case "string":
+                        o = Convert.ToString(o);
+                        break;
+                    case "JObject":
+                        o = (JObject)o;
+                        break;
+                    case "JArray":
+                        o = (JArray)o;
+                        break;
+                }
             }
-
+            catch (InvalidCastException e)
+            {
+                Debug.Log("Cannot cast received " + o.GetType() + " to type " + type);
+                Debug.Log(e.StackTrace);
+            }
+            
             return o;
         }
     }

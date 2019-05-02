@@ -24,9 +24,7 @@ namespace SatStat
                     config = "8N1"
                 }
             };
-
-            serial = new SerialHandler();
-
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

@@ -1,17 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace SatStat
 {
-    /// <summary>
-    /// Representing an instruction that can be run on the Hardware Layer
-    /// </summary>
-    public class Instruction
+    class Request
     {
         /// <summary>
         /// An object containing the parameters for the instruction
@@ -25,27 +21,28 @@ namespace SatStat
 
         public ObservableNumericValueStatus feedbackStatus = ObservableNumericValueStatus.Unknown;
 
-        public Instruction() { }
+        public Request() { }
 
         /// <summary>
         /// Contructor
         /// </summary>
         /// <param name="instr">Instruction as a string</param>
         /// <param name="arguments">A variable parameter list containing the parameters for the instruction</param>
-        public Instruction(string instr, params object[] arguments)
+        public Request(string instr, params object[] arguments)
         {
             paramtable = new JObject();
-            paramtable["instruction"] = instr;
+            paramtable["request"] = instr;
 
             string param = "";
 
-            for(int i=0; i<arguments.Length; i++)
+            for (int i = 0; i < arguments.Length; i++)
             {
-                if(i % 2 == 0)
+                if (i % 2 == 0)
                 {
-                    param = (string) arguments[i];
+                    param = (string)arguments[i];
 
-                } else
+                }
+                else
                 {
                     paramtable[param] = new JValue(arguments[i]);
                 }
@@ -54,10 +51,10 @@ namespace SatStat
             Debug.Log(JSON.serialize(paramtable));
         }
 
-        public Instruction(string instr)
+        public Request(string instr)
         {
             paramtable = new JObject();
-            paramtable["instruction"] = instr;
+            paramtable["request"] = instr;
         }
 
         /// <summary>
@@ -65,10 +62,10 @@ namespace SatStat
         /// </summary>
         /// <param name="instr">Instruction as a string</param>
         /// <param name="paramTable">A JSON Object containing the parameters for the instruction as key/value pairs</param>
-        public Instruction(string instr, JObject paramTable)
+        public Request(string instr, JObject paramTable)
         {
             paramtable = paramTable;
-            paramtable["instruction"] = instr;
+            paramtable["request"] = instr;
         }
 
         /// <summary>
@@ -88,7 +85,7 @@ namespace SatStat
         /// <returns>A JSON object that can be sent on a datastream</returns>
         public static JObject Create(string instr, params object[] arguments)
         {
-            Instruction i = new Instruction(instr, arguments);
+            Request i = new Request(instr, arguments);
             return i.toJObject();
         }
 
@@ -100,14 +97,36 @@ namespace SatStat
         /// <returns>A JSON object that can be sent on a datastream</returns>
         public static JObject Create(string instr, JObject paramTable)
         {
-            Instruction i = new Instruction(instr, paramTable);
+            Request i = new Request(instr, paramTable);
             return i.toJObject();
         }
 
         public static JObject Create(string instr)
         {
-            Instruction i = new Instruction(instr);
+            Request i = new Request(instr);
             return i.toJObject();
+        }
+
+        /// <summary>
+        /// Create a special instruction that is compatible with subscribe and unsubscribe functionality on the hardware layer
+        /// </summary>
+        /// <param name="type">Type of subscription, can be "subscribe" or "unsubscribe"</param>
+        /// <param name="subscriptions">A list of attributes to subscribe to</param>
+        /// <returns>A JSON object that can be sent on a datastream</returns>
+        public static JObject Subscription(string type, params object[] subscriptions)
+        {
+            JArray list = new JArray();
+
+            foreach (object n in subscriptions)
+            {
+                list.Add(n);
+            }
+
+            JObject instruction = new JObject();
+            instruction["request"] = type;
+            instruction["parameters"] = list;
+
+            return instruction;
         }
     }
 }

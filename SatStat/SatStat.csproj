@@ -99,7 +99,8 @@
     <Compile Include="Source\DB_SensorDataItem.cs" />
     <Compile Include="Source\Debug.cs" />
     <Compile Include="Source\Instruction.cs" />
-    <Compile Include="Source\ObservableValue.cs" />
+    <Compile Include="Source\ObservableNumericValue.cs" />
+    <Compile Include="Source\ObservableNumericValueCollection.cs" />
     <Compile Include="Source\ParameterControlTemplate.cs" />
     <Compile Include="Source\ParameterControlTemplateDialog.cs">
       <SubType>Form</SubType>
@@ -107,6 +108,7 @@
     <Compile Include="Source\ParameterControlTemplateDialog.Designer.cs">
       <DependentUpon>ParameterControlTemplateDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Request.cs" />
     <Compile Include="Source\SatStatMainForm.cs">
       <SubType>Form</SubType>
     </Compile>

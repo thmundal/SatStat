@@ -83,6 +83,19 @@ references:
   commentId: F:SatStat.AppSettings.portName
   fullName: SatStat.AppSettings.portName
   nameWithType: AppSettings.portName
+- uid: SatStat.AppSettings.TestConfigDatabase
+  name: TestConfigDatabase
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_TestConfigDatabase
+  commentId: P:SatStat.AppSettings.TestConfigDatabase
+  fullName: SatStat.AppSettings.TestConfigDatabase
+  nameWithType: AppSettings.TestConfigDatabase
+- uid: SatStat.AppSettings.TestConfigDatabase*
+  name: TestConfigDatabase
+  href: api/SatStat.AppSettings.html#SatStat_AppSettings_TestConfigDatabase_
+  commentId: Overload:SatStat.AppSettings.TestConfigDatabase
+  isSpec: "True"
+  fullName: SatStat.AppSettings.TestConfigDatabase
+  nameWithType: AppSettings.TestConfigDatabase
 - uid: SatStat.COMSettings
   name: COMSettings
   href: api/SatStat.COMSettings.html
@@ -145,6 +158,24 @@ references:
   isSpec: "True"
   fullName: SatStat.ComSettingsForm.Dispose
   nameWithType: ComSettingsForm.Dispose
+- uid: SatStat.ConnectionParameters
+  name: ConnectionParameters
+  href: api/SatStat.ConnectionParameters.html
+  commentId: T:SatStat.ConnectionParameters
+  fullName: SatStat.ConnectionParameters
+  nameWithType: ConnectionParameters
+- uid: SatStat.ConnectionParameters.com_port
+  name: com_port
+  href: api/SatStat.ConnectionParameters.html#SatStat_ConnectionParameters_com_port
+  commentId: F:SatStat.ConnectionParameters.com_port
+  fullName: SatStat.ConnectionParameters.com_port
+  nameWithType: ConnectionParameters.com_port
+- uid: SatStat.ConnectionParameters.listen_addr
+  name: listen_addr
+  href: api/SatStat.ConnectionParameters.html#SatStat_ConnectionParameters_listen_addr
+  commentId: F:SatStat.ConnectionParameters.listen_addr
+  fullName: SatStat.ConnectionParameters.listen_addr
+  nameWithType: ConnectionParameters.listen_addr
 - uid: SatStat.ConnectionStatus
   name: ConnectionStatus
   href: api/SatStat.ConnectionStatus.html
@@ -271,6 +302,19 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.DataReceiver
   nameWithType: DataReceiver.DataReceiver
+- uid: SatStat.DataReceiver.GetSubscription(System.String)
+  name: GetSubscription(String)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_GetSubscription_System_String_
+  commentId: M:SatStat.DataReceiver.GetSubscription(System.String)
+  fullName: SatStat.DataReceiver.GetSubscription(System.String)
+  nameWithType: DataReceiver.GetSubscription(String)
+- uid: SatStat.DataReceiver.GetSubscription*
+  name: GetSubscription
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_GetSubscription_
+  commentId: Overload:SatStat.DataReceiver.GetSubscription
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.GetSubscription
+  nameWithType: DataReceiver.GetSubscription
 - uid: SatStat.DataReceiver.HasSubscription(System.String)
   name: HasSubscription(String)
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_HasSubscription_System_String_
@@ -326,15 +370,15 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.OnObservedvalueChanged
   nameWithType: DataReceiver.OnObservedvalueChanged
-- uid: SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object,System.String})
-  name: OnPayloadReceived(Action<Object, String>)
-  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object_System_String__
-  commentId: M:SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object,System.String})
-  name.vb: OnPayloadReceived(Action(Of Object, String))
-  fullName: SatStat.DataReceiver.OnPayloadReceived(System.Action<System.Object, System.String>)
-  fullName.vb: SatStat.DataReceiver.OnPayloadReceived(System.Action(Of System.Object, System.String))
-  nameWithType: DataReceiver.OnPayloadReceived(Action<Object, String>)
-  nameWithType.vb: DataReceiver.OnPayloadReceived(Action(Of Object, String))
+- uid: SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object,System.String,System.String})
+  name: OnPayloadReceived(Action<Object, String, String>)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_System_Action_System_Object_System_String_System_String__
+  commentId: M:SatStat.DataReceiver.OnPayloadReceived(System.Action{System.Object,System.String,System.String})
+  name.vb: OnPayloadReceived(Action(Of Object, String, String))
+  fullName: SatStat.DataReceiver.OnPayloadReceived(System.Action<System.Object, System.String, System.String>)
+  fullName.vb: SatStat.DataReceiver.OnPayloadReceived(System.Action(Of System.Object, System.String, System.String))
+  nameWithType: DataReceiver.OnPayloadReceived(Action<Object, String, String>)
+  nameWithType.vb: DataReceiver.OnPayloadReceived(Action(Of Object, String, String))
 - uid: SatStat.DataReceiver.OnPayloadReceived*
   name: OnPayloadReceived
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_OnPayloadReceived_
@@ -348,12 +392,12 @@ references:
   commentId: F:SatStat.DataReceiver.OnPayloadReceived_Callback
   fullName: SatStat.DataReceiver.OnPayloadReceived_Callback
   nameWithType: DataReceiver.OnPayloadReceived_Callback
-- uid: SatStat.DataReceiver.ReceivePayload(System.Object,System.String,System.String)
-  name: ReceivePayload(Object, String, String)
-  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ReceivePayload_System_Object_System_String_System_String_
-  commentId: M:SatStat.DataReceiver.ReceivePayload(System.Object,System.String,System.String)
-  fullName: SatStat.DataReceiver.ReceivePayload(System.Object, System.String, System.String)
-  nameWithType: DataReceiver.ReceivePayload(Object, String, String)
+- uid: SatStat.DataReceiver.ReceivePayload(System.Object,System.String,System.String,System.String)
+  name: ReceivePayload(Object, String, String, String)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ReceivePayload_System_Object_System_String_System_String_System_String_
+  commentId: M:SatStat.DataReceiver.ReceivePayload(System.Object,System.String,System.String,System.String)
+  fullName: SatStat.DataReceiver.ReceivePayload(System.Object, System.String, System.String, System.String)
+  nameWithType: DataReceiver.ReceivePayload(Object, String, String, String)
 - uid: SatStat.DataReceiver.ReceivePayload*
   name: ReceivePayload
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_ReceivePayload_
@@ -361,6 +405,19 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.ReceivePayload
   nameWithType: DataReceiver.ReceivePayload
+- uid: SatStat.DataReceiver.SetObservableNumericValues(SatStat.ObservableNumericValueCollection)
+  name: SetObservableNumericValues(ObservableNumericValueCollection)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_SetObservableNumericValues_SatStat_ObservableNumericValueCollection_
+  commentId: M:SatStat.DataReceiver.SetObservableNumericValues(SatStat.ObservableNumericValueCollection)
+  fullName: SatStat.DataReceiver.SetObservableNumericValues(SatStat.ObservableNumericValueCollection)
+  nameWithType: DataReceiver.SetObservableNumericValues(ObservableNumericValueCollection)
+- uid: SatStat.DataReceiver.SetObservableNumericValues*
+  name: SetObservableNumericValues
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_SetObservableNumericValues_
+  commentId: Overload:SatStat.DataReceiver.SetObservableNumericValues
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.SetObservableNumericValues
+  nameWithType: DataReceiver.SetObservableNumericValues
 - uid: SatStat.DataReceiver.Subscribe(SatStat.DataStream,System.String,System.String)
   name: Subscribe(DataStream, String, String)
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Subscribe_SatStat_DataStream_System_String_System_String_
@@ -406,19 +463,64 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.DataStream
   nameWithType: DataStream.DataStream
-- uid: SatStat.DataStream.AddSubscriber(SatStat.DataSubscription)
-  name: AddSubscriber(DataSubscription)
-  href: api/SatStat.DataStream.html#SatStat_DataStream_AddSubscriber_SatStat_DataSubscription_
-  commentId: M:SatStat.DataStream.AddSubscriber(SatStat.DataSubscription)
-  fullName: SatStat.DataStream.AddSubscriber(SatStat.DataSubscription)
-  nameWithType: DataStream.AddSubscriber(DataSubscription)
-- uid: SatStat.DataStream.AddSubscriber*
-  name: AddSubscriber
-  href: api/SatStat.DataStream.html#SatStat_DataStream_AddSubscriber_
-  commentId: Overload:SatStat.DataStream.AddSubscriber
+- uid: SatStat.DataStream.AddReceiver(SatStat.DataReceiver)
+  name: AddReceiver(DataReceiver)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_AddReceiver_SatStat_DataReceiver_
+  commentId: M:SatStat.DataStream.AddReceiver(SatStat.DataReceiver)
+  fullName: SatStat.DataStream.AddReceiver(SatStat.DataReceiver)
+  nameWithType: DataStream.AddReceiver(DataReceiver)
+- uid: SatStat.DataStream.AddReceiver*
+  name: AddReceiver
+  href: api/SatStat.DataStream.html#SatStat_DataStream_AddReceiver_
+  commentId: Overload:SatStat.DataStream.AddReceiver
   isSpec: "True"
-  fullName: SatStat.DataStream.AddSubscriber
-  nameWithType: DataStream.AddSubscriber
+  fullName: SatStat.DataStream.AddReceiver
+  nameWithType: DataStream.AddReceiver
+- uid: SatStat.DataStream.Connect(SatStat.ConnectionParameters)
+  name: Connect(ConnectionParameters)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Connect_SatStat_ConnectionParameters_
+  commentId: M:SatStat.DataStream.Connect(SatStat.ConnectionParameters)
+  fullName: SatStat.DataStream.Connect(SatStat.ConnectionParameters)
+  nameWithType: DataStream.Connect(ConnectionParameters)
+- uid: SatStat.DataStream.Connect*
+  name: Connect
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Connect_
+  commentId: Overload:SatStat.DataStream.Connect
+  isSpec: "True"
+  fullName: SatStat.DataStream.Connect
+  nameWithType: DataStream.Connect
+- uid: SatStat.DataStream.connectionStatus
+  name: connectionStatus
+  href: api/SatStat.DataStream.html#SatStat_DataStream_connectionStatus
+  commentId: F:SatStat.DataStream.connectionStatus
+  fullName: SatStat.DataStream.connectionStatus
+  nameWithType: DataStream.connectionStatus
+- uid: SatStat.DataStream.ConnectionStatus
+  name: ConnectionStatus
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ConnectionStatus
+  commentId: P:SatStat.DataStream.ConnectionStatus
+  fullName: SatStat.DataStream.ConnectionStatus
+  nameWithType: DataStream.ConnectionStatus
+- uid: SatStat.DataStream.ConnectionStatus*
+  name: ConnectionStatus
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ConnectionStatus_
+  commentId: Overload:SatStat.DataStream.ConnectionStatus
+  isSpec: "True"
+  fullName: SatStat.DataStream.ConnectionStatus
+  nameWithType: DataStream.ConnectionStatus
+- uid: SatStat.DataStream.ConnectProcedure(SatStat.ConnectionParameters)
+  name: ConnectProcedure(ConnectionParameters)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ConnectProcedure_SatStat_ConnectionParameters_
+  commentId: M:SatStat.DataStream.ConnectProcedure(SatStat.ConnectionParameters)
+  fullName: SatStat.DataStream.ConnectProcedure(SatStat.ConnectionParameters)
+  nameWithType: DataStream.ConnectProcedure(ConnectionParameters)
+- uid: SatStat.DataStream.ConnectProcedure*
+  name: ConnectProcedure
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ConnectProcedure_
+  commentId: Overload:SatStat.DataStream.ConnectProcedure
+  isSpec: "True"
+  fullName: SatStat.DataStream.ConnectProcedure
+  nameWithType: DataStream.ConnectProcedure
 - uid: SatStat.DataStream.DeliverSubscriptions
   name: DeliverSubscriptions()
   href: api/SatStat.DataStream.html#SatStat_DataStream_DeliverSubscriptions
@@ -432,6 +534,121 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.DeliverSubscriptions
   nameWithType: DataStream.DeliverSubscriptions
+- uid: SatStat.DataStream.Disconnect
+  name: Disconnect()
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Disconnect
+  commentId: M:SatStat.DataStream.Disconnect
+  fullName: SatStat.DataStream.Disconnect()
+  nameWithType: DataStream.Disconnect()
+- uid: SatStat.DataStream.Disconnect*
+  name: Disconnect
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Disconnect_
+  commentId: Overload:SatStat.DataStream.Disconnect
+  isSpec: "True"
+  fullName: SatStat.DataStream.Disconnect
+  nameWithType: DataStream.Disconnect
+- uid: SatStat.DataStream.DisconnectProcedure
+  name: DisconnectProcedure()
+  href: api/SatStat.DataStream.html#SatStat_DataStream_DisconnectProcedure
+  commentId: M:SatStat.DataStream.DisconnectProcedure
+  fullName: SatStat.DataStream.DisconnectProcedure()
+  nameWithType: DataStream.DisconnectProcedure()
+- uid: SatStat.DataStream.DisconnectProcedure*
+  name: DisconnectProcedure
+  href: api/SatStat.DataStream.html#SatStat_DataStream_DisconnectProcedure_
+  commentId: Overload:SatStat.DataStream.DisconnectProcedure
+  isSpec: "True"
+  fullName: SatStat.DataStream.DisconnectProcedure
+  nameWithType: DataStream.DisconnectProcedure
+- uid: SatStat.DataStream.Finalize
+  name: Finalize()
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Finalize
+  commentId: M:SatStat.DataStream.Finalize
+  fullName: SatStat.DataStream.Finalize()
+  nameWithType: DataStream.Finalize()
+- uid: SatStat.DataStream.Finalize*
+  name: Finalize
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Finalize_
+  commentId: Overload:SatStat.DataStream.Finalize
+  isSpec: "True"
+  fullName: SatStat.DataStream.Finalize
+  nameWithType: DataStream.Finalize
+- uid: SatStat.DataStream.Label
+  name: Label
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Label
+  commentId: P:SatStat.DataStream.Label
+  fullName: SatStat.DataStream.Label
+  nameWithType: DataStream.Label
+- uid: SatStat.DataStream.Label*
+  name: Label
+  href: api/SatStat.DataStream.html#SatStat_DataStream_Label_
+  commentId: Overload:SatStat.DataStream.Label
+  isSpec: "True"
+  fullName: SatStat.DataStream.Label
+  nameWithType: DataStream.Label
+- uid: SatStat.DataStream.num_active_streams
+  name: num_active_streams
+  href: api/SatStat.DataStream.html#SatStat_DataStream_num_active_streams
+  commentId: F:SatStat.DataStream.num_active_streams
+  fullName: SatStat.DataStream.num_active_streams
+  nameWithType: DataStream.num_active_streams
+- uid: SatStat.DataStream.NumActiveStreams
+  name: NumActiveStreams
+  href: api/SatStat.DataStream.html#SatStat_DataStream_NumActiveStreams
+  commentId: P:SatStat.DataStream.NumActiveStreams
+  fullName: SatStat.DataStream.NumActiveStreams
+  nameWithType: DataStream.NumActiveStreams
+- uid: SatStat.DataStream.NumActiveStreams*
+  name: NumActiveStreams
+  href: api/SatStat.DataStream.html#SatStat_DataStream_NumActiveStreams_
+  commentId: Overload:SatStat.DataStream.NumActiveStreams
+  isSpec: "True"
+  fullName: SatStat.DataStream.NumActiveStreams
+  nameWithType: DataStream.NumActiveStreams
+- uid: SatStat.DataStream.OnConnected(System.Action{SatStat.DataStream})
+  name: OnConnected(Action<DataStream>)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnConnected_System_Action_SatStat_DataStream__
+  commentId: M:SatStat.DataStream.OnConnected(System.Action{SatStat.DataStream})
+  name.vb: OnConnected(Action(Of DataStream))
+  fullName: SatStat.DataStream.OnConnected(System.Action<SatStat.DataStream>)
+  fullName.vb: SatStat.DataStream.OnConnected(System.Action(Of SatStat.DataStream))
+  nameWithType: DataStream.OnConnected(Action<DataStream>)
+  nameWithType.vb: DataStream.OnConnected(Action(Of DataStream))
+- uid: SatStat.DataStream.OnConnected*
+  name: OnConnected
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnConnected_
+  commentId: Overload:SatStat.DataStream.OnConnected
+  isSpec: "True"
+  fullName: SatStat.DataStream.OnConnected
+  nameWithType: DataStream.OnConnected
+- uid: SatStat.DataStream.OnConnected_cb
+  name: OnConnected_cb
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnConnected_cb
+  commentId: F:SatStat.DataStream.OnConnected_cb
+  fullName: SatStat.DataStream.OnConnected_cb
+  nameWithType: DataStream.OnConnected_cb
+- uid: SatStat.DataStream.OnDisconnected(System.Action{SatStat.DataStream})
+  name: OnDisconnected(Action<DataStream>)
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnDisconnected_System_Action_SatStat_DataStream__
+  commentId: M:SatStat.DataStream.OnDisconnected(System.Action{SatStat.DataStream})
+  name.vb: OnDisconnected(Action(Of DataStream))
+  fullName: SatStat.DataStream.OnDisconnected(System.Action<SatStat.DataStream>)
+  fullName.vb: SatStat.DataStream.OnDisconnected(System.Action(Of SatStat.DataStream))
+  nameWithType: DataStream.OnDisconnected(Action<DataStream>)
+  nameWithType.vb: DataStream.OnDisconnected(Action(Of DataStream))
+- uid: SatStat.DataStream.OnDisconnected*
+  name: OnDisconnected
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnDisconnected_
+  commentId: Overload:SatStat.DataStream.OnDisconnected
+  isSpec: "True"
+  fullName: SatStat.DataStream.OnDisconnected
+  nameWithType: DataStream.OnDisconnected
+- uid: SatStat.DataStream.OnDisconnected_cb
+  name: OnDisconnected_cb
+  href: api/SatStat.DataStream.html#SatStat_DataStream_OnDisconnected_cb
+  commentId: F:SatStat.DataStream.OnDisconnected_cb
+  fullName: SatStat.DataStream.OnDisconnected_cb
+  nameWithType: DataStream.OnDisconnected_cb
 - uid: SatStat.DataStream.OnOutputReceived(System.Action{System.String})
   name: OnOutputReceived(Action<String>)
   href: api/SatStat.DataStream.html#SatStat_DataStream_OnOutputReceived_System_Action_System_String__
@@ -474,6 +691,25 @@ references:
   isSpec: "True"
   fullName: SatStat.DataStream.Parse
   nameWithType: DataStream.Parse
+- uid: SatStat.DataStream.stream_label
+  name: stream_label
+  href: api/SatStat.DataStream.html#SatStat_DataStream_stream_label
+  commentId: F:SatStat.DataStream.stream_label
+  fullName: SatStat.DataStream.stream_label
+  nameWithType: DataStream.stream_label
+- uid: SatStat.DataStream.ToString
+  name: ToString()
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ToString
+  commentId: M:SatStat.DataStream.ToString
+  fullName: SatStat.DataStream.ToString()
+  nameWithType: DataStream.ToString()
+- uid: SatStat.DataStream.ToString*
+  name: ToString
+  href: api/SatStat.DataStream.html#SatStat_DataStream_ToString_
+  commentId: Overload:SatStat.DataStream.ToString
+  isSpec: "True"
+  fullName: SatStat.DataStream.ToString
+  nameWithType: DataStream.ToString
 - uid: SatStat.DataSubscription
   name: DataSubscription
   href: api/SatStat.DataSubscription.html
@@ -505,12 +741,12 @@ references:
   commentId: F:SatStat.DataSubscription.data_type
   fullName: SatStat.DataSubscription.data_type
   nameWithType: DataSubscription.data_type
-- uid: SatStat.DataSubscription.receive(System.Object)
-  name: receive(Object)
-  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_receive_System_Object_
-  commentId: M:SatStat.DataSubscription.receive(System.Object)
-  fullName: SatStat.DataSubscription.receive(System.Object)
-  nameWithType: DataSubscription.receive(Object)
+- uid: SatStat.DataSubscription.receive(System.Object,System.String)
+  name: receive(Object, String)
+  href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_receive_System_Object_System_String_
+  commentId: M:SatStat.DataSubscription.receive(System.Object,System.String)
+  fullName: SatStat.DataSubscription.receive(System.Object, System.String)
+  nameWithType: DataSubscription.receive(Object, String)
 - uid: SatStat.DataSubscription.receive*
   name: receive
   href: api/SatStat.DataSubscription.html#SatStat_DataSubscription_receive_
@@ -666,6 +902,18 @@ references:
   commentId: T:SatStat.Instruction
   fullName: SatStat.Instruction
   nameWithType: Instruction
+- uid: SatStat.Instruction.#ctor
+  name: Instruction()
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ctor
+  commentId: M:SatStat.Instruction.#ctor
+  fullName: SatStat.Instruction.Instruction()
+  nameWithType: Instruction.Instruction()
+- uid: SatStat.Instruction.#ctor(System.String)
+  name: Instruction(String)
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ctor_System_String_
+  commentId: M:SatStat.Instruction.#ctor(System.String)
+  fullName: SatStat.Instruction.Instruction(System.String)
+  nameWithType: Instruction.Instruction(String)
 - uid: SatStat.Instruction.#ctor(System.String,Newtonsoft.Json.Linq.JObject)
   name: Instruction(String, JObject)
   href: api/SatStat.Instruction.html#SatStat_Instruction__ctor_System_String_Newtonsoft_Json_Linq_JObject_
@@ -688,6 +936,12 @@ references:
   isSpec: "True"
   fullName: SatStat.Instruction.Instruction
   nameWithType: Instruction.Instruction
+- uid: SatStat.Instruction.Create(System.String)
+  name: Create(String)
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Create_System_String_
+  commentId: M:SatStat.Instruction.Create(System.String)
+  fullName: SatStat.Instruction.Create(System.String)
+  nameWithType: Instruction.Create(String)
 - uid: SatStat.Instruction.Create(System.String,Newtonsoft.Json.Linq.JObject)
   name: Create(String, JObject)
   href: api/SatStat.Instruction.html#SatStat_Instruction_Create_System_String_Newtonsoft_Json_Linq_JObject_
@@ -710,22 +964,18 @@ references:
   isSpec: "True"
   fullName: SatStat.Instruction.Create
   nameWithType: Instruction.Create
-- uid: SatStat.Instruction.Subscription(System.String,System.Object[])
-  name: Subscription(String, Object[])
-  href: api/SatStat.Instruction.html#SatStat_Instruction_Subscription_System_String_System_Object___
-  commentId: M:SatStat.Instruction.Subscription(System.String,System.Object[])
-  name.vb: Subscription(String, Object())
-  fullName: SatStat.Instruction.Subscription(System.String, System.Object[])
-  fullName.vb: SatStat.Instruction.Subscription(System.String, System.Object())
-  nameWithType: Instruction.Subscription(String, Object[])
-  nameWithType.vb: Instruction.Subscription(String, Object())
-- uid: SatStat.Instruction.Subscription*
-  name: Subscription
-  href: api/SatStat.Instruction.html#SatStat_Instruction_Subscription_
-  commentId: Overload:SatStat.Instruction.Subscription
-  isSpec: "True"
-  fullName: SatStat.Instruction.Subscription
-  nameWithType: Instruction.Subscription
+- uid: SatStat.Instruction.feedbackStatus
+  name: feedbackStatus
+  href: api/SatStat.Instruction.html#SatStat_Instruction_feedbackStatus
+  commentId: F:SatStat.Instruction.feedbackStatus
+  fullName: SatStat.Instruction.feedbackStatus
+  nameWithType: Instruction.feedbackStatus
+- uid: SatStat.Instruction.paramtable
+  name: paramtable
+  href: api/SatStat.Instruction.html#SatStat_Instruction_paramtable
+  commentId: F:SatStat.Instruction.paramtable
+  fullName: SatStat.Instruction.paramtable
+  nameWithType: Instruction.paramtable
 - uid: SatStat.Instruction.toJObject
   name: toJObject()
   href: api/SatStat.Instruction.html#SatStat_Instruction_toJObject
@@ -745,6 +995,24 @@ references:
   commentId: F:SatStat.Instruction.UI_Index
   fullName: SatStat.Instruction.UI_Index
   nameWithType: Instruction.UI_Index
+- uid: SatStat.InstructionEntry
+  name: InstructionEntry
+  href: api/SatStat.InstructionEntry.html
+  commentId: T:SatStat.InstructionEntry
+  fullName: SatStat.InstructionEntry
+  nameWithType: InstructionEntry
+- uid: SatStat.InstructionEntry.instruction
+  name: instruction
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_instruction
+  commentId: F:SatStat.InstructionEntry.instruction
+  fullName: SatStat.InstructionEntry.instruction
+  nameWithType: InstructionEntry.instruction
+- uid: SatStat.InstructionEntry.observedValueLabels
+  name: observedValueLabels
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_observedValueLabels
+  commentId: F:SatStat.InstructionEntry.observedValueLabels
+  fullName: SatStat.InstructionEntry.observedValueLabels
+  nameWithType: InstructionEntry.observedValueLabels
 - uid: SatStat.IObservableNumericValue
   name: IObservableNumericValue
   href: api/SatStat.IObservableNumericValue.html
@@ -871,6 +1139,19 @@ references:
   isSpec: "True"
   fullName: SatStat.IObservableNumericValue.Stable
   nameWithType: IObservableNumericValue.Stable
+- uid: SatStat.IObservableNumericValue.Status
+  name: Status()
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Status
+  commentId: M:SatStat.IObservableNumericValue.Status
+  fullName: SatStat.IObservableNumericValue.Status()
+  nameWithType: IObservableNumericValue.Status()
+- uid: SatStat.IObservableNumericValue.Status*
+  name: Status
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Status_
+  commentId: Overload:SatStat.IObservableNumericValue.Status
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.Status
+  nameWithType: IObservableNumericValue.Status
 - uid: SatStat.IObservableNumericValue.type
   name: type
   href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_type
@@ -1214,6 +1495,23 @@ references:
   fullName.vb: SatStat.ObservableNumericValue(Of T).Stable
   nameWithType: ObservableNumericValue<T>.Stable
   nameWithType.vb: ObservableNumericValue(Of T).Stable
+- uid: SatStat.ObservableNumericValue`1.Status
+  name: Status()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Status
+  commentId: M:SatStat.ObservableNumericValue`1.Status
+  fullName: SatStat.ObservableNumericValue<T>.Status()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Status()
+  nameWithType: ObservableNumericValue<T>.Status()
+  nameWithType.vb: ObservableNumericValue(Of T).Status()
+- uid: SatStat.ObservableNumericValue`1.Status*
+  name: Status
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Status_
+  commentId: Overload:SatStat.ObservableNumericValue`1.Status
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.Status
+  fullName.vb: SatStat.ObservableNumericValue(Of T).Status
+  nameWithType: ObservableNumericValue<T>.Status
+  nameWithType.vb: ObservableNumericValue(Of T).Status
 - uid: SatStat.ObservableNumericValue`1.type
   name: type
   href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_type
@@ -1305,6 +1603,19 @@ references:
   isSpec: "True"
   fullName: SatStat.ObservableNumericValueCollection.Add
   nameWithType: ObservableNumericValueCollection.Add
+- uid: SatStat.ObservableNumericValueCollection.AddWithType(System.String,System.String)
+  name: AddWithType(String, String)
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_AddWithType_System_String_System_String_
+  commentId: M:SatStat.ObservableNumericValueCollection.AddWithType(System.String,System.String)
+  fullName: SatStat.ObservableNumericValueCollection.AddWithType(System.String, System.String)
+  nameWithType: ObservableNumericValueCollection.AddWithType(String, String)
+- uid: SatStat.ObservableNumericValueCollection.AddWithType*
+  name: AddWithType
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_AddWithType_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.AddWithType
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.AddWithType
+  nameWithType: ObservableNumericValueCollection.AddWithType
 - uid: SatStat.ObservableNumericValueCollection.Clear
   name: Clear()
   href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_Clear
@@ -1625,6 +1936,42 @@ references:
   isSpec: "True"
   fullName: SatStat.ObservableNumericValueCollectionEnum.Reset
   nameWithType: ObservableNumericValueCollectionEnum.Reset
+- uid: SatStat.ObservableNumericValueStatus
+  name: ObservableNumericValueStatus
+  href: api/SatStat.ObservableNumericValueStatus.html
+  commentId: T:SatStat.ObservableNumericValueStatus
+  fullName: SatStat.ObservableNumericValueStatus
+  nameWithType: ObservableNumericValueStatus
+- uid: SatStat.ObservableNumericValueStatus.Over
+  name: Over
+  href: api/SatStat.ObservableNumericValueStatus.html#SatStat_ObservableNumericValueStatus_Over
+  commentId: F:SatStat.ObservableNumericValueStatus.Over
+  fullName: SatStat.ObservableNumericValueStatus.Over
+  nameWithType: ObservableNumericValueStatus.Over
+- uid: SatStat.ObservableNumericValueStatus.Stable
+  name: Stable
+  href: api/SatStat.ObservableNumericValueStatus.html#SatStat_ObservableNumericValueStatus_Stable
+  commentId: F:SatStat.ObservableNumericValueStatus.Stable
+  fullName: SatStat.ObservableNumericValueStatus.Stable
+  nameWithType: ObservableNumericValueStatus.Stable
+- uid: SatStat.ObservableNumericValueStatus.Under
+  name: Under
+  href: api/SatStat.ObservableNumericValueStatus.html#SatStat_ObservableNumericValueStatus_Under
+  commentId: F:SatStat.ObservableNumericValueStatus.Under
+  fullName: SatStat.ObservableNumericValueStatus.Under
+  nameWithType: ObservableNumericValueStatus.Under
+- uid: SatStat.ObservableNumericValueStatus.Unknown
+  name: Unknown
+  href: api/SatStat.ObservableNumericValueStatus.html#SatStat_ObservableNumericValueStatus_Unknown
+  commentId: F:SatStat.ObservableNumericValueStatus.Unknown
+  fullName: SatStat.ObservableNumericValueStatus.Unknown
+  nameWithType: ObservableNumericValueStatus.Unknown
+- uid: SatStat.ObservableNumericValueStatus.Unstable
+  name: Unstable
+  href: api/SatStat.ObservableNumericValueStatus.html#SatStat_ObservableNumericValueStatus_Unstable
+  commentId: F:SatStat.ObservableNumericValueStatus.Unstable
+  fullName: SatStat.ObservableNumericValueStatus.Unstable
+  nameWithType: ObservableNumericValueStatus.Unstable
 - uid: SatStat.ParameterControlTemplate
   name: ParameterControlTemplate
   href: api/SatStat.ParameterControlTemplate.html
@@ -1689,6 +2036,45 @@ references:
   isSpec: "True"
   fullName: SatStat.ParameterControlTemplate.Description
   nameWithType: ParameterControlTemplate.Description
+- uid: SatStat.ParameterControlTemplate.GetCollection
+  name: GetCollection()
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_GetCollection
+  commentId: M:SatStat.ParameterControlTemplate.GetCollection
+  fullName: SatStat.ParameterControlTemplate.GetCollection()
+  nameWithType: ParameterControlTemplate.GetCollection()
+- uid: SatStat.ParameterControlTemplate.GetCollection*
+  name: GetCollection
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_GetCollection_
+  commentId: Overload:SatStat.ParameterControlTemplate.GetCollection
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.GetCollection
+  nameWithType: ParameterControlTemplate.GetCollection
+- uid: SatStat.ParameterControlTemplate.GetListFromDb
+  name: GetListFromDb()
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_GetListFromDb
+  commentId: M:SatStat.ParameterControlTemplate.GetListFromDb
+  fullName: SatStat.ParameterControlTemplate.GetListFromDb()
+  nameWithType: ParameterControlTemplate.GetListFromDb()
+- uid: SatStat.ParameterControlTemplate.GetListFromDb*
+  name: GetListFromDb
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_GetListFromDb_
+  commentId: Overload:SatStat.ParameterControlTemplate.GetListFromDb
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.GetListFromDb
+  nameWithType: ParameterControlTemplate.GetListFromDb
+- uid: SatStat.ParameterControlTemplate.getValue(System.String)
+  name: getValue(String)
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_getValue_System_String_
+  commentId: M:SatStat.ParameterControlTemplate.getValue(System.String)
+  fullName: SatStat.ParameterControlTemplate.getValue(System.String)
+  nameWithType: ParameterControlTemplate.getValue(String)
+- uid: SatStat.ParameterControlTemplate.getValue*
+  name: getValue
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_getValue_
+  commentId: Overload:SatStat.ParameterControlTemplate.getValue
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.getValue
+  nameWithType: ParameterControlTemplate.getValue
 - uid: SatStat.ParameterControlTemplate.Id
   name: Id
   href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Id
@@ -1798,19 +2184,6 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.AvailableSettings
   nameWithType: SerialHandler.AvailableSettings
-- uid: SatStat.SerialHandler.Connect
-  name: Connect()
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Connect
-  commentId: M:SatStat.SerialHandler.Connect
-  fullName: SatStat.SerialHandler.Connect()
-  nameWithType: SerialHandler.Connect()
-- uid: SatStat.SerialHandler.Connect*
-  name: Connect
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Connect_
-  commentId: Overload:SatStat.SerialHandler.Connect
-  isSpec: "True"
-  fullName: SatStat.SerialHandler.Connect
-  nameWithType: SerialHandler.Connect
 - uid: SatStat.SerialHandler.ConnectionRequest(SatStat.COMSettings)
   name: ConnectionRequest(COMSettings)
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionRequest_SatStat_COMSettings_
@@ -1824,19 +2197,19 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.ConnectionRequest
   nameWithType: SerialHandler.ConnectionRequest
-- uid: SatStat.SerialHandler.ConnectionStatus
-  name: ConnectionStatus
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionStatus
-  commentId: P:SatStat.SerialHandler.ConnectionStatus
-  fullName: SatStat.SerialHandler.ConnectionStatus
-  nameWithType: SerialHandler.ConnectionStatus
-- uid: SatStat.SerialHandler.ConnectionStatus*
-  name: ConnectionStatus
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectionStatus_
-  commentId: Overload:SatStat.SerialHandler.ConnectionStatus
+- uid: SatStat.SerialHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  name: ConnectProcedure(ConnectionParameters)
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectProcedure_SatStat_ConnectionParameters_
+  commentId: M:SatStat.SerialHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  fullName: SatStat.SerialHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  nameWithType: SerialHandler.ConnectProcedure(ConnectionParameters)
+- uid: SatStat.SerialHandler.ConnectProcedure*
+  name: ConnectProcedure
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_ConnectProcedure_
+  commentId: Overload:SatStat.SerialHandler.ConnectProcedure
   isSpec: "True"
-  fullName: SatStat.SerialHandler.ConnectionStatus
-  nameWithType: SerialHandler.ConnectionStatus
+  fullName: SatStat.SerialHandler.ConnectProcedure
+  nameWithType: SerialHandler.ConnectProcedure
 - uid: SatStat.SerialHandler.default_settings
   name: SerialHandler.default_settings
   href: api/SatStat.SerialHandler.default_settings.html
@@ -1886,19 +2259,32 @@ references:
   isSpec: "True"
   fullName: SatStat.SerialHandler.DefaultConnect
   nameWithType: SerialHandler.DefaultConnect
-- uid: SatStat.SerialHandler.Disconnect
-  name: Disconnect()
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Disconnect
-  commentId: M:SatStat.SerialHandler.Disconnect
-  fullName: SatStat.SerialHandler.Disconnect()
-  nameWithType: SerialHandler.Disconnect()
-- uid: SatStat.SerialHandler.Disconnect*
-  name: Disconnect
-  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Disconnect_
-  commentId: Overload:SatStat.SerialHandler.Disconnect
+- uid: SatStat.SerialHandler.DisconnectProcedure
+  name: DisconnectProcedure()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_DisconnectProcedure
+  commentId: M:SatStat.SerialHandler.DisconnectProcedure
+  fullName: SatStat.SerialHandler.DisconnectProcedure()
+  nameWithType: SerialHandler.DisconnectProcedure()
+- uid: SatStat.SerialHandler.DisconnectProcedure*
+  name: DisconnectProcedure
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_DisconnectProcedure_
+  commentId: Overload:SatStat.SerialHandler.DisconnectProcedure
   isSpec: "True"
-  fullName: SatStat.SerialHandler.Disconnect
-  nameWithType: SerialHandler.Disconnect
+  fullName: SatStat.SerialHandler.DisconnectProcedure
+  nameWithType: SerialHandler.DisconnectProcedure
+- uid: SatStat.SerialHandler.Discover
+  name: Discover()
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Discover
+  commentId: M:SatStat.SerialHandler.Discover
+  fullName: SatStat.SerialHandler.Discover()
+  nameWithType: SerialHandler.Discover()
+- uid: SatStat.SerialHandler.Discover*
+  name: Discover
+  href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_Discover_
+  commentId: Overload:SatStat.SerialHandler.Discover
+  isSpec: "True"
+  fullName: SatStat.SerialHandler.Discover
+  nameWithType: SerialHandler.Discover
 - uid: SatStat.SerialHandler.GetPortListInformation
   name: GetPortListInformation()
   href: api/SatStat.SerialHandler.html#SatStat_SerialHandler_GetPortListInformation
@@ -2042,19 +2428,58 @@ references:
   commentId: F:SatStat.SocketHandler.allDone
   fullName: SatStat.SocketHandler.allDone
   nameWithType: SocketHandler.allDone
-- uid: SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
-  name: Disconnect(TcpClient)
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Disconnect_System_Net_Sockets_TcpClient_
-  commentId: M:SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
-  fullName: SatStat.SocketHandler.Disconnect(System.Net.Sockets.TcpClient)
-  nameWithType: SocketHandler.Disconnect(TcpClient)
-- uid: SatStat.SocketHandler.Disconnect*
-  name: Disconnect
-  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Disconnect_
-  commentId: Overload:SatStat.SocketHandler.Disconnect
+- uid: SatStat.SocketHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  name: ConnectProcedure(ConnectionParameters)
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_ConnectProcedure_SatStat_ConnectionParameters_
+  commentId: M:SatStat.SocketHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  fullName: SatStat.SocketHandler.ConnectProcedure(SatStat.ConnectionParameters)
+  nameWithType: SocketHandler.ConnectProcedure(ConnectionParameters)
+- uid: SatStat.SocketHandler.ConnectProcedure*
+  name: ConnectProcedure
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_ConnectProcedure_
+  commentId: Overload:SatStat.SocketHandler.ConnectProcedure
   isSpec: "True"
-  fullName: SatStat.SocketHandler.Disconnect
-  nameWithType: SocketHandler.Disconnect
+  fullName: SatStat.SocketHandler.ConnectProcedure
+  nameWithType: SocketHandler.ConnectProcedure
+- uid: SatStat.SocketHandler.DisconnectProcedure
+  name: DisconnectProcedure()
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_DisconnectProcedure
+  commentId: M:SatStat.SocketHandler.DisconnectProcedure
+  fullName: SatStat.SocketHandler.DisconnectProcedure()
+  nameWithType: SocketHandler.DisconnectProcedure()
+- uid: SatStat.SocketHandler.DisconnectProcedure*
+  name: DisconnectProcedure
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_DisconnectProcedure_
+  commentId: Overload:SatStat.SocketHandler.DisconnectProcedure
+  isSpec: "True"
+  fullName: SatStat.SocketHandler.DisconnectProcedure
+  nameWithType: SocketHandler.DisconnectProcedure
+- uid: SatStat.SocketHandler.Output(System.Object)
+  name: Output(Object)
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Output_System_Object_
+  commentId: M:SatStat.SocketHandler.Output(System.Object)
+  fullName: SatStat.SocketHandler.Output(System.Object)
+  nameWithType: SocketHandler.Output(Object)
+- uid: SatStat.SocketHandler.Output*
+  name: Output
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Output_
+  commentId: Overload:SatStat.SocketHandler.Output
+  isSpec: "True"
+  fullName: SatStat.SocketHandler.Output
+  nameWithType: SocketHandler.Output
+- uid: SatStat.SocketHandler.OutputReceived(System.String)
+  name: OutputReceived(String)
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_OutputReceived_System_String_
+  commentId: M:SatStat.SocketHandler.OutputReceived(System.String)
+  fullName: SatStat.SocketHandler.OutputReceived(System.String)
+  nameWithType: SocketHandler.OutputReceived(String)
+- uid: SatStat.SocketHandler.OutputReceived*
+  name: OutputReceived
+  href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_OutputReceived_
+  commentId: Overload:SatStat.SocketHandler.OutputReceived
+  isSpec: "True"
+  fullName: SatStat.SocketHandler.OutputReceived
+  nameWithType: SocketHandler.OutputReceived
 - uid: SatStat.SocketHandler.Send(System.String)
   name: Send(String)
   href: api/SatStat.SocketHandler.html#SatStat_SocketHandler_Send_System_String_
@@ -2130,19 +2555,19 @@ references:
   commentId: T:SatStat.StreamSimulator
   fullName: SatStat.StreamSimulator
   nameWithType: StreamSimulator
-- uid: SatStat.StreamSimulator.Connect
-  name: Connect()
-  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Connect
-  commentId: M:SatStat.StreamSimulator.Connect
-  fullName: SatStat.StreamSimulator.Connect()
-  nameWithType: StreamSimulator.Connect()
-- uid: SatStat.StreamSimulator.Connect*
-  name: Connect
-  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Connect_
-  commentId: Overload:SatStat.StreamSimulator.Connect
+- uid: SatStat.StreamSimulator.ConnectProcedure(SatStat.ConnectionParameters)
+  name: ConnectProcedure(ConnectionParameters)
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_ConnectProcedure_SatStat_ConnectionParameters_
+  commentId: M:SatStat.StreamSimulator.ConnectProcedure(SatStat.ConnectionParameters)
+  fullName: SatStat.StreamSimulator.ConnectProcedure(SatStat.ConnectionParameters)
+  nameWithType: StreamSimulator.ConnectProcedure(ConnectionParameters)
+- uid: SatStat.StreamSimulator.ConnectProcedure*
+  name: ConnectProcedure
+  href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_ConnectProcedure_
+  commentId: Overload:SatStat.StreamSimulator.ConnectProcedure
   isSpec: "True"
-  fullName: SatStat.StreamSimulator.Connect
-  nameWithType: StreamSimulator.Connect
+  fullName: SatStat.StreamSimulator.ConnectProcedure
+  nameWithType: StreamSimulator.ConnectProcedure
 - uid: SatStat.StreamSimulator.Output(System.Object)
   name: Output(Object)
   href: api/SatStat.StreamSimulator.html#SatStat_StreamSimulator_Output_System_Object_
@@ -2188,19 +2613,22 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.TestConfiguration
   nameWithType: TestConfiguration.TestConfiguration
-- uid: SatStat.TestConfiguration.AddInstruction(SatStat.Instruction,System.Int32)
-  name: AddInstruction(Instruction, Int32)
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstruction_SatStat_Instruction_System_Int32_
-  commentId: M:SatStat.TestConfiguration.AddInstruction(SatStat.Instruction,System.Int32)
-  fullName: SatStat.TestConfiguration.AddInstruction(SatStat.Instruction, System.Int32)
-  nameWithType: TestConfiguration.AddInstruction(Instruction, Int32)
-- uid: SatStat.TestConfiguration.AddInstruction*
-  name: AddInstruction
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstruction_
-  commentId: Overload:SatStat.TestConfiguration.AddInstruction
+- uid: SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction,System.Collections.Generic.List{System.String},System.Int32)
+  name: AddInstructionEntry(Instruction, List<String>, Int32)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstructionEntry_SatStat_Instruction_System_Collections_Generic_List_System_String__System_Int32_
+  commentId: M:SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction,System.Collections.Generic.List{System.String},System.Int32)
+  name.vb: AddInstructionEntry(Instruction, List(Of String), Int32)
+  fullName: SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction, System.Collections.Generic.List<System.String>, System.Int32)
+  fullName.vb: SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction, System.Collections.Generic.List(Of System.String), System.Int32)
+  nameWithType: TestConfiguration.AddInstructionEntry(Instruction, List<String>, Int32)
+  nameWithType.vb: TestConfiguration.AddInstructionEntry(Instruction, List(Of String), Int32)
+- uid: SatStat.TestConfiguration.AddInstructionEntry*
+  name: AddInstructionEntry
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstructionEntry_
+  commentId: Overload:SatStat.TestConfiguration.AddInstructionEntry
   isSpec: "True"
-  fullName: SatStat.TestConfiguration.AddInstruction
-  nameWithType: TestConfiguration.AddInstruction
+  fullName: SatStat.TestConfiguration.AddInstructionEntry
+  nameWithType: TestConfiguration.AddInstructionEntry
 - uid: SatStat.TestConfiguration.Description
   name: Description
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Description
@@ -2214,6 +2642,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.Description
   nameWithType: TestConfiguration.Description
+- uid: SatStat.TestConfiguration.HasInstructionEntries
+  name: HasInstructionEntries()
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_HasInstructionEntries
+  commentId: M:SatStat.TestConfiguration.HasInstructionEntries
+  fullName: SatStat.TestConfiguration.HasInstructionEntries()
+  nameWithType: TestConfiguration.HasInstructionEntries()
+- uid: SatStat.TestConfiguration.HasInstructionEntries*
+  name: HasInstructionEntries
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_HasInstructionEntries_
+  commentId: Overload:SatStat.TestConfiguration.HasInstructionEntries
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.HasInstructionEntries
+  nameWithType: TestConfiguration.HasInstructionEntries
 - uid: SatStat.TestConfiguration.Id
   name: Id
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Id
@@ -2227,6 +2668,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.Id
   nameWithType: TestConfiguration.Id
+- uid: SatStat.TestConfiguration.InstructionEntryIndex(SatStat.InstructionEntry)
+  name: InstructionEntryIndex(InstructionEntry)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_InstructionEntryIndex_SatStat_InstructionEntry_
+  commentId: M:SatStat.TestConfiguration.InstructionEntryIndex(SatStat.InstructionEntry)
+  fullName: SatStat.TestConfiguration.InstructionEntryIndex(SatStat.InstructionEntry)
+  nameWithType: TestConfiguration.InstructionEntryIndex(InstructionEntry)
+- uid: SatStat.TestConfiguration.InstructionEntryIndex*
+  name: InstructionEntryIndex
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_InstructionEntryIndex_
+  commentId: Overload:SatStat.TestConfiguration.InstructionEntryIndex
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.InstructionEntryIndex
+  nameWithType: TestConfiguration.InstructionEntryIndex
 - uid: SatStat.TestConfiguration.Instructions
   name: Instructions
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Instructions
@@ -2240,6 +2694,32 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.Instructions
   nameWithType: TestConfiguration.Instructions
+- uid: SatStat.TestConfiguration.IsRunning
+  name: IsRunning
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_IsRunning
+  commentId: P:SatStat.TestConfiguration.IsRunning
+  fullName: SatStat.TestConfiguration.IsRunning
+  nameWithType: TestConfiguration.IsRunning
+- uid: SatStat.TestConfiguration.IsRunning*
+  name: IsRunning
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_IsRunning_
+  commentId: Overload:SatStat.TestConfiguration.IsRunning
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.IsRunning
+  nameWithType: TestConfiguration.IsRunning
+- uid: SatStat.TestConfiguration.loadParameterControlTemplate(SatStat.ParameterControlTemplate,SatStat.DataStream)
+  name: loadParameterControlTemplate(ParameterControlTemplate, DataStream)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_loadParameterControlTemplate_SatStat_ParameterControlTemplate_SatStat_DataStream_
+  commentId: M:SatStat.TestConfiguration.loadParameterControlTemplate(SatStat.ParameterControlTemplate,SatStat.DataStream)
+  fullName: SatStat.TestConfiguration.loadParameterControlTemplate(SatStat.ParameterControlTemplate, SatStat.DataStream)
+  nameWithType: TestConfiguration.loadParameterControlTemplate(ParameterControlTemplate, DataStream)
+- uid: SatStat.TestConfiguration.loadParameterControlTemplate*
+  name: loadParameterControlTemplate
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_loadParameterControlTemplate_
+  commentId: Overload:SatStat.TestConfiguration.loadParameterControlTemplate
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.loadParameterControlTemplate
+  nameWithType: TestConfiguration.loadParameterControlTemplate
 - uid: SatStat.TestConfiguration.Name
   name: Name
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Name
@@ -2279,15 +2759,15 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.OnPayloadReceive
   nameWithType: TestConfiguration.OnPayloadReceive
-- uid: SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.Instruction})
-  name: OnQueueAdvance(Action<Instruction>)
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_System_Action_SatStat_Instruction__
-  commentId: M:SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.Instruction})
-  name.vb: OnQueueAdvance(Action(Of Instruction))
-  fullName: SatStat.TestConfiguration.OnQueueAdvance(System.Action<SatStat.Instruction>)
-  fullName.vb: SatStat.TestConfiguration.OnQueueAdvance(System.Action(Of SatStat.Instruction))
-  nameWithType: TestConfiguration.OnQueueAdvance(Action<Instruction>)
-  nameWithType.vb: TestConfiguration.OnQueueAdvance(Action(Of Instruction))
+- uid: SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.InstructionEntry})
+  name: OnQueueAdvance(Action<InstructionEntry>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_System_Action_SatStat_InstructionEntry__
+  commentId: M:SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.InstructionEntry})
+  name.vb: OnQueueAdvance(Action(Of InstructionEntry))
+  fullName: SatStat.TestConfiguration.OnQueueAdvance(System.Action<SatStat.InstructionEntry>)
+  fullName.vb: SatStat.TestConfiguration.OnQueueAdvance(System.Action(Of SatStat.InstructionEntry))
+  nameWithType: TestConfiguration.OnQueueAdvance(Action<InstructionEntry>)
+  nameWithType.vb: TestConfiguration.OnQueueAdvance(Action(Of InstructionEntry))
 - uid: SatStat.TestConfiguration.OnQueueAdvance*
   name: OnQueueAdvance
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_
@@ -2295,15 +2775,15 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.OnQueueAdvance
   nameWithType: TestConfiguration.OnQueueAdvance
-- uid: SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.Instruction})
-  name: OnQueueComplete(Action<Instruction>)
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueComplete_System_Action_SatStat_Instruction__
-  commentId: M:SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.Instruction})
-  name.vb: OnQueueComplete(Action(Of Instruction))
-  fullName: SatStat.TestConfiguration.OnQueueComplete(System.Action<SatStat.Instruction>)
-  fullName.vb: SatStat.TestConfiguration.OnQueueComplete(System.Action(Of SatStat.Instruction))
-  nameWithType: TestConfiguration.OnQueueComplete(Action<Instruction>)
-  nameWithType.vb: TestConfiguration.OnQueueComplete(Action(Of Instruction))
+- uid: SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.InstructionEntry})
+  name: OnQueueComplete(Action<InstructionEntry>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueComplete_System_Action_SatStat_InstructionEntry__
+  commentId: M:SatStat.TestConfiguration.OnQueueComplete(System.Action{SatStat.InstructionEntry})
+  name.vb: OnQueueComplete(Action(Of InstructionEntry))
+  fullName: SatStat.TestConfiguration.OnQueueComplete(System.Action<SatStat.InstructionEntry>)
+  fullName.vb: SatStat.TestConfiguration.OnQueueComplete(System.Action(Of SatStat.InstructionEntry))
+  nameWithType: TestConfiguration.OnQueueComplete(Action<InstructionEntry>)
+  nameWithType.vb: TestConfiguration.OnQueueComplete(Action(Of InstructionEntry))
 - uid: SatStat.TestConfiguration.OnQueueComplete*
   name: OnQueueComplete
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueComplete_
@@ -2324,6 +2804,25 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.ParameterControlTemplate
   nameWithType: TestConfiguration.ParameterControlTemplate
+- uid: SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.Instruction)
+  name: RemoveInstructionEntry(Instruction)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_RemoveInstructionEntry_SatStat_Instruction_
+  commentId: M:SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.Instruction)
+  fullName: SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.Instruction)
+  nameWithType: TestConfiguration.RemoveInstructionEntry(Instruction)
+- uid: SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.InstructionEntry)
+  name: RemoveInstructionEntry(InstructionEntry)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_RemoveInstructionEntry_SatStat_InstructionEntry_
+  commentId: M:SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.InstructionEntry)
+  fullName: SatStat.TestConfiguration.RemoveInstructionEntry(SatStat.InstructionEntry)
+  nameWithType: TestConfiguration.RemoveInstructionEntry(InstructionEntry)
+- uid: SatStat.TestConfiguration.RemoveInstructionEntry*
+  name: RemoveInstructionEntry
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_RemoveInstructionEntry_
+  commentId: Overload:SatStat.TestConfiguration.RemoveInstructionEntry
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.RemoveInstructionEntry
+  nameWithType: TestConfiguration.RemoveInstructionEntry
 - uid: SatStat.TestConfiguration.Run(SatStat.DataStream)
   name: Run(DataStream)
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Run_SatStat_DataStream_

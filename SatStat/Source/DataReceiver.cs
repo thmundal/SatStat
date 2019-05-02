@@ -12,17 +12,12 @@ namespace SatStat
         /// <summary>
         /// This callback defines the operation to be performed on received data after the data has been received trough a subscription delivery
         /// </summary>
-        public Action<object, string> OnPayloadReceived_Callback;
+        public Action<object, string, string> OnPayloadReceived_Callback;
 
         /// <summary>
-        /// Holds all active subscription objects
+        /// A dictionary that holds all subscriptions on this receiver accessable by the attribute subscribed to
         /// </summary>
-        private List<DataSubscription> subscriptions;
-
-        /// <summary>
-        /// A list of strings referring to active subscriptions, to more easily/cheaply identify what subscriptions this receiver has active
-        /// </summary>
-        private List<string> active_subscriptions;
+        private Dictionary<string, DataSubscription> subscriptions;
 
         /// <summary>
         /// A flag to tell if this datareceiver should observe its values and act when the value is changed
@@ -61,8 +56,7 @@ namespace SatStat
 
         public DataReceiver()
         {
-            subscriptions = new List<DataSubscription>();
-            active_subscriptions = new List<string>();
+            subscriptions = new Dictionary<string, DataSubscription>();
             observedValues = new ObservableNumericValueCollection();
         }
 
@@ -75,9 +69,12 @@ namespace SatStat
         public void Subscribe(DataStream stream, string attribute, string data_type)
         {
             DataSubscription sub = new DataSubscription(this, attribute, data_type);
-            stream.AddSubscriber(sub);
-            subscriptions.Add(sub);
-            active_subscriptions.Add(attribute);
+            stream.AddReceiver(this);
+
+            if(!HasSubscription(attribute))
+            {
+                subscriptions.Add(attribute, sub);
+            }
         }
 
         /// <summary>
@@ -89,22 +86,14 @@ namespace SatStat
         /// <param name="attribute">The attribute to unsubscribe to</param>
         public void Unsubscribe(string attribute)
         {
-            foreach(DataSubscription subscription in subscriptions)
-            {
-                if(subscription.attribute == attribute)
-                {
-                    subscriptions.Remove(subscription);
-                    active_subscriptions.Remove(attribute);
-                    break;
-                }
-            }
+            subscriptions.Remove(attribute);
         }
 
         /// <summary>
         /// Register a method to be invoken when the receiver has received data from a stream though a subscription
         /// </summary>
         /// <param name="cb">The method to invoke taking two parameters, the received data and the attribute name in that order.</param>
-        public void OnPayloadReceived(Action<object, string> cb)
+        public void OnPayloadReceived(Action<object, string, string> cb)
         {
             OnPayloadReceived_Callback = cb;
         }
@@ -119,92 +108,42 @@ namespace SatStat
         }
 
         /// <summary>
+        /// Set the observed values collection
+        /// </summary>
+        /// <param name="col">Collection of observable numeric values</param>
+        public void SetObservableNumericValues(ObservableNumericValueCollection col)
+        {
+            observedValues = col;
+        }
+
+        /// <summary>
         /// Procedure to run when payload is received from stream. Data is cast to the appropriate data type, and the OnPayloadReceived_Callback is invoked on all subscriptions that involves the given attribute
         /// </summary>
         /// <param name="payload">The data being received from the data stream</param>
         /// <param name="attribute">The attribute being received</param>
         /// <param name="data_type">The data type that the received data is represented as</param>
-        public void ReceivePayload(object payload, string attribute, string data_type)
+        public void ReceivePayload(object payload, string attribute, string data_type, string stream_label)
         {
-            if(subscriptions.Count > 0)
+            if(subscriptions.Count > 0 && HasSubscription(attribute) && OnPayloadReceived_Callback != null)
             {
-                foreach(DataSubscription subscription in subscriptions)
+                DataSubscription subscription = subscriptions[attribute];
+                payload = Utils.Cast.ToType(payload, data_type);
+
+                OnPayloadReceived_Callback.Invoke(payload, attribute, stream_label);
+
+                if(observe_values)
                 {
-                    if(subscription.attribute == attribute)
+                    if (!observedValues.ContainsLabel(attribute))
                     {
-                        IObservableNumericValue observedAttribute = new ObservableInt();
-                        bool observe_invalid = false;
-                        string observe_error = "";
+                        observedValues.AddWithType(attribute, data_type);
+                    }
 
-                        switch (data_type)
-                        {
-                            case "float":
-                                payload = Convert.ToSingle(payload);
-                                observedAttribute = new ObservableFloat { Value = payload };
-                                break;
-                            case "double":
-                                payload = Convert.ToDouble(payload);
-                                observedAttribute = new ObservableDouble { Value = payload };
-                                break;
-                            case "int":
-                                payload = Convert.ToInt32(payload);
-                                observedAttribute = new ObservableInt { Value = payload };
-                                break;
-                            case "long":
-                                payload = Convert.ToInt64(payload);
-                                observedAttribute = new ObservableLong { Value = payload };
-                                break;
-                            case "string":
-                                payload = Convert.ToString(payload);
-                                observe_invalid = true;
-                                observe_error = "A string value cannot be observed";
-                                break;
-                            case "JObject":
-                                payload = (JObject)payload;
-                                observe_invalid = true;
-                                observe_error = "A JObject cannot be observed";
-                                break;
-                            case "JArray":
-                                payload = (JArray)payload;
-                                observe_invalid = true;
-                                observe_error = "A JArray cannot be observed";
-                                break;
-                        }
-
-                        if (OnPayloadReceived_Callback != null)
-                        {
-                            try
-                            {
-                                OnPayloadReceived_Callback.Invoke(payload, attribute);
-
-                                if(observe_values)
-                                {
-                                    if(!observe_invalid)
-                                    {
-                                        if(!observedValues.ContainsLabel(attribute))
-                                        {
-                                            observedAttribute.Label = attribute;
-                                            observedValues.Add(observedAttribute);
-                                        }
-                                        observedAttribute = observedValues[attribute];
-                                        observedAttribute.OnUpdate(onObservableValueChanged_cb);
-                                        observedAttribute.Value = payload;
-                                    } else
-                                    {
-                                        Console.WriteLine("Error: {0}", observe_error);
-                                    }
-                                }
-                            }
-                            catch (InvalidCastException e)
-                            {
-                                Debug.Log("Cannot cast received " + payload.GetType() + " to type " + data_type);
-                                Debug.Log(e.StackTrace);
-                            }
-                            catch (InvalidOperationException)
-                            {
-                                Debug.Log("Error when receiving data");
-                            }
-                        }
+                    if (observedValues.ContainsLabel(attribute))
+                    {
+                        IObservableNumericValue observedAttribute = observedValues[attribute];
+                        observedAttribute = observedValues[attribute];
+                        observedAttribute.OnUpdate(onObservableValueChanged_cb);
+                        observedAttribute.Value = payload;
                     }
                 }
             }
@@ -220,7 +159,22 @@ namespace SatStat
         /// <returns>true if a subscription exists, false otherwise</returns>
         public bool HasSubscription(string key)
         {
-            return active_subscriptions.IndexOf(key) > -1;
+            return subscriptions.ContainsKey(key);
+        }
+
+        /// <summary>
+        /// Return a handle to a specific subscription.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public DataSubscription GetSubscription(string key)
+        {
+            if(HasSubscription(key))
+            {
+                return subscriptions[key];
+            }
+
+            return null;
         }
     }
 }

@@ -35,9 +35,28 @@ namespace SatStat
             localEndPoint = new IPEndPoint(listen_addr, listen_port);
 
             Console.WriteLine("Host name is {0}", Dns.GetHostName());
+            stream_label = "External simulation";
 
+            //Connect();
+        }
+
+        protected override bool ConnectProcedure(ConnectionParameters prm)
+        {
             StartServer();
+            return true;
+        }
 
+        protected override bool DisconnectProcedure()
+        {
+            foreach(TcpClient client in connected_clients)
+            {
+                client.Close();
+            }
+
+            connected_clients.Clear();
+            ThreadHelper.SetNetworkConnectionStatus("Disconnected");
+            connectionStatus = ConnectionStatus.Disconnected;
+            return true;
         }
 
         public void StartServer()
@@ -72,6 +91,8 @@ namespace SatStat
                     Debug.Log("Waiting for a connection....");
                     TcpClient client = server.AcceptTcpClient();
                     connected_clients.Add(client);
+                    connectionStatus = ConnectionStatus.Connected;
+
                     Debug.Log("A client connected");
 
                     ThreadHelper.SetNetworkConnectionStatus("Client connected");
@@ -115,19 +136,23 @@ namespace SatStat
         {
             byte[] byteData = Encoding.ASCII.GetBytes(data);
             
+            Debug.Log("writing data to client: " + data);
+
             foreach(TcpClient client in connected_clients)
             {
                 NetworkStream stream = client.GetStream();
                 stream.Write(byteData, 0, byteData.Length);
             }
         }
-        
 
-        public void Disconnect(TcpClient client)
+        public override void Output(object data)
         {
-            ThreadHelper.SetNetworkConnectionStatus("Disconnected");
-            connected_clients.Remove(client);
-            client.Close();
+            Send(data.ToString());
+        }
+
+        public void OutputReceived(string data)
+        {
+            Send(data.ToString());
         }
     }
 
