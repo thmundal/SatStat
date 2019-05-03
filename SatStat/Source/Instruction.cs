@@ -110,4 +110,14 @@ namespace SatStat
             return i.toJObject();
         }
     }
+
+    public struct InstructionUIEntry
+    {
+        public string label;
+        public string attribute;
+        public override string ToString()
+        {
+            return label;
+        }
+    }
 }

@@ -1013,6 +1013,37 @@ references:
   commentId: F:SatStat.InstructionEntry.observedValueLabels
   fullName: SatStat.InstructionEntry.observedValueLabels
   nameWithType: InstructionEntry.observedValueLabels
+- uid: SatStat.InstructionUIEntry
+  name: InstructionUIEntry
+  href: api/SatStat.InstructionUIEntry.html
+  commentId: T:SatStat.InstructionUIEntry
+  fullName: SatStat.InstructionUIEntry
+  nameWithType: InstructionUIEntry
+- uid: SatStat.InstructionUIEntry.attribute
+  name: attribute
+  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_attribute
+  commentId: F:SatStat.InstructionUIEntry.attribute
+  fullName: SatStat.InstructionUIEntry.attribute
+  nameWithType: InstructionUIEntry.attribute
+- uid: SatStat.InstructionUIEntry.label
+  name: label
+  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_label
+  commentId: F:SatStat.InstructionUIEntry.label
+  fullName: SatStat.InstructionUIEntry.label
+  nameWithType: InstructionUIEntry.label
+- uid: SatStat.InstructionUIEntry.ToString
+  name: ToString()
+  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_ToString
+  commentId: M:SatStat.InstructionUIEntry.ToString
+  fullName: SatStat.InstructionUIEntry.ToString()
+  nameWithType: InstructionUIEntry.ToString()
+- uid: SatStat.InstructionUIEntry.ToString*
+  name: ToString
+  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_ToString_
+  commentId: Overload:SatStat.InstructionUIEntry.ToString
+  isSpec: "True"
+  fullName: SatStat.InstructionUIEntry.ToString
+  nameWithType: InstructionUIEntry.ToString
 - uid: SatStat.IObservableNumericValue
   name: IObservableNumericValue
   href: api/SatStat.IObservableNumericValue.html

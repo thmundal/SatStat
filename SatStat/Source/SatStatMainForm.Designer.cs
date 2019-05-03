@@ -1017,6 +1017,7 @@
             this.UITestConfigUseCurrentParamConfigCheck.TabIndex = 6;
             this.UITestConfigUseCurrentParamConfigCheck.Text = "Use current parameter control configuration";
             this.UITestConfigUseCurrentParamConfigCheck.UseVisualStyleBackColor = true;
+            this.UITestConfigUseCurrentParamConfigCheck.CheckedChanged += new System.EventHandler(this.UITestConfigUseCurrentParamConfigCheck_CheckedChanged);
             // 
             // UITestConfigParameterTemplateSelect
             // 

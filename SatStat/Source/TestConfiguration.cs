@@ -188,6 +188,8 @@ namespace SatStat
             {
                 internalReceiver.ObservedValues.Clear();
 
+                // Clear subscriptions?
+
                 foreach(IObservableNumericValue n in ParameterControlTemplate.Collection)
                 {
                     internalReceiver.ObservedValues.Add(n);
@@ -213,7 +215,7 @@ namespace SatStat
             {
                 queue_position++;
                 currentInstructionEntry = instructionEntryQueue.Dequeue();
-
+                
                 if(onQueueAdvanceCallback != null)
                 {
                     if (currentInstructionEntry.instruction.feedbackStatus == ObservableNumericValueStatus.Unknown)

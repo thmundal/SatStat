@@ -221,6 +221,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/SatStat.InstructionUIEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SatStat.InstructionUIEntry.html",
+          "hash": "DZoPAUDdEjokRSqVrfjyDg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/SatStat.JSON.yml",
       "output": {
         ".html": {
@@ -357,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.default_settings.html",
-          "hash": "/efPgQ8aIYW1zVs6IArn8g=="
+          "hash": "UPaFdY9G1FuyrG2+LYiccA=="
         }
       },
       "is_incremental": true,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.html",
-          "hash": "TY4hJv8WQKT29JmQ5aymBQ=="
+          "hash": "qaI40giqaF7u5sqK2Qx/Eg=="
         }
       },
       "is_incremental": true,
@@ -381,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialSettingsCollection.html",
-          "hash": "3v3tNo96RUDzCPh54/rJ+Q=="
+          "hash": "6POhyAEZPqHjDr1m/sSIRQ=="
         }
       },
       "is_incremental": true,
@@ -429,10 +441,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.TestConfiguration.html",
-          "hash": "elkaVHic9sZG7Lwjs0M+jQ=="
+          "hash": "2UBkVGcQ2Nj7171+Z3RUpQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -489,10 +501,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.html",
-          "hash": "YpxGS5wuDiQ/nDUwqTllcA=="
+          "hash": "O3nJt0v56+F3L0DteaAlyg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -501,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "DBvco6E84NqrvSxRV8MJRQ=="
+          "hash": "wEd1zYyKG9125Esjxe/66Q=="
         }
       },
       "is_incremental": false,
@@ -539,7 +551,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 37,
+          "total_file_count": 38,
           "skipped_file_count": 37
         },
         "ConceptualDocumentProcessor": {

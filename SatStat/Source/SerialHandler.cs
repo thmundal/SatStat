@@ -20,6 +20,7 @@ namespace SatStat
         private SerialSettingsCollection available_settings;
         private Action<SerialSettingsCollection> HandshakeResponse_callback;
         private static bool sadm_discovered = false;
+        private static SerialPort discoverSerial;
 
         public SerialSettingsCollection AvailableSettings
         {
@@ -205,6 +206,12 @@ namespace SatStat
 
             try
             {
+                if(discoverSerial != null && discoverSerial.IsOpen)
+                {
+                    sadm_discovered = true;
+                    discoverSerial.Close();
+                }
+
                 connection.Open();
                 connectionStatus = ConnectionStatus.Handshake;
 
@@ -346,11 +353,11 @@ namespace SatStat
             foreach (DictionaryEntry device in availableCOMPorts)
             {
                 Debug.Log(device.Key + " " + device.Value);
-                SerialPort localSerial = new SerialPort(device.Key.ToString(), 9600);
-                localSerial.ReadTimeout = 3000;
-                localSerial.Open();
+                discoverSerial = new SerialPort(device.Key.ToString(), 9600);
+                discoverSerial.ReadTimeout = 3000;
+                discoverSerial.Open();
 
-                string data = localSerial.ReadLine();
+                string data = discoverSerial.ReadLine();
                 Debug.Log(data);
                 try
                 {
@@ -363,12 +370,14 @@ namespace SatStat
                         if(jsonData["device_type"].Equals(target))
                         {
                             sadm_discovered = true;
+                            discoverSerial.Close();
+
                             break;
                         }
                     }
                 } catch {}
 
-                localSerial.Close();
+                discoverSerial.Close();
             }
         }
     }

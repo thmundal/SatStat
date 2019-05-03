@@ -82,9 +82,9 @@ namespace SatStat
                 {
                     if (output != null)
                     {
-                        if (output.ContainsKey("request"))
+                        if (output.ContainsKey("instruction"))
                         {
-                            string instruction_name = output["request"].Value<string>();
+                            string instruction_name = output["instruction"].Value<string>();
                             double deg_val = 0;
                             double steps_val = 0;
 

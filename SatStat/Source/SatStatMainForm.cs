@@ -165,8 +165,15 @@ namespace SatStat
             {
                 instruction_list = (JObject)payload;
 
+
                 foreach (KeyValuePair<string, JToken> instruction in instruction_list)
                 {
+                    InstructionUIEntry entry = new InstructionUIEntry
+                    {
+                        label = instruction.Key,
+                        attribute = instruction.Key
+                    };
+
                     if(!UITestConfigInstructionSelect.Items.Contains(instruction.Key))
                     {
                         UITestConfigInstructionSelect.Items.Add(instruction.Key);
@@ -254,6 +261,7 @@ namespace SatStat
         public void ReceivePayload(object _payload, string attribute, string label)
         {
             double payload = Convert.ToDouble(_payload);
+            
             lock(plotModel.SyncRoot)
             {
                 // Add data in plot
@@ -427,7 +435,7 @@ namespace SatStat
             if (config.HasInstructionEntries())
             {
                 // Disable UI elements
-                UITestConfigParameterTemplateSelect.Enabled = true;
+                UITestConfigParameterTemplateSelect.Enabled = false;
 
                 last_instruction_index = -1;
                 config.OnQueueAdvance(OnTestQueueAdvance);
@@ -766,14 +774,20 @@ namespace SatStat
 
             if(paramTable.Count > 0)
             {
+                List<string> obsLabels = new List<string>(observedValueLabels);
+
                 Instruction thatInstruction = new Instruction(instruction_name, paramTable);
                 int index = UITestConfigIntructionListGrid.Rows.Add(new string[] { instruction_name, paramTable.ToString(), "pending" });
-                InstructionEntry entry = activeTestConfiguration.AddInstructionEntry(thatInstruction, observedValueLabels, index);
+                InstructionEntry entry = activeTestConfiguration.AddInstructionEntry(thatInstruction, obsLabels, index);
 
                 UITestConfigIntructionListGrid.Rows[index].Tag = entry;
 
                 observedValueLabels.Clear();
                 UITestConfigOutputParamChecklist.ClearSelected();
+                foreach(int i in UITestConfigOutputParamChecklist.CheckedIndices)
+                {
+                    UITestConfigOutputParamChecklist.SetItemCheckState(i, CheckState.Unchecked);
+                }
             }
         }
 
@@ -912,6 +926,7 @@ namespace SatStat
                 SelectConfigParameterTemplate();
             }
         }
+
         private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool isPlotTab = false;
@@ -1002,6 +1017,7 @@ namespace SatStat
         {
             Program.socketHandler.Disconnect();
         }
+
         #endregion
     }
 }
