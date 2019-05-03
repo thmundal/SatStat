@@ -77,7 +77,7 @@ void HWLayer::loop()
 			SADM_functions::auto_rotate();
 		}
 
-		// Runs with an interval equal to the duration
+		// Runs with an interval equal to the sensor_interval_duration
 		if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
 		{
 			// Reads the sensors

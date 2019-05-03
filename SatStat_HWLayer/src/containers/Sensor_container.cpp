@@ -21,7 +21,7 @@ Sensor_container::~Sensor_container()
 }
 
 /**
-*	Read sensor corresponding to the name sent as argument, and return result as Json_container<JsonObject> pointer.
+*	Read sensor corresponding to the name sent as argument.
 */
 void Sensor_container::read_sensor(const String& name)
 {
@@ -30,7 +30,7 @@ void Sensor_container::read_sensor(const String& name)
 }
 
 /**
-*	Reads all sensors in the sensor collection, and return result as a Json_container<JsonObject> pointer.
+*	Reads all sensors in the sensor collection.
 */
 void Sensor_container::read_all_sensors()
 {	

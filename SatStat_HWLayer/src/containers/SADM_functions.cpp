@@ -49,6 +49,13 @@ void SADM_functions::set_ratio(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	The other set_ratio method will pass this one into Function_control.
+*	This means that when calling Function_control::run() in the loop function,
+*	This method will be called until it releases itself from Function_control.
+*	This set_ratio method is the one actually setting the ratio, and it releases itself the first time it's called
+*	as repeated calls is not required.
+*/
 void SADM_functions::set_ratio()
 {
 	factor = ratio;
