@@ -936,6 +936,12 @@ references:
   isSpec: "True"
   fullName: SatStat.Instruction.Instruction
   nameWithType: Instruction.Instruction
+- uid: SatStat.Instruction._ui_index
+  name: _ui_index
+  href: api/SatStat.Instruction.html#SatStat_Instruction__ui_index
+  commentId: F:SatStat.Instruction._ui_index
+  fullName: SatStat.Instruction._ui_index
+  nameWithType: Instruction._ui_index
 - uid: SatStat.Instruction.Create(System.String)
   name: Create(String)
   href: api/SatStat.Instruction.html#SatStat_Instruction_Create_System_String_
@@ -970,12 +976,38 @@ references:
   commentId: F:SatStat.Instruction.feedbackStatus
   fullName: SatStat.Instruction.feedbackStatus
   nameWithType: Instruction.feedbackStatus
+- uid: SatStat.Instruction.Label
+  name: Label
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Label
+  commentId: P:SatStat.Instruction.Label
+  fullName: SatStat.Instruction.Label
+  nameWithType: Instruction.Label
+- uid: SatStat.Instruction.Label*
+  name: Label
+  href: api/SatStat.Instruction.html#SatStat_Instruction_Label_
+  commentId: Overload:SatStat.Instruction.Label
+  isSpec: "True"
+  fullName: SatStat.Instruction.Label
+  nameWithType: Instruction.Label
 - uid: SatStat.Instruction.paramtable
   name: paramtable
   href: api/SatStat.Instruction.html#SatStat_Instruction_paramtable
   commentId: F:SatStat.Instruction.paramtable
   fullName: SatStat.Instruction.paramtable
   nameWithType: Instruction.paramtable
+- uid: SatStat.Instruction.SerializedParamTable
+  name: SerializedParamTable
+  href: api/SatStat.Instruction.html#SatStat_Instruction_SerializedParamTable
+  commentId: P:SatStat.Instruction.SerializedParamTable
+  fullName: SatStat.Instruction.SerializedParamTable
+  nameWithType: Instruction.SerializedParamTable
+- uid: SatStat.Instruction.SerializedParamTable*
+  name: SerializedParamTable
+  href: api/SatStat.Instruction.html#SatStat_Instruction_SerializedParamTable_
+  commentId: Overload:SatStat.Instruction.SerializedParamTable
+  isSpec: "True"
+  fullName: SatStat.Instruction.SerializedParamTable
+  nameWithType: Instruction.SerializedParamTable
 - uid: SatStat.Instruction.toJObject
   name: toJObject()
   href: api/SatStat.Instruction.html#SatStat_Instruction_toJObject
@@ -992,7 +1024,14 @@ references:
 - uid: SatStat.Instruction.UI_Index
   name: UI_Index
   href: api/SatStat.Instruction.html#SatStat_Instruction_UI_Index
-  commentId: F:SatStat.Instruction.UI_Index
+  commentId: P:SatStat.Instruction.UI_Index
+  fullName: SatStat.Instruction.UI_Index
+  nameWithType: Instruction.UI_Index
+- uid: SatStat.Instruction.UI_Index*
+  name: UI_Index
+  href: api/SatStat.Instruction.html#SatStat_Instruction_UI_Index_
+  commentId: Overload:SatStat.Instruction.UI_Index
+  isSpec: "True"
   fullName: SatStat.Instruction.UI_Index
   nameWithType: Instruction.UI_Index
 - uid: SatStat.InstructionEntry
@@ -1004,15 +1043,42 @@ references:
 - uid: SatStat.InstructionEntry.instruction
   name: instruction
   href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_instruction
-  commentId: F:SatStat.InstructionEntry.instruction
+  commentId: P:SatStat.InstructionEntry.instruction
+  fullName: SatStat.InstructionEntry.instruction
+  nameWithType: InstructionEntry.instruction
+- uid: SatStat.InstructionEntry.instruction*
+  name: instruction
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_instruction_
+  commentId: Overload:SatStat.InstructionEntry.instruction
+  isSpec: "True"
   fullName: SatStat.InstructionEntry.instruction
   nameWithType: InstructionEntry.instruction
 - uid: SatStat.InstructionEntry.observedValueLabels
   name: observedValueLabels
   href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_observedValueLabels
-  commentId: F:SatStat.InstructionEntry.observedValueLabels
+  commentId: P:SatStat.InstructionEntry.observedValueLabels
   fullName: SatStat.InstructionEntry.observedValueLabels
   nameWithType: InstructionEntry.observedValueLabels
+- uid: SatStat.InstructionEntry.observedValueLabels*
+  name: observedValueLabels
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_observedValueLabels_
+  commentId: Overload:SatStat.InstructionEntry.observedValueLabels
+  isSpec: "True"
+  fullName: SatStat.InstructionEntry.observedValueLabels
+  nameWithType: InstructionEntry.observedValueLabels
+- uid: SatStat.InstructionEntry.setInstructionIndex(System.Int32)
+  name: setInstructionIndex(Int32)
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_setInstructionIndex_System_Int32_
+  commentId: M:SatStat.InstructionEntry.setInstructionIndex(System.Int32)
+  fullName: SatStat.InstructionEntry.setInstructionIndex(System.Int32)
+  nameWithType: InstructionEntry.setInstructionIndex(Int32)
+- uid: SatStat.InstructionEntry.setInstructionIndex*
+  name: setInstructionIndex
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_setInstructionIndex_
+  commentId: Overload:SatStat.InstructionEntry.setInstructionIndex
+  isSpec: "True"
+  fullName: SatStat.InstructionEntry.setInstructionIndex
+  nameWithType: InstructionEntry.setInstructionIndex
 - uid: SatStat.InstructionUIEntry
   name: InstructionUIEntry
   href: api/SatStat.InstructionUIEntry.html
@@ -2644,6 +2710,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.TestConfiguration
   nameWithType: TestConfiguration.TestConfiguration
+- uid: SatStat.TestConfiguration.Abort
+  name: Abort()
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Abort
+  commentId: M:SatStat.TestConfiguration.Abort
+  fullName: SatStat.TestConfiguration.Abort()
+  nameWithType: TestConfiguration.Abort()
+- uid: SatStat.TestConfiguration.Abort*
+  name: Abort
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Abort_
+  commentId: Overload:SatStat.TestConfiguration.Abort
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Abort
+  nameWithType: TestConfiguration.Abort
 - uid: SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction,System.Collections.Generic.List{System.String},System.Int32)
   name: AddInstructionEntry(Instruction, List<String>, Int32)
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstructionEntry_SatStat_Instruction_System_Collections_Generic_List_System_String__System_Int32_
@@ -2653,6 +2732,12 @@ references:
   fullName.vb: SatStat.TestConfiguration.AddInstructionEntry(SatStat.Instruction, System.Collections.Generic.List(Of System.String), System.Int32)
   nameWithType: TestConfiguration.AddInstructionEntry(Instruction, List<String>, Int32)
   nameWithType.vb: TestConfiguration.AddInstructionEntry(Instruction, List(Of String), Int32)
+- uid: SatStat.TestConfiguration.AddInstructionEntry(SatStat.InstructionEntry)
+  name: AddInstructionEntry(InstructionEntry)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstructionEntry_SatStat_InstructionEntry_
+  commentId: M:SatStat.TestConfiguration.AddInstructionEntry(SatStat.InstructionEntry)
+  fullName: SatStat.TestConfiguration.AddInstructionEntry(SatStat.InstructionEntry)
+  nameWithType: TestConfiguration.AddInstructionEntry(InstructionEntry)
 - uid: SatStat.TestConfiguration.AddInstructionEntry*
   name: AddInstructionEntry
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_AddInstructionEntry_
@@ -2699,6 +2784,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.Id
   nameWithType: TestConfiguration.Id
+- uid: SatStat.TestConfiguration.instructionEntries
+  name: instructionEntries
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_instructionEntries
+  commentId: P:SatStat.TestConfiguration.instructionEntries
+  fullName: SatStat.TestConfiguration.instructionEntries
+  nameWithType: TestConfiguration.instructionEntries
+- uid: SatStat.TestConfiguration.instructionEntries*
+  name: instructionEntries
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_instructionEntries_
+  commentId: Overload:SatStat.TestConfiguration.instructionEntries
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.instructionEntries
+  nameWithType: TestConfiguration.instructionEntries
 - uid: SatStat.TestConfiguration.InstructionEntryIndex(SatStat.InstructionEntry)
   name: InstructionEntryIndex(InstructionEntry)
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_InstructionEntryIndex_SatStat_InstructionEntry_
@@ -2712,19 +2810,6 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.InstructionEntryIndex
   nameWithType: TestConfiguration.InstructionEntryIndex
-- uid: SatStat.TestConfiguration.Instructions
-  name: Instructions
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Instructions
-  commentId: P:SatStat.TestConfiguration.Instructions
-  fullName: SatStat.TestConfiguration.Instructions
-  nameWithType: TestConfiguration.Instructions
-- uid: SatStat.TestConfiguration.Instructions*
-  name: Instructions
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Instructions_
-  commentId: Overload:SatStat.TestConfiguration.Instructions
-  isSpec: "True"
-  fullName: SatStat.TestConfiguration.Instructions
-  nameWithType: TestConfiguration.Instructions
 - uid: SatStat.TestConfiguration.IsRunning
   name: IsRunning
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_IsRunning
@@ -2790,6 +2875,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.OnPayloadReceive
   nameWithType: TestConfiguration.OnPayloadReceive
+- uid: SatStat.TestConfiguration.OnQueueAbort(System.Action)
+  name: OnQueueAbort(Action)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAbort_System_Action_
+  commentId: M:SatStat.TestConfiguration.OnQueueAbort(System.Action)
+  fullName: SatStat.TestConfiguration.OnQueueAbort(System.Action)
+  nameWithType: TestConfiguration.OnQueueAbort(Action)
+- uid: SatStat.TestConfiguration.OnQueueAbort*
+  name: OnQueueAbort
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAbort_
+  commentId: Overload:SatStat.TestConfiguration.OnQueueAbort
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.OnQueueAbort
+  nameWithType: TestConfiguration.OnQueueAbort
 - uid: SatStat.TestConfiguration.OnQueueAdvance(System.Action{SatStat.InstructionEntry})
   name: OnQueueAdvance(Action<InstructionEntry>)
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_OnQueueAdvance_System_Action_SatStat_InstructionEntry__
@@ -2880,6 +2978,35 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.RunQueuedInstruction
   nameWithType: TestConfiguration.RunQueuedInstruction
+- uid: SatStat.TestConfiguration.Save(System.Action{SatStat.TestConfiguration})
+  name: Save(Action<TestConfiguration>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Save_System_Action_SatStat_TestConfiguration__
+  commentId: M:SatStat.TestConfiguration.Save(System.Action{SatStat.TestConfiguration})
+  name.vb: Save(Action(Of TestConfiguration))
+  fullName: SatStat.TestConfiguration.Save(System.Action<SatStat.TestConfiguration>)
+  fullName.vb: SatStat.TestConfiguration.Save(System.Action(Of SatStat.TestConfiguration))
+  nameWithType: TestConfiguration.Save(Action<TestConfiguration>)
+  nameWithType.vb: TestConfiguration.Save(Action(Of TestConfiguration))
+- uid: SatStat.TestConfiguration.Save*
+  name: Save
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Save_
+  commentId: Overload:SatStat.TestConfiguration.Save
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.Save
+  nameWithType: TestConfiguration.Save
+- uid: SatStat.TestConfiguration.ToString
+  name: ToString()
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_ToString
+  commentId: M:SatStat.TestConfiguration.ToString
+  fullName: SatStat.TestConfiguration.ToString()
+  nameWithType: TestConfiguration.ToString()
+- uid: SatStat.TestConfiguration.ToString*
+  name: ToString
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_ToString_
+  commentId: Overload:SatStat.TestConfiguration.ToString
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.ToString
+  nameWithType: TestConfiguration.ToString
 - uid: SatStat.ThreadHelper
   name: ThreadHelper
   href: api/SatStat.ThreadHelper.html

@@ -374,6 +374,35 @@ namespace SatStat
                 { "sensor_list", sensor_list }
             });
         }
+
+        private void OnTestQueueAdvance(InstructionEntry instructionEntry)
+        {
+            UITestConfigIntructionListGrid.ClearSelection();
+            Instruction instruction = instructionEntry.instruction;
+
+            int index = instructionEntry.instruction._ui_index; // activeTestConfiguration.InstructionEntryIndex(instructionEntry);
+
+            if (last_instruction_index > -1)
+            {
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished ";
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
+            }
+
+            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running ";
+            UITestConfigIntructionListGrid.Rows[index].Selected = true;
+            last_instruction_index = index;
+        }
+
+        private void OnTestQueueComplete(InstructionEntry instructionEntry)
+        {
+            ThreadHelper.UI_Invoke(this, null, UITestConfigIntructionListGrid, (data) => {
+                Instruction instruction = instructionEntry.instruction;
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
+                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
+
+                UITestConfigParameterTemplateSelect.Enabled = true;
+            }, null);
+        }
         #endregion
 
         #region ParameterControl methods
@@ -428,6 +457,37 @@ namespace SatStat
             {
                 UITestConfigParameterTemplateSelect.Items.Add(template.Name);
             }
+
+            using(LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
+            {
+                LiteCollection<TestConfiguration> collection = db.GetCollection<TestConfiguration>(Program.settings.TestConfigDatabase);
+
+                IEnumerable<TestConfiguration> result = collection.FindAll();
+
+                foreach(TestConfiguration config in result)
+                {
+                    UITestConfigSavedConfigsSelect.Items.Add(config);
+                }
+            }
+        }
+
+        private void loadTestConfiguration(TestConfiguration selectedConfig)
+        {
+            activeTestConfiguration = selectedConfig;
+
+            foreach(InstructionEntry entry in selectedConfig.instructionEntries)
+            {
+                AddTestConfigInstructionRow(entry);
+            }
+        }
+
+        private int AddTestConfigInstructionRow(InstructionEntry instructionEntry)
+        {
+            Instruction instruction = instructionEntry.instruction;
+            int index = UITestConfigIntructionListGrid.Rows.Add(new string[] { instruction.Label, instruction.SerializedParamTable, "pending" });
+
+            UITestConfigIntructionListGrid.Rows[index].Tag = instructionEntry;
+            return index;
         }
 
         private void RunTestConfiguration(TestConfiguration config, DataStream stream)
@@ -446,6 +506,14 @@ namespace SatStat
             {
                 MessageBox.Show("There are no instructions in the queue");
                 return;
+            }
+        }
+
+        private void AbortTestConfiguration()
+        {
+            if(activeTestConfiguration != null)
+            {
+                activeTestConfiguration.Abort();
             }
         }
 
@@ -742,8 +810,8 @@ namespace SatStat
 
             string instruction_name = UITestConfigInstructionSelect.SelectedItem.ToString();
             JObject paramTable = new JObject();
-            //paramTable["instruction"] = instruction_name;
 
+            // Get parameters from the parameters data grid input
             for(int row=0; row<UITestConfigInstructionParameterGrid.Rows.Count; row++)
             {
                 string key = null;
@@ -766,8 +834,6 @@ namespace SatStat
 
                 if(key != null && value != null)
                 {
-                    // Does not support decimals
-                    //paramTable.Add(key, JToken.Parse(value.ToString()));
                     paramTable[key] = JToken.FromObject(value);
                 }
             }
@@ -777,10 +843,15 @@ namespace SatStat
                 List<string> obsLabels = new List<string>(observedValueLabels);
 
                 Instruction thatInstruction = new Instruction(instruction_name, paramTable);
-                int index = UITestConfigIntructionListGrid.Rows.Add(new string[] { instruction_name, paramTable.ToString(), "pending" });
-                InstructionEntry entry = activeTestConfiguration.AddInstructionEntry(thatInstruction, obsLabels, index);
 
-                UITestConfigIntructionListGrid.Rows[index].Tag = entry;
+                InstructionEntry entry = new InstructionEntry
+                {
+                    instruction = thatInstruction,
+                    observedValueLabels = obsLabels
+                };
+                int index = AddTestConfigInstructionRow(entry);
+                entry.setInstructionIndex(index);
+                activeTestConfiguration.AddInstructionEntry(entry);
 
                 observedValueLabels.Clear();
                 UITestConfigOutputParamChecklist.ClearSelected();
@@ -902,9 +973,22 @@ namespace SatStat
             SelectConfigParameterTemplate();
         }
 
+        private void UITestConfigName_TextChanged(object sender, EventArgs e)
+        {
+            if(activeTestConfiguration != null)
+            {
+                activeTestConfiguration.Name = UITestConfigName.Text;
+            }
+        }
+
         private void UITestConfigSaveButton_Click(object sender, EventArgs e)
         {
-
+            if (activeTestConfiguration != null)
+            {
+                activeTestConfiguration.Save((config) => {
+                    UITestConfigSavedConfigsSelect.Items.Add(config);
+                });
+            }
         }
 
         private void UITestConfigUseCurrentParamConfigCheck_CheckedChanged(object sender, EventArgs e)
@@ -953,33 +1037,6 @@ namespace SatStat
             }
         }
 
-        private void OnTestQueueAdvance(InstructionEntry instructionEntry)
-        {
-            UITestConfigIntructionListGrid.ClearSelection();
-            Instruction instruction = instructionEntry.instruction;
-
-            int index = instructionEntry.instruction.UI_Index; // activeTestConfiguration.InstructionEntryIndex(instructionEntry);
-
-            if (last_instruction_index > -1)
-            {
-                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished ";
-                UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
-            }
-
-            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running ";
-            UITestConfigIntructionListGrid.Rows[index].Selected = true;
-            last_instruction_index = index;
-        }
-
-        private void OnTestQueueComplete(InstructionEntry instructionEntry)
-        {
-            Instruction instruction = instructionEntry.instruction;
-            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[2].Value = "Finished";
-            UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
-
-            UITestConfigParameterTemplateSelect.Enabled = true;
-        }
-
         private void UITestConfigOutputParamChecklist_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(UITestConfigOutputParamChecklist.SelectedItem != null)
@@ -1016,6 +1073,18 @@ namespace SatStat
         private void stopSocketServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.socketHandler.Disconnect();
+        }
+
+        private void UIAbortTestBtn_Click(object sender, EventArgs e)
+        {
+            AbortTestConfiguration();
+        }
+
+        private void UITestConfigSavedConfigsSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TestConfiguration selectedConfig = (TestConfiguration) UITestConfigSavedConfigsSelect.SelectedItem;
+
+            loadTestConfiguration(selectedConfig);
         }
 
         #endregion

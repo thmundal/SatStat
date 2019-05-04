@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
-    public struct InstructionEntry
-    {
-        public Instruction instruction;
-        public List<string> observedValueLabels;
-    }
 
     /// <summary>
     /// An object of this class holds a queue of Instructions to run and a Parameter control template to use for observing values during a test-run.
@@ -20,10 +15,10 @@ namespace SatStat
     public class TestConfiguration
     {
         public ObjectId Id { get; set; }
-        public List<Instruction> Instructions { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public ParameterControlTemplate ParameterControlTemplate { get; set; }
+        public List<InstructionEntry> instructionEntries { get; set; }
 
         /// <summary>
         /// Holds the current instruction queue
@@ -55,6 +50,8 @@ namespace SatStat
         /// </summary>
         private Action<InstructionEntry> onQueueCompleteCallback;
 
+        private Action onQueueAbortedCallback;
+
         private bool is_running = false;
 
         public bool IsRunning
@@ -65,7 +62,6 @@ namespace SatStat
             }
         }
 
-        private List<InstructionEntry> instructionEntries;
         private Queue<InstructionEntry> instructionEntryQueue;
         private InstructionEntry currentInstructionEntry = new InstructionEntry();
 
@@ -75,8 +71,6 @@ namespace SatStat
         public TestConfiguration()
         {
             internalReceiver = new DataReceiver();
-            //instructionQueue = new Queue<Instruction>();
-            Instructions = new List<Instruction>();
             ParameterControlTemplate = new ParameterControlTemplate();
             instructionEntries = new List<InstructionEntry>();
             instructionEntryQueue = new Queue<InstructionEntry>();
@@ -84,9 +78,14 @@ namespace SatStat
             // Possible copy all instructions into instructionEntries if loaded from DB
         }
 
+        public void AddInstructionEntry(InstructionEntry entry)
+        {
+            instructionEntries.Add(entry);
+        }
+
         public InstructionEntry AddInstructionEntry(Instruction instr, List<string> observedLabels, int uindex = -1)
         {
-            instr.UI_Index = uindex;
+            instr._ui_index = uindex;
 
             InstructionEntry entry = new InstructionEntry
             {
@@ -136,7 +135,7 @@ namespace SatStat
             // Reset the queue position and clear the instruction queue. Also sort the instructions list by 
             // their UI index so that we execute the instructions in the correct order
             queue_position = -1;
-            List<InstructionEntry> sortedInstructionEntries = instructionEntries.OrderBy(o => o.instruction.UI_Index).ToList();
+            List<InstructionEntry> sortedInstructionEntries = instructionEntries.OrderBy(o => o.instruction._ui_index).ToList();
 
             instructionEntryQueue.Clear();
             foreach(InstructionEntry entry in sortedInstructionEntries)
@@ -177,6 +176,18 @@ namespace SatStat
             // Start instruction queue execution
             is_running = true;
             RunQueuedInstruction(stream);
+        }
+
+        public void Abort()
+        {
+            is_running = false;
+            instructionEntryQueue.Clear();
+            queue_position = 0;
+
+            if(onQueueAbortedCallback != null)
+            {
+                onQueueAbortedCallback.Invoke();
+            }
         }
 
         public void loadParameterControlTemplate(ParameterControlTemplate template, DataStream stream)
@@ -229,14 +240,14 @@ namespace SatStat
 
             } else
             {
-                if(onQueueCompleteCallback != null)
-                {
-                    onQueueCompleteCallback.Invoke(currentInstructionEntry);
-                }
                 queue_position = -1;
                 internalReceiver.Observe = false;
                 is_running = false;
 
+                if(onQueueCompleteCallback != null)
+                {
+                    onQueueCompleteCallback.Invoke(currentInstructionEntry);
+                }
                 Debug.Log("Instruction queue is empty");
                 // Queue is empty
             }
@@ -287,6 +298,43 @@ namespace SatStat
         public void OnQueueComplete(Action<InstructionEntry> callback)
         {
             onQueueCompleteCallback = callback;
+        }
+
+        public void OnQueueAbort(Action callback)
+        {
+            onQueueAbortedCallback = callback;
+        }
+
+        public void Save(Action<TestConfiguration> cb = null)
+        {
+            if(Name == String.Empty || Name == null)
+            {
+                // Must have a name
+                return;
+            }
+
+            using (LiteDatabase db = new LiteDatabase(Program.settings.DatabasePath))
+            {
+                LiteCollection<TestConfiguration> collection = db.GetCollection<TestConfiguration>(Program.settings.TestConfigDatabase);
+
+                if(this.Id == null)
+                {
+                    collection.Insert(this);
+                } else
+                {
+                    collection.Update(this);
+                }
+
+                if(cb != null)
+                {
+                    cb.Invoke(this);
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

@@ -8,6 +8,16 @@ using System.Threading.Tasks;
 
 namespace SatStat
 {
+    public class InstructionEntry
+    {
+        public Instruction instruction { get; set; }
+        public List<string> observedValueLabels { get; set; }
+        public void setInstructionIndex(int index)
+        {
+            instruction.UI_Index = index;
+        }
+    }
+
     /// <summary>
     /// Representing an instruction that can be run on the Hardware Layer
     /// </summary>
@@ -18,10 +28,30 @@ namespace SatStat
         /// </summary>
         protected JObject paramtable;
 
+        public string SerializedParamTable {
+            get {
+                return JSON.serialize(paramtable);
+            }
+            set {
+                paramtable = JSON.parse<JObject>(value);
+            }
+        }
+
+        public string Label { get; set; }
+
+        public int UI_Index { get
+            {
+                return _ui_index;
+            }
+            set
+            {
+                _ui_index = value;
+            }
+        }
         /// <summary>
         /// Refers to the index in the list of queued instructions this instruction is placed at in the test planning UI
         /// </summary>
-        public int UI_Index = -1;
+        public int _ui_index = -1;
 
         public ObservableNumericValueStatus feedbackStatus = ObservableNumericValueStatus.Unknown;
 
@@ -50,7 +80,7 @@ namespace SatStat
                     paramtable[param] = new JValue(arguments[i]);
                 }
             }
-
+            Label = instr;
             Debug.Log(JSON.serialize(paramtable));
         }
 

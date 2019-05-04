@@ -108,6 +108,7 @@
             this.UITestConfigInstructionRunNumberInput = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UIAbortTestBtn = new System.Windows.Forms.Button();
             this.UITestDeviceSelect = new System.Windows.Forms.ListBox();
             this.UITestDeviceLabel = new System.Windows.Forms.Label();
             this.UITestConfigRunTestBtn = new System.Windows.Forms.Button();
@@ -933,6 +934,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.UIAbortTestBtn);
             this.groupBox2.Controls.Add(this.UITestDeviceSelect);
             this.groupBox2.Controls.Add(this.UITestDeviceLabel);
             this.groupBox2.Controls.Add(this.UITestConfigRunTestBtn);
@@ -953,6 +955,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test configuration";
+            // 
+            // UIAbortTestBtn
+            // 
+            this.UIAbortTestBtn.Location = new System.Drawing.Point(335, 118);
+            this.UIAbortTestBtn.Name = "UIAbortTestBtn";
+            this.UIAbortTestBtn.Size = new System.Drawing.Size(75, 23);
+            this.UIAbortTestBtn.TabIndex = 13;
+            this.UIAbortTestBtn.Text = "Abort test";
+            this.UIAbortTestBtn.UseVisualStyleBackColor = true;
+            this.UIAbortTestBtn.Click += new System.EventHandler(this.UIAbortTestBtn_Click);
             // 
             // UITestDeviceSelect
             // 
@@ -975,7 +987,7 @@
             // 
             this.UITestConfigRunTestBtn.Location = new System.Drawing.Point(244, 118);
             this.UITestConfigRunTestBtn.Name = "UITestConfigRunTestBtn";
-            this.UITestConfigRunTestBtn.Size = new System.Drawing.Size(130, 23);
+            this.UITestConfigRunTestBtn.Size = new System.Drawing.Size(85, 23);
             this.UITestConfigRunTestBtn.TabIndex = 10;
             this.UITestConfigRunTestBtn.Text = "Run test";
             this.UITestConfigRunTestBtn.UseVisualStyleBackColor = true;
@@ -997,12 +1009,13 @@
             this.UITestConfigSavedConfigsSelect.Name = "UITestConfigSavedConfigsSelect";
             this.UITestConfigSavedConfigsSelect.Size = new System.Drawing.Size(287, 95);
             this.UITestConfigSavedConfigsSelect.TabIndex = 8;
+            this.UITestConfigSavedConfigsSelect.SelectedIndexChanged += new System.EventHandler(this.UITestConfigSavedConfigsSelect_SelectedIndexChanged);
             // 
             // UITestConfigSaveButton
             // 
             this.UITestConfigSaveButton.Location = new System.Drawing.Point(244, 88);
             this.UITestConfigSaveButton.Name = "UITestConfigSaveButton";
-            this.UITestConfigSaveButton.Size = new System.Drawing.Size(130, 23);
+            this.UITestConfigSaveButton.Size = new System.Drawing.Size(163, 23);
             this.UITestConfigSaveButton.TabIndex = 7;
             this.UITestConfigSaveButton.Text = "Save test configuration";
             this.UITestConfigSaveButton.UseVisualStyleBackColor = true;
@@ -1061,6 +1074,7 @@
             this.UITestConfigName.Name = "UITestConfigName";
             this.UITestConfigName.Size = new System.Drawing.Size(176, 20);
             this.UITestConfigName.TabIndex = 1;
+            this.UITestConfigName.TextChanged += new System.EventHandler(this.UITestConfigName_TextChanged);
             // 
             // label1
             // 
@@ -1336,6 +1350,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem stopSocketServerToolStripMenuItem;
+        private System.Windows.Forms.Button UIAbortTestBtn;
     }
 }
 

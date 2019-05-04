@@ -54,6 +54,7 @@ namespace SatStat
             }
 
             connected_clients.Clear();
+            server.Stop();
             ThreadHelper.SetNetworkConnectionStatus("Disconnected");
             connectionStatus = ConnectionStatus.Disconnected;
             return true;

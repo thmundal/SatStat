@@ -352,15 +352,15 @@ namespace SatStat
 
             foreach (DictionaryEntry device in availableCOMPorts)
             {
-                Debug.Log(device.Key + " " + device.Value);
                 discoverSerial = new SerialPort(device.Key.ToString(), 9600);
                 discoverSerial.ReadTimeout = 3000;
                 discoverSerial.Open();
 
-                string data = discoverSerial.ReadLine();
-                Debug.Log(data);
                 try
                 {
+                    string data = discoverSerial.ReadLine();
+                    Debug.Log(data);
+
                     JObject jsonData = JSON.parse<JObject>(data);
                     if(jsonData.ContainsKey("device_name"))
                     {
