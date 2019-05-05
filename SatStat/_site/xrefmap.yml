@@ -431,12 +431,12 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.Subscribe
   nameWithType: DataReceiver.Subscribe
-- uid: SatStat.DataReceiver.Unsubscribe(System.String)
-  name: Unsubscribe(String)
-  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Unsubscribe_System_String_
-  commentId: M:SatStat.DataReceiver.Unsubscribe(System.String)
-  fullName: SatStat.DataReceiver.Unsubscribe(System.String)
-  nameWithType: DataReceiver.Unsubscribe(String)
+- uid: SatStat.DataReceiver.Unsubscribe(System.String,SatStat.DataStream)
+  name: Unsubscribe(String, DataStream)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Unsubscribe_System_String_SatStat_DataStream_
+  commentId: M:SatStat.DataReceiver.Unsubscribe(System.String,SatStat.DataStream)
+  fullName: SatStat.DataReceiver.Unsubscribe(System.String, SatStat.DataStream)
+  nameWithType: DataReceiver.Unsubscribe(String, DataStream)
 - uid: SatStat.DataReceiver.Unsubscribe*
   name: Unsubscribe
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_Unsubscribe_
@@ -444,6 +444,19 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.Unsubscribe
   nameWithType: DataReceiver.Unsubscribe
+- uid: SatStat.DataReceiver.UnsubscribeAll
+  name: UnsubscribeAll()
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_UnsubscribeAll
+  commentId: M:SatStat.DataReceiver.UnsubscribeAll
+  fullName: SatStat.DataReceiver.UnsubscribeAll()
+  nameWithType: DataReceiver.UnsubscribeAll()
+- uid: SatStat.DataReceiver.UnsubscribeAll*
+  name: UnsubscribeAll
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_UnsubscribeAll_
+  commentId: Overload:SatStat.DataReceiver.UnsubscribeAll
+  isSpec: "True"
+  fullName: SatStat.DataReceiver.UnsubscribeAll
+  nameWithType: DataReceiver.UnsubscribeAll
 - uid: SatStat.DataStream
   name: DataStream
   href: api/SatStat.DataStream.html

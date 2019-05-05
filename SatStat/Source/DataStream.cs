@@ -172,7 +172,8 @@ namespace SatStat
         {
             if(ConnectProcedure(prm))
             {
-                if(OnConnected_cb != null)
+                connectionStatus = ConnectionStatus.Connected;
+                if (OnConnected_cb != null)
                 {
                     OnConnected_cb.Invoke(this);
                 }
@@ -185,7 +186,8 @@ namespace SatStat
         {
             if(DisconnectProcedure())
             {
-                if(OnDisconnected_cb != null)
+                connectionStatus = ConnectionStatus.Disconnected;
+                if (OnDisconnected_cb != null)
                 {
                     OnDisconnected_cb.Invoke(this);
                 }

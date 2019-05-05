@@ -73,6 +73,7 @@ namespace SatStat
 
             if(!HasSubscription(attribute))
             {
+                stream.Output(Request.Subscription("subscribe", attribute));
                 subscriptions.Add(attribute, sub);
             }
         }
@@ -84,9 +85,18 @@ namespace SatStat
         /// This method should be expanded to unsubscribe from an attribute on a specific stream, in the case where this receiver subscribes on different streams
         /// </remarks>
         /// <param name="attribute">The attribute to unsubscribe to</param>
-        public void Unsubscribe(string attribute)
+        public void Unsubscribe(string attribute, DataStream stream)
         {
             subscriptions.Remove(attribute);
+            stream.Output(Request.Subscription("unsubscribe", attribute));
+        }
+
+        public void UnsubscribeAll()
+        {
+            foreach(KeyValuePair<string, DataSubscription> sub in subscriptions)
+            {
+                subscriptions.Remove(sub.Key);
+            }
         }
 
         /// <summary>

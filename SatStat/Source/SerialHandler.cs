@@ -349,36 +349,52 @@ namespace SatStat
             }
 
             string target = "SADM";
+            string activeCom = String.Empty;
 
-            foreach (DictionaryEntry device in availableCOMPorts)
+            try
             {
-                discoverSerial = new SerialPort(device.Key.ToString(), 9600);
-                discoverSerial.ReadTimeout = 3000;
-                discoverSerial.Open();
-
-                try
+                foreach (DictionaryEntry device in availableCOMPorts)
                 {
+                    activeCom = device.Key.ToString();
+                    discoverSerial = new SerialPort(device.Key.ToString(), 9600);
+                    discoverSerial.ReadTimeout = 3000;
+                    discoverSerial.Open();
+
                     string data = discoverSerial.ReadLine();
                     Debug.Log(data);
 
-                    JObject jsonData = JSON.parse<JObject>(data);
-                    if(jsonData.ContainsKey("device_name"))
+                    try
                     {
-                        Debug.Log("Found device: " + jsonData["device_name"]);
-                        availableCOMPorts[device.Key] = jsonData["device_name"];
-
-                        if(jsonData["device_type"].Equals(target))
+                        JObject jsonData = JSON.parse<JObject>(data);
+                        if(jsonData.ContainsKey("device_name"))
                         {
-                            sadm_discovered = true;
-                            discoverSerial.Close();
+                            Debug.Log("Found device: " + jsonData["device_name"]);
+                            availableCOMPorts[device.Key] = jsonData["device_name"];
 
-                            break;
+                            if(jsonData["device_type"].Equals(target))
+                            {
+                                sadm_discovered = true;
+                                discoverSerial.Close();
+
+                                break;
+                            }
                         }
                     }
-                } catch {}
+                    catch { }
 
-                discoverSerial.Close();
+                    discoverSerial.Close();
+                }
+            } catch(Exception e) {
+                availableCOMPorts.Remove(activeCom);
+                if(discoverSerial.IsOpen)
+                {
+                    discoverSerial.Close();
+                }
+
+                Debug.Log(activeCom);
+                Debug.Log(e.Message + "\n" + e.StackTrace);
             }
+
         }
     }
 

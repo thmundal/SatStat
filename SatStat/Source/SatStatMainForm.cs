@@ -53,6 +53,8 @@ namespace SatStat
         private ObservableNumericValueCollection autoObservableValues;
         private List<string> observedValueLabels = new List<string>();
 
+        private Dictionary<string, DataStream> activeStreams;
+
         private struct LiveDataRow
         {
             public int index;
@@ -95,6 +97,11 @@ namespace SatStat
             Program.serial.OnDisconnected(OnStreamDisconnected);
             Program.streamSimulator.OnDisconnected(OnStreamDisconnected);
             Program.socketHandler.OnDisconnected(OnStreamDisconnected);
+
+            activeStreams = new Dictionary<string, DataStream>();
+            activeStreams.Add("serial", Program.serial);
+            activeStreams.Add("streamSimulator", Program.streamSimulator);
+            activeStreams.Add("socketHandler", Program.socketHandler);
 
             dataReceiver = new DataReceiver { Observe = true };
             dataReceiver.OnPayloadReceived(ReceivePayload);
@@ -589,32 +596,42 @@ namespace SatStat
                 // This has to only be done once?
                 CreateDataSeries(plotModel, attribute);
 
-                if(Program.streamSimulator != null)
-                {
-                    dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
-                }
+                //if(Program.streamSimulator != null)
+                //{
+                //    dataReceiver.Subscribe(Program.streamSimulator, attribute, type);
+                //}
 
-                if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
-                {
-                    dataReceiver.Subscribe(Program.serial, attribute, type);
+                //if(Program.serial != null && Program.serial.ConnectionStatus == ConnectionStatus.Connected)
+                //{
+                //    dataReceiver.Subscribe(Program.serial, attribute, type);
 
-                    Program.serial.Output(Request.Subscription("subscribe", attribute));
-                }
+                //    Program.serial.Output(Request.Subscription("subscribe", attribute));
+                //}
 
-                if(Program.socketHandler != null)
+                //if(Program.socketHandler != null)
+                //{
+                //    dataReceiver.Subscribe(Program.socketHandler, attribute, type);
+                //}
+
+                foreach (KeyValuePair<string, DataStream> stream in activeStreams)
                 {
-                    dataReceiver.Subscribe(Program.socketHandler, attribute, type);
+                    if(stream.Value.ConnectionStatus == ConnectionStatus.Connected)
+                    {
+                        dataReceiver.Subscribe(stream.Value, attribute, type);
+                    }
                 }
 
                 Debug.Log("Subscribed to " + attribute);
             } else
             {
-                if(Program.serial != null)
+                foreach (KeyValuePair<string, DataStream> stream in activeStreams)
                 {
-                    Program.serial.Output(Request.Subscription("unsubscribe", attribute));
+                    if (stream.Value.ConnectionStatus == ConnectionStatus.Connected)
+                    {
+                        dataReceiver.Unsubscribe(attribute, stream.Value);
+                    }
                 }
 
-                dataReceiver.Unsubscribe(attribute);
                 Debug.Log("Unsubscribed to " + attribute);
             }
 
