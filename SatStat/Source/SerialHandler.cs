@@ -351,18 +351,19 @@ namespace SatStat
                 return;
             }
 
-            string target = "SADM";
+            string target = "SatLight SADM V1.0";
             string activeCom = String.Empty;
 
             try
             {
-                foreach (DictionaryEntry device in availableCOMPorts)
+                Hashtable comCopy = new Hashtable(availableCOMPorts);
+                foreach (DictionaryEntry device in comCopy)
+                //for(int i=availableCOMPorts.Count; i>0; i--)
                 {
                     activeCom = device.Key.ToString();
                     discoverSerial = new SerialPort(device.Key.ToString(), 9600);
                     discoverSerial.ReadTimeout = 3000;
                     discoverSerial.Open();
-
                     string data = discoverSerial.ReadLine();
                     Debug.Log(data);
 
@@ -371,15 +372,14 @@ namespace SatStat
                         JObject jsonData = JSON.parse<JObject>(data);
                         if(jsonData.ContainsKey("device_name"))
                         {
+
                             Debug.Log("Found device: " + jsonData["device_name"]);
                             availableCOMPorts[device.Key] = jsonData["device_name"];
 
-                            if(jsonData["device_type"].Equals(target))
+                            if(jsonData["device_name"].ToString() == target)
                             {
                                 sadm_discovered = true;
                                 discoverSerial.Close();
-
-                                availableCOMPorts.GetEnumerator().Reset();
                                 break;
                             }
                         }
