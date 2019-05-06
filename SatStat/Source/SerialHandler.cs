@@ -256,7 +256,10 @@ namespace SatStat
         /// <returns></returns>
         protected override bool ConnectProcedure(ConnectionParameters prm)
         {
-            stream_label = availableCOMPorts[prm.com_port].ToString();
+            if(availableCOMPorts.Contains(prm.com_port))
+            {
+                stream_label = availableCOMPorts[prm.com_port].ToString();
+            }
             DefaultConnect(prm.com_port);
             return false; // Do not invoke connected callback at this point
         }
@@ -376,6 +379,7 @@ namespace SatStat
                                 sadm_discovered = true;
                                 discoverSerial.Close();
 
+                                availableCOMPorts.GetEnumerator().Reset();
                                 break;
                             }
                         }
@@ -384,8 +388,15 @@ namespace SatStat
 
                     discoverSerial.Close();
                 }
-            } catch(Exception e) {
+            } catch(TimeoutException e)
+            {
+                if (discoverSerial.IsOpen)
+                {
+                    discoverSerial.Close();
+                }
                 availableCOMPorts.Remove(activeCom);
+                availableCOMPorts.GetEnumerator().Reset();
+            } catch (Exception e) {
                 if(discoverSerial.IsOpen)
                 {
                     discoverSerial.Close();

@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "E:/Programming/Bachelor/SatStat/SatStat",
+  "source_base_path": "D:/Programming/CSharp/SatStat/SatStat",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "Xjua/IabolyTqaiLhyn+gw=="
+          "hash": "zX2vhtbIpqEJ5R1PHeF0kg=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "TqQJIBwli+oHZzy1WOwo8g=="
+          "hash": "SlyLN3OVrd3Tj7bfuaTWAQ=="
         }
       },
       "is_incremental": true,
@@ -381,10 +381,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialHandler.html",
-          "hash": "qaI40giqaF7u5sqK2Qx/Eg=="
+          "hash": "ivvZpuGnJyghtBSC5j26hg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -393,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SatStat.SerialSettingsCollection.html",
-          "hash": "vAd7jqB4WeOF8nl7fQiy4Q=="
+          "hash": "ARvQhwRobJwZl1L8tNhzKA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -456,7 +456,7 @@
           "hash": "ifdOJJjbHA6bO0urxYydDg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -504,7 +504,7 @@
           "hash": "tyZ+9lH0AaJwWVXCi9tBVA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -548,17 +548,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 38,
-          "skipped_file_count": 37
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 38,
+          "skipped_file_count": 38
         }
       }
     },

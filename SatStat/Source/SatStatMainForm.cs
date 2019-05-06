@@ -148,6 +148,7 @@ namespace SatStat
                 while(Program.serial.ConnectionStatus == ConnectionStatus.Disconnected)
                 {
                     SerialHandler.Discover();
+                    Task.Delay(3000);
                 }
             });
         }
