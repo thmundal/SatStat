@@ -3,7 +3,7 @@
 
 /**
 *	LinkedList is a generic linked list class implementation.
-*	It contains the first Node in the list, and has methods to access and modify theese nodes.
+*	It contains the first Node in the list, and has methods to access and modify these nodes.
 */
 template <class KEY, class VALUE>
 class LinkedList

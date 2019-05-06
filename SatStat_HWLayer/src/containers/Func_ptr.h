@@ -9,7 +9,7 @@ struct Func_ptr
 	typedef TRet(*t_func)(TParams...);
 
 	/**
-	*	Defualt constructor. Setting m_func to nullptr and m_set to false.
+	*	Default constructor. Setting m_func to nullptr and m_set to false.
 	*/
 	Func_ptr()
 		: m_func(nullptr), m_set(false) {}

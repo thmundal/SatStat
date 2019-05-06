@@ -44,7 +44,7 @@ void HWLayer::setup()
 }
 
 /**
-*	Continuously listens for serial inputs, prints read sensor data to serial at a given interval and execute received instructions.
+*	Continuously listens for serial inputs, prints read sensor data to serial at a given interval and execute received messages.
 */
 void HWLayer::loop()
 {

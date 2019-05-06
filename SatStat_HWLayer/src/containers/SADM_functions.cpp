@@ -207,7 +207,7 @@ void SADM_functions::rotate(float degrees)
 *	The other rotate methods will pass this one into Function_control.
 *	This means that when calling Function_control::run() in the loop function,
 *	This method will be called until it releases itself from Function_control.
-*	This rotate method is the one actually doning the rotation.
+*	This rotate method is the one actually doing the rotation.
 */
 void SADM_functions::rotate()
 {	

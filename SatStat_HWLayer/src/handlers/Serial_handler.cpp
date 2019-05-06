@@ -2,7 +2,7 @@
 #include "Serial_handler.h"
 
 /**
-*	Constructor taking a reference to a Sensor_container and an Instruction_handler.
+*	Constructor taking a reference to a Sensor_container and a Message_handler.
 *	Sets all the members.
 */
 Serial_handler::Serial_handler(Sensor_container& sc, Message_handler& ih)
