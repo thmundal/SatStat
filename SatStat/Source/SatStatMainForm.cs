@@ -12,6 +12,7 @@ using OxyPlot.WindowsForms;
 using System.Linq;
 using SatStat.Utils;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace SatStat
 {
@@ -144,13 +145,17 @@ namespace SatStat
         
         private void DiscoverComDevices()
         {
-            Task.Run(() => {
+            Thread t = new Thread(() => {
                 while(Program.serial.ConnectionStatus == ConnectionStatus.Disconnected)
                 {
-                    SerialHandler.Discover();
-                    Task.Delay(3000);
+                    if(SerialHandler.Discover())
+                    {
+                        return;
+                    }
+                    Thread.Sleep(3000);
                 }
             });
+            t.Start();
         }
 
         private void CreateDataSeries(PlotModel model, string title)

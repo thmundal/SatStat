@@ -344,11 +344,11 @@ namespace SatStat
         }
 
 
-        public static void Discover()
+        public static bool Discover()
         {
             if(sadm_discovered)
             {
-                return;
+                return true;
             }
 
             string target = "SatLight SADM V1.0";
@@ -358,7 +358,6 @@ namespace SatStat
             {
                 Hashtable comCopy = new Hashtable(availableCOMPorts);
                 foreach (DictionaryEntry device in comCopy)
-                //for(int i=availableCOMPorts.Count; i>0; i--)
                 {
                     activeCom = device.Key.ToString();
                     discoverSerial = new SerialPort(device.Key.ToString(), 9600);
@@ -380,6 +379,7 @@ namespace SatStat
                             {
                                 sadm_discovered = true;
                                 discoverSerial.Close();
+                                return true;
                                 break;
                             }
                         }
@@ -405,7 +405,7 @@ namespace SatStat
                 Debug.Log(activeCom);
                 Debug.Log(e.Message + "\n" + e.StackTrace);
             }
-
+            return false;
         }
     }
 
