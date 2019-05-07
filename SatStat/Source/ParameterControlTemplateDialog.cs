@@ -27,11 +27,13 @@ namespace SatStat
                 UITemplateLoadButton.Visible = true;
                 UITemplateSaveButton.Visible = false;
                 AcceptButton = UITemplateLoadButton;
+                Text = "Load parameter control template";
             } else
             {
                 UITemplateLoadButton.Visible = false;
                 UITemplateSaveButton.Visible = true;
                 AcceptButton = UITemplateSaveButton;
+                Text = "Save parameter control template";
             }
 
             templateList = Program.app.parameterControlTemplates;

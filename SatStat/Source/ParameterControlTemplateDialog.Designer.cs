@@ -36,10 +36,10 @@
             this.UITemplateLoadButton = new System.Windows.Forms.Button();
             this.UITemplateSaveButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UIParameterControlTemplateDescriptionInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.UIParameterTemplateNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.UIParameterControlTemplateDescriptionInput = new System.Windows.Forms.TextBox();
             this.UIParameterTemplateDeleteBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -141,6 +141,23 @@
             this.panel1.Size = new System.Drawing.Size(267, 188);
             this.panel1.TabIndex = 3;
             // 
+            // UIParameterControlTemplateDescriptionInput
+            // 
+            this.UIParameterControlTemplateDescriptionInput.Location = new System.Drawing.Point(10, 65);
+            this.UIParameterControlTemplateDescriptionInput.Multiline = true;
+            this.UIParameterControlTemplateDescriptionInput.Name = "UIParameterControlTemplateDescriptionInput";
+            this.UIParameterControlTemplateDescriptionInput.Size = new System.Drawing.Size(248, 108);
+            this.UIParameterControlTemplateDescriptionInput.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Description";
+            // 
             // UIParameterTemplateNameInput
             // 
             this.UIParameterTemplateNameInput.Location = new System.Drawing.Point(7, 21);
@@ -156,23 +173,6 @@
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Template name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Description";
-            // 
-            // UIParameterControlTemplateDescriptionInput
-            // 
-            this.UIParameterControlTemplateDescriptionInput.Location = new System.Drawing.Point(10, 65);
-            this.UIParameterControlTemplateDescriptionInput.Multiline = true;
-            this.UIParameterControlTemplateDescriptionInput.Name = "UIParameterControlTemplateDescriptionInput";
-            this.UIParameterControlTemplateDescriptionInput.Size = new System.Drawing.Size(248, 108);
-            this.UIParameterControlTemplateDescriptionInput.TabIndex = 3;
             // 
             // UIParameterTemplateDeleteBtn
             // 
@@ -191,7 +191,7 @@
             this.ClientSize = new System.Drawing.Size(594, 251);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ParameterControlTemplateDialog";
-            this.Text = "ParameterControlTemplateSaveDialog";
+            this.Text = "Save parameter control template";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
