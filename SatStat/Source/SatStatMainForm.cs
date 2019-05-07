@@ -55,6 +55,7 @@ namespace SatStat
         private List<string> observedValueLabels = new List<string>();
 
         private Dictionary<string, DataStream> activeStreams;
+        private Thread discoverThread;
 
         private struct LiveDataRow
         {
@@ -145,7 +146,7 @@ namespace SatStat
         
         private void DiscoverComDevices()
         {
-            Thread t = new Thread(() => {
+            discoverThread = new Thread(() => {
                 while(Program.serial.ConnectionStatus == ConnectionStatus.Disconnected)
                 {
                     if(SerialHandler.Discover())
@@ -155,7 +156,7 @@ namespace SatStat
                     Thread.Sleep(3000);
                 }
             });
-            t.Start();
+            discoverThread.Start();
         }
 
         private void CreateDataSeries(PlotModel model, string title)
@@ -555,6 +556,10 @@ namespace SatStat
         private void SatStatMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.serial.Disconnect();
+            if(discoverThread != null && discoverThread.IsAlive)
+            {
+                discoverThread.Abort();
+            }
         }
         
         private void cOMSettingsToolStripMenuItem_Click(object sender, EventArgs e)
