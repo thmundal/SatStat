@@ -56,6 +56,7 @@ namespace SatStat
 
         private Dictionary<string, DataStream> activeStreams;
         private Thread discoverThread;
+        private ComSettingsForm comSettings;
 
         private struct LiveDataRow
         {
@@ -246,6 +247,14 @@ namespace SatStat
                 if(!UITestDeviceSelect.Items.Contains(stream))
                 {
                     int index = UITestDeviceSelect.Items.Add(stream);
+                }
+
+                if(stream == Program.serial)
+                {
+                    if(comSettings != null)
+                    {
+                        comSettings.Close();
+                    }
                 }
             }, null);
 
@@ -564,7 +573,7 @@ namespace SatStat
         
         private void cOMSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ComSettingsForm comSettings = new ComSettingsForm();
+            comSettings = new ComSettingsForm();
             comSettings.ShowDialog();
         }
 
