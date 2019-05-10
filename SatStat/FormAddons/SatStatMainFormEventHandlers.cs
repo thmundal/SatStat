@@ -245,11 +245,22 @@ namespace SatStat
 
                     if (current.OwningColumn.Name == "ParamMin")
                     {
+                        if(obsValue.PlotAnnotationMinLine != null)
+                        {
+                            RemovePlotAnnotationLine(obsValue.PlotAnnotationMinLine);
+                        }
+
                         obsValue.Min = castNumericValue;
+                        obsValue.PlotAnnotationMinLine = AddPlotAnnotationLine(Convert.ToDouble(numericValue), tag, OxyColors.Red);
                     }
                     else if (current.OwningColumn.Name == "ParamMax")
                     {
+                        if (obsValue.PlotAnnotationMaxLine != null)
+                        {
+                            RemovePlotAnnotationLine(obsValue.PlotAnnotationMaxLine);
+                        }
                         obsValue.Max = castNumericValue;
+                        obsValue.PlotAnnotationMaxLine = AddPlotAnnotationLine(Convert.ToDouble(numericValue), tag, OxyColors.Red);
                     }
                 }
             }

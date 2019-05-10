@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using OxyPlot.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace SatStat
         private T minVal;
         private T maxVal;
         private string label;
+        
 
         [BsonIgnore]
         public Type type { get { return typeof(T); } }
@@ -59,6 +61,11 @@ namespace SatStat
         public object Max { get { return maxVal; } set { this.maxVal = (T)value; } }
         public object Min { get { return minVal; } set { this.minVal = (T)value; } }
         public string Label { get { return label; } set { this.label = value; } }
+
+        private LineAnnotation plotAnnotationMaxLine;
+        private LineAnnotation plotAnnotationMinLine;
+        public LineAnnotation PlotAnnotationMaxLine { get { return plotAnnotationMaxLine; } set { plotAnnotationMaxLine= value; } }
+        public LineAnnotation PlotAnnotationMinLine { get { return plotAnnotationMinLine; } set { plotAnnotationMinLine = value; } }
 
         public bool Over()
         {
@@ -265,6 +272,9 @@ namespace SatStat
         /// </summary>
         /// <returns>The different between the current violated max or min</returns>
         object Diff();
+
+        LineAnnotation PlotAnnotationMaxLine{ get; set; }
+        LineAnnotation PlotAnnotationMinLine { get; set; }
 
         ObservableNumericValueStatus Status();
     }

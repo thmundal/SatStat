@@ -13,6 +13,7 @@ using System.Linq;
 using SatStat.Utils;
 using System.Threading.Tasks;
 using System.Threading;
+using OxyPlot.Annotations;
 
 namespace SatStat
 {
@@ -169,6 +170,38 @@ namespace SatStat
 
                 oxPlot.Invalidate();
                 lineSeriesTable.Add(title, ls);
+                plotModel.InvalidatePlot(true);
+            }
+        }
+
+        private LineAnnotation AddPlotAnnotationLine(double yval, string label, OxyColor color)
+        {
+            LineAnnotation line = new LineAnnotation
+            {
+                StrokeThickness = 1,
+                Color = color,
+                Type = LineAnnotationType.Horizontal,
+                Text = label,
+                TextColor = OxyColors.Black,
+                Y = yval,
+                X = 0
+            };
+
+            if(!plotModel.Annotations.Contains(line))
+            {
+                plotModel.Annotations.Add(line);
+                int index = plotModel.Annotations.IndexOf(line);
+                plotModel.InvalidatePlot(true);
+            }
+
+            return line;
+        }
+
+        private void RemovePlotAnnotationLine(LineAnnotation line)
+        {
+            if(plotModel.Annotations.Contains(line))
+            {
+                plotModel.Annotations.Remove(line);
                 plotModel.InvalidatePlot(true);
             }
         }

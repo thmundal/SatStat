@@ -20,7 +20,7 @@ namespace SatStat.Utils
         /// <returns>The resulted value cast to an object type of the corresponding description</returns>
         public static object ToType(object o, string type)
         {
-            if(o.ToString() == String.Empty && type != "string")
+            if(o == null || o.ToString() == String.Empty && type != "string")
             {
                 o = 0;
             }

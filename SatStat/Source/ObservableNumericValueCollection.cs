@@ -170,6 +170,11 @@ namespace SatStat
             {
                 IObservableNumericValue o = valueCollection[i];
 
+                if (o == null)
+                {
+                    continue;
+                }
+
                 bool a = value.Value.Equals(o.Value);
                 bool b = value.Label == o.Label;
                 bool c = value.Value.GetType() == o.Value.GetType();
@@ -224,12 +229,22 @@ namespace SatStat
 
         public bool Remove(IObservableNumericValue value)
         {
-            throw new NotImplementedException();
+            for(int i=0; i < valueCollection.Length; i++)
+            {
+                IObservableNumericValue v = valueCollection[i];
+                if (v == value)
+                {
+                    valueCollection[i] = null;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            valueCollection[index] = null;
         }
 
         public void CopyTo(IObservableNumericValue[] array, int index)
@@ -269,6 +284,14 @@ namespace SatStat
         public bool MoveNext()
         {
             position++;
+            if (position < valueCollection.Length)
+            {
+                if (valueCollection[position] == null)
+                {
+                    return MoveNext();
+                }
+            }
+
             return (position < valueCollection.Length);
         }
 
