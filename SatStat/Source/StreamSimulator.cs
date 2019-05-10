@@ -48,93 +48,98 @@ namespace SatStat
 
             while (running)
             {
-                JObject output = null;
-                if(output_buffer.Count > 0)
-                {
-                    output = output_buffer.Dequeue();
-                }
-
-                string input = null;
-
-                if(!connected)
-                {
-                    if (input_buffer.Count > 0)
+                try {
+                    JObject output = null;
+                    if (output_buffer.Count > 0)
                     {
-                        input = input_buffer.Dequeue();
+                        output = output_buffer.Dequeue();
                     }
 
-                    if (output != null && output.ContainsKey("serial_handshake"))
-                    {
-                        StartHandshake();
-                    }
-                    if(input != null)
-                    {
-                        JObject inputParsed = Parse(input);
+                    string input = null;
 
-                        if(inputParsed.ContainsKey("serial_handshake"))
+                    if (!connected)
+                    {
+                        if (input_buffer.Count > 0)
                         {
-                            // Set up "serial connection"
-                            EndHandshake();
-                            connected = true;
+                            input = input_buffer.Dequeue();
                         }
-                    }
-                } else
-                {
-                    if (output != null)
-                    {
-                        if (output.ContainsKey("instruction"))
+
+                        if (output != null && output.ContainsKey("serial_handshake"))
                         {
-                            string instruction_name = output["instruction"].Value<string>();
-                            double deg_val = 0;
-                            double steps_val = 0;
-
-                            try
-                            {
-                                deg_val = output["degrees"].Value<double>();
-                            }
-                            catch (Exception) { }
-
-                            try
-                            {
-                                steps_val = output["steps"].Value<double>();
-                            }
-                            catch (Exception) { }
-
-                            if(instruction_name == "rotate")
-                            {
-                                RotateInstruction(deg_val, steps_val);
-                            }
+                            StartHandshake();
                         }
-                    }
-
-                    double temp = (double)(rand.Next(0, 10));
-                    int humidity = rand.Next(0, 10);
-
-                    JObject data = new JObject()
-                    {
-                        { "temperature", temp },
-                        { "humidity", humidity },
-                        { "sine", Math.Sin(count) },
-                        { "position", position }
-                    };
-
-                    input_buffer.Enqueue(JSON.serialize(data));
-
-                    while(input_buffer.Count > 0)
-                    {
-                        input = input_buffer.Dequeue();
-
                         if (input != null)
                         {
-                            Parse(input);
-                            DeliverSubscriptions();
+                            JObject inputParsed = Parse(input);
+
+                            if (inputParsed.ContainsKey("serial_handshake"))
+                            {
+                                // Set up "serial connection"
+                                EndHandshake();
+                                connected = true;
+                            }
                         }
+                    } else
+                    {
+                        if (output != null)
+                        {
+                            if (output.ContainsKey("instruction"))
+                            {
+                                string instruction_name = output["instruction"].Value<string>();
+                                double deg_val = 0;
+                                double steps_val = 0;
+
+                                try
+                                {
+                                    deg_val = output["degrees"].Value<double>();
+                                }
+                                catch (Exception) { }
+
+                                try
+                                {
+                                    steps_val = output["steps"].Value<double>();
+                                }
+                                catch (Exception) { }
+
+                                if (instruction_name == "rotate")
+                                {
+                                    RotateInstruction(deg_val, steps_val);
+                                }
+                            }
+                        }
+
+                        double temp = (double)(rand.Next(0, 10));
+                        int humidity = rand.Next(0, 10);
+
+                        JObject data = new JObject()
+                        {
+                            { "temperature", temp },
+                            { "humidity", humidity },
+                            { "sine", Math.Sin(count) },
+                            { "position", position }
+                        };
+
+                        input_buffer.Enqueue(JSON.serialize(data));
+
+                        while (input_buffer.Count > 0)
+                        {
+                            input = input_buffer.Dequeue();
+
+                            if (input != null)
+                            {
+                                Parse(input);
+                                DeliverSubscriptions();
+                            }
+                        }
+                        count += 0.1;
                     }
-                    count += 0.1;
+
+
+                    await Task.Delay(taskdelay);
+                } catch(Exception e)
+                {
+                    Debug.Log(e);
                 }
-
-
-                await Task.Delay(taskdelay);
             }
         }
 

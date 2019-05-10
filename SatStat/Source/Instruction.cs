@@ -12,6 +12,7 @@ namespace SatStat
     {
         public Instruction instruction { get; set; }
         public List<string> observedValueLabels { get; set; }
+        public ObservableNumericValueCollection observedValues { get; set; }
         public void setInstructionIndex(int index)
         {
             instruction.UI_Index = index;
@@ -64,6 +65,7 @@ namespace SatStat
         /// <param name="arguments">A variable parameter list containing the parameters for the instruction</param>
         public Instruction(string instr, params object[] arguments)
         {
+            Label = instr;
             paramtable = new JObject();
             paramtable["instruction"] = instr;
 
@@ -86,6 +88,7 @@ namespace SatStat
 
         public Instruction(string instr)
         {
+            Label = instr;
             paramtable = new JObject();
             paramtable["instruction"] = instr;
         }
@@ -97,6 +100,7 @@ namespace SatStat
         /// <param name="paramTable">A JSON Object containing the parameters for the instruction as key/value pairs</param>
         public Instruction(string instr, JObject paramTable)
         {
+            Label = instr;
             paramtable = paramTable;
             paramtable["instruction"] = instr;
         }
@@ -144,7 +148,8 @@ namespace SatStat
     public struct InstructionUIEntry
     {
         public string label;
-        public string attribute;
+        public JObject parameters;
+
         public override string ToString()
         {
             return label;

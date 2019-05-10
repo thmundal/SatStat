@@ -81,6 +81,15 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\TestConfigTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\TestConfigTabControl.Designer.cs">
+      <DependentUpon>TestConfigTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddons\SatStatMainFormEventHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Source\ComSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +133,18 @@
     <Compile Include="Source\SerialHandler.cs" />
     <Compile Include="Source\SocketHandler.cs" />
     <Compile Include="Source\StreamSimulator.cs" />
+    <Compile Include="Source\TestConfigSaveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\TestConfigSaveDialog.Designer.cs">
+      <DependentUpon>TestConfigSaveDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\TestConfiguration.cs" />
     <Compile Include="Source\ThreadHelper.cs" />
     <Compile Include="Source\Utils.cs" />
+    <EmbeddedResource Include="CustomControls\TestConfigTabControl.resx">
+      <DependentUpon>TestConfigTabControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,12 +166,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Source\TestConfigSaveDialog.resx">
+      <DependentUpon>TestConfigSaveDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include=".gitignore" />
     <None Include="api\.gitignore" />
     <None Include="api\index.md" />
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram_ObservableValues.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="docfx.json" />
     <None Include="index.md" />

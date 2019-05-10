@@ -17,6 +17,11 @@ namespace SatStat
         Unstable
     }
 
+    public class ObservableValueChangedEvent : EventArgs
+    {
+        public IObservableNumericValue value;
+    }
+
     /// <summary>
     /// Describes a value that can be observed. When the value is changed, a callback method is invoked passing the Observed value as parameter
     /// </summary>
@@ -29,30 +34,32 @@ namespace SatStat
         private string label;
 
         [BsonIgnore]
-        public Type type { get{ return typeof(T); } }
+        public Type type { get { return typeof(T); } }
 
-        private Action<IObservableNumericValue> onUpdate_callback;
+        private List<Action<IObservableNumericValue>> onUpdate_callback = new List<Action<IObservableNumericValue>>();
 
         public object Value {
             get {
                 return value;
             }
             set {
-                bool updated = !this.Equal((T) value);
+                bool updated = !this.Equal((T)value);
 
-                this.value = (T) value;
+                this.value = (T)value;
 
-                if(updated && onUpdate_callback != null)
+                if (updated && onUpdate_callback.Count > 0)
                 {
-                    onUpdate_callback.Invoke(this);
+                    foreach(Action<IObservableNumericValue> cb in onUpdate_callback)
+                    {
+                        cb.Invoke(this);
+                    }
                 }
             }
         }
-        public object Max { get { return maxVal; } set { this.maxVal = (T) value; } }
-        public object Min { get { return minVal; } set { this.minVal = (T) value; } }
+        public object Max { get { return maxVal; } set { this.maxVal = (T)value; } }
+        public object Min { get { return minVal; } set { this.minVal = (T)value; } }
         public string Label { get { return label; } set { this.label = value; } }
-        
-    
+
         public bool Over()
         {
             return value.CompareTo(maxVal) > 0;
@@ -106,7 +113,15 @@ namespace SatStat
 
         public void OnUpdate(Action<IObservableNumericValue> cb)
         {
-            onUpdate_callback = cb;
+            if(!onUpdate_callback.Contains(cb))
+            {
+                onUpdate_callback.Add(cb);
+            }
+        }
+
+        public override string ToString()
+        {
+            return label + ": " + Min + " - " + Max;
         }
 
         public abstract object Diff();

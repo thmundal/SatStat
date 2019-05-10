@@ -190,6 +190,11 @@ namespace SatStat
             }
         }
 
+        public void setParameterControlTemplate(ParameterControlTemplate template)
+        {
+            ParameterControlTemplate = template;
+        }
+
         public void loadParameterControlTemplate(ParameterControlTemplate template, DataStream stream)
         {
             Debug.Log("Load parameter control template");
@@ -200,6 +205,7 @@ namespace SatStat
                 internalReceiver.ObservedValues.Clear();
 
                 // Clear subscriptions?
+                internalReceiver.UnsubscribeAll(stream);
 
                 foreach(IObservableNumericValue n in ParameterControlTemplate.Collection)
                 {

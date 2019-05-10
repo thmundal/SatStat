@@ -444,12 +444,12 @@ references:
   isSpec: "True"
   fullName: SatStat.DataReceiver.Unsubscribe
   nameWithType: DataReceiver.Unsubscribe
-- uid: SatStat.DataReceiver.UnsubscribeAll
-  name: UnsubscribeAll()
-  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_UnsubscribeAll
-  commentId: M:SatStat.DataReceiver.UnsubscribeAll
-  fullName: SatStat.DataReceiver.UnsubscribeAll()
-  nameWithType: DataReceiver.UnsubscribeAll()
+- uid: SatStat.DataReceiver.UnsubscribeAll(SatStat.DataStream)
+  name: UnsubscribeAll(DataStream)
+  href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_UnsubscribeAll_SatStat_DataStream_
+  commentId: M:SatStat.DataReceiver.UnsubscribeAll(SatStat.DataStream)
+  fullName: SatStat.DataReceiver.UnsubscribeAll(SatStat.DataStream)
+  nameWithType: DataReceiver.UnsubscribeAll(DataStream)
 - uid: SatStat.DataReceiver.UnsubscribeAll*
   name: UnsubscribeAll
   href: api/SatStat.DataReceiver.html#SatStat_DataReceiver_UnsubscribeAll_
@@ -1079,6 +1079,19 @@ references:
   isSpec: "True"
   fullName: SatStat.InstructionEntry.observedValueLabels
   nameWithType: InstructionEntry.observedValueLabels
+- uid: SatStat.InstructionEntry.observedValues
+  name: observedValues
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_observedValues
+  commentId: P:SatStat.InstructionEntry.observedValues
+  fullName: SatStat.InstructionEntry.observedValues
+  nameWithType: InstructionEntry.observedValues
+- uid: SatStat.InstructionEntry.observedValues*
+  name: observedValues
+  href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_observedValues_
+  commentId: Overload:SatStat.InstructionEntry.observedValues
+  isSpec: "True"
+  fullName: SatStat.InstructionEntry.observedValues
+  nameWithType: InstructionEntry.observedValues
 - uid: SatStat.InstructionEntry.setInstructionIndex(System.Int32)
   name: setInstructionIndex(Int32)
   href: api/SatStat.InstructionEntry.html#SatStat_InstructionEntry_setInstructionIndex_System_Int32_
@@ -1098,18 +1111,18 @@ references:
   commentId: T:SatStat.InstructionUIEntry
   fullName: SatStat.InstructionUIEntry
   nameWithType: InstructionUIEntry
-- uid: SatStat.InstructionUIEntry.attribute
-  name: attribute
-  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_attribute
-  commentId: F:SatStat.InstructionUIEntry.attribute
-  fullName: SatStat.InstructionUIEntry.attribute
-  nameWithType: InstructionUIEntry.attribute
 - uid: SatStat.InstructionUIEntry.label
   name: label
   href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_label
   commentId: F:SatStat.InstructionUIEntry.label
   fullName: SatStat.InstructionUIEntry.label
   nameWithType: InstructionUIEntry.label
+- uid: SatStat.InstructionUIEntry.parameters
+  name: parameters
+  href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_parameters
+  commentId: F:SatStat.InstructionUIEntry.parameters
+  fullName: SatStat.InstructionUIEntry.parameters
+  nameWithType: InstructionUIEntry.parameters
 - uid: SatStat.InstructionUIEntry.ToString
   name: ToString()
   href: api/SatStat.InstructionUIEntry.html#SatStat_InstructionUIEntry_ToString
@@ -1622,6 +1635,23 @@ references:
   fullName.vb: SatStat.ObservableNumericValue(Of T).Status
   nameWithType: ObservableNumericValue<T>.Status
   nameWithType.vb: ObservableNumericValue(Of T).Status
+- uid: SatStat.ObservableNumericValue`1.ToString
+  name: ToString()
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_ToString
+  commentId: M:SatStat.ObservableNumericValue`1.ToString
+  fullName: SatStat.ObservableNumericValue<T>.ToString()
+  fullName.vb: SatStat.ObservableNumericValue(Of T).ToString()
+  nameWithType: ObservableNumericValue<T>.ToString()
+  nameWithType.vb: ObservableNumericValue(Of T).ToString()
+- uid: SatStat.ObservableNumericValue`1.ToString*
+  name: ToString
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_ToString_
+  commentId: Overload:SatStat.ObservableNumericValue`1.ToString
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.ToString
+  fullName.vb: SatStat.ObservableNumericValue(Of T).ToString
+  nameWithType: ObservableNumericValue<T>.ToString
+  nameWithType.vb: ObservableNumericValue(Of T).ToString
 - uid: SatStat.ObservableNumericValue`1.type
   name: type
   href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_type
@@ -1985,6 +2015,19 @@ references:
   fullName: SatStat.ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator
   nameWithType: ObservableNumericValueCollection.IEnumerable<IObservableNumericValue>.GetEnumerator
   nameWithType.vb: ObservableNumericValueCollection.System.Collections.Generic.IEnumerable<SatStat.IObservableNumericValue>.GetEnumerator
+- uid: SatStat.ObservableNumericValueCollection.ToArray
+  name: ToArray()
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_ToArray
+  commentId: M:SatStat.ObservableNumericValueCollection.ToArray
+  fullName: SatStat.ObservableNumericValueCollection.ToArray()
+  nameWithType: ObservableNumericValueCollection.ToArray()
+- uid: SatStat.ObservableNumericValueCollection.ToArray*
+  name: ToArray
+  href: api/SatStat.ObservableNumericValueCollection.html#SatStat_ObservableNumericValueCollection_ToArray_
+  commentId: Overload:SatStat.ObservableNumericValueCollection.ToArray
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValueCollection.ToArray
+  nameWithType: ObservableNumericValueCollection.ToArray
 - uid: SatStat.ObservableNumericValueCollectionEnum
   name: ObservableNumericValueCollectionEnum
   href: api/SatStat.ObservableNumericValueCollectionEnum.html
@@ -2082,6 +2125,18 @@ references:
   commentId: F:SatStat.ObservableNumericValueStatus.Unstable
   fullName: SatStat.ObservableNumericValueStatus.Unstable
   nameWithType: ObservableNumericValueStatus.Unstable
+- uid: SatStat.ObservableValueChangedEvent
+  name: ObservableValueChangedEvent
+  href: api/SatStat.ObservableValueChangedEvent.html
+  commentId: T:SatStat.ObservableValueChangedEvent
+  fullName: SatStat.ObservableValueChangedEvent
+  nameWithType: ObservableValueChangedEvent
+- uid: SatStat.ObservableValueChangedEvent.value
+  name: value
+  href: api/SatStat.ObservableValueChangedEvent.html#SatStat_ObservableValueChangedEvent_value
+  commentId: F:SatStat.ObservableValueChangedEvent.value
+  fullName: SatStat.ObservableValueChangedEvent.value
+  nameWithType: ObservableValueChangedEvent.value
 - uid: SatStat.ParameterControlTemplate
   name: ParameterControlTemplate
   href: api/SatStat.ParameterControlTemplate.html
@@ -2224,6 +2279,19 @@ references:
   isSpec: "True"
   fullName: SatStat.ParameterControlTemplate.SetCollection
   nameWithType: ParameterControlTemplate.SetCollection
+- uid: SatStat.ParameterControlTemplate.ToString
+  name: ToString()
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_ToString
+  commentId: M:SatStat.ParameterControlTemplate.ToString
+  fullName: SatStat.ParameterControlTemplate.ToString()
+  nameWithType: ParameterControlTemplate.ToString()
+- uid: SatStat.ParameterControlTemplate.ToString*
+  name: ToString
+  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_ToString_
+  commentId: Overload:SatStat.ParameterControlTemplate.ToString
+  isSpec: "True"
+  fullName: SatStat.ParameterControlTemplate.ToString
+  nameWithType: ParameterControlTemplate.ToString
 - uid: SatStat.ParameterControlTemplateDialog
   name: ParameterControlTemplateDialog
   href: api/SatStat.ParameterControlTemplateDialog.html
@@ -2704,6 +2772,195 @@ references:
   isSpec: "True"
   fullName: SatStat.StreamSimulator.RotateInstruction
   nameWithType: StreamSimulator.RotateInstruction
+- uid: SatStat.TestConfigSaveDialog
+  name: TestConfigSaveDialog
+  href: api/SatStat.TestConfigSaveDialog.html
+  commentId: T:SatStat.TestConfigSaveDialog
+  fullName: SatStat.TestConfigSaveDialog
+  nameWithType: TestConfigSaveDialog
+- uid: SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration)
+  name: TestConfigSaveDialog(TestConfiguration)
+  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog__ctor_SatStat_TestConfiguration_
+  commentId: M:SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration)
+  fullName: SatStat.TestConfigSaveDialog.TestConfigSaveDialog(SatStat.TestConfiguration)
+  nameWithType: TestConfigSaveDialog.TestConfigSaveDialog(TestConfiguration)
+- uid: SatStat.TestConfigSaveDialog.#ctor*
+  name: TestConfigSaveDialog
+  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog__ctor_
+  commentId: Overload:SatStat.TestConfigSaveDialog.#ctor
+  isSpec: "True"
+  fullName: SatStat.TestConfigSaveDialog.TestConfigSaveDialog
+  nameWithType: TestConfigSaveDialog.TestConfigSaveDialog
+- uid: SatStat.TestConfigSaveDialog.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog_Dispose_System_Boolean_
+  commentId: M:SatStat.TestConfigSaveDialog.Dispose(System.Boolean)
+  fullName: SatStat.TestConfigSaveDialog.Dispose(System.Boolean)
+  nameWithType: TestConfigSaveDialog.Dispose(Boolean)
+- uid: SatStat.TestConfigSaveDialog.Dispose*
+  name: Dispose
+  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog_Dispose_
+  commentId: Overload:SatStat.TestConfigSaveDialog.Dispose
+  isSpec: "True"
+  fullName: SatStat.TestConfigSaveDialog.Dispose
+  nameWithType: TestConfigSaveDialog.Dispose
+- uid: SatStat.TestConfigTabControl
+  name: TestConfigTabControl
+  href: api/SatStat.TestConfigTabControl.html
+  commentId: T:SatStat.TestConfigTabControl
+  fullName: SatStat.TestConfigTabControl
+  nameWithType: TestConfigTabControl
+- uid: SatStat.TestConfigTabControl.#ctor
+  name: TestConfigTabControl()
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl__ctor
+  commentId: M:SatStat.TestConfigTabControl.#ctor
+  fullName: SatStat.TestConfigTabControl.TestConfigTabControl()
+  nameWithType: TestConfigTabControl.TestConfigTabControl()
+- uid: SatStat.TestConfigTabControl.#ctor*
+  name: TestConfigTabControl
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl__ctor_
+  commentId: Overload:SatStat.TestConfigTabControl.#ctor
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.TestConfigTabControl
+  nameWithType: TestConfigTabControl.TestConfigTabControl
+- uid: SatStat.TestConfigTabControl.AddDeviceToList(SatStat.DataStream)
+  name: AddDeviceToList(DataStream)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_AddDeviceToList_SatStat_DataStream_
+  commentId: M:SatStat.TestConfigTabControl.AddDeviceToList(SatStat.DataStream)
+  fullName: SatStat.TestConfigTabControl.AddDeviceToList(SatStat.DataStream)
+  nameWithType: TestConfigTabControl.AddDeviceToList(DataStream)
+- uid: SatStat.TestConfigTabControl.AddDeviceToList*
+  name: AddDeviceToList
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_AddDeviceToList_
+  commentId: Overload:SatStat.TestConfigTabControl.AddDeviceToList
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.AddDeviceToList
+  nameWithType: TestConfigTabControl.AddDeviceToList
+- uid: SatStat.TestConfigTabControl.AddInstructionUIEntry(SatStat.InstructionUIEntry)
+  name: AddInstructionUIEntry(InstructionUIEntry)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_AddInstructionUIEntry_SatStat_InstructionUIEntry_
+  commentId: M:SatStat.TestConfigTabControl.AddInstructionUIEntry(SatStat.InstructionUIEntry)
+  fullName: SatStat.TestConfigTabControl.AddInstructionUIEntry(SatStat.InstructionUIEntry)
+  nameWithType: TestConfigTabControl.AddInstructionUIEntry(InstructionUIEntry)
+- uid: SatStat.TestConfigTabControl.AddInstructionUIEntry*
+  name: AddInstructionUIEntry
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_AddInstructionUIEntry_
+  commentId: Overload:SatStat.TestConfigTabControl.AddInstructionUIEntry
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.AddInstructionUIEntry
+  nameWithType: TestConfigTabControl.AddInstructionUIEntry
+- uid: SatStat.TestConfigTabControl.ClearObservableParameterList
+  name: ClearObservableParameterList()
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_ClearObservableParameterList
+  commentId: M:SatStat.TestConfigTabControl.ClearObservableParameterList
+  fullName: SatStat.TestConfigTabControl.ClearObservableParameterList()
+  nameWithType: TestConfigTabControl.ClearObservableParameterList()
+- uid: SatStat.TestConfigTabControl.ClearObservableParameterList*
+  name: ClearObservableParameterList
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_ClearObservableParameterList_
+  commentId: Overload:SatStat.TestConfigTabControl.ClearObservableParameterList
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.ClearObservableParameterList
+  nameWithType: TestConfigTabControl.ClearObservableParameterList
+- uid: SatStat.TestConfigTabControl.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_Dispose_System_Boolean_
+  commentId: M:SatStat.TestConfigTabControl.Dispose(System.Boolean)
+  fullName: SatStat.TestConfigTabControl.Dispose(System.Boolean)
+  nameWithType: TestConfigTabControl.Dispose(Boolean)
+- uid: SatStat.TestConfigTabControl.Dispose*
+  name: Dispose
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_Dispose_
+  commentId: Overload:SatStat.TestConfigTabControl.Dispose
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.Dispose
+  nameWithType: TestConfigTabControl.Dispose
+- uid: SatStat.TestConfigTabControl.loadTestConfiguration(SatStat.TestConfiguration)
+  name: loadTestConfiguration(TestConfiguration)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_loadTestConfiguration_SatStat_TestConfiguration_
+  commentId: M:SatStat.TestConfigTabControl.loadTestConfiguration(SatStat.TestConfiguration)
+  fullName: SatStat.TestConfigTabControl.loadTestConfiguration(SatStat.TestConfiguration)
+  nameWithType: TestConfigTabControl.loadTestConfiguration(TestConfiguration)
+- uid: SatStat.TestConfigTabControl.loadTestConfiguration*
+  name: loadTestConfiguration
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_loadTestConfiguration_
+  commentId: Overload:SatStat.TestConfigTabControl.loadTestConfiguration
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.loadTestConfiguration
+  nameWithType: TestConfigTabControl.loadTestConfiguration
+- uid: SatStat.TestConfigTabControl.RemoveDeviceFromList(SatStat.DataStream)
+  name: RemoveDeviceFromList(DataStream)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_RemoveDeviceFromList_SatStat_DataStream_
+  commentId: M:SatStat.TestConfigTabControl.RemoveDeviceFromList(SatStat.DataStream)
+  fullName: SatStat.TestConfigTabControl.RemoveDeviceFromList(SatStat.DataStream)
+  nameWithType: TestConfigTabControl.RemoveDeviceFromList(DataStream)
+- uid: SatStat.TestConfigTabControl.RemoveDeviceFromList*
+  name: RemoveDeviceFromList
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_RemoveDeviceFromList_
+  commentId: Overload:SatStat.TestConfigTabControl.RemoveDeviceFromList
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.RemoveDeviceFromList
+  nameWithType: TestConfigTabControl.RemoveDeviceFromList
+- uid: SatStat.TestConfigTabControl.SetDeviceList(System.Collections.Generic.List{SatStat.DataStream})
+  name: SetDeviceList(List<DataStream>)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetDeviceList_System_Collections_Generic_List_SatStat_DataStream__
+  commentId: M:SatStat.TestConfigTabControl.SetDeviceList(System.Collections.Generic.List{SatStat.DataStream})
+  name.vb: SetDeviceList(List(Of DataStream))
+  fullName: SatStat.TestConfigTabControl.SetDeviceList(System.Collections.Generic.List<SatStat.DataStream>)
+  fullName.vb: SatStat.TestConfigTabControl.SetDeviceList(System.Collections.Generic.List(Of SatStat.DataStream))
+  nameWithType: TestConfigTabControl.SetDeviceList(List<DataStream>)
+  nameWithType.vb: TestConfigTabControl.SetDeviceList(List(Of DataStream))
+- uid: SatStat.TestConfigTabControl.SetDeviceList*
+  name: SetDeviceList
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetDeviceList_
+  commentId: Overload:SatStat.TestConfigTabControl.SetDeviceList
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.SetDeviceList
+  nameWithType: TestConfigTabControl.SetDeviceList
+- uid: SatStat.TestConfigTabControl.SetObservableParameterList(SatStat.ObservableNumericValueCollection)
+  name: SetObservableParameterList(ObservableNumericValueCollection)
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetObservableParameterList_SatStat_ObservableNumericValueCollection_
+  commentId: M:SatStat.TestConfigTabControl.SetObservableParameterList(SatStat.ObservableNumericValueCollection)
+  fullName: SatStat.TestConfigTabControl.SetObservableParameterList(SatStat.ObservableNumericValueCollection)
+  nameWithType: TestConfigTabControl.SetObservableParameterList(ObservableNumericValueCollection)
+- uid: SatStat.TestConfigTabControl.SetObservableParameterList*
+  name: SetObservableParameterList
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetObservableParameterList_
+  commentId: Overload:SatStat.TestConfigTabControl.SetObservableParameterList
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.SetObservableParameterList
+  nameWithType: TestConfigTabControl.SetObservableParameterList
+- uid: SatStat.TestConfigTabControl.SetUpTestConfigurationPanel
+  name: SetUpTestConfigurationPanel()
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetUpTestConfigurationPanel
+  commentId: M:SatStat.TestConfigTabControl.SetUpTestConfigurationPanel
+  fullName: SatStat.TestConfigTabControl.SetUpTestConfigurationPanel()
+  nameWithType: TestConfigTabControl.SetUpTestConfigurationPanel()
+- uid: SatStat.TestConfigTabControl.SetUpTestConfigurationPanel*
+  name: SetUpTestConfigurationPanel
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_SetUpTestConfigurationPanel_
+  commentId: Overload:SatStat.TestConfigTabControl.SetUpTestConfigurationPanel
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.SetUpTestConfigurationPanel
+  nameWithType: TestConfigTabControl.SetUpTestConfigurationPanel
+- uid: SatStat.TestConfigTabControl.UITestConfigInstructionParameterGrid
+  name: UITestConfigInstructionParameterGrid
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_UITestConfigInstructionParameterGrid
+  commentId: F:SatStat.TestConfigTabControl.UITestConfigInstructionParameterGrid
+  fullName: SatStat.TestConfigTabControl.UITestConfigInstructionParameterGrid
+  nameWithType: TestConfigTabControl.UITestConfigInstructionParameterGrid
+- uid: SatStat.TestConfigTabControl.UITestConfigOutputParamChecklist
+  name: UITestConfigOutputParamChecklist
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_UITestConfigOutputParamChecklist
+  commentId: F:SatStat.TestConfigTabControl.UITestConfigOutputParamChecklist
+  fullName: SatStat.TestConfigTabControl.UITestConfigOutputParamChecklist
+  nameWithType: TestConfigTabControl.UITestConfigOutputParamChecklist
+- uid: SatStat.TestConfigTabControl.UITestDeviceSelect
+  name: UITestDeviceSelect
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_UITestDeviceSelect
+  commentId: F:SatStat.TestConfigTabControl.UITestDeviceSelect
+  fullName: SatStat.TestConfigTabControl.UITestDeviceSelect
+  nameWithType: TestConfigTabControl.UITestDeviceSelect
 - uid: SatStat.TestConfiguration
   name: TestConfiguration
   href: api/SatStat.TestConfiguration.html
@@ -3007,6 +3264,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.Save
   nameWithType: TestConfiguration.Save
+- uid: SatStat.TestConfiguration.setParameterControlTemplate(SatStat.ParameterControlTemplate)
+  name: setParameterControlTemplate(ParameterControlTemplate)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_setParameterControlTemplate_SatStat_ParameterControlTemplate_
+  commentId: M:SatStat.TestConfiguration.setParameterControlTemplate(SatStat.ParameterControlTemplate)
+  fullName: SatStat.TestConfiguration.setParameterControlTemplate(SatStat.ParameterControlTemplate)
+  nameWithType: TestConfiguration.setParameterControlTemplate(ParameterControlTemplate)
+- uid: SatStat.TestConfiguration.setParameterControlTemplate*
+  name: setParameterControlTemplate
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_setParameterControlTemplate_
+  commentId: Overload:SatStat.TestConfiguration.setParameterControlTemplate
+  isSpec: "True"
+  fullName: SatStat.TestConfiguration.setParameterControlTemplate
+  nameWithType: TestConfiguration.setParameterControlTemplate
 - uid: SatStat.TestConfiguration.ToString
   name: ToString()
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_ToString

@@ -28,7 +28,7 @@ namespace SatStat
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-#if !DEBUG
+#if DEBUG
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(ExceptionHandler);
 #endif

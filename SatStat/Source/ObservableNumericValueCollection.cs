@@ -237,6 +237,11 @@ namespace SatStat
             throw new NotImplementedException();
         }
 
+        public IObservableNumericValue[] ToArray()
+        {
+            return valueCollection;
+        }
+
         IEnumerator<IObservableNumericValue> IEnumerable<IObservableNumericValue>.GetEnumerator()
         {
             throw new NotImplementedException();

@@ -91,12 +91,14 @@ namespace SatStat
             stream.Output(Request.Subscription("unsubscribe", attribute));
         }
 
-        public void UnsubscribeAll()
+        public void UnsubscribeAll(DataStream stream)
         {
             foreach(KeyValuePair<string, DataSubscription> sub in subscriptions)
             {
-                subscriptions.Remove(sub.Key);
+                stream.Output(Request.Subscription("unsubscribe", sub.Key));
             }
+
+            subscriptions.Clear();
         }
 
         /// <summary>
@@ -115,6 +117,12 @@ namespace SatStat
         public void OnObservedvalueChanged(Action<IObservableNumericValue> cb)
         {
             onObservableValueChanged_cb = cb;
+
+            foreach(IObservableNumericValue value in observedValues)
+            {
+                //value.ValueChanged += cb;
+                value.OnUpdate(cb);
+            }
         }
 
         /// <summary>
@@ -145,14 +153,16 @@ namespace SatStat
                 {
                     if (!observedValues.ContainsLabel(attribute))
                     {
-                        observedValues.AddWithType(attribute, data_type);
+                        if(observedValues.AddWithType(attribute, data_type))
+                        {
+                            observedValues[attribute].OnUpdate(onObservableValueChanged_cb);
+                        }
                     }
 
                     if (observedValues.ContainsLabel(attribute))
                     {
                         IObservableNumericValue observedAttribute = observedValues[attribute];
                         observedAttribute = observedValues[attribute];
-                        observedAttribute.OnUpdate(onObservableValueChanged_cb);
                         observedAttribute.Value = payload;
                     }
                 }

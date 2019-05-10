@@ -380,7 +380,6 @@ namespace SatStat
                                 sadm_discovered = true;
                                 discoverSerial.Close();
                                 return true;
-                                break;
                             }
                         }
                     }
@@ -388,7 +387,7 @@ namespace SatStat
 
                     discoverSerial.Close();
                 }
-            } catch(TimeoutException e)
+            } catch(TimeoutException)
             {
                 if (discoverSerial.IsOpen)
                 {

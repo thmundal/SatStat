@@ -45,10 +45,15 @@ namespace SatStat
         public ObservableNumericValueCollection GetCollection()
         {
             ObservableNumericValueCollection c = new ObservableNumericValueCollection();
-            foreach(IObservableNumericValue n in Collection)
+
+            if (Collection.Length > 0)
             {
-                c.Add(n);
+                foreach(IObservableNumericValue n in Collection)
+                {
+                    c.Add(n);
+                }
             }
+
             return c;
         }
 
@@ -92,6 +97,11 @@ namespace SatStat
             }
 
             return list;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

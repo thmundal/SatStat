@@ -66,9 +66,23 @@ namespace SatStat
         /// <param name="data">A HashTable containing data that might be used inside the action</param>
         public static void UI_Invoke(Form f, Panel p, Control c, Action<Hashtable> cb, Hashtable data)
         {
+            if(f.IsDisposed || f.Disposing || f == null)
+            {
+                return;
+            }
+
             if(c.InvokeRequired)
             {
-                f.Invoke(cb, new object[] { data });
+                if(!f.Disposing)
+                {
+                    try
+                    {
+                        f.Invoke(cb, new object[] { data });
+                    } catch(Exception e)
+                    {
+                        Debug.Log(e);
+                    }
+                }
             } else
             {
                 cb.Invoke(data);
