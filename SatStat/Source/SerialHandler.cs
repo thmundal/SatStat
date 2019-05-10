@@ -310,7 +310,7 @@ namespace SatStat
         /// <param name="data"></param>
         public void WriteData(string data)
         {
-            if(connectionStatus != ConnectionStatus.Disconnected)
+            if(connectionStatus != ConnectionStatus.Disconnected && connection.IsOpen)
             {
                 Debug.Log("writing data...");
                 Debug.Log(data);
