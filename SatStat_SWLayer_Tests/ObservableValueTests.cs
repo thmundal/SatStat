@@ -182,5 +182,25 @@ namespace SatStatTests
 
             Assert.AreEqual(oInt, collection["int1"]);
         }
+
+        public delegate void EventHandler1();
+
+        [TestMethod]
+        public void TestEventHandler()
+        {
+            ObservableInt oInt = new ObservableInt { Label = "int1", Value = 1, Min = -1, Max = 1 };
+
+            oInt.OnUpdate((v) =>
+            {
+                Console.WriteLine("Callback 1");
+            });
+
+            oInt.OnUpdate((v) =>
+            {
+                Console.WriteLine("Callback 2");
+            });
+
+            oInt.Value = 4;
+        }
     }
 }
