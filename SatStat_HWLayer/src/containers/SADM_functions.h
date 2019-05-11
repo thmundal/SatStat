@@ -1,9 +1,16 @@
 #pragma once
 #include "../handlers/Function_control.h"
 
+/**
+*	Abstract class with all static members for the methods to be compatible with list insertion.
+*	This class is responsible for controlling the the SADM, and has member functions for rotating in different ways by providing different arguments.
+*/
 class SADM_functions : public Function_control
 {
 public:
+	/**
+	*	Pure virtual destructor to make the class abstract.
+	*/
 	virtual ~SADM_functions() = 0;
 
 	static void set_step_size(Json_container<JsonObject>& ins);

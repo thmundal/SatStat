@@ -1,5 +1,6 @@
 #include "SADM_functions.h"
 
+// Definition of static members
 float SADM_functions::m_step_size = 1.8;
 int SADM_functions::m_stepping_mode = 8;
 float SADM_functions::m_ratio = 1;
@@ -11,6 +12,10 @@ unsigned long SADM_functions::m_last_pulse = micros();
 const int SADM_functions::step_pin = 5;
 const int SADM_functions::dir_pin = 6;
 
+/**
+*	Interprets the set_step_size instruction received from SWL.
+*	Directly sets m_step_size.
+*/
 void SADM_functions::set_step_size(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("step_size"))
@@ -23,6 +28,10 @@ void SADM_functions::set_step_size(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Interprets the set_stepping_mode instruction received from SWL.
+*	Directly sets m_stepping_mode.
+*/
 void SADM_functions::set_stepping_mode(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("divisor"))
@@ -35,6 +44,10 @@ void SADM_functions::set_stepping_mode(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Interprets the set_ratio instruction received from SWL.
+*	Directly sets m_ratio.
+*/
 void SADM_functions::set_ratio(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("ratio"))
@@ -47,6 +60,10 @@ void SADM_functions::set_ratio(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Interprets the set_speed instruction received from SWL.
+*	Translates from RPM to period and updates m_period.
+*/
 void SADM_functions::set_speed(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("rpm"))
@@ -61,6 +78,10 @@ void SADM_functions::set_speed(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Interprets the set_direction instruction received from SWL.
+*	Directly sets the voltage level on the direction pin to either high or low depending on the direction parameter.
+*/
 void SADM_functions::set_dir(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("direction"))
@@ -82,6 +103,10 @@ void SADM_functions::set_dir(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Interprets the rotate instruction received from SWL.
+*	Sets the number of steps to rotate, and reserves Function_control with the other rotate function.
+*/
 void SADM_functions::rotate(Json_container<JsonObject>& ins)
 {
 	if (ins->containsKey("steps"))
@@ -103,6 +128,9 @@ void SADM_functions::rotate(Json_container<JsonObject>& ins)
 	}
 }
 
+/**
+*	Square wave generator responsible for rotating the SADM the given number of steps.
+*/
 void SADM_functions::rotate()
 {
 	if (m_steps == 0)
@@ -126,11 +154,18 @@ void SADM_functions::rotate()
 	}
 }
 
+/**
+*	Releases itself from Function_control the first time it's called.
+*	When functions only needs to be called once, this function reserves Function_control.
+*/
 void SADM_functions::instant_release()
 {
 	Function_control::release();
 }
 
+/**
+*	Converts from degrees to number of steps.
+*/
 int SADM_functions::deg_to_steps(const float& deg)
 {
 	return (int)(deg * m_stepping_mode / m_step_size * m_ratio);
