@@ -369,9 +369,6 @@
     <ClInclude Include="src\containers\Json_container.h">
       <Filter>Header Files\src\containers</Filter>
     </ClInclude>
-    <ClInclude Include="src\containers\SADM_functions.h">
-      <Filter>Header Files\src\containers</Filter>
-    </ClInclude>
     <ClInclude Include="src\containers\Sensor_container.h">
       <Filter>Header Files\src\containers</Filter>
     </ClInclude>
@@ -405,6 +402,9 @@
     <ClInclude Include="src\handlers\Message_handler.h">
       <Filter>Header Files\src\handlers</Filter>
     </ClInclude>
+    <ClInclude Include="src\containers\SADM_functions.h">
+      <Filter>Header Files\src\containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\DHT\DHT.cpp">
@@ -420,9 +420,6 @@
       <Filter>Source Files\lib\Stepper</Filter>
     </ClCompile>
     <ClCompile Include="src\containers\Instruction_container.cpp">
-      <Filter>Source Files\src\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\containers\SADM_functions.cpp">
       <Filter>Source Files\src\containers</Filter>
     </ClCompile>
     <ClCompile Include="src\containers\Sensor_container.cpp">
@@ -448,6 +445,9 @@
     </ClCompile>
     <ClCompile Include="src\handlers\Message_handler.cpp">
       <Filter>Source Files\src\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\containers\SADM_functions.cpp">
+      <Filter>Source Files\src\containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

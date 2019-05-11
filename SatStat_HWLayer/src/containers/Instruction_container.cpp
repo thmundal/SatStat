@@ -5,7 +5,28 @@
 */
 Instruction_container::Instruction_container()
 {	
-	SADM_functions::init_stepper();
+	m_available_instructions.append("set_step_size",
+		new Instruction
+		(
+			"set_step_size",
+			parse_params
+			(
+				Uf_param("step_size", "float")
+			),
+			SADM_functions::set_step_size
+		)
+	);
+	m_available_instructions.append("set_stepping_mode",
+		new Instruction
+		(
+			"set_stepping_mode",
+			parse_params
+			(
+				Uf_param("divisor", "int")
+			),
+			SADM_functions::set_stepping_mode
+		)
+	);
 
 	m_available_instructions.append("set_gear_ratio",
 		new Instruction
@@ -19,15 +40,27 @@ Instruction_container::Instruction_container()
 		)
 	);
 
-	m_available_instructions.append("auto_rotate",
+	m_available_instructions.append("set_speed",
 		new Instruction
 		(
-			"auto_rotate",
+			"set_speed",
 			parse_params
-			(				
-				Uf_param("enable", "bool")
+			(
+				Uf_param("rpm", "float")
 			),
-			SADM_functions::set_auto_rotate
+			SADM_functions::set_speed
+		)
+	);
+
+	m_available_instructions.append("set_direction",
+		new Instruction
+		(
+			"set_direction",
+			parse_params
+			(
+				Uf_param("direction", "bool")
+			),
+			SADM_functions::set_dir
 		)
 	);
 

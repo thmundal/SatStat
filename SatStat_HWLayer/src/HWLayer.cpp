@@ -29,6 +29,10 @@ void HWLayer::setup()
 	pinMode(3, OUTPUT);
 	digitalWrite(3, HIGH);
 
+	// Stepper motor pinout
+	pinMode(5, OUTPUT);
+	pinMode(6, OUTPUT);
+
 	// Init serial
 	Serial.begin(9600);
 
@@ -69,13 +73,7 @@ void HWLayer::loop()
 		}
 		
 		// Continuously executes the currently loaded instruction
-		Function_control::run();	
-	
-		// Calls auto rotate if it's enabled
-		if (SADM_functions::get_auto_rotate_en())
-		{
-			SADM_functions::auto_rotate();
-		}
+		Function_control::run();
 
 		// Runs with an interval equal to the sensor_interval_duration
 		if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
