@@ -58,7 +58,7 @@ Instruction_container::Instruction_container()
 			"set_direction",
 			parse_params
 			(
-				Uf_param("direction", "bool")
+				Uf_param("direction", "string")
 			),
 			SADM_functions::set_dir
 		)

@@ -4,7 +4,7 @@
 float SADM_functions::m_step_size = 1.8;
 int SADM_functions::m_stepping_mode = 8;
 float SADM_functions::m_ratio = 1;
-unsigned long SADM_functions::m_period;
+unsigned long SADM_functions::m_period = 1250;
 int SADM_functions::m_steps = 0;
 bool SADM_functions::m_rising = true;
 unsigned long SADM_functions::m_last_pulse = micros();
@@ -135,6 +135,7 @@ void SADM_functions::rotate()
 {
 	if (m_steps == 0)
 	{
+		digitalWrite(step_pin, LOW);
 		Function_control::release();
 	}
 	else if (micros() - m_last_pulse > m_period / 2)

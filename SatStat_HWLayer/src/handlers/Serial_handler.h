@@ -38,6 +38,8 @@ private:
 	Sensor_container* sensor_container;
 	Message_handler* message_handler;
 	
+	String m_input = "";
+	unsigned long m_last_read = millis();
 	unsigned long m_start_time;
 	const unsigned long m_timeout_duration = 1000;
 	int m_timeout_counter;

@@ -3,14 +3,14 @@
 	{
 		Print_time()
 		{
-			start_time = millis();
+			start_time = micros();
 		}
 
 		~Print_time()
 		{
-			end_time = millis();
+			end_time = micros();
 			execution_time = end_time - start_time;
-			String str = "Execution time: " + String(execution_time) + "ms";
+			String str = "Execution time: " + String(execution_time) + "us";
 			Serial.println(str);
 		}
 

@@ -74,15 +74,16 @@ void Serial_handler::serial_listener()
 {
 	if (Serial.available() > 0)
 	{
-		String input = Serial.readStringUntil('\n');
-
-		if (input)
+		m_input += (char)Serial.read();
+		m_last_read = millis();
+	}
+	else if (m_input != "" && millis() - m_last_read > 2)
+	{
+		if (!message_handler->insert_message(m_input))
 		{
-			if (!message_handler->insert_message(input))
-			{
-				send_error_message("Could not parse received data.");
-			}
+			send_error_message("Could not parse received data.");
 		}
+		m_input = "";
 	}
 }
 
