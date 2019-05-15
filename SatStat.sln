@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatStat", "SatStat\SatStat.csproj", "{C2D017F2-F65E-4F05-85A5-A620A8DEE95C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatStatTests", "SatStat_SWLayer_Tests\SatStatTests.csproj", "{149EB5E4-DC96-4E70-933D-BA90FE99C5EB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SatStat_HWLayer", "SatStat_HWLayer\SatStat_HWLayer.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SatStat install wizard", "SatStat install wizard\SatStat install wizard.vdproj", "{23806A6A-9619-48F2-990F-6C64980E7575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{23806A6A-9619-48F2-990F-6C64980E7575}.Debug|Any CPU.ActiveCfg = Debug
+		{23806A6A-9619-48F2-990F-6C64980E7575}.Debug|x86.ActiveCfg = Debug
+		{23806A6A-9619-48F2-990F-6C64980E7575}.Release|Any CPU.ActiveCfg = Release
+		{23806A6A-9619-48F2-990F-6C64980E7575}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
