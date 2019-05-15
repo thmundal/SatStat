@@ -300,12 +300,14 @@
             this.saveTestConfigurationToolStripMenuItem.Name = "saveTestConfigurationToolStripMenuItem";
             this.saveTestConfigurationToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.saveTestConfigurationToolStripMenuItem.Text = "Save test configuration";
+            this.saveTestConfigurationToolStripMenuItem.Click += new System.EventHandler(this.SaveTestConfigurationToolStripMenuItem_Click);
             // 
             // loadTestConfigurationToolStripMenuItem
             // 
             this.loadTestConfigurationToolStripMenuItem.Name = "loadTestConfigurationToolStripMenuItem";
             this.loadTestConfigurationToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.loadTestConfigurationToolStripMenuItem.Text = "Load test configuration";
+            this.loadTestConfigurationToolStripMenuItem.Click += new System.EventHandler(this.LoadTestConfigurationToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -932,7 +934,7 @@
         private System.Windows.Forms.ToolStripMenuItem runCurrentTestConfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearCurrentTestConfigurationToolStripMenuItem;
         private System.Windows.Forms.TabPage TestConfigTabContainer;
-        private TestConfigTabControl TestConfigTab;
+        public TestConfigTabControl TestConfigTab;
     }
 }
 

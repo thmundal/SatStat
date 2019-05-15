@@ -18,16 +18,12 @@ namespace SatStat
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        private Dictionary<string, int> observableValueArrayKeyMap;
-
         public ParameterControlTemplate()
         {
-            observableValueArrayKeyMap = new Dictionary<string, int>();
         }
 
         public ParameterControlTemplate(ObservableNumericValueCollection c)
         {
-            observableValueArrayKeyMap = new Dictionary<string, int>();
             SetCollection(c);
             Date = DateTime.Now;
         }
@@ -55,32 +51,6 @@ namespace SatStat
             }
 
             return c;
-        }
-
-        public IObservableNumericValue getValue(string label)
-        {
-            if(observableValueArrayKeyMap.Count != Collection.Length)
-            {
-                observableValueArrayKeyMap.Clear();
-                for(int i=0; i<Collection.Length; i++)
-                {
-                    IObservableNumericValue n = Collection[i];
-
-                    if(n.Label == label)
-                    {
-                        observableValueArrayKeyMap.Add(label, i);
-                        return n;
-                    }
-                }
-            } else
-            {
-                if(observableValueArrayKeyMap.ContainsKey(label))
-                {
-                    return Collection[observableValueArrayKeyMap[label]];
-                }
-            }
-
-            return null;
         }
 
         public static List<ParameterControlTemplate> GetListFromDb()

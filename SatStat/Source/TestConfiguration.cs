@@ -311,7 +311,7 @@ namespace SatStat
             onQueueAbortedCallback = callback;
         }
 
-        public void Save(Action<TestConfiguration> cb = null)
+        public void Save(TestConfiguration existing, Action<TestConfiguration> cb = null)
         {
             if(Name == String.Empty || Name == null)
             {
@@ -323,11 +323,13 @@ namespace SatStat
             {
                 LiteCollection<TestConfiguration> collection = db.GetCollection<TestConfiguration>(Program.settings.TestConfigDatabase);
 
-                if(this.Id == null)
+                if(existing == null)
                 {
+                    this.Id = null;
                     collection.Insert(this);
                 } else
                 {
+                    this.Id = existing.Id;
                     collection.Update(this);
                 }
 

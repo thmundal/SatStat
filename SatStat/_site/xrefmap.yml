@@ -1249,6 +1249,32 @@ references:
   isSpec: "True"
   fullName: SatStat.IObservableNumericValue.Over
   nameWithType: IObservableNumericValue.Over
+- uid: SatStat.IObservableNumericValue.PlotAnnotationMaxLine
+  name: PlotAnnotationMaxLine
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_PlotAnnotationMaxLine
+  commentId: P:SatStat.IObservableNumericValue.PlotAnnotationMaxLine
+  fullName: SatStat.IObservableNumericValue.PlotAnnotationMaxLine
+  nameWithType: IObservableNumericValue.PlotAnnotationMaxLine
+- uid: SatStat.IObservableNumericValue.PlotAnnotationMaxLine*
+  name: PlotAnnotationMaxLine
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_PlotAnnotationMaxLine_
+  commentId: Overload:SatStat.IObservableNumericValue.PlotAnnotationMaxLine
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.PlotAnnotationMaxLine
+  nameWithType: IObservableNumericValue.PlotAnnotationMaxLine
+- uid: SatStat.IObservableNumericValue.PlotAnnotationMinLine
+  name: PlotAnnotationMinLine
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_PlotAnnotationMinLine
+  commentId: P:SatStat.IObservableNumericValue.PlotAnnotationMinLine
+  fullName: SatStat.IObservableNumericValue.PlotAnnotationMinLine
+  nameWithType: IObservableNumericValue.PlotAnnotationMinLine
+- uid: SatStat.IObservableNumericValue.PlotAnnotationMinLine*
+  name: PlotAnnotationMinLine
+  href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_PlotAnnotationMinLine_
+  commentId: Overload:SatStat.IObservableNumericValue.PlotAnnotationMinLine
+  isSpec: "True"
+  fullName: SatStat.IObservableNumericValue.PlotAnnotationMinLine
+  nameWithType: IObservableNumericValue.PlotAnnotationMinLine
 - uid: SatStat.IObservableNumericValue.Stable
   name: Stable()
   href: api/SatStat.IObservableNumericValue.html#SatStat_IObservableNumericValue_Stable
@@ -1601,6 +1627,40 @@ references:
   fullName.vb: SatStat.ObservableNumericValue(Of T).Over
   nameWithType: ObservableNumericValue<T>.Over
   nameWithType.vb: ObservableNumericValue(Of T).Over
+- uid: SatStat.ObservableNumericValue`1.PlotAnnotationMaxLine
+  name: PlotAnnotationMaxLine
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_PlotAnnotationMaxLine
+  commentId: P:SatStat.ObservableNumericValue`1.PlotAnnotationMaxLine
+  fullName: SatStat.ObservableNumericValue<T>.PlotAnnotationMaxLine
+  fullName.vb: SatStat.ObservableNumericValue(Of T).PlotAnnotationMaxLine
+  nameWithType: ObservableNumericValue<T>.PlotAnnotationMaxLine
+  nameWithType.vb: ObservableNumericValue(Of T).PlotAnnotationMaxLine
+- uid: SatStat.ObservableNumericValue`1.PlotAnnotationMaxLine*
+  name: PlotAnnotationMaxLine
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_PlotAnnotationMaxLine_
+  commentId: Overload:SatStat.ObservableNumericValue`1.PlotAnnotationMaxLine
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.PlotAnnotationMaxLine
+  fullName.vb: SatStat.ObservableNumericValue(Of T).PlotAnnotationMaxLine
+  nameWithType: ObservableNumericValue<T>.PlotAnnotationMaxLine
+  nameWithType.vb: ObservableNumericValue(Of T).PlotAnnotationMaxLine
+- uid: SatStat.ObservableNumericValue`1.PlotAnnotationMinLine
+  name: PlotAnnotationMinLine
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_PlotAnnotationMinLine
+  commentId: P:SatStat.ObservableNumericValue`1.PlotAnnotationMinLine
+  fullName: SatStat.ObservableNumericValue<T>.PlotAnnotationMinLine
+  fullName.vb: SatStat.ObservableNumericValue(Of T).PlotAnnotationMinLine
+  nameWithType: ObservableNumericValue<T>.PlotAnnotationMinLine
+  nameWithType.vb: ObservableNumericValue(Of T).PlotAnnotationMinLine
+- uid: SatStat.ObservableNumericValue`1.PlotAnnotationMinLine*
+  name: PlotAnnotationMinLine
+  href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_PlotAnnotationMinLine_
+  commentId: Overload:SatStat.ObservableNumericValue`1.PlotAnnotationMinLine
+  isSpec: "True"
+  fullName: SatStat.ObservableNumericValue<T>.PlotAnnotationMinLine
+  fullName.vb: SatStat.ObservableNumericValue(Of T).PlotAnnotationMinLine
+  nameWithType: ObservableNumericValue<T>.PlotAnnotationMinLine
+  nameWithType.vb: ObservableNumericValue(Of T).PlotAnnotationMinLine
 - uid: SatStat.ObservableNumericValue`1.Stable
   name: Stable()
   href: api/SatStat.ObservableNumericValue-1.html#SatStat_ObservableNumericValue_1_Stable
@@ -2227,19 +2287,6 @@ references:
   isSpec: "True"
   fullName: SatStat.ParameterControlTemplate.GetListFromDb
   nameWithType: ParameterControlTemplate.GetListFromDb
-- uid: SatStat.ParameterControlTemplate.getValue(System.String)
-  name: getValue(String)
-  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_getValue_System_String_
-  commentId: M:SatStat.ParameterControlTemplate.getValue(System.String)
-  fullName: SatStat.ParameterControlTemplate.getValue(System.String)
-  nameWithType: ParameterControlTemplate.getValue(String)
-- uid: SatStat.ParameterControlTemplate.getValue*
-  name: getValue
-  href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_getValue_
-  commentId: Overload:SatStat.ParameterControlTemplate.getValue
-  isSpec: "True"
-  fullName: SatStat.ParameterControlTemplate.getValue
-  nameWithType: ParameterControlTemplate.getValue
 - uid: SatStat.ParameterControlTemplate.Id
   name: Id
   href: api/SatStat.ParameterControlTemplate.html#SatStat_ParameterControlTemplate_Id
@@ -2778,12 +2825,12 @@ references:
   commentId: T:SatStat.TestConfigSaveDialog
   fullName: SatStat.TestConfigSaveDialog
   nameWithType: TestConfigSaveDialog
-- uid: SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration)
-  name: TestConfigSaveDialog(TestConfiguration)
-  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog__ctor_SatStat_TestConfiguration_
-  commentId: M:SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration)
-  fullName: SatStat.TestConfigSaveDialog.TestConfigSaveDialog(SatStat.TestConfiguration)
-  nameWithType: TestConfigSaveDialog.TestConfigSaveDialog(TestConfiguration)
+- uid: SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration,System.Boolean)
+  name: TestConfigSaveDialog(TestConfiguration, Boolean)
+  href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog__ctor_SatStat_TestConfiguration_System_Boolean_
+  commentId: M:SatStat.TestConfigSaveDialog.#ctor(SatStat.TestConfiguration,System.Boolean)
+  fullName: SatStat.TestConfigSaveDialog.TestConfigSaveDialog(SatStat.TestConfiguration, System.Boolean)
+  nameWithType: TestConfigSaveDialog.TestConfigSaveDialog(TestConfiguration, Boolean)
 - uid: SatStat.TestConfigSaveDialog.#ctor*
   name: TestConfigSaveDialog
   href: api/SatStat.TestConfigSaveDialog.html#SatStat_TestConfigSaveDialog__ctor_
@@ -2823,6 +2870,19 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfigTabControl.TestConfigTabControl
   nameWithType: TestConfigTabControl.TestConfigTabControl
+- uid: SatStat.TestConfigTabControl.ActiveTestConfiguration
+  name: ActiveTestConfiguration
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_ActiveTestConfiguration
+  commentId: P:SatStat.TestConfigTabControl.ActiveTestConfiguration
+  fullName: SatStat.TestConfigTabControl.ActiveTestConfiguration
+  nameWithType: TestConfigTabControl.ActiveTestConfiguration
+- uid: SatStat.TestConfigTabControl.ActiveTestConfiguration*
+  name: ActiveTestConfiguration
+  href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_ActiveTestConfiguration_
+  commentId: Overload:SatStat.TestConfigTabControl.ActiveTestConfiguration
+  isSpec: "True"
+  fullName: SatStat.TestConfigTabControl.ActiveTestConfiguration
+  nameWithType: TestConfigTabControl.ActiveTestConfiguration
 - uid: SatStat.TestConfigTabControl.AddDeviceToList(SatStat.DataStream)
   name: AddDeviceToList(DataStream)
   href: api/SatStat.TestConfigTabControl.html#SatStat_TestConfigTabControl_AddDeviceToList_SatStat_DataStream_
@@ -3248,15 +3308,15 @@ references:
   isSpec: "True"
   fullName: SatStat.TestConfiguration.RunQueuedInstruction
   nameWithType: TestConfiguration.RunQueuedInstruction
-- uid: SatStat.TestConfiguration.Save(System.Action{SatStat.TestConfiguration})
-  name: Save(Action<TestConfiguration>)
-  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Save_System_Action_SatStat_TestConfiguration__
-  commentId: M:SatStat.TestConfiguration.Save(System.Action{SatStat.TestConfiguration})
-  name.vb: Save(Action(Of TestConfiguration))
-  fullName: SatStat.TestConfiguration.Save(System.Action<SatStat.TestConfiguration>)
-  fullName.vb: SatStat.TestConfiguration.Save(System.Action(Of SatStat.TestConfiguration))
-  nameWithType: TestConfiguration.Save(Action<TestConfiguration>)
-  nameWithType.vb: TestConfiguration.Save(Action(Of TestConfiguration))
+- uid: SatStat.TestConfiguration.Save(SatStat.TestConfiguration,System.Action{SatStat.TestConfiguration})
+  name: Save(TestConfiguration, Action<TestConfiguration>)
+  href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Save_SatStat_TestConfiguration_System_Action_SatStat_TestConfiguration__
+  commentId: M:SatStat.TestConfiguration.Save(SatStat.TestConfiguration,System.Action{SatStat.TestConfiguration})
+  name.vb: Save(TestConfiguration, Action(Of TestConfiguration))
+  fullName: SatStat.TestConfiguration.Save(SatStat.TestConfiguration, System.Action<SatStat.TestConfiguration>)
+  fullName.vb: SatStat.TestConfiguration.Save(SatStat.TestConfiguration, System.Action(Of SatStat.TestConfiguration))
+  nameWithType: TestConfiguration.Save(TestConfiguration, Action<TestConfiguration>)
+  nameWithType.vb: TestConfiguration.Save(TestConfiguration, Action(Of TestConfiguration))
 - uid: SatStat.TestConfiguration.Save*
   name: Save
   href: api/SatStat.TestConfiguration.html#SatStat_TestConfiguration_Save_

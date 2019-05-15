@@ -469,5 +469,23 @@ namespace SatStat
         }
 
         #endregion
+
+        private void SaveTestConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(TestConfigTab.ActiveTestConfiguration != null)
+            {
+                TestConfigSaveDialog dialog = new TestConfigSaveDialog(TestConfigTab.ActiveTestConfiguration, false);
+                dialog.ShowDialog();
+            } else
+            {
+                MessageBox.Show("There is no active test configuration set up");
+            }
+        }
+
+        private void LoadTestConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestConfigSaveDialog dialog = new TestConfigSaveDialog(null, true);
+            dialog.ShowDialog();
+        }
     }
 }

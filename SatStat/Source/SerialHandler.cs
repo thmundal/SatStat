@@ -396,7 +396,7 @@ namespace SatStat
                 availableCOMPorts.Remove(activeCom);
                 availableCOMPorts.GetEnumerator().Reset();
             } catch (Exception e) {
-                if(discoverSerial.IsOpen)
+                if(discoverSerial != null && discoverSerial.IsOpen)
                 {
                     discoverSerial.Close();
                 }

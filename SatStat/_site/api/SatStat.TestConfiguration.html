@@ -831,18 +831,18 @@ An instance of this class can also be saved and/or loaded from a LiteDatabase co
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/thmundal/SatStat/new/Beta2/apiSpec/new?filename=SatStat_TestConfiguration_Save_System_Action_SatStat_TestConfiguration__.md&amp;value=---%0Auid%3A%20SatStat.TestConfiguration.Save(System.Action%7BSatStat.TestConfiguration%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/thmundal/SatStat/new/Beta2/apiSpec/new?filename=SatStat_TestConfiguration_Save_SatStat_TestConfiguration_System_Action_SatStat_TestConfiguration__.md&amp;value=---%0Auid%3A%20SatStat.TestConfiguration.Save(SatStat.TestConfiguration%2CSystem.Action%7BSatStat.TestConfiguration%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/thmundal/SatStat/blob/Beta2/SatStat/Source/TestConfiguration.cs/#L314">View Source</a>
   </span>
   <a id="SatStat_TestConfiguration_Save_" data-uid="SatStat.TestConfiguration.Save*"></a>
-  <h4 id="SatStat_TestConfiguration_Save_System_Action_SatStat_TestConfiguration__" data-uid="SatStat.TestConfiguration.Save(System.Action{SatStat.TestConfiguration})">Save(Action&lt;TestConfiguration&gt;)</h4>
+  <h4 id="SatStat_TestConfiguration_Save_SatStat_TestConfiguration_System_Action_SatStat_TestConfiguration__" data-uid="SatStat.TestConfiguration.Save(SatStat.TestConfiguration,System.Action{SatStat.TestConfiguration})">Save(TestConfiguration, Action&lt;TestConfiguration&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Save(Action&lt;TestConfiguration&gt; cb = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Save(TestConfiguration existing, Action&lt;TestConfiguration&gt; cb = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -854,6 +854,11 @@ An instance of this class can also be saved and/or loaded from a LiteDatabase co
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a class="xref" href="SatStat.TestConfiguration.html">TestConfiguration</a></td>
+        <td><span class="parametername">existing</span></td>
+        <td></td>
+      </tr>
       <tr>
         <td><span class="xref">System.Action</span>&lt;<a class="xref" href="SatStat.TestConfiguration.html">TestConfiguration</a>&gt;</td>
         <td><span class="parametername">cb</span></td>
@@ -898,7 +903,7 @@ An instance of this class can also be saved and/or loaded from a LiteDatabase co
     <a href="https://github.com/thmundal/SatStat/new/Beta2/apiSpec/new?filename=SatStat_TestConfiguration_ToString.md&amp;value=---%0Auid%3A%20SatStat.TestConfiguration.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/thmundal/SatStat/blob/Beta2/SatStat/Source/TestConfiguration.cs/#L341">View Source</a>
+    <a href="https://github.com/thmundal/SatStat/blob/Beta2/SatStat/Source/TestConfiguration.cs/#L343">View Source</a>
   </span>
   <a id="SatStat_TestConfiguration_ToString_" data-uid="SatStat.TestConfiguration.ToString*"></a>
   <h4 id="SatStat_TestConfiguration_ToString" data-uid="SatStat.TestConfiguration.ToString">ToString()</h4>

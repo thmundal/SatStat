@@ -22,6 +22,8 @@ namespace SatStat
 
         private List<string> observedValueLabels;
 
+        public TestConfiguration ActiveTestConfiguration { get { return activeTestConfiguration; } }
+
         public TestConfigTabControl()
         {
             InitializeComponent();
@@ -406,7 +408,8 @@ namespace SatStat
             UITestConfigIntructionListGrid.ClearSelection();
             Instruction instruction = instructionEntry.instruction;
 
-            int index = instructionEntry.instruction._ui_index; // activeTestConfiguration.InstructionEntryIndex(instructionEntry);
+            //int index = instructionEntry.instruction._ui_index; // 
+            int index = activeTestConfiguration.InstructionEntryIndex(instructionEntry);
 
             if (last_instruction_index > -1)
             {
@@ -414,9 +417,12 @@ namespace SatStat
                 UITestConfigIntructionListGrid.Rows[last_instruction_index].Cells[3].Value = instruction.feedbackStatus.ToString();
             }
 
-            UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running ";
-            UITestConfigIntructionListGrid.Rows[index].Selected = true;
-            last_instruction_index = index;
+            if(index > -1)
+            { 
+                UITestConfigIntructionListGrid.Rows[index].Cells[2].Value = "Running ";
+                UITestConfigIntructionListGrid.Rows[index].Selected = true;
+                last_instruction_index = index;
+            }
         }
 
         private void OnTestQueueComplete(InstructionEntry instructionEntry)
