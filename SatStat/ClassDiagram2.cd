@@ -15,43 +15,43 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ObservableNumericValue&lt;T&gt;">
-    <Position X="0.5" Y="4.5" Width="3.75" />
+    <Position X="0.5" Y="4" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAEkBAAABCAkAIAAAAAAAABAGQAIBAgAAkAAAA=</HashCode>
+      <HashCode>AQAAAAEEkBABABCEkEIEAAAAAAABAGQAIBAgAAkAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SatStat.ObservableInt">
-    <Position X="7.75" Y="10" Width="2" />
+    <Position X="7.75" Y="10.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ObservableFloat">
-    <Position X="0.5" Y="10" Width="2" />
+    <Position X="0.5" Y="10.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ObservableDouble">
-    <Position X="5.25" Y="10" Width="2.25" />
+    <Position X="5.25" Y="10.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ObservableLong">
-    <Position X="3" Y="10" Width="2" />
+    <Position X="3" Y="10.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.ObservableNumericValueCollection" BaseTypeListCollapsed="true">
-    <Position X="11.25" Y="5.25" Width="6.5" />
+    <Position X="4.75" Y="3.5" Width="6.5" />
     <TypeIdentifier>
       <HashCode>AEIAAEAAAACABRBQCAQAFAQgAAAAIQAACAAAAABQIAA=</HashCode>
       <FileName>Source\ObservableNumericValueCollection.cs</FileName>
@@ -69,28 +69,21 @@
   <Class Name="SatStat.ParameterControlTemplate">
     <Position X="0.5" Y="0.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgQCIAAAAAAAQAAAAAAAABAgAEAEAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAgQAAEAAAAAAQAAAAAAAABAgAEAEAAAAA=</HashCode>
       <FileName>Source\ParameterControlTemplate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SatStat.TestConfiguration">
-    <Position X="4.75" Y="3" Width="6.25" />
+    <Position X="11.5" Y="4.5" Width="6.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAGAAgpQgAAQCCAwBQCAAAoAACkAIAAAAAABAI=</HashCode>
+      <HashCode>AAACAIAGAAgpQiAEQCCAwBQCAAEwAACkAIAAAAAABAI=</HashCode>
       <FileName>Source\TestConfiguration.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="SatStat.InstructionEntry">
-    <Position X="11.25" Y="3.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Source\TestConfiguration.cs</FileName>
-    </TypeIdentifier>
-  </Struct>
   <Interface Name="SatStat.IObservableNumericValue">
     <Position X="15.75" Y="0.5" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAEEBAAAAAAEAIAAAAAAAABAEQAIAAgAAkAAAA=</HashCode>
+      <HashCode>AQAAAAAEEBABAAAAEEIAAAAAAAABAEQAIAAgAAkAAAA=</HashCode>
       <FileName>Source\ObservableNumericValue.cs</FileName>
     </TypeIdentifier>
   </Interface>

@@ -28,7 +28,7 @@ namespace SatStat
             if (c.InvokeRequired)
             {
                 SetBaudrateCallback d = new SetBaudrateCallback(SetBaudrates);
-                f.Invoke(d, new object[] { f, p, c, settings });
+                f.BeginInvoke(d, new object[] { f, p, c, settings });
             }
             else
             {
@@ -77,7 +77,7 @@ namespace SatStat
                 {
                     try
                     {
-                        f.Invoke(cb, new object[] { data });
+                        f.BeginInvoke(cb, new object[] { data });
                     } catch(Exception e)
                     {
                         Debug.Log(e);

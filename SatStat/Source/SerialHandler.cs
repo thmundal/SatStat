@@ -21,6 +21,7 @@ namespace SatStat
         private Action<SerialSettingsCollection> HandshakeResponse_callback;
         private static bool sadm_discovered = false;
         private static SerialPort discoverSerial;
+        private static bool closing = false;
 
         public SerialSettingsCollection AvailableSettings
         {
@@ -166,9 +167,13 @@ namespace SatStat
                     connection.StopBits = default_settings.StopBits;
                     connection.NewLine = default_settings.NewLine;
                 }
-                
-                Debug.Log("Reopening connection...");
-                connection.Open();
+
+                try
+                {
+                    Debug.Log("Reopening connection...");
+                    connection.Open();
+                }
+                catch (Exception) { }
             }
         }
 
@@ -334,7 +339,9 @@ namespace SatStat
                 Debug.Log("Stopping serial reader");
                 Output(Request.Create("reset"));
                 connectionStatus = ConnectionStatus.Disconnected;
+                connection.ReadExisting();
                 connection.Close();
+                closing = true;
                 return true;
             } else
             {
@@ -346,7 +353,7 @@ namespace SatStat
 
         public static bool Discover()
         {
-            if(sadm_discovered)
+            if(sadm_discovered || closing)
             {
                 return true;
             }

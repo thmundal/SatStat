@@ -22,6 +22,8 @@ namespace SatStat
             {
                 discoverThread.Abort();
             }
+
+            Debug.Log("Should be closed");
         }
 
         private void cOMSettingsToolStripMenuItem_Click(object sender, EventArgs e)
