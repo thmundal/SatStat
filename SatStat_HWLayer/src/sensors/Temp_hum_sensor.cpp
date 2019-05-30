@@ -5,9 +5,9 @@
 *	Constructor. Passes the parameter inputs to parent constructor arguments,
 *	initializes dht and adds temperature and humidity entries to the SSTL data list.
 */
-Temp_hum_sensor::Temp_hum_sensor(const String& name, const int& pin) : Sensor(name, pin)
+Temp_hum_sensor::Temp_hum_sensor(const String& name) : Sensor(name)
 {		
-	dht = new DHT_Unified(pin, DHT22);
+	dht = new DHT_Unified(m_pin, DHT22);
 	dht->begin();
 
 	sstl::Lists::add_entry<float>("temperature");

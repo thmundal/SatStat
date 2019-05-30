@@ -10,7 +10,7 @@
 class Sensor
 {
 public:
-	Sensor(const String& name, const int& pin);
+	Sensor(const String& name);
 
 	/**
 	*	As other classes will inherit this one, we need a virtual destructor to let the compiler know that
@@ -26,23 +26,19 @@ public:
 	const String& get_name() const;
 
 protected:
-	String name;
-	int pin;
+	String m_name;
 };
 
 /**
-*	Constructor setting name and pin.
+*	Constructor setting name.
 */
-inline Sensor::Sensor(const String& name, const int& pin)
-{
-	this->name = name;
-	this->pin = pin;
-}
+inline Sensor::Sensor(const String& name)
+	: m_name(name) {}
 
 /**
 *	Returns a constant string reference to the name member.
 */
 inline const String& Sensor::get_name() const
 {
-	return this->name;
+	return this->m_name;
 }

@@ -9,8 +9,14 @@ int SADM_functions::m_steps = 0;
 bool SADM_functions::m_rising = true;
 unsigned long SADM_functions::m_last_pulse = micros();
 
-const int SADM_functions::step_pin = 5;
-const int SADM_functions::dir_pin = 6;
+const int SADM_functions::step_pin = 3;
+const int SADM_functions::dir_pin = 4;
+
+void SADM_functions::init()
+{
+	pinMode(step_pin, OUTPUT);
+	pinMode(dir_pin, OUTPUT);
+}
 
 /**
 *	Interprets the set_step_size instruction received from SWL.

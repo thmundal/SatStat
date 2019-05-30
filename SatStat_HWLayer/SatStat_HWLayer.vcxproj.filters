@@ -76,6 +76,12 @@
     <Filter Include="Header Files\dbg">
       <UniqueIdentifier>{1e70dbcd-7624-49ae-91a4-01d61b2074d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lib\HX711_ADC">
+      <UniqueIdentifier>{f5c870fe-0e63-4dff-9a11-e2576db031e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\HX711_ADC">
+      <UniqueIdentifier>{a7a49241-d5f1-4f7a-bc9b-9df5a9655ae3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SatStat_HWLayer.ino" />
@@ -405,6 +411,18 @@
     <ClInclude Include="src\containers\SADM_functions.h">
       <Filter>Header Files\src\containers</Filter>
     </ClInclude>
+    <ClInclude Include="src\sensors\Load_cell.h">
+      <Filter>Header Files\src\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sensors\Pos_sensor.h">
+      <Filter>Header Files\src\sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HX711_ADC\config.h">
+      <Filter>Header Files\lib\HX711_ADC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HX711_ADC\HX711_ADC.h">
+      <Filter>Header Files\lib\HX711_ADC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\DHT\DHT.cpp">
@@ -448,6 +466,15 @@
     </ClCompile>
     <ClCompile Include="src\containers\SADM_functions.cpp">
       <Filter>Source Files\src\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\Load_cell.cpp">
+      <Filter>Source Files\src\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\Pos_sensor.cpp">
+      <Filter>Source Files\src\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HX711_ADC\HX711_ADC.cpp">
+      <Filter>Source Files\lib\HX711_ADC</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

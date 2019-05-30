@@ -1,5 +1,7 @@
 #pragma once
 #include "../sensors/Temp_hum_sensor.h"
+#include "../sensors/Load_cell.h"
+#include "../sensors/Pos_sensor.h"
 #include "Json_container.h"
 
 /**

@@ -1,3 +1,4 @@
+#pragma once
 #ifdef _DEBUG
 	struct Print_time
 	{

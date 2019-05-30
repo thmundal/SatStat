@@ -12,10 +12,12 @@
 class Temp_hum_sensor : public Sensor
 {
 public:
-	Temp_hum_sensor(const String& name, const int& pin);	
+	Temp_hum_sensor(const String& name);	
 	~Temp_hum_sensor();
 
 	void read_sensor() override;	
 private:	
 	DHT_Unified* dht;
+
+	const int m_pin = 5;
 };

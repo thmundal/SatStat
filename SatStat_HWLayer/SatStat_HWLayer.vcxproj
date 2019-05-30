@@ -210,6 +210,8 @@
     <ClInclude Include="lib\ArduinoJson\ArduinoJson\version.hpp" />
     <ClInclude Include="lib\DHT\DHT.h" />
     <ClInclude Include="lib\DHT\DHT_U.h" />
+    <ClInclude Include="lib\HX711_ADC\config.h" />
+    <ClInclude Include="lib\HX711_ADC\HX711_ADC.h" />
     <ClInclude Include="lib\LinkedList\LinkedList.h" />
     <ClInclude Include="lib\LinkedList\Node.h" />
     <ClInclude Include="lib\QueueArray.h" />
@@ -230,6 +232,8 @@
     <ClInclude Include="src\handlers\Message_handler.h" />
     <ClInclude Include="src\handlers\Serial_handler.h" />
     <ClInclude Include="src\HWLayer.h" />
+    <ClInclude Include="src\sensors\Load_cell.h" />
+    <ClInclude Include="src\sensors\Pos_sensor.h" />
     <ClInclude Include="src\sensors\Sensor.h" />
     <ClInclude Include="src\sensors\Temp_hum_sensor.h" />
     <ClInclude Include="__vm\.SatStat_HWLayer.vsarduino.h" />
@@ -237,6 +241,7 @@
   <ItemGroup>
     <ClCompile Include="lib\DHT\DHT.cpp" />
     <ClCompile Include="lib\DHT\DHT_U.cpp" />
+    <ClCompile Include="lib\HX711_ADC\HX711_ADC.cpp" />
     <ClCompile Include="lib\SSTL\Lists.cpp" />
     <ClCompile Include="lib\Stepper\Stepper.cpp" />
     <ClCompile Include="src\containers\Request_container.cpp" />
@@ -248,6 +253,8 @@
     <ClCompile Include="src\handlers\Message_handler.cpp" />
     <ClCompile Include="src\handlers\Serial_handler.cpp" />
     <ClCompile Include="src\HWLayer.cpp" />
+    <ClCompile Include="src\sensors\Load_cell.cpp" />
+    <ClCompile Include="src\sensors\Pos_sensor.cpp" />
     <ClCompile Include="src\sensors\Temp_hum_sensor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,19 +11,14 @@ volatile bool manual_override = false;
 void mode_switch();
 
 /**
-*	Constructor instantiating the serial_handler member.
-*/
-HWLayer::HWLayer()
-{
-	serial_handler = new Serial_handler(sensor_container, message_handler);
-}
-
-/**
 *	Destructor deleting the serial_handler member.
 */
 HWLayer::~HWLayer()
 {
-	delete serial_handler;
+	if (serial_handler != nullptr)
+	{
+		delete serial_handler;
+	}
 }
 
 /**
@@ -32,22 +27,18 @@ HWLayer::~HWLayer()
 */
 void HWLayer::setup()
 {
-	// DHT22 GND and Vcc
-	pinMode(2, OUTPUT);
-	digitalWrite(2, LOW);
-	pinMode(3, OUTPUT);
-	digitalWrite(3, HIGH);
+	// Init serial
+	Serial.begin(9600);
 
 	// Mode selection pinout for isr
 	pinMode(interrupt_pin, INPUT);
 	attachInterrupt(digitalPinToInterrupt(interrupt_pin), mode_switch, CHANGE);
 
 	// Stepper motor pinout
-	pinMode(5, OUTPUT);
-	pinMode(6, OUTPUT);
-
-	// Init serial
-	Serial.begin(9600);
+	SADM_functions::init();	
+	
+	// Instantiating serial_handler
+	serial_handler = new Serial_handler(sensor_container, message_handler);
 
 	// Execute handshake protocol
 	serial_handler->handshake();
@@ -91,15 +82,15 @@ void HWLayer::loop()
 			// Continuously executes the currently loaded instruction
 			Function_control::run();
 
-			// Runs with an interval equal to the sensor_interval_duration
-			if (!(millis() - sensor_interval_start_time < sensor_interval_duration))
-			{				
+			if (millis() - sensor_interval_start_time > sensor_interval_duration)
+			{
+				//scoped_timer;
 				// Reads the sensors
 				sensor_container.read_all_sensors();
-				
+
 				// Fetches subscribed sensor data
 				auto sub_data = sensor_container.get_sub_data();
-				
+
 				// Prints subscribed sensor data if any, else send ping
 				if (sub_data->size() > 0)
 				{
@@ -109,8 +100,6 @@ void HWLayer::loop()
 				{
 					serial_handler->send_ping();
 				}
-				
-				// Update sensor interval start time to current time
 				sensor_interval_start_time = millis();
 			}
 		}

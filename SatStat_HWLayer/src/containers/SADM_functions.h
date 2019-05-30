@@ -1,5 +1,6 @@
 #pragma once
 #include "../handlers/Function_control.h"
+#include "../sensors/Pos_sensor.h"
 
 /**
 *	Abstract class with all static members for the methods to be compatible with list insertion.
@@ -13,6 +14,7 @@ public:
 	*/
 	virtual ~SADM_functions() = 0;
 
+	static void init();
 	static void set_step_size(Json_container<JsonObject>& ins);
 	static void set_stepping_mode(Json_container<JsonObject>& ins);
 	static void set_ratio(Json_container<JsonObject>& ins);
@@ -21,7 +23,6 @@ public:
 	static void rotate(Json_container<JsonObject>& ins);
 	static void rotate();
 	static void instant_release();
-
 
 private:
 	static int deg_to_steps(const float & deg);
@@ -36,4 +37,6 @@ private:
 
 	static const int step_pin;
 	static const int dir_pin;
+
+	friend class Pos_sensor;
 };

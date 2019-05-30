@@ -6,7 +6,9 @@
 */
 Sensor_container::Sensor_container()
 {
-	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum", 4));
+	sensor_collection.append("temp_hum", new Temp_hum_sensor("temp_hum"));
+	sensor_collection.append("load_cell", new Load_cell("load_cell"));
+	sensor_collection.append("pos_sensor", new Pos_sensor("pos_sensor"));
 }
 
 /**

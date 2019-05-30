@@ -1,5 +1,6 @@
 #pragma once
 #include "./handlers/Serial_handler.h"
+#include "../dbg/Log.h"
 
 /**
 *	This class acts as the "main" class.
@@ -12,10 +13,7 @@
 */
 class HWLayer
 {
-public:
-	// Constructor
-	HWLayer();
-	
+public:	
 	// Destructor
 	~HWLayer();
 
@@ -31,5 +29,5 @@ private:
 
 	// Timing constrains
 	unsigned long sensor_interval_start_time;
-	const unsigned long sensor_interval_duration = 2000;
+	const unsigned long sensor_interval_duration = 3;
 };
