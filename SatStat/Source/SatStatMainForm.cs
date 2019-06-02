@@ -487,5 +487,11 @@ namespace SatStat
             TestConfigSaveDialog dialog = new TestConfigSaveDialog(null, true);
             dialog.ShowDialog();
         }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.ShowDialog();
+        }
     }
 }

@@ -60,6 +60,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.runCurrentTestConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearCurrentTestConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -130,7 +131,8 @@
             this.settingsToolStripMenuItem,
             this.dataToolStripMenuItem,
             this.parameterControlToolStripMenuItem,
-            this.testConfigurationToolStripMenuItem});
+            this.testConfigurationToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.UImenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.UImenuStrip1.Name = "UImenuStrip1";
             this.UImenuStrip1.Size = new System.Drawing.Size(1423, 24);
@@ -326,6 +328,13 @@
             this.clearCurrentTestConfigurationToolStripMenuItem.Name = "clearCurrentTestConfigurationToolStripMenuItem";
             this.clearCurrentTestConfigurationToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.clearCurrentTestConfigurationToolStripMenuItem.Text = "Clear current test configuration";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -835,7 +844,7 @@
             this.MainMenuStrip = this.UImenuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SatStatMainForm";
-            this.Text = "Form1";
+            this.Text = "SatStat";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SatStatMainForm_FormClosing);
             this.UImenuStrip1.ResumeLayout(false);
@@ -937,6 +946,7 @@
         private System.Windows.Forms.ToolStripMenuItem clearCurrentTestConfigurationToolStripMenuItem;
         private System.Windows.Forms.TabPage TestConfigTabContainer;
         public TestConfigTabControl TestConfigTab;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

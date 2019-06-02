@@ -44,6 +44,7 @@ Global
 		{23806A6A-9619-48F2-990F-6C64980E7575}.Debug|Any CPU.ActiveCfg = Debug
 		{23806A6A-9619-48F2-990F-6C64980E7575}.Debug|x86.ActiveCfg = Debug
 		{23806A6A-9619-48F2-990F-6C64980E7575}.Release|Any CPU.ActiveCfg = Release
+		{23806A6A-9619-48F2-990F-6C64980E7575}.Release|Any CPU.Build.0 = Release
 		{23806A6A-9619-48F2-990F-6C64980E7575}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

@@ -520,12 +520,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_18AF67FDDCA906F94F9415E9BEC05651"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A90AADD8799243228BCB73ED767D8592"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -961,6 +955,12 @@
         "OwnerKey" = "8:_3EF8EDFABA1FB3FD2E403395725A93E4"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_18AF67FDDCA906F94F9415E9BEC05651"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -979,6 +979,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -995,6 +1011,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -3405,15 +3437,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SatStat"
-        "ProductCode" = "8:{3061C078-F847-452D-A3AE-BD9B82FB6A1A}"
-        "PackageCode" = "8:{1BE46CCC-EB59-4EAC-BDE8-3242778B8DD9}"
+        "ProductCode" = "8:{E028564A-68ED-41C4-9D51-6DA90781346C}"
+        "PackageCode" = "8:{881421BB-4B3F-4690-9C7B-F25343EED39C}"
         "UpgradeCode" = "8:{D9E7B6CC-41A4-490F-9D69-206D59F587A6}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
-        "DetectNewerInstalledVersion" = "11:TRUE"
+        "RemovePreviousVersions" = "11:TRUE"
+        "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:SatLight Bachelor Group"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -3423,7 +3455,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_1093EADFDC624A60B15251E5A9A537F9"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -3526,7 +3558,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AE01E6D8E6864E09A307FABDC15BB3E9"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D20255FF99D94D32806C9427FE93357A"
             {
             "Name" = "8:SatStat"
             "Arguments" = "8:"
@@ -3534,7 +3566,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_A90AADD8799243228BCB73ED767D8592"
             "Folder" = "8:_7A113D813029493ABF3878F107C22EA4"
             "WorkingFolder" = "8:_2F8B02FD1A004230B2616243EB47022E"
             "Icon" = "8:_1093EADFDC624A60B15251E5A9A537F9"

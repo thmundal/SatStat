@@ -93,6 +93,12 @@
     <Compile Include="FormAddons\SatStatMainFormEventHandlers.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Source\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\ComSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     <EmbeddedResource Include="CustomControls\TestConfigTabControl.resx">
       <DependentUpon>TestConfigTabControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\ComSettingsForm.resx">
       <DependentUpon>ComSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +177,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Source\TestConfigSaveDialog.resx">
       <DependentUpon>TestConfigSaveDialog.cs</DependentUpon>
@@ -198,6 +208,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\logo_for_swl.PNG" />
     <Content Include="satlight_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
