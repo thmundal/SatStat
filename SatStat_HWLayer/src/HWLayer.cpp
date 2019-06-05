@@ -49,6 +49,9 @@ void HWLayer::setup()
 
 	// Init sensor interval start time
 	sensor_interval_start_time = millis();
+
+	// Sets the initial position to 0
+	Pos_sensor::tare();
 }
 
 /**
@@ -58,50 +61,48 @@ void HWLayer::loop()
 {
 	// Infinite while loop to prevent continuous calls to this methods from the loop function in SatStat_HWLayer.ino
 	while (true)
-	{
-		// Runs when not manual override
-		while (!manual_override)
+	{		
+		// Listen for input on serial port
+		serial_handler->serial_listener();
+
+		// Checks if there is no function currently executing and if the queue currently holds instructions
+		if (Function_control::is_available() && message_handler.has_instructions())
 		{
-			// Listen for input on serial port
-			serial_handler->serial_listener();
+			// Executes the first instruction in the queue
+			message_handler.interpret_instruction();
+		}
 
-			// Checks if there is no function currently executing and if the queue currently holds instructions
-			if (Function_control::is_available() && message_handler.has_instructions())
-			{
-				// Executes the first instruction in the queue
-				message_handler.interpret_instruction();
-			}
-
-			// Checks if the queue currently holds requests
-			if (message_handler.has_requests())
-			{
-				// Executes the first request in the queue
-				message_handler.interpret_request();
-			}
+		// Checks if the queue currently holds requests
+		if (message_handler.has_requests())
+		{
+			// Executes the first request in the queue
+			message_handler.interpret_request();
+		}
 		
-			// Continuously executes the currently loaded instruction
+		// Continuously executes the currently loaded instruction when not manual override
+		if (!manual_override)
+		{
 			Function_control::run();
+		}
 
-			if (millis() - sensor_interval_start_time > sensor_interval_duration)
+		if (millis() - sensor_interval_start_time > sensor_interval_duration)
+		{
+			// Reads the sensors
+			sensor_container.read_all_sensors();
+
+			// Fetches subscribed sensor data
+			auto sub_data = sensor_container.get_sub_data();
+
+			// Prints subscribed sensor data if any, else send ping
+			if (sub_data->size() > 0)
 			{
-				//scoped_timer;
-				// Reads the sensors
-				sensor_container.read_all_sensors();
-
-				// Fetches subscribed sensor data
-				auto sub_data = sensor_container.get_sub_data();
-
-				// Prints subscribed sensor data if any, else send ping
-				if (sub_data->size() > 0)
-				{
-					serial_handler->print_to_serial(sub_data);
-				}
-				else
-				{
-					serial_handler->send_ping();
-				}
-				sensor_interval_start_time = millis();
+				serial_handler->print_to_serial(sub_data);
 			}
+			else
+			{
+				serial_handler->send_ping();
+			}
+			sensor_interval_start_time = millis();
 		}
 	}
 }
