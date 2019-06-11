@@ -407,7 +407,8 @@ namespace SatStat
                                 }
                             );
 
-                            autoObservableValues.AddWithType(elem.Key, elem.Value.ToString());
+                            IObservableNumericValue o = autoObservableValues.AddWithType(elem.Key, elem.Value.ToString());
+                            o.OnUpdate(ObservedValueChanged);
                         }
                     }
                 }

@@ -153,7 +153,7 @@ namespace SatStat
                 {
                     if (!observedValues.ContainsLabel(attribute))
                     {
-                        if(observedValues.AddWithType(attribute, data_type))
+                        if(observedValues.AddWithType(attribute, data_type) != null)
                         {
                             observedValues[attribute].OnUpdate(onObservableValueChanged_cb);
                         }

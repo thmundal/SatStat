@@ -99,7 +99,7 @@ namespace SatStat
 
         }
 
-        public bool AddWithType(string label, string type)
+        public IObservableNumericValue AddWithType(string label, string type)
         {
             IObservableNumericValue observedAttribute = new ObservableInt();
             bool observe_invalid = false;
@@ -140,13 +140,14 @@ namespace SatStat
             if(observe_invalid)
             {
                 Debug.Log(observe_error);
+                return null;
             } else
             {
                 observedAttribute.Label = label;
                 Add(observedAttribute);
             }
 
-            return !observe_invalid;
+            return observedAttribute;
         }
 
         public IEnumerator GetEnumerator()
