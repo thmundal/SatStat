@@ -13,8 +13,10 @@ namespace SatStat
     public class ParameterControlTemplate
     {
         public ObjectId Id { get; set; }
+        
         public IObservableNumericValue[] Collection { get; set; }
         public string Name { get; set; }
+        [BsonIgnore]
         public DateTime Date { get; set; }
         public string Description { get; set; }
 

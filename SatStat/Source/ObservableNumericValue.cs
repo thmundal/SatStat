@@ -64,7 +64,9 @@ namespace SatStat
 
         private LineAnnotation plotAnnotationMaxLine;
         private LineAnnotation plotAnnotationMinLine;
+        [BsonIgnore]
         public LineAnnotation PlotAnnotationMaxLine { get { return plotAnnotationMaxLine; } set { plotAnnotationMaxLine= value; } }
+        [BsonIgnore]
         public LineAnnotation PlotAnnotationMinLine { get { return plotAnnotationMinLine; } set { plotAnnotationMinLine = value; } }
 
         public bool Over()
@@ -265,6 +267,7 @@ namespace SatStat
         /// <summary>
         /// Should return the generic type that this object was initialized with
         /// </summary>
+        [BsonIgnore]
         Type type { get; }
 
         /// <summary>
@@ -273,7 +276,9 @@ namespace SatStat
         /// <returns>The different between the current violated max or min</returns>
         object Diff();
 
+        [BsonIgnore]
         LineAnnotation PlotAnnotationMaxLine{ get; set; }
+        [BsonIgnore]
         LineAnnotation PlotAnnotationMinLine { get; set; }
 
         ObservableNumericValueStatus Status();
